@@ -706,22 +706,48 @@ A data-driven analysis of <strong>average deal size</strong> from your Power BI 
 <div class="doc-header">
 <div>
 <div class="doc-logo">
-<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
 </div>
 <div class="doc-type">AI-Generated Power BI Report</div>
 </div>
 <div class="doc-header-right">
+<div class="doc-meta-row"><strong>Report:</strong> PRX-DEAL-001</div>
+<div class="doc-meta-row"><strong>Source:</strong> Autotask PSA</div>
+<div class="doc-meta-row"><strong>Generated:</strong> May 2026</div>
 </div>
 </div><div class="doc-title-block">
 <div class="doc-title">Average Deal Size</div>
-<p class="doc-subtitle">A data-driven analysis of <strong>average deal size</strong> from your Power BI environment, with breakdowns and actionable findings.</p>
+<p class="doc-subtitle">A data-driven analysis of <strong>average deal size</strong> across 1,465 opportunities in your Autotask PSA pipeline, with breakdowns by status, stage, and sales rep.</p>
 </div>
-<div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
+<div class="doc-demo"><strong>Anonymized Report:</strong> This report uses real operational data from Autotask PSA. Company names and contact details have been anonymized. Opportunity titles reflect generic categories.</div>
 <div class="doc-body">
+<!-- Section 1.0 — Summary Metrics -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">1.0</span>
 <span class="doc-section-title">Summary Metrics</span>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">AVG DEAL SIZE (ACTIVE)</div>
+<div class="doc-kpi-value">&euro;31,765</div>
+<div class="doc-kpi-note amber">Median: &euro;1,905</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAL PIPELINE</div>
+<div class="doc-kpi-value">&euro;3.94M</div>
+<div class="doc-kpi-note muted">124 active opportunities</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">WON DEAL AVG</div>
+<div class="doc-kpi-value">&euro;4,768</div>
+<div class="doc-kpi-note green">832 deals closed</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">WIN RATE</div>
+<div class="doc-kpi-value">62.0%</div>
+<div class="doc-kpi-note green">832 of 1,341 decided</div>
+</div>
 </div>
 <div class="dax-toggle">
 <div class="dax-trigger">
@@ -745,54 +771,241 @@ A data-driven analysis of <strong>average deal size</strong> from your Power BI 
 </div>
 <div class="doc-dax-box" style="margin-top:12px;">
 <strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran. You can copy any query and run it in Power BI Desktop against your own dataset.
-      </div>
 </div>
+</div>
+<!-- Section 2.0 — Deal Size by Status -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">2.0</span>
-<span class="doc-section-title">Analysis</span>
+<span class="doc-section-title">Deal Size by Status</span>
 </div>
-<p class="doc-section-sub">What the data is telling us</p>
-<div class="narrative"><p>The data above paints a picture of <strong>average deal size</strong> across your MSP operations. Look for patterns, outliers, and trends that warrant attention. Each section includes the DAX query used, so you can drill deeper into any metric that catches your eye.</p></div>
+<p class="doc-section-sub">How deal sizes differ across opportunity statuses</p>
+<div class="narrative"><p>Active opportunities carry an average deal size of <strong>&euro;31,765</strong>, but this figure is heavily skewed by two large deals. Lost deals average <strong>&euro;13,869</strong> — nearly 3x the won average of <strong>&euro;4,768</strong>. This suggests that larger deals face tougher competition or longer sales cycles that increase the risk of losing them. The 832 won deals (Closed + Implemented) generated <strong>&euro;3.97M</strong> in total revenue.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Active</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;31,765</span></div></div>
 </div>
+<div class="hbar-row">
+<div class="hbar-label">Lost</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:43.7%"><span class="hbar-val">&euro;13,869</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Closed</div>
+<div class="hbar-track"><div class="hbar-fill navy" style="width:15.1%"><span class="hbar-val">&euro;4,782</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Implemented</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:14.7%"><span class="hbar-val">&euro;4,678</span></div></div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Status breakdown</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Opportunities'[status_name],
+  "Count", COUNTROWS('BI_Autotask_Opportunities'),
+  "Total", SUM('BI_Autotask_Opportunities'[amount]),
+  "Avg", AVERAGE('BI_Autotask_Opportunities'[amount]),
+  "Max", MAX('BI_Autotask_Opportunities'[amount])
+)
+ORDER BY [Avg] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Status</th><th>Count</th><th>Total Value</th><th>Avg Deal Size</th><th>Max Deal</th></tr>
+</thead>
+<tbody>
+<tr><td>Active</td><td class="num">124</td><td class="num">&euro;3,938,803</td><td class="num">&euro;31,765</td><td class="num">&euro;2,657,650</td></tr>
+<tr><td>Lost</td><td class="num">509</td><td class="num">&euro;7,059,325</td><td class="num num-danger">&euro;13,869</td><td class="num">&euro;1,890,912</td></tr>
+<tr><td>Closed</td><td class="num">720</td><td class="num">&euro;3,443,385</td><td class="num">&euro;4,782</td><td class="num">&euro;292,580</td></tr>
+<tr><td>Implemented</td><td class="num">112</td><td class="num">&euro;523,880</td><td class="num">&euro;4,678</td><td class="num">&euro;98,536</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Section 3.0 — Active Pipeline Breakdown -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">3.0</span>
-<span class="doc-section-title">Recommended Actions</span>
+<span class="doc-section-title">Active Pipeline Breakdown</span>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>1. Schedule Recurring Review</h4>
-<p>Set up a weekly or monthly review of average deal size metrics. Trends matter more than snapshots. Use the DAX queries in this report as your starting point.</p>
+<p class="doc-section-sub">Where active opportunities sit in the sales process</p>
+<div class="narrative"><p>The active pipeline is concentrated in the <strong>"Offerte verstuurd"</strong> stage, which holds <strong>77.6%</strong> of total pipeline value (&euro;3.06M across 46 deals). The second-largest stage, <strong>"Offerte maken"</strong>, represents 19.2% with &euro;757K across 31 deals. All remaining stages together account for just 3.1% of pipeline value. This concentration means pipeline health depends heavily on conversion in the proposal-sent stage.</p></div>
+<div class="chart-row">
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"></circle>
+<circle class="donut-fg teal" cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="243.88 70.28" stroke-dashoffset="78.54" stroke-linecap="round"></circle>
+<text class="donut-value" x="60" y="56" text-anchor="middle" dominant-baseline="middle">77.6%</text>
+<text class="donut-sublabel" x="60" y="72" text-anchor="middle">&euro;3.06M</text>
+</svg>
+<div class="donut-label">Offerte verstuurd</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"></circle>
+<circle class="donut-fg blue" cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="60.32 253.84" stroke-dashoffset="78.54" stroke-linecap="round"></circle>
+<text class="donut-value" x="60" y="56" text-anchor="middle" dominant-baseline="middle">19.2%</text>
+<text class="donut-sublabel" x="60" y="72" text-anchor="middle">&euro;757K</text>
+</svg>
+<div class="donut-label">Offerte maken</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"></circle>
+<circle class="donut-fg slate" cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="9.74 304.42" stroke-dashoffset="78.54" stroke-linecap="round"></circle>
+<text class="donut-value" x="60" y="56" text-anchor="middle" dominant-baseline="middle">3.1%</text>
+<text class="donut-sublabel" x="60" y="72" text-anchor="middle">&euro;122K</text>
+</svg>
+<div class="donut-label">Other stages</div>
 </div>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>2. Connect Your Own Data</h4>
-<p>This report uses demo data. Connect Proxuma Power BI to your own Autotask PSA to generate this analysis from your real numbers.</p>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Active pipeline by stage</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Opportunities'[stage_name],
+  FILTER('BI_Autotask_Opportunities', 'BI_Autotask_Opportunities'[status_name] = "Active"),
+  "Count", COUNTROWS('BI_Autotask_Opportunities'),
+  "Total", SUM('BI_Autotask_Opportunities'[amount]),
+  "Avg", AVERAGE('BI_Autotask_Opportunities'[amount])
+)
+ORDER BY [Total] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
+<table>
+<thead>
+<tr><th>Stage</th><th>Count</th><th>Total Value</th><th>Avg Deal Size</th></tr>
+</thead>
+<tbody>
+<tr><td>Offerte verstuurd</td><td class="num">46</td><td class="num">&euro;3,059,497</td><td class="num">&euro;66,511</td></tr>
+<tr><td>Offerte maken</td><td class="num">31</td><td class="num">&euro;757,155</td><td class="num">&euro;24,424</td></tr>
+<tr><td>Inventarisatie</td><td class="num">18</td><td class="num">&euro;56,679</td><td class="num">&euro;3,149</td></tr>
+<tr><td>Verlopen</td><td class="num">16</td><td class="num">&euro;37,677</td><td class="num">&euro;2,355</td></tr>
+<tr><td>Getekend, verwerkt naar ticket</td><td class="num">10</td><td class="num">&euro;21,758</td><td class="num">&euro;2,176</td></tr>
+<tr><td>Offerte gelezen</td><td class="num">2</td><td class="num">&euro;4,838</td><td class="num">&euro;2,419</td></tr>
+<tr><td>CSAL</td><td class="num">1</td><td class="num">&euro;1,200</td><td class="num">&euro;1,200</td></tr>
+</tbody>
+</table>
 </div>
-<!-- FAQ -->
+<!-- Section 4.0 — Sales Rep Performance -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Sales Rep Performance</span>
+</div>
+<p class="doc-section-sub">Top 5 reps by total opportunity value</p>
+<div class="narrative"><p><strong>Rep B</strong> stands out with the highest average deal size at <strong>&euro;62,398</strong>, but has the lowest win count (11 won). <strong>Rep E</strong> has the most opportunities (287) and the highest win count (175), but operates at a much lower average of &euro;3,147. <strong>Rep A</strong> combines high volume (217 opps) with a strong total of &euro;4.72M and 131 wins, making that the most balanced performer.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Rep A</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;4.72M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Rep B</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:86%"><span class="hbar-val">&euro;4.06M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Rep C</div>
+<div class="hbar-track"><div class="hbar-fill navy" style="width:25%"><span class="hbar-val">&euro;1.18M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Rep D</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:24.5%"><span class="hbar-val">&euro;1.16M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Rep E</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:19.1%"><span class="hbar-val">&euro;903K</span></div></div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — By owner</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Opportunities'[owner_resource_name],
+  "Opps", COUNTROWS('BI_Autotask_Opportunities'),
+  "Total", SUM('BI_Autotask_Opportunities'[amount]),
+  "Avg", AVERAGE('BI_Autotask_Opportunities'[amount]),
+  "Won", CALCULATE(COUNTROWS('BI_Autotask_Opportunities'), 'BI_Autotask_Opportunities'[status_name] IN {"Closed","Implemented"})
+)
+ORDER BY [Total] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Rep</th><th>Opportunities</th><th>Total Value</th><th>Avg Deal Size</th><th>Won</th><th>Win Rate</th></tr>
+</thead>
+<tbody>
+<tr><td>Rep A</td><td class="num">217</td><td class="num">&euro;4,716,186</td><td class="num">&euro;21,734</td><td class="num">131</td><td class="num num-ok">60.4%</td></tr>
+<tr><td>Rep B</td><td class="num">65</td><td class="num">&euro;4,055,868</td><td class="num">&euro;62,398</td><td class="num">11</td><td class="num num-danger">16.9%</td></tr>
+<tr><td>Rep C</td><td class="num">66</td><td class="num">&euro;1,179,886</td><td class="num">&euro;17,877</td><td class="num">45</td><td class="num num-ok">68.2%</td></tr>
+<tr><td>Rep D</td><td class="num">77</td><td class="num">&euro;1,156,494</td><td class="num">&euro;15,019</td><td class="num">53</td><td class="num num-ok">68.8%</td></tr>
+<tr><td>Rep E</td><td class="num">287</td><td class="num">&euro;903,330</td><td class="num">&euro;3,147</td><td class="num">175</td><td class="num num-ok">61.0%</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Section 5.0 — Key Findings -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Key Findings</span>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>Pipeline concentrated in two mega-deals</h4>
+<p>The top 2 active opportunities account for 81% of pipeline value (&euro;2.89M + &euro;293K out of &euro;3.94M). The median active deal size is just &euro;1,905 compared to the average of &euro;31,765. Losing either of these deals would dramatically reduce pipeline value. Consider diversifying the pipeline with more mid-range opportunities.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">&#9888;</div>
+<div class="doc-finding-body">
+<h4>Larger deals have lower win rates</h4>
+<p>Won deals average &euro;4,768 while lost deals average &euro;13,869 — nearly 3x higher. Rep B, who handles the highest-value deals (avg &euro;62,398), has the lowest win rate at 16.9%. This pattern suggests that sales process or qualification criteria may need adjustment for larger opportunities.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&#10003;</div>
+<div class="doc-finding-body">
+<h4>Healthy overall win rate at 62%</h4>
+<p>Of 1,341 decided opportunities (excluding active), 832 were won. This 62.0% win rate is strong for MSP sales. Reps C and D both exceed 68% individually. The volume of won deals (832) provides a solid revenue foundation even with modest average deal sizes.</p>
+</div>
+</div>
+</div>
+<!-- Section 6.0 — FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
 <span class="doc-section-title">Frequently Asked Questions</span>
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What does the "Schedule Recurring Review" insight mean in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This insight highlights a pattern detected in your data that may require attention. The Average Deal Size report surfaces this through automated analysis of the underlying dataset.</p></div>
+<div class="faq-q"><span>Why is the average deal size so much higher than the median?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>The active pipeline contains a single deal worth &euro;2.89M, which pulls the average up to &euro;31,765. The median of &euro;1,905 better represents a typical deal. When a few outliers dominate, the median is a more reliable measure of what your sales team normally closes. Filtering out deals above &euro;100K would bring the average much closer to the median.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria.</p></div>
+<div class="faq-q"><span>How can I improve win rates on larger deals?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>The data shows lost deals average &euro;13,869 vs &euro;4,768 for won deals. Consider introducing deal qualification criteria that flag opportunities above &euro;10K for additional review. Pair high-value pursuits with senior resources or technical pre-sales support. Tracking the time each large deal spends in "Offerte verstuurd" can also reveal where deals stall and eventually fall through.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What action should I take based on the "Schedule Recurring Review" recommendation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions.</p></div>
+<div class="faq-q"><span>What does the "Offerte verstuurd" stage concentration mean for pipeline risk?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>77.6% of pipeline value sits in proposals already sent to the customer. While this means deals are past the drafting stage, it also means &euro;3.06M depends on customer decisions that are largely out of your control. If conversion rates in this stage dip, the pipeline contracts fast. Monitor stage duration and follow-up cadence closely. A healthy pipeline typically has more balanced distribution across stages.</p></div>
 </div>
 </div>
 </div>
@@ -801,15 +1014,13 @@ A data-driven analysis of <strong>average deal size</strong> from your Power BI 
 </div>
 <div class="doc-footer">
 <span>Proxuma Power BI · AI-Generated Report · proxuma.io/powerbi</span>
-<span>Generated in &lt; 15 minutes via MCP · March 2026</span>
+<span>Generated in &lt; 15 minutes via MCP · May 2026</span>
 </div>
 </div>
 </div>
 <script>
-catch(e){}document.body.removeChild(ta)}
-</script>
-<script>
-catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var code=btn.parentElement.querySelector('code');if(!code)return;var ta=document.createElement('textarea');ta.value=code.textContent;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},2000)}catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-trigger').forEach(function(t){t.addEventListener('click',function(){this.parentElement.classList.toggle('open')})});
 </script>
 <script type="application/ld+json">
 {
@@ -818,26 +1029,26 @@ catch(e){}document.body.removeChild(ta)}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does the \"Schedule Recurring Review\" insight mean in this report?",
+      "name": "Why is the average deal size so much higher than the median?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This insight highlights a pattern detected in your data that may require attention. The Average Deal Size report surfaces this through automated analysis of the underlying dataset."
+        "text": "The active pipeline contains a single deal worth €2.89M, which pulls the average up to €31,765. The median of €1,905 better represents a typical deal. When a few outliers dominate, the median is a more reliable measure of what your sales team normally closes."
       }
     },
     {
       "@type": "Question",
-      "name": "Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?",
+      "name": "How can I improve win rates on larger deals?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria."
+        "text": "The data shows lost deals average €13,869 vs €4,768 for won deals. Consider introducing deal qualification criteria that flag opportunities above €10K for additional review. Pair high-value pursuits with senior resources or technical pre-sales support."
       }
     },
     {
       "@type": "Question",
-      "name": "What action should I take based on the \"Schedule Recurring Review\" recommendation?",
+      "name": "What does the Offerte verstuurd stage concentration mean for pipeline risk?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions."
+        "text": "77.6% of pipeline value sits in proposals already sent to the customer. If conversion rates in this stage dip, the pipeline contracts fast. Monitor stage duration and follow-up cadence closely. A healthy pipeline typically has more balanced distribution across stages."
       }
     }
   ]
