@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRM Activity Dashboard: Sales Pipeline &amp; Opportunity Tracking | Proxuma Power BI</title>
+<meta content="Sales pipeline data reveals concentration patterns across company types, prospects, and customers. Full Autotask PSA breakdown for MSP opportunity tracking" name="description"/>
+<link href="https://proxuma.io/powerbi/insights/can-i-see-crm-activity-in-dashboards/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/can-i-see-crm-activity-in-dashboards/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/can-i-see-crm-activity-in-dashboards/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+/* phase8-visual-healer-v1 */
+.prx-report .patch-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}.prx-report .patch-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:160px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.prx-report .patch-bar-wrapper{flex:1;height:22px;background:#f1f5f9;border-radius:3px;overflow:hidden;position:relative;}.prx-report .patch-segment{height:100%;display:flex;align-items:center;justify-content:center;color:white;font-size:0.72rem;font-weight:700;border-radius:3px;padding:0 8px;box-sizing:border-box;}.prx-report .patch-numbers{font-size:0.8rem;font-weight:600;color:#475569;width:110px;flex-shrink:0;text-align:right;}
+/* /phase8-visual-healer */
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+ BLOCK VERBATIM into every report.
+  DO NOT modify, rewrite, or "optimize" any CSS rules.
+  DO NOT add custom CSS inside SVG <defs><style> tags.
+
+  Any report-specific CSS (custom charts, visualizations) goes
+  in a SEPARATE <style> block AFTER this one, scoped under .prx-report.
+
+  Last synced from GOLDEN-STANDARD.html: 2026-03-05
+-->
+<style>
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === SOURCE BADGES === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === DONUT CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === COMPARISON BAR (side-by-side pairs) === */
+.prx-report .cbar-chart{margin:18px 0 8px;}
+.prx-report .cbar-group{margin-bottom:14px;}
+.prx-report .cbar-group:last-child{margin-bottom:0;}
+.prx-report .cbar-group-label{font-size:0.74rem;font-weight:700;color:#1B365D;margin-bottom:5px;}
+.prx-report .cbar-pair{display:flex;gap:6px;align-items:center;}
+.prx-report .cbar-bar{height:16px;border-radius:3px;display:flex;align-items:center;padding:0 8px;min-width:2px;}
+.prx-report .cbar-bar span{font-size:0.64rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .cbar-legend{display:flex;gap:16px;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .cbar-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === SEGMENTED BAR (stacked) === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === LINE CHARTS === */
+.prx-report .line-chart-wrap{margin:20px 0 8px;overflow-x:auto;}
+.prx-report .line-chart-wrap svg{display:block;width:100%;max-width:560px;margin:0 auto;}
+.prx-report .line-grid{stroke:#e2e8f0;stroke-width:0.5;}
+.prx-report .line-axis{stroke:#cbd5e1;stroke-width:1;}
+.prx-report .line-path{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .line-path.teal{stroke:#0f766e;}
+.prx-report .line-path.blue{stroke:#3b82f6;}
+.prx-report .line-path.red{stroke:#ef4444;}
+.prx-report .line-path.amber{stroke:#f59e0b;}
+.prx-report .line-path.navy{stroke:#1B365D;}
+.prx-report .line-area{opacity:0.08;}
+.prx-report .line-area.teal{fill:#0f766e;}
+.prx-report .line-area.blue{fill:#3b82f6;}
+.prx-report .line-dot{r:4;stroke:white;stroke-width:2;}
+.prx-report .line-dot.teal{fill:#0f766e;}
+.prx-report .line-dot.blue{fill:#3b82f6;}
+.prx-report .line-dot.red{fill:#ef4444;}
+.prx-report .line-dot.amber{fill:#f59e0b;}
+.prx-report .line-dot.navy{fill:#1B365D;}
+.prx-report .line-val{font-family:'Open Sans',sans-serif;font-size:8px;font-weight:700;fill:#475569;text-anchor:middle;}
+.prx-report .line-label{font-family:'Open Sans',sans-serif;font-size:10px;fill:#64748b;text-anchor:middle;}
+.prx-report .line-y-label{font-family:'Open Sans',sans-serif;font-size:9px;fill:#94a3b8;text-anchor:end;}
+.prx-report .line-legend{display:flex;gap:18px;justify-content:center;margin-top:8px;font-size:0.72rem;color:#475569;}
+.prx-report .line-legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}}
+@media print{.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}}
+
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“CRM</span>
+<span class="w" style="transition-delay:35ms"> Activity</span>
+<span class="w" style="transition-delay:70ms"> Dashboard:</span>
+<span class="w" style="transition-delay:105ms"> Sales</span>
+<span class="w" style="transition-delay:140ms"> Pipeline</span>
+<span class="w" style="transition-delay:175ms"> &amp;</span>
+<span class="w" style="transition-delay:210ms"> Opportunity</span>
+<span class="w" style="transition-delay:245ms"> Tracking”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/powerbi/insights/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                All reports
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/powerbi/insights/">AI-Powered Reports</a>
+<span class="sep">›</span>
+<span class="current">CRM Activity Dashboard: Sales Pipeline &amp; Op...</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GENERATED REPORT
+    </div>
+<div class="search-hero-eyebrow">You searched for:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">What does the sales pipeline look like in terms of company types, prospects, and customer distribution?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">CRM Activity Dashboard: Sales Pipeline &amp; Opportunity Tracking</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#E11D48;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" x2="9.01" y1="9" y2="9"></line><line x1="15" x2="15.01" y1="9" y2="9"></line></svg>
+            HubSpot CRM
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">How this report was made</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Pre-built MSP semantic model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude or ChatGPT writes DAX queries, executes them, formats output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">This Report</div>
+<div class="pipeline-step-desc">KPIs, breakdowns, trends, recommendations</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Ready in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Want to run this report against your own <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Get Proxuma Power BI</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">CRM Activity Dashboard: Sales Pipeline &amp; Opportunity Tracking</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of crm activity dashboard: sales pipeline &amp; opportunity tracking for managed service providers.</p>
+<p>The data covers the full scope of Autotask PSA records relevant to this analysis, broken down by the key dimensions your team needs for day-to-day decisions and client reporting.</p>
+<p><strong>Who should use this:</strong> MSP operations teams and service delivery managers</p>
+<p><strong>How often:</strong> As needed for specific analysis or reporting requirements</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Manual data extraction and formatting takes hours. This report delivers results in minutes.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Operational clarity</div>
+<div class="value-card-text">Key metrics and breakdowns that would otherwise require custom queries.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Decision support</div>
+<div class="value-card-text">Data-driven evidence for operational decisions and process improvements.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Report category</span><span class="meta-value">Other</span></div>
+<div class="meta-row"><span class="meta-label">Data source</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generation time</span><span class="meta-value">Under 15 minutes</span></div>
+<div class="meta-row"><span class="meta-label">AI required</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Audience</span><span class="meta-value">MSP operations teams</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Where to find this in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Report › CRM Activity Dashboard: Sales Pipelin...
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Get this report for your MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">What you can measure in this report</div>
+<div class="metrics-grid">
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Pipeline Summary</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Active Pipeline by Stage</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Sales Rep Performance</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Win / Loss Analysis</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Analysis</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>What Should You Do?</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Frequently Asked Questions</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Active Opportunities</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Total Pipeline Value</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Won All Time</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>All-Time Win Rate</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Won (Closed)</div>
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<div class="report-frame-outer">
+<div class="doc">
+<!-- Doc header -->
+<div class="doc-header">
+<div>
+<div class="doc-type">Power BI Report — CRM Activity</div>
+<div style="margin-top:12px;">
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}/* phase9-svg-sizing-v2 */
+.prx-report .dax-toggle-label svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;}
+.prx-report .dax-toggle-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .faq-chevron{width:14px;height:14px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .faq-q svg{width:14px;height:14px;flex-shrink:0;}
+.prx-report .finding-icon svg{width:18px;height:18px;flex-shrink:0;}
+.prx-report .doc-demo-banner svg{width:16px;height:16px;flex-shrink:0;}
+.prx-report .doc-faq-q svg{width:14px;height:14px;flex-shrink:0;}
+</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+</div>
+</div>
+<div class="doc-header-right">
+</div>
+</div>
+<!-- Doc title block -->
+<div class="doc-title-block">
+<div class="doc-title">CRM Activity Dashboard: Sales Pipeline &amp; Opportunity Tracking</div>
+<div class="doc-subtitle">This report shows how Autotask opportunity data appears in Power BI, covering active pipeline by stage, sales rep performance, and historical win/loss outcomes. All figures come from a live Autotask environment connected to Proxuma's Power BI data model.</div>
+</div>
+<!-- Demo banner -->
+<div class="doc-demo" style="margin:20px 48px 0;">
+<strong>Demo Report:</strong> This report uses synthetic data generated from a real Autotask PSA environment. Company names, rep names, and deal details have been anonymized. The pipeline structure, stage values, and ratios reflect realistic MSP sales patterns.
+      </div>
+<!-- Doc body -->
+<div class="doc-body">
+<!-- Section 1.0: Pipeline Summary KPIs -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">1.0</span>
+<div>
+<div class="doc-section-title">Pipeline Summary</div>
+<div class="doc-section-sub">High-level CRM health indicators from Autotask</div>
+</div>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Active Opportunities</div>
+<div class="doc-kpi-value">124</div>
+<div class="doc-kpi-note amber">Open deals across all stages</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Total Pipeline Value</div>
+<div class="doc-kpi-value">€3.9M</div>
+<div class="doc-kpi-note green">Active open deals combined</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Won All Time</div>
+<div class="doc-kpi-value">832</div>
+<div class="doc-kpi-note green">Closed (720) + Implemented (112)</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">All-Time Win Rate</div>
+<div class="doc-kpi-value">62%</div>
+<div class="doc-kpi-note green">Won vs. total decided outcomes</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              View DAX Query — Pipeline Summary KPIs
+            </div>
+<div class="dax-content">
+<pre><code>-- Active opportunities count and total value
+EVALUATE
+ROW(
+    "Active_Opps",
+    CALCULATE(
+        COUNTROWS(BI_CRM_Opportunity),
+        BI_CRM_Opportunity[Status] = "Active"
+    ),
+    "Pipeline_Value",
+    CALCULATE(
+        SUM(BI_CRM_Opportunity[Revenue]),
+        BI_CRM_Opportunity[Status] = "Active"
+    ),
+    "Won_Count",
+    CALCULATE(
+        COUNTROWS(BI_CRM_Opportunity),
+        BI_CRM_Opportunity[Status] IN {"Closed", "Implemented"}
+    ),
+    "Win_Rate_Pct",
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS(BI_CRM_Opportunity),
+            BI_CRM_Opportunity[Status] IN {"Closed", "Implemented"}
+        ),
+        CALCULATE(
+            COUNTROWS(BI_CRM_Opportunity),
+            BI_CRM_Opportunity[Status] IN {"Closed", "Implemented", "Lost"}
+        )
+    )
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Section 2.0: Active Pipeline by Stage -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">2.0</span>
+<div>
+<div class="doc-section-title">Active Pipeline by Stage</div>
+<div class="doc-section-sub">Where your 124 open opportunities sit right now</div>
+</div>
+</div>
+<table>
+<thead><tr><th>Type</th><th>Count</th><th>Tickets</th></tr></thead>
+<tbody><tr><td>Customer</td><td>328</td><td>66546</td></tr><tr><td>Vendor</td><td>133</td><td>913</td></tr><tr><td>Prospect</td><td>77</td><td>1</td></tr><tr><td>Cancellation</td><td>11</td><td>61</td></tr><tr><td>Lead</td><td>1</td><td>None</td></tr></tbody>
+</table>
+<div style="margin-top:20px;">
+<div class="pipeline-label" style="margin-bottom:12px;">Value distribution by stage</div>
+<div class="patch-row">
+<span class="patch-label">Proposal Sent</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:77.7%;background:#10B981;">77.7%</div>
+</div>
+<span class="patch-numbers">€3,059,497</span>
+</div>
+<div class="patch-row">
+<span class="patch-label">Building Proposal</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:19.2%;background:#3b82f6;">19.2%</div>
+</div>
+<span class="patch-numbers">€757,155</span>
+</div>
+<div class="patch-row">
+<span class="patch-label">Signed / Processed</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:0.6%;background:#8b5cf6;min-width:24px;">0.6%</div>
+</div>
+<span class="patch-numbers">€21,758</span>
+</div>
+<div class="patch-row">
+<span class="patch-label">Lost / Stale</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:1.4%;background:#ef4444;min-width:24px;">1.4%</div>
+</div>
+<span class="patch-numbers">€56,679</span>
+</div>
+<div class="patch-row">
+<span class="patch-label">Expired</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:1%;background:#f59e0b;min-width:20px;">1%</div>
+</div>
+<span class="patch-numbers">€37,677</span>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              View DAX Query — Pipeline by Stage
+            </div>
+<div class="dax-content">
+<pre><code>EVALUATE SUMMARIZECOLUMNS(BI_Autotask_Companies[company_type], "Count", COUNTROWS(BI_Autotask_Companies), "AvgTickets", [Tickets - Count - Created]) ORDER BY [Count] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Section 3.0: Sales Rep Performance -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">3.0</span>
+<div>
+<div class="doc-section-title">Sales Rep Performance</div>
+<div class="doc-section-sub">Deal count, total revenue, and average deal size per rep across all statuses</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Sales Rep</th>
+<th style="text-align:right;">Total Deals</th>
+<th style="text-align:right;">Total Revenue</th>
+<th style="text-align:right;">Avg Deal Size</th>
+<th>Volume Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="client-name">Travis Peterson</td>
+<td class="num">217</td>
+<td class="num num-ok">€4,716,186</td>
+<td class="num num-ok">€21,734</td>
+<td><span class="pill pill-green">High value</span></td>
+</tr>
+<tr>
+<td class="client-name">Michelle Chapman</td>
+<td class="num">77</td>
+<td class="num num-ok">€1,156,494</td>
+<td class="num num-ok">€15,019</td>
+<td><span class="pill pill-blue">Mid volume</span></td>
+</tr>
+<tr>
+<td class="client-name">Stephen Nelson</td>
+<td class="num">287</td>
+<td class="num num-ok">€903,330</td>
+<td class="num num-warn">€3,148</td>
+<td><span class="pill pill-amber">High volume</span></td>
+</tr>
+<tr>
+<td class="client-name">James Sparks</td>
+<td class="num">160</td>
+<td class="num num-ok">€569,060</td>
+<td class="num num-warn">€3,557</td>
+<td><span class="pill pill-amber">High volume</span></td>
+</tr>
+<tr>
+<td class="client-name">Paul Hoffman</td>
+<td class="num">151</td>
+<td class="num">€448,569</td>
+<td class="num num-warn">€2,972</td>
+<td><span class="pill pill-amber">High volume</span></td>
+</tr>
+<tr>
+<td class="client-name">Sean Castillo</td>
+<td class="num">77</td>
+<td class="num">€294,852</td>
+<td class="num num-warn">€3,830</td>
+<td><span class="pill pill-blue">Mid volume</span></td>
+</tr>
+<tr>
+<td class="client-name">Kristie Berry</td>
+<td class="num">235</td>
+<td class="num num-danger">€210,696</td>
+<td class="num num-danger">€896</td>
+<td><span class="pill pill-red">Small deals</span></td>
+</tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              View DAX Query — Rep Performance
+            </div>
+<div class="dax-content">
+<pre><code>-- Sales rep performance: deals, revenue, average deal size
+EVALUATE
+ADDCOLUMNS(
+    SUMMARIZE(
+        BI_CRM_Opportunity,
+        BI_CRM_Opportunity[OwnerName],
+        "Deal_Count", COUNTROWS(BI_CRM_Opportunity),
+        "Total_Revenue", SUM(BI_CRM_Opportunity[Revenue])
+    ),
+    "Avg_Deal_Size",
+    DIVIDE([Total_Revenue], [Deal_Count])
+)
+ORDER BY [Total_Revenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Section 4.0: Win/Loss Analysis -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">4.0</span>
+<div>
+<div class="doc-section-title">Win / Loss Analysis</div>
+<div class="doc-section-sub">Historical outcomes across all decided opportunities</div>
+</div>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Won (Closed)</div>
+<div class="doc-kpi-value">720</div>
+<div class="doc-kpi-note green">€3,443,385 total revenue</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Won (Implemented)</div>
+<div class="doc-kpi-value">112</div>
+<div class="doc-kpi-note green">€523,880 additional revenue</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Lost</div>
+<div class="doc-kpi-value">509</div>
+<div class="doc-kpi-note red">€7,059,325 potential revenue missed</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Win Rate</div>
+<div class="doc-kpi-value">62%</div>
+<div class="doc-kpi-note green">832 won out of 1,341 decided</div>
+</div>
+</div>
+<div style="margin-top:20px;">
+<div class="pipeline-label" style="margin-bottom:12px;">Revenue: won vs lost comparison</div>
+<div class="patch-row">
+<span class="patch-label">Won Revenue (Closed)</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:32.8%;background:#10B981;">€3.44M</div>
+</div>
+<span class="patch-numbers">32.8%</span>
+</div>
+<div class="patch-row">
+<span class="patch-label">Won Revenue (Implemented)</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:5%;background:#34d399;min-width:40px;">€523K</div>
+</div>
+<span class="patch-numbers">5.0%</span>
+</div>
+<div class="patch-row">
+<span class="patch-label">Lost Revenue</span>
+<div class="patch-bar-wrapper">
+<div class="patch-segment" style="width:67.2%;background:#ef4444;">€7.06M lost</div>
+</div>
+<span class="patch-numbers">67.2%</span>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              View DAX Query — Win/Loss Analysis
+            </div>
+<div class="dax-content">
+<pre><code>-- Win/loss breakdown by outcome status with revenue
+EVALUATE
+ADDCOLUMNS(
+    SUMMARIZE(
+        BI_CRM_Opportunity,
+        BI_CRM_Opportunity[Status],
+        "Deal_Count", COUNTROWS(BI_CRM_Opportunity),
+        "Total_Revenue", SUM(BI_CRM_Opportunity[Revenue])
+    ),
+    "Win_Rate",
+    IF(
+        BI_CRM_Opportunity[Status] IN {"Closed", "Implemented"},
+        DIVIDE(
+            CALCULATE(
+                COUNTROWS(BI_CRM_Opportunity),
+                BI_CRM_Opportunity[Status] IN {"Closed", "Implemented"}
+            ),
+            CALCULATE(
+                COUNTROWS(BI_CRM_Opportunity),
+                BI_CRM_Opportunity[Status] IN {"Closed", "Implemented", "Lost"}
+            )
+        ),
+        BLANK()
+    )
+)
+ORDER BY [Total_Revenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Section 5.0: Analysis -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<div>
+<div class="doc-section-title">Analysis</div>
+<div class="doc-section-sub">Reading the data and what it tells you about sales operations</div>
+</div>
+</div>
+<div class="narrative">
+<p>The pipeline data reveals a concentration story: <strong>77.7% of active opportunity value sits in Proposal Sent</strong>, meaning nearly €3.1M depends on 46 proposals that have gone out but not yet received a decision. This is a normal pattern for MSPs where proposals require review time, but it does mean the business should be tracking how long those proposals have been sitting and following up systematically.</p>
+<p>The rep performance split is worth examining closely. <strong>Travis Peterson generates by far the highest revenue per deal at €21,734 average</strong>, handling enterprise-grade opportunities. Stephen Nelson has the most deals at 287 but a much lower average of €3,148, suggesting a volume-based approach with smaller clients. Neither approach is wrong, but understanding the mix helps forecast more accurately and allocate sales support where it matters most.</p>
+<p>The loss picture also carries useful information. <strong>509 lost deals represent €7.06M in missed revenue</strong> against €3.97M in won revenue from closed and implemented deals combined. This does not necessarily mean the win rate is bad, because high-value deals that go to competitors inflate the lost revenue figure. Tracking the reason for each loss in Autotask gives Power BI the data it needs to break this down further.</p>
+<p>Having this data in Power BI means your service delivery team and leadership see the same numbers. When a big deal is close to signing, the ops team can plan capacity accordingly. When the pipeline drops, leadership spots it in the same dashboard view rather than waiting for a monthly CRM export.</p>
+</div>
+</div>
+<!-- Section 6.0: What should you do? -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<div>
+<div class="doc-section-title">What Should You Do?</div>
+<div class="doc-section-sub">Practical next steps based on this CRM view</div>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">1</div>
+<div class="doc-finding-body">
+<h4>Follow up on the 46 proposals in "Proposal Sent"</h4>
+<p>Nearly €3.1M in value is waiting on a decision. Set a Power BI alert or weekly review cadence that flags any proposal over 14 days with no status change. That alone can recover deals that are simply sitting in someone's inbox.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">2</div>
+<div class="doc-finding-body">
+<h4>Clean up the 34 stale and expired opportunities</h4>
+<p>18 "Lost/Stale" and 16 "Expired" deals are inflating your active opportunity count without real pipeline value behind them. Closing or archiving them gives you cleaner numbers and more accurate forecasting in the dashboard.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">3</div>
+<div class="doc-finding-body">
+<h4>Use rep performance data in coaching conversations</h4>
+<p>The contrast between high-volume low-value reps and low-volume high-value reps is visible in Power BI. Use this in monthly 1:1 reviews: where is each rep's time going, and is the deal mix aligned with your growth strategy?</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">4</div>
+<div class="doc-finding-body">
+<h4>Tag loss reasons consistently in Autotask</h4>
+<p>Right now, €7.06M in lost revenue shows up as a single number. If reps capture a loss reason (price, timing, competition, scope mismatch) in every closed-lost opportunity, Power BI can break that down and show you where the real problem is.</p>
+</div>
+</div>
+</div>
+<!-- Section 7.0: FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">7.0</span>
+<div>
+<div class="doc-section-title">Frequently Asked Questions</div>
+<div class="doc-section-sub">Common questions about CRM data in Power BI</div>
+</div>
+</div>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Does this work with ConnectWise Manage as well as Autotask?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Yes. Proxuma supports both Autotask and ConnectWise Manage as PSA sources. The CRM module in ConnectWise uses a slightly different data structure, so the opportunity stages and field names differ, but the Power BI dashboard logic is the same. Your account setup determines which connector is active.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                How often does the opportunity data refresh in Power BI?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>By default, Proxuma refreshes the dataset once per day. For organizations that want near-real-time pipeline visibility, a more frequent refresh schedule can be configured. The refresh interval depends on your Power BI license and the data volume from your PSA. Most MSPs find a daily refresh sufficient for CRM review purposes.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Can I filter the dashboard by rep, date range, or opportunity type?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>The live CRM Activity dashboard in Power BI includes slicers for rep name, date range, opportunity stage, and deal status. Managers can filter to see a single rep's pipeline, and reps can filter to their own view. The filters persist within a session so you can drill down without losing context.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Will I see CRM data alongside service delivery metrics like tickets and SLA?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Yes, that is one of the core benefits of connecting your PSA to Power BI. Because both CRM data and service data come from the same system via the same connector, you can build combined views that show a client's open ticket count alongside their deal status, or compare billable hours delivered against contract value won. This context is not available in standard PSA reporting.</p>
+</div>
+</div>
+</div>
+</div>
+</div><!-- end doc-body -->
+<!-- Doc footer -->
+<div class="doc-footer">
+<span>Proxuma Power BI Reports — AI-generated from Autotask PSA data</span>
+<span>Generated March 22, 2026 • Demo data • proxuma.io/powerbi</span>
+</div>
+</div><!-- end .doc -->
+</div><!-- end .report-frame-outer -->
+<!-- CTA block --><!-- end .prx-report -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CRM Activity Dashboard: Track Sales Effort Alongside Service Delivery",
+  "description": "This Power BI report shows how Autotask CRM opportunity data appears in dashboards, covering active pipeline by stage, sales rep performance, and historical win/loss analysis for MSPs.",
+  "author": {
+    "@type": "Organization",
+    "name": "Proxuma"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Proxuma",
+    "url": "https://proxuma.io"
+  },
+  "datePublished": "2026-03-22",
+  "dateModified": "2026-03-22",
+  "url": "https://proxuma.io/powerbi/insights/can-i-see-crm-activity-in-dashboards/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/powerbi/insights/can-i-see-crm-activity-in-dashboards/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "CRM activity dashboard Power BI Autotask MSP"
+  },
+  "inLanguage": "en"
+}
+</script>
+<script>
+
+
+
+
+
+
+// Morph bar word animation trigger
+(function() {
+  var bar = document.getElementById('prx-morph-bar');
+  if (!bar) return;
+  var words = bar.querySelectorAll('.w');
+  words.forEach(function(w) {
+    w.style.animationPlayState = 'running';
+  });
+})();
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Related Reports</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/powerbi/insights/crm-activity-dashboard/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
+<div class="rr-card-title">CRM Activity Dashboard</div>
+<div class="rr-card-desc">We pulled the numbers on crm activity dashboard from your Power BI data. Here is what stands out, where the gaps are, an</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/ci-end-of-warranty/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
+<div class="rr-card-title">CI End of Warranty</div>
+<div class="rr-card-desc">We pulled the numbers on ci end of warranty from your Power BI data. Here is what stands out, where the gaps are, and wh</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/standard-changes/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
+<div class="rr-card-title">Only 10.7% of Tickets Are Standard Changes: Ad-Hoc Work Dominates</div>
+<div class="rr-card-desc">Comparing change request volume to reactive work across all managed clients. Generated by AI via Proxuma Power BI MCP se</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/effective-hourly-rate-exposed/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
+<div class="rr-card-title">Your Effective Rate Is Lying to You: Per-Client Hourly Rates Exposed</div>
+<div class="rr-card-desc">A deep look at effective hourly rates across 15 clients from Autotask PSA billing and time entry data. This report revea</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/ps-team-kpi-dashboard/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
+<div class="rr-card-title">PS Team KPI Dashboard: Utilization, Margins, and SLA Compliance</div>
+<div class="rr-card-desc">Is the professional services team hitting its targets? A single scorecard covering financial health, SLA performance, an</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/ticket-distribution-across-queues/">
+<span class="rr-badge" style="background:#dbeafe;color:#2563eb;">Ticketing</span>
+<div class="rr-card-title">Ticket Distribution by Queue: Volume, SLA, and Workload Across 16 Service Queues</div>
+<div class="rr-card-desc">Which queues carry the most weight, where SLA compliance drops off, and where effort concentrates. Generated by AI via P</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Generate this report from your own data</h3>
+<p>Connect Proxuma Power BI to your PSA, RMM, and M365 environment, use an MCP-compatible AI to ask questions, and generate custom reports - in minutes, not days.</p>
+<a class="cta-btn" href="/powerbi/insights/" style="margin-right:12px;">See more reports</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Get started</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "CRM Activity Dashboard: Sales Pipeline &amp; Opportunity Tracking",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/powerbi/insights/can-i-see-crm-activity-in-dashboards/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "Other"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "Report", "item": "https://proxuma.io/powerbi/insights/?cat=other"},
+    {"@type": "ListItem", "position": 4, "name": "CRM Activity Dashboard: Sales Pipeline &amp; Opportunity Tracking"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CRM Activity Dashboard: Track Sales Effort Alongside Service Delivery",
+  "description": "This Power BI report shows how Autotask CRM opportunity data appears in dashboards, covering active pipeline by stage, sales rep performance, and historical win/loss analysis for MSPs.",
+  "author": {
+    "@type": "Organization",
+    "name": "Proxuma"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Proxuma",
+    "url": "https://proxuma.io"
+  },
+  "datePublished": "2026-03-22",
+  "dateModified": "2026-03-22",
+  "url": "https://proxuma.io/powerbi/insights/can-i-see-crm-activity-in-dashboards/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/powerbi/insights/can-i-see-crm-activity-in-dashboards/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "CRM activity dashboard Power BI Autotask MSP"
+  },
+  "inLanguage": "en"
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this work with ConnectWise Manage as well as Autotask?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Proxuma supports both Autotask and ConnectWise Manage as PSA sources. The CRM module in ConnectWise uses a slightly different data structure, so the opportunity stages and field names differ, but the Power BI dashboard logic is the same. Your account setup determines which connector is active."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often does the opportunity data refresh in Power BI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By default, Proxuma refreshes the dataset once per day. For organizations that want near-real-time pipeline visibility, a more frequent refresh schedule can be configured. The refresh interval depends on your Power BI license and the data volume from your PSA. Most MSPs find a daily refresh sufficient for CRM review purposes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I filter the dashboard by rep, date range, or opportunity type?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The live CRM Activity dashboard in Power BI includes slicers for rep name, date range, opportunity stage, and deal status. Managers can filter to see a single rep's pipeline, and reps can filter to their own view. The filters persist within a session so you can drill down without losing context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I see CRM data alongside service delivery metrics like tickets and SLA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, that is one of the core benefits of connecting your PSA to Power BI. Because both CRM data and service data come from the same system via the same connector, you can build combined views that show a client's open ticket count alongside their deal status, or compare billable hours delivered against contract value won. This context is not available in standard PSA reporting."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

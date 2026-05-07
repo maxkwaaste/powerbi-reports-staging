@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financieel | Proxuma Power BI</title>
+<meta content="" name="description"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/financieel/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/financieel/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/financieel/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Financieel</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                Alle rapporten
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">Financieel</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GEGENEREERD RAPPORT
+    </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Hoe ziet de financieel eruit?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Financieel</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#1E40AF;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg>
+            Autotask PSA
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Primary data source</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Voorgebouwd MSP semantisch model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude of ChatGPT schrijft DAX-queries, voert ze uit en formatteert de output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">KPI's, uitsplitsingen, trends, aanbevelingen</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Klaar in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op je eigen <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Proxuma Power BI aanvragen</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Financieel</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of financieel for managed service providers.</p>
+<p>De data dekt het volledige bereik van Autotask PSA-records die relevant zijn voor deze analyse, uitgesplitst naar de belangrijkste dimensies die je team nodig heeft voor dagelijkse beslissingen en klantrapportage.</p>
+<p><strong>Wie dit zou moeten gebruiken:</strong> MSP owners, finance leads, and operations managers tracking profitability</p>
+<p><strong>Hoe vaak:</strong> Maandelijks for financial reviews, quarterly for strategic planning, op aanvraag for pricing decisions</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Building financial reports from PSA exports and spreadsheets is a full day of work. This report delivers it in minutes.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Margin visibility</div>
+<div class="value-card-text">Revenue numbers alone do not tell the story. This report connects revenue to cost for true profitability.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Pricing intelligence</div>
+<div class="value-card-text">Data-driven evidence for pricing adjustments, contract negotiations, and resource allocation.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">Financial &amp; Revenue</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Minder dan 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">MSP owners,  finance leads</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar vind je dit in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Financieel › Financieel
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je kunt meten in dit rapport</div>
+<div class="metrics-grid">
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<div class="prx-report">
+<style>
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#2c3e50;line-height:1.7;-webkit-font-smoothing:antialiased;max-width:1140px;margin:0 auto;padding:0 24px;}
+.prx-report .pillar-hero{background:#f0fdf4;border-radius:16px;padding:48px;margin-bottom:40px;border:1px solid rgba(0,0,0,0.06);}
+.prx-report .pillar-badge{display:inline-block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:4px 14px;border-radius:100px;background:#10B981;color:white;margin-bottom:16px;}
+.prx-report .pillar-h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:2rem;color:#2c3e50;margin-bottom:16px;line-height:1.2;}
+.prx-report .pillar-intro{font-size:0.95rem;color:#475569;max-width:700px;line-height:1.7;margin-bottom:20px;}
+.prx-report .pillar-count{font-size:0.82rem;color:#64748b;font-weight:600;}
+.prx-report .pillar-body{font-size:0.92rem;color:#334155;line-height:1.8;max-width:800px;margin-bottom:40px;}
+.prx-report .pillar-body p{margin-bottom:16px;}
+.prx-report .pillar-grid-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .pillar-grid-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .pillar-grid-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+.prx-report .pillar-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:8px;}
+.prx-report .pillar-card:hover{border-color:#10B981;box-shadow:0 4px 12px rgba(0,0,0,0.06);}
+.prx-report .pillar-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .pillar-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .pillar-card-link{font-size:0.78rem;font-weight:600;color:#10B981;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .pillar-cta{text-align:center;padding:32px 0;}
+.prx-report .pillar-cta a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);}
+.prx-report .pillar-cta a:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(22,68,135,0.4);}
+@media(max-width:900px){.prx-report .pillar-grid{grid-template-columns:repeat(2,1fr);}.prx-report .pillar-hero{padding:32px;}}
+@media(max-width:600px){.prx-report .pillar-grid{grid-template-columns:1fr;}.prx-report .pillar-hero{padding:24px;}}
+
+.prx-report .pillar-faq{margin-bottom:40px;}
+.prx-report .pillar-faq-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .pillar-faq-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .pillar-faq-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pillar-faq-item{border:1px solid #e2e8f0;border-radius:10px;margin-bottom:12px;overflow:hidden;}
+.prx-report .pillar-faq-q{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.prx-report .pillar-faq-q::after{content:'+';font-size:1.2rem;font-weight:400;color:#94a3b8;flex-shrink:0;}
+.prx-report .pillar-faq-a{font-size:0.85rem;color:#475569;line-height:1.7;padding:0 20px 16px;display:none;}
+.prx-report .pillar-faq-item.open .pillar-faq-a{display:block;}
+.prx-report .pillar-faq-item.open .pillar-faq-q::after{content:'−';}
+
+.prx-report .prx-pillar-link{margin:24px 0 -8px;display:flex;align-items:center;}
+.prx-report .prx-pillar-link a{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:#164487;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:20px;padding:5px 12px;transition:background 0.15s,border-color 0.15s;}
+.prx-report .prx-pillar-link a:hover{background:#dbeafe;border-color:#93c5fd;}
+.prx-report .prx-pillar-link a svg{flex-shrink:0;}
+
+@media(max-width:768px){.prx-related-reports ul{grid-template-columns:1fr;}.prx-related-reports{padding:24px 20px;}}
+
+.prx-related-reports{max-width:1140px;margin:40px auto;padding:0 24px;box-sizing:border-box;}
+.prx-related-reports .rr-inner{background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:32px 36px;}
+.prx-related-reports .rr-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.prx-related-reports .rr-icon{width:32px;height:32px;background:linear-gradient(135deg,#0f766e,#134e4a);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.prx-related-reports .rr-icon svg{width:18px;height:18px;color:#5eead4;}
+.prx-related-reports h3{font-family:"Open Sans",sans-serif !important;font-weight:700 !important;font-size:1rem !important;color:#1B365D !important;margin:0 !important;padding:0 !important;border:none !important;background:none !important;}
+.prx-related-reports .rr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.prx-related-reports .rr-card{display:block;text-decoration:none !important;padding:16px 18px;border-radius:12px;border:1px solid #e2e8f0;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%);transition:all 0.2s ease;}
+.prx-related-reports .rr-card:hover{border-color:#0f766e;background:linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 100%);transform:translateY(-2px);box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-related-reports .rr-card-title{font-family:"Open Sans",sans-serif;font-weight:600;font-size:0.82rem;color:#1B365D !important;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-related-reports .rr-card-arrow{display:flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:#0f766e;margin-top:8px;}
+.prx-related-reports .rr-card-arrow svg{width:12px;height:12px;transition:transform 0.2s;}
+.prx-related-reports .rr-card:hover .rr-card-arrow svg{transform:translateX(3px);}
+@media(max-width:768px){.prx-related-reports .rr-grid{grid-template-columns:repeat(2,1fr);}.prx-related-reports .rr-inner{padding:24px 20px;}}
+@media(max-width:480px){.prx-related-reports .rr-grid{grid-template-columns:1fr;}}
+</style>
+<div class="pillar-hero">
+<span class="pillar-badge">Financieel</span>
+<h1 class="pillar-h1">Financiële &amp; Kosten Analyse Rapporten</h1>
+<p class="pillar-intro">Omzetcijfers zonder context zijn nutteloos. Deze rapporten verbinden Autotask-contractdata, facturatiegegevens en time entries om te laten zien waar echt geld wordt verdiend – en waar het verdwijnt.</p>
+<span class="pillar-count">38 rapporten</span>
+</div>
+<div class="pillar-body">
+<p>Klantwinstgevendheid, effectief uurtarief, contract utilizatie, margeanalyse, MRR-trends, kosten-per-dienst breakdowns. Elk rapport beantwoordt een specifieke financiële vraag met DAX-queries tegen je Power BI-dataset.</p><p>Het verschil tussen gefactureerde omzet en werkelijke leveringskosten is waar de meeste MSP's marge verliezen. Een klant die betaalt voor een managed services contract maar drie keer de verwachte uren consumeert, is onzichtbaar in je PSA-dashboard – totdat je de berekening maakt. Deze rapporten maken die patronen zichtbaar.</p><p>Omzetconcentratierisico, deal-pipelineanalyse, churn-impact en contract-tariefconflicten completeren het financiële plaatje.</p>
+</div>
+<div class="pillar-grid-header">
+<span class="pillar-grid-label">Alle Financieel Rapporten</span>
+<span class="pillar-grid-line"></span>
+</div>
+<div class="pillar-grid">
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/capaciteitsbenuttingsgraad/">
+<div class="pillar-card-title">Capacity Utilization Rate:How Effectively Is Your Team’s Time Being Used?</div>
+<div class="pillar-card-desc">A breakdown of logged hours against available capacity, split by resource, role, client, and month. Generated by AI via Proxuma Power BI ...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contract-benutting-vs-waarde/">
+<div class="pillar-card-title">Contract utilizatie vs Contractwaarde:Waar Verliest U Geld?</div>
+<div class="pillar-card-desc">Welke Autotask-contracten je klanten daadwerkelijk verbruiken, welke over budget gaan en welke capaciteit betalen die nooit wordt ingezet...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contract-tarief-analyse/">
+<div class="pillar-card-title">Contract Tarief Analyse:Prijsconflicten &amp; Facturatiekwaliteit</div>
+<div class="pillar-card-desc">Waar je contracttarieven en facturatietarieven van elkaar afwijken, welke klanten het meest zijn getroffen, en hoe je dit oplost. Gegenere...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contract-winstgevendheid/">
+<div class="pillar-card-title">Contract Profitability Analyse
+Comprehensive breakdown of revenue, cost, and ...</div>
+<div class="pillar-card-desc">Comprehensive breakdown of revenue, cost, and profit margins across all active contracts</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contracten-binnenkort-verlopend/">
+<div class="pillar-card-title">Contracts Expiring Soon
+Proactive renewal tracking across all active Autotask...</div>
+<div class="pillar-card-desc">Proactive renewal tracking across all active Autotask contracts with defined end dates</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/crm-activiteiten-dashboard/">
+<div class="pillar-card-title">Autotask CRM Activiteiten Dashboard:Pipeline, Kansen &amp; Verkooptracking</div>
+<div class="pillar-card-desc">Een volledig overzicht van je Autotask CRM-pipeline – openstaande deals per fase, gewonnen/verloren analyse, accountbetrokkenheid e...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/dalende-winstgevendheidstrends/">
+<div class="pillar-card-title">Client Profitability Trends
+Identifying declining, improving, and stable clie...</div>
+<div class="pillar-card-desc">Identifying declining, improving, and stable client profitability patterns</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/declarabele-uren-ratio-per-klant/">
+<div class="pillar-card-title">Autotask Billable Uren Ratio per Klant:Waar Je Omzet Weglekt</div>
+<div class="pillar-card-desc">Declarabel percentage, niet-billable patronen en efficiëntieranking over je beheerde accounts. Gegenereerd door AI via Proxuma Power B...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/effectief-uurtarief/">
+<div class="pillar-card-title">Effective Hourly Rate per Client:Revenue Divided by Hours Worked</div>
+<div class="pillar-card-desc">A complete breakdown of what each client pays per hour of work, ranked by volume and efficiency. Generated by AI via Proxuma Power BI MCP...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/facturatie-toewijzingsconflicten/">
+<div class="pillar-card-title">Facturatie Toewijzingsconflicten: Omzetlek Detectierapport
+                Ee...</div>
+<div class="pillar-card-desc">Een systematische scan van alle open factuurregels en tijdsregistraties op toewijzingsafwijkingen, ontbrekende contractkoppelingen en nie...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/fase-budget/">
+<div class="pillar-card-title">Autotask Projectbudget Variantie: Geschatte vs Werkelijke Uren</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. Hoe projectfasen presteren ten opzichte van het budget, welke categorieën overschrij...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gemiddelde-dagen-tot-afsluiting/">
+<div class="pillar-card-title">Gemiddeld Aantal Dagen tot Dealafsluting:MSP Verkoopcyclus Analyse</div>
+<div class="pillar-card-desc">Hoe lang het werkelijk duurt om een opportunity om te zetten, uitgesplitst naar dealtype, grootte, leadbron en maandelijkse trend. Gegene...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gemiddelde-dealgrootte/">
+<div class="pillar-card-title">Gemiddelde Dealgrootte</div>
+<div class="pillar-card-desc">Omzet per verkoopkans per dealtype, fase en sluitperiode in HubSpot CRM
+
+            
+                
+                    1.0
+          ...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gemiddelde-omzet-per-klant-per-maand/">
+<div class="pillar-card-title">Gemiddelde Omzet Per Klant Per Maand:ARPC-analyse &amp; Omzetverdeling</div>
+<div class="pillar-card-desc">Hoeveel elke klant gemiddeld per maand bijdraagt, welke klanten onder de omzetondergrens zitten en waar je inkomsten geconcentreerd zijn....</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/kans-winstpercentage/">
+<div class="pillar-card-title">Kans Winstpercentage:Pipeline Conversie-analyse</div>
+<div class="pillar-card-desc">Hoeveel kansen je MSP sluit, waar deals worden gewonnen en verloren, en wat de data zegt over het verbeteren van conversie. Gegenereerd d...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/klant-kostenlek/">
+<div class="pillar-card-title">MSP Onrendabele Klanten: Welke Klanten Kosten Je Geld?</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. De 23 klanten identificeren die verliesgevend opereren. $183K vloeit weg uit het bed...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/klant-winstgevendheid/">
+<div class="pillar-card-title">Autotask Klantwinstgevendheid per klant</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. Contractomzet vs. werkelijke servicekosten over PSA, RMM en Backup. Bekijk welke kla...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/kosten-dienstverlening-per-klant/">
+<div class="pillar-card-title">Kosten van Dienstverlening per Klant:Loonkosten, Uren &amp; Effectieve Kostpr...</div>
+<div class="pillar-card-desc">Een uitsplitsing van wat het kost om elke klant te bedienen–loonkosten, totale kosten, gewerkte uren en effectieve kostprijs per uu...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/kostentarief-analyse/">
+<div class="pillar-card-title">Autotask Cost Rate Analyse</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. Interne kostentarieven in Autotask vergeleken met werkelijke personeelsdata. Zijn je...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/kwartaal-omzetgroei-focus/">
+<div class="pillar-card-title">Omzetgroei Strategie:Je #1 Focus voor het Komende Kwartaal</div>
+<div class="pillar-card-desc">Waar je omzet naartoe gaat, welke factureringstypen je marges dragen, en het enige dat je moet prioriteren om de dalende trend te keren. G...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/maandelijkse-terugkerende-omzet/">
+<div class="pillar-card-title">Monthly Recurring Revenue:13-Month Revenue Analyse</div>
+<div class="pillar-card-desc">Revenue, cost, and margin trends from Autotask billing items. Generated by AI via Proxuma Power BI MCP server.</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/marges-per-servicetype/">
+<div class="pillar-card-title">Autotask Winstmarges per Servicetype:Labour &amp; Charges Omzetanalyse</div>
+<div class="pillar-card-desc">Welke servicetypes gezonde marges genereren, welke onder druk staan en waar arbeidskosten de omzet overtreffen. Gegenereerd door AI via P...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/medewerker-kosten-vs-omzet/">
+<div class="pillar-card-title">Resource Cost vs Revenue Report:Labour ROI per Technician</div>
+<div class="pillar-card-desc">A per-resource comparison of labour costs against generated revenue, with ROI multipliers and margin analysis. Generated by AI via Proxum...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-concentratierisico/">
+<div class="pillar-card-title">Omzet Concentratierisico:Hoeveel Omzet Vertegenwoordigen Je Top 10 Klanten?</div>
+<div class="pillar-card-desc">Pareto-analyse van klantomzet op basis van Autotask Billing Items. Gegenereerd door AI via de Proxuma Power BI MCP-server.</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-gewonnen-deze-maand/">
+<div class="pillar-card-title">Omzet Gewonnen Deze Maand:MTD &amp; KTD Verkoopprestaties</div>
+<div class="pillar-card-desc">Hoeveel nieuwe omzet je MSP tot nu toe deze maand heeft gesloten, hoe dat zich verhoudt tot je kwartaaltotaal, en welke klanten en dealty...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-gewonnen-mtd-qtd-ytd/">
+<div class="pillar-card-title">Omzet Gewonnen MTD / QTD / YTD:Autotask PSA Periodomzettracker</div>
+<div class="pillar-card-desc">Hoeveel omzet je MSP heeft gewonnen per tijdperiode – uitgesplitst per klant, contracttype en trend. Gegenereerd door AI via Proxum...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-per-contactpersoon/">
+<div class="pillar-card-title">Omzet per Contactpersoon &amp; Klantbetaalbaarheid:Volledige Portefeuilleanalyse</div>
+<div class="pillar-card-desc">Hoeveel maandelijkse contractomzet iedere klant genereert per geregistreerde contactpersoon, gerangschikt van meest naar minst betaalbaar...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-per-contracttype/">
+<div class="pillar-card-title">Omzet per Contracttype:Waar het Geld van je MSP Vandaan Komt</div>
+<div class="pillar-card-desc">Een volledig overzicht van Autotask-facturatieomzet verdeeld over managed services, blokuren, regie-uren, vaste prijs en per-ticket contr...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-per-medewerker/">
+<div class="pillar-card-title">Omzet Per Medewerker:Productiviteitsbenchmarking voor MSPs</div>
+<div class="pillar-card-desc">Hoeveel omzet elke actieve resource genereert, waar het teamgemiddelde staat ten opzichte van branchebenchmarks en wat de maandelijkse tr...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzetverlies-vertrokken-klanten/">
+<div class="pillar-card-title">Omzetverlies Door Vertrokken Klanten:Waar Is De Omzet Gebleven?</div>
+<div class="pillar-card-desc">Een volledige uitsplitsing van omzet verloren aan klantverloop – wie stopte met factureren, wanneer ze stilvielen, en wat hun vertr...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/project-budgetafwijking-rapport/">
+<div class="pillar-card-title">Autotask Project Budget Variance:Portfolioanalyse Overschrijdingen &amp; Wins...</div>
+<div class="pillar-card-desc">Welke projecten over budget lopen, hoeveel, en wat dit kost aan winstmarge. Gegenereerd door AI via Proxuma Power BI MCP-server.</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<div class="pillar-card-title">Project Op-Tijd &amp; Budget:Leveren Je Projecten Zoals Beloofd?</div>
+<div class="pillar-card-desc">Welke projecten op schema zijn afgerond, welke hun urenraming overschreden, en waar het patroon zich blijft herhalen. Gegenereerd door AI...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/project-winstgevendheid/">
+<div class="pillar-card-title">Project Profitability Analyse:Revenue, Cost &amp; Margin per Project</div>
+<div class="pillar-card-desc">A ranked breakdown of all 279 projects by profit margin, with loss-making projects flagged and profitability split by client, status, and...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/sales-prestaties/">
+<div class="pillar-card-title">Autotask Verkooppipeline: MSP Winstpercentage &amp; Conversie-analyse</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. Bezoekfrequentie, dealconversieratio's en verkoopefficiëntie per teamlid. Gegenereer...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/spookapparaten/">
+<div class="pillar-card-title">Spookapparaten: Ongefactureerde RMM-endpoints die ontbreken in MSP-contracten</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. Apparaten actief in RMM maar ontbrekend in contracten. Je monitort en patcht ze, maa...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/totale-omzet-trend/">
+<div class="pillar-card-title">Totale Omzettrend:12-Maands Facturatieanalyse</div>
+<div class="pillar-card-desc">Maandelijks gefactureerde omzet over alle klanten, met uitsplitsing naar topklanten en contracttype. Gegenereerd door AI via Proxuma Powe...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/verliesgevende-klanten/">
+<div class="pillar-card-title">Autotask Verliesgevende Klanten: Top 5 MSP Contractuele Kostenlekken</div>
+<div class="pillar-card-desc">Gegenereerd door AI via Proxuma Power BI MCP server. Welke klanten zou je moeten overwegen los te laten omdat ze meer kosten dan ze oplev...</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="pillar-card" href="/nl-powerbi/ai-gegenereerde-rapporten/winstmarge-per-klant/">
+<div class="pillar-card-title">Client Profit Margin Analyse:Revenue, Cost, and Margin by Client for MSPs</div>
+<div class="pillar-card-desc">Full profitability breakdown across 280 clients with monthly trend analysis. Generated by AI via Proxuma Power BI MCP server.</div>
+<span class="pillar-card-link">Lees rapport <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+<div class="pillar-faq">
+<div class="pillar-faq-header"><span class="pillar-faq-label">Veelgestelde vragen</span><span class="pillar-faq-line"></span></div>
+<div class="pillar-faq-item"><div class="pillar-faq-q">Welke kosten- en winstgevendheidsrapporten zijn er voor MSP's?</div><div class="pillar-faq-a">Proxuma Power BI bevat rapporten voor kostendrains per klant, contractwinstgevendheidsanalyse, identificatie van onrendabele klanten en cost rateanalyse per engineer. Deze koppelen aan Autotask-time entries, contracten en facturatie voor een volledig marginaoverzicht per account.</div></div>
+<div class="pillar-faq-item"><div class="pillar-faq-q">Hoe splitst Power BI de winstgevendheid per klant uit?</div><div class="pillar-faq-a">Het klantenwinstgevendheidsrapport toont omzet, kosten en marge per account over een voortschrijdende periode. Het houdt rekening met gecontracteerde uren, daadwerkelijk gewerkte uren en tarieven – zodat je in één oogopslag ziet welke klanten winstgevend zijn, welke marginaal en welke actief geld kosten.</div></div>
+<div class="pillar-faq-item"><div class="pillar-faq-q">Hoe worden kostentarieven berekend in de rapporten?</div><div class="pillar-faq-a">Kostentarieven gebruiken de uurtariefkosten per engineer (inclusief salaris, secundaire arbeidsvoorwaarden en overhead) vermenigvuldigd met de werkelijke uren per klant. De rapporten vergelijken dit met gefactureerde omzet om de werkelijke marge zichtbaar te maken – niet alleen de omzet per account.</div></div>
+</div>
+<script>
+(function(){
+  var items=document.querySelectorAll('.pillar-faq-item');
+  items.forEach(function(item){
+    var q=item.querySelector('.pillar-faq-q');
+    if(q)q.addEventListener('click',function(){item.classList.toggle('open');});
+  });
+})();
+</script>
+<div class="pillar-cta">
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">Bekijk alle rapporten <svg fill="none" height="18" stroke="currentColor" viewbox="0 0 24 24" width="18"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
+</div>
+<p style="font-size:0.7rem;color:#94a3b8;text-align:center;margin-top:20px;">AI-Gegenereerd via Proxuma Power BI</p>
+</div>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/nl-powerbi/"}, {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"}, {"@type": "ListItem", "position": 3, "name": "Financieel"}]}
+</script>
+<div class="prx-related-reports"><div class="rr-inner"><div class="rr-header"><div class="rr-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div><h3>Gerelateerde Rapporten</h3></div><div class="rr-grid"><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/fase-budget/"><div class="rr-card-title">Autotask Project Budgetafwijking</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/kostentarief-analyse/"><div class="rr-card-title">Autotask Kostentarief Analyse</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/documentatie-roi/"><div class="rr-card-title">IT Documentatie ROI Analyse</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/klant-winstgevendheid/"><div class="rr-card-title">Autotask Klant Winstgevendheid Rapport</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/spookapparaten/"><div class="rr-card-title">Spookapparaten — Ongefactureerde RMM Endpoints</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/klant-kostenlek/"><div class="rr-card-title">MSP Klant Kostenlek Analyse</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a></div></div></div>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Gerelateerde Rapporten</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/maandelijkse-terugkerende-omzet/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
+<div class="rr-card-title">Maandelijkse Terugkerende Omzet</div>
+<div class="rr-card-desc">We hebben de cijfers over maandelijkse terugkerende omzet uit je Power BI-data getrokken. Dit valt op, hier zitten de ga</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/omzet-per-medewerker/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
+<div class="rr-card-title">Omzet per Medewerker</div>
+<div class="rr-card-desc">We hebben de cijfers over omzet per medewerker uit je Power BI-data getrokken. Dit valt op, hier zitten de gaten, en dit</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/declarabel-ratio-per-klant/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
+<div class="rr-card-title">Declarabel Ratio per Klant: Waar Besteden je Engineers Niet-gefactureerde Tijd?</div>
+<div class="rr-card-desc">Analyse van billable versus totale uren over 14 klanten, met 50.752 totale uren geregistreerd in Autotask PSA. Overall b</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/arbeidsomzet-versus-materiaalkosten/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
+<div class="rr-card-title">Arbeidsomzet versus Materiaalkosten</div>
+<div class="rr-card-desc"></div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/klantomzet-maand-over-maand/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
+<div class="rr-card-title">Klantomzet maand-over-maand rapport</div>
+<div class="rr-card-desc"></div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/effectief-uurtarief-per-klant/">
+<span class="rr-badge" style="background:#f0f9ff;color:#0284c7;">Klantbeheer</span>
+<div class="rr-card-title">Je effectief uurtarief liegt: Uurtarieven per klant ontmaskerd</div>
+<div class="rr-card-desc">Een diepgaande analyse van effectieve uurtarieven bij 15 klanten op basis van Autotask PSA billing- en time entry-data. </div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Genereer rapporten als deze vanuit je eigen data</h3>
+<p>Koppel Proxuma's Power BI integratie, gebruik een MCP-compatible AI om vragen te stellen en genereer op maat gemaakte rapporten - in minuten, niet in dagen.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten/" style="margin-right:12px;">Bekijk meer rapporten</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Aan de slag</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Financieel",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/financieel/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA",
+  "articleSection": "Financial & Revenue"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
+    {"@type": "ListItem", "position": 3, "name": "Financieel", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=financial"},
+    {"@type": "ListItem", "position": 4, "name": "Financieel"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/nl-powerbi/"}, {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"}, {"@type": "ListItem", "position": 3, "name": "Financieel"}]}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
+</script>
+</body>
+</html>

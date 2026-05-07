@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Span of Control Rapport | Proxuma Power BI</title>
+<meta content="" name="description"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/span-of-control/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/span-of-control/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/span-of-control/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Span</span>
+<span class="w" style="transition-delay:35ms"> of</span>
+<span class="w" style="transition-delay:70ms"> Control</span>
+<span class="w" style="transition-delay:105ms"> Rapport”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                Alle rapporten
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">Span of Control Rapport</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GEGENEREERD RAPPORT
+    </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Wat laat het span of control overzicht zien?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Span of Control Rapport</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#7C3AED;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            HiBob HR
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Primary data source</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Voorgebouwd MSP semantisch model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude of ChatGPT schrijft DAX-queries, voert ze uit en formatteert de output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">KPI's, uitsplitsingen, trends, aanbevelingen</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Klaar in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op je eigen <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Proxuma Power BI aanvragen</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Span of Control Rapport</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of span of control rapport for managed service providers.</p>
+<p>De data dekt het volledige bereik van Autotask PSA-records die relevant zijn voor deze analyse, uitgesplitst naar de belangrijkste dimensies die je team nodig heeft voor dagelijkse beslissingen en klantrapportage.</p>
+<p><strong>Wie dit zou moeten gebruiken:</strong> MSP owners, HR leads, and operations managers planning workforce</p>
+<p><strong>Hoe vaak:</strong> Maandelijks for headcount reviews, quarterly for planning, annually for budgeting</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Compiling workforce data from HR systems, PSA, and spreadsheets takes a full day. This report automates it.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Workforce clarity</div>
+<div class="value-card-text">Headcount trends, span of control, and organizational structure at a glance.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Planning data</div>
+<div class="value-card-text">Hiring decisions and organizational design backed by actual workforce metrics.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">HR &amp; Workforce</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Minder dan 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">MSP owners,  HR leads</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar vind je dit in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › HR › Span of Control Rapport
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je kunt meten in dit rapport</div>
+<div class="metrics-grid">
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Organisatie KPI Overzicht</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Resourceverdeling per Rol</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Actief vs Totaal Hoofdaantal</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Analyse</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Wat Moet Je Doen Met Deze Data?</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Veelgestelde Vragen</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Gem. Managementspanne</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Totale Resources</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Actieve Resources</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unieke Rollen</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Totaal Geregistreerd</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Momenteel Actief</div>
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<!-- Proxuma.io Pagina: Span of Control Rapport -->
+<!-- Paste as Custom HTML block in WordPress -->
+<!-- URL: /nl-powerbi/ai-gegenereerde-rapporten/span-of-control -->
+<!-- Series: AI-Gegenereerde Rapporten -->
+<!-- SEO -->
+<!-- Meta Title: Span of Control Rapport voor MSP's: Organisatiestructuur in Power BI | Proxuma -->
+<!-- Meta Description: Analyseer managementspanne, teamstructuur en rolverdeling binnen jouw MSP. In minuten gegenereerd met AI en Power BI, gekoppeld aan Autotask. -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Hreflang -->
+<link href="https://proxuma.io/powerbi/insights/span-of-control/" hreflang="en" rel="alternate">
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/span-of-control/" hreflang="nl" rel="alternate">
+<link href="https://proxuma.io/powerbi/insights/span-of-control/" hreflang="x-default" rel="alternate">
+<!-- MORPH BAR -->
+<style>
+.prx-report .pill-teal{background:#ccfbf1;color:#0f766e;border:1px solid #99f6e4;}
+.prx-report .pill-purple{background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd;}
+.prx-report .badge,.prx-report .badge-neutral{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:700;background:#f1f5f9;color:#64748b;}
+.prx-report .badge-up,.prx-report .badge-positive{background:#d1fae5;color:#065f46;}
+.prx-report .badge-down,.prx-report .badge-negative{background:#fee2e2;color:#991b1b;}
+.prx-report .badge-warn,.prx-report .badge-warning{background:#fef3c7;color:#92400e;}
+.prx-report .dax-code-wrap{position:relative;}
+.prx-report .dax-code-wrap pre{margin:0;}
+.prx-report .dax-toggle .dax-toggle-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#475569;gap:10px;}
+.prx-report .dax-toggle .dax-toggle-header:hover{background:#f8fafc;}
+.prx-report .dax-toggle .dax-toggle-label{display:flex;align-items:center;gap:8px;}
+.prx-report .dax-toggle .dax-toggle-chevron,.prx-report .dax-toggle .dax-toggle-arrow{width:16px;height:16px;color:#94a3b8;transition:transform .2s;}
+.prx-report .dax-toggle.open .dax-toggle-chevron,.prx-report .dax-toggle.open .dax-toggle-arrow{transform:rotate(180deg);}
+.prx-report .dax-toggle .dax-toggle-body{display:none;padding:0 14px 14px;}
+.prx-report .dax-toggle.open .dax-toggle-body{display:block;}
+.prx-report .bar-item{display:flex;align-items:center;gap:8px;padding:4px 0;}
+.prx-report .bar-label-row{display:flex;justify-content:space-between;font-size:0.75rem;color:#64748b;margin-bottom:2px;}
+.prx-report .bar-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:0.72rem;color:#64748b;margin-bottom:8px;}
+.prx-report .patch-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .patch-row:last-child{border-bottom:none;}
+.prx-report .patch-label{font-size:0.82rem;font-weight:600;color:#334155;min-width:200px;}
+.prx-report .patch-bar-wrapper{flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden;position:relative;}
+.prx-report .patch-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:white;border-radius:4px;min-width:24px;}
+.prx-report .patch-seg.blue{background:#3b82f6;}
+.prx-report .patch-seg.green{background:#10B981;}
+.prx-report .patch-seg.teal{background:#0f766e;}
+.prx-report .patch-numbers{font-size:0.75rem;font-weight:600;color:#2c3e50;min-width:40px;text-align:right;}
+.prx-report .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+.prx-report .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:0;}
+.prx-report .card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;}
+.prx-report .divider{border:none;border-top:1px solid #e2e8f0;margin:24px 0;}
+.prx-report .demo-banner{display:none;}
+.prx-report .fresh{color:#10B981;font-weight:600;}
+.prx-report .good{color:#3b82f6;font-weight:600;}
+.prx-report .poor{color:#ef4444;font-weight:600;}
+.prx-report .medium{color:#f59e0b;font-weight:600;}
+.prx-report .faq-chevron{width:16px;height:16px;transition:transform .2s;color:#94a3b8;}
+.prx-report .analogy{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:16px 0;font-style:italic;color:#475569;}
+.prx-report .span-band{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:0.78rem;font-weight:700;}
+.prx-report .span-band.ok{background:#d1fae5;color:#065f46;}
+.prx-report .span-band.warn{background:#fef3c7;color:#92400e;}
+.prx-report .span-band.danger{background:#fee2e2;color:#991b1b;}
+@media(max-width:900px){.prx-report .three-col{grid-template-columns:1fr;}.prx-report .two-col{grid-template-columns:1fr;}}
+</style>
+<style>
+.prx-morph-bar{position:fixed !important;top:0;left:0 !important;right:0 !important;z-index:10000 !important;height:50px !important;pointer-events:none;display:flex !important;align-items:center !important;padding:0 28px !important;overflow:hidden !important;box-sizing:border-box !important;margin:0 !important;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative !important;z-index:1 !important;max-width:1140px;margin:0 auto !important;width:100% !important;display:flex !important;align-items:center !important;gap:16px;flex-wrap:nowrap !important;box-sizing:border-box !important;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif !important;font-style:italic !important;font-size:0.88rem !important;color:white !important;flex:1 !important;min-width:0 !important;white-space:nowrap !important;overflow:hidden;text-overflow:ellipsis;line-height:1.2 !important;padding:0 !important;margin:0 !important;background:none !important;border:none !important;}
+.prx-morph-q .w{display:inline-block !important;vertical-align:middle !important;line-height:1 !important;margin:0 !important;padding:0 !important;opacity:0;transform:translateY(-12px) scale(0.85);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1 !important;transform:translateY(0) scale(1) !important;filter:blur(0) !important;}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex !important;align-items:center !important;gap:12px;flex-shrink:0 !important;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{display:inline-block !important;background:rgba(255,255,255,0.1) !important;border-radius:100px !important;padding:3px 10px !important;font-size:0.68rem !important;font-weight:600 !important;color:rgba(255,255,255,0.7) !important;white-space:nowrap !important;line-height:1.4 !important;margin:0 !important;box-sizing:border-box !important;}
+.prx-morph-back{color:#5eead4 !important;text-decoration:none !important;font-size:0.78rem !important;font-weight:600 !important;white-space:nowrap !important;display:inline-flex !important;align-items:center !important;gap:4px !important;line-height:1 !important;vertical-align:middle !important;}
+.prx-morph-back:hover{color:white !important;}
+.prx-morph-bar svg{display:inline-block !important;vertical-align:middle !important;flex-shrink:0 !important;}
+.prx-morph-back svg{width:12px !important;height:12px !important;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+</style>
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Hoe</span>
+<span class="w" style="transition-delay:35ms"> ziet</span>
+<span class="w" style="transition-delay:70ms"> de</span>
+<span class="w" style="transition-delay:105ms"> managementspanne</span>
+<span class="w" style="transition-delay:140ms"> eruit</span>
+<span class="w" style="transition-delay:175ms"> binnen</span>
+<span class="w" style="transition-delay:210ms"> onze</span>
+<span class="w" style="transition-delay:245ms"> organisatie?”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask</span>
+<span class="prx-morph-pill">Power BI</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+      Alle rapporten
+    </a>
+</div>
+</div>
+</div>
+<!-- MAIN REPORT STYLES -->
+<style>
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;}
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+.prx-report .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+.prx-report .related-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;text-decoration:none !important;display:block;transition:box-shadow 0.2s;}
+.prx-report .related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+.prx-report .related-card-cat{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#0f766e;margin-bottom:6px;}
+.prx-report .related-card-title{font-size:0.85rem;font-weight:700;color:#1B365D !important;line-height:1.4;}
+.prx-report .related-card-arrow{font-size:0.75rem;color:#94a3b8;margin-top:8px;}
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}.prx-report .related-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+</style>
+<div class="prx-report">
+<nav class="series-nav">
+<a href="/nl-powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">Span of Control</span>
+</nav>
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+    AI-Gegenereerd Rapport
+  </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Hoe ziet de managementspanne eruit binnen onze organisatie?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Organisatiestatus: Managementspanne en Teamstructuuranalyse</h1>
+<p class="search-hero-sub">Hoeveel mensen valt er onder elke manager? Dit rapport haalt resource-, rol- en teamstructuurdata op uit Autotask. <strong>Eén vraag, beantwoord in minder dan 15 minuten door AI.</strong></p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Gebouwd uit:</span>
+<span class="source-badge" style="color:#1B365D;">
+<svg viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></svg> Autotask PSA
+    </span>
+</div>
+</div>
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Resources, rollen, afdelingen, teamdata</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">MSP semantisch model, organisatiematen</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Schrijft DAX, voert queries uit, formatteert output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">Spanne, rollen, actieve/inactieve verdeling</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Klaar in &lt; 15 min
+      </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op jouw eigen <strong>Autotask</strong> data?</div>
+<a class="pipeline-cta-link" href="/nl-powerbi">
+<span style="position:relative;z-index:10;">Haal Proxuma Power BI</span>
+<svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Span of Control: Organisatiestructuuranalyse</h2>
+<div class="overview-body">
+<p>Span of control meet hoeveel directe rapportages elke manager heeft. Te laag en je bent overmanaged met onnodige overhead. Te hoog en individuele medewerkers krijgen te weinig sturing. Voor MSP's hangt het juiste getal af van de aard van het werk: service desk-rollen verdragen bredere spannen dan projectuitvoering of accountmanagement.</p>
+<p>Dit rapport haalt data rechtstreeks op uit <strong>Autotask resource- en roldata via Proxuma Power BI</strong>. Het berekent jouw gemiddelde spanne, toont rolverdeling door de organisatie en brengt hiaten in kaart tussen actieve bezetting en totaal geregistreerde resources. De uitvoer laat zien waar jouw organisatiestructuur werkt en waar bijsturing nodig is.</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Structuuroverzicht</div>
+<div class="value-card-text">Zie precies hoe rollen zijn verdeeld en waar de bezetting is geconcentreerd.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Benchmarkondersteuning</div>
+<div class="value-card-text">Vergelijk jouw spanne van 5,3 met de branchelijner van 5 tot 8 directe rapportages per manager.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Groeiplanning</div>
+<div class="value-card-text">Gebruik rolverdeling om te bepalen waar je als volgende aanwerft en of de rollen in balans zijn.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">Operaties</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA</span></div>
+<div class="meta-row"><span class="meta-label">Verversing</span><span class="meta-value">Realtime via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Onder 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT of Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">MSP-eigenaar, Operations Manager</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar je dit vindt in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          Power BI › Operaties › Span of Control
+        </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/nl-powerbi" style="font-size:0.82rem;padding:10px 18px;">
+<span style="position:relative;z-index:10;">Haal dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" style="position:relative;z-index:10;" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je in dit rapport kunt meten</div>
+<div class="metrics-grid">
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Gemiddelde managementspanne</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Totaal en actief resourceaantal</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unieke roltypen in de organisatie</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Resourceverdeling per standaardrol</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Hiaat actief vs totaal hoofdaantal</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Rolconcentratie en onevenwichtigheden</div>
+</div>
+</div>
+</div>
+<div class="report-frame-outer" id="prx-frame-top">
+<div class="doc">
+<div class="doc-header">
+<div>
+<div class="doc-logo">
+<svg fill="none" height="18" viewbox="0 0 80 18" width="80"><rect fill="#1B365D" height="18" rx="4" width="18"></rect><text fill="white" font-family="Open Sans,sans-serif" font-size="10" font-weight="800" text-anchor="middle" x="9" y="13">P</text><text fill="#1B365D" font-family="Open Sans,sans-serif" font-size="11" font-weight="700" x="26" y="13">proxuma</text></svg>
+</div>
+<div class="doc-type">AI-Gegenereerd Rapport · Operaties</div>
+</div>
+<div class="doc-header-right">
+<div class="doc-meta-row"><strong>Rapport ID:</strong> PRX-OPS-4174-NL</div>
+<div class="doc-meta-row"><strong>Gegenereerd:</strong> Maart 2026</div>
+<div class="doc-meta-row"><strong>Databron:</strong> Autotask PSA</div>
+<div class="doc-meta-row"><strong>Bereik:</strong> Alle resources</div>
+<div class="doc-meta-row"><strong>Sources:</strong> <span class="source-badge badge-psa" style="background:#DBEAFE;color:#1E40AF;border:1px solid #93C5FD;display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:0.68rem;font-weight:600;margin-left:4px;">Autotask PSA</span><span class="source-badge badge-hibob" style="background:#FDE68A;color:#78350F;border:1px solid #F59E0B;display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:0.68rem;font-weight:600;margin-left:4px;">HiBob</span></div>
+</div>
+</div>
+<div class="doc-title-block">
+<div class="doc-title">Span of Control Rapport</div>
+<div class="doc-subtitle">Managementspanne, resourceverdeling en rolstructuur binnen jouw MSP-organisatie.</div>
+</div>
+<div class="doc-demo">
+<strong>Demodata melding:</strong> Dit rapport gebruikt synthetische demodata. De structuur, DAX-queries en maten zijn identiek aan wat je krijgt met je eigen Autotask-account gekoppeld aan Proxuma.
+  </div>
+<div class="doc-body">
+<!-- Sectie 1: KPI Overzicht -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">1.0</span>
+<div>
+<div class="doc-section-title">Organisatie KPI Overzicht</div>
+<div class="doc-section-sub">Kernmaten uit Autotask resource- en roldata</div>
+</div>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Gem. Managementspanne</div>
+<div class="doc-kpi-value">5,3</div>
+<div class="doc-kpi-note green">Binnen doelbereik 5-8</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Totale Resources</div>
+<div class="doc-kpi-value">118</div>
+<div class="doc-kpi-note muted">Alle geregistreerde resources</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Actieve Resources</div>
+<div class="doc-kpi-value">84</div>
+<div class="doc-kpi-note amber">34 inactief (28,8%)</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Unieke Rollen</div>
+<div class="doc-kpi-value">12</div>
+<div class="doc-kpi-note muted">Verschillende roltypen</div>
+</div>
+</div>
+<div style="margin-top:20px;padding:16px 20px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;">
+<div style="font-size:0.78rem;font-weight:700;color:#065f46;margin-bottom:8px;">Benchmark Managementspanne</div>
+<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+<div style="font-size:0.85rem;color:#334155;">Branchelijner: <strong>5 tot 8 directe rapportages</strong> per manager</div>
+<span class="span-band ok">5,3 — Binnen Bereik</span>
+</div>
+<div style="font-size:0.78rem;color:#64748b;margin-top:8px;">Met 5,3 zit jouw gemiddelde aan de onderkant van het gezonde bereik. Managers hebben voldoende toezichtcapaciteit zonder overbelast te raken.</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+          Bekijk DAX Query — Organisatie KPI's
+        </div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ROW(
+  "Avg Span of Control", [Average Span of Control],
+  "Resources Total",     [Resources - Total Count],
+  "Resources Active",    [Resources - Active Count],
+  "Roles Unique",        [Roles - Unique Count]
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Sectie 2: Rolverdeling -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">2.0</span>
+<div>
+<div class="doc-section-title">Resourceverdeling per Rol</div>
+<div class="doc-section-sub">Hoe resources zijn verdeeld over standaardrollen</div>
+</div>
+</div>
+<div style="margin-bottom:12px;">
+<div class="patch-row">
+<div class="patch-label">Rol 1 (35 resources)</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg blue" style="width:41.7%;float:left;">35</div>
+</div>
+<div class="patch-numbers">35</div>
+</div>
+<div class="patch-row">
+<div class="patch-label">Geen rol toegewezen</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg" style="width:26.2%;background:#94a3b8;float:left;">22</div>
+</div>
+<div class="patch-numbers">22</div>
+</div>
+<div class="patch-row">
+<div class="patch-label">Rol 2 (15 resources)</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg blue" style="width:17.9%;float:left;">15</div>
+</div>
+<div class="patch-numbers">15</div>
+</div>
+<div class="patch-row">
+<div class="patch-label">Rol 3 (11 resources)</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg teal" style="width:13.1%;float:left;">11</div>
+</div>
+<div class="patch-numbers">11</div>
+</div>
+<div class="patch-row">
+<div class="patch-label">Rollen 4-6 (6 elk)</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg green" style="width:7.1%;float:left;">6</div>
+</div>
+<div class="patch-numbers">6</div>
+</div>
+<div class="patch-row">
+<div class="patch-label">Rol 7 (5 resources)</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg green" style="width:6.0%;float:left;">5</div>
+</div>
+<div class="patch-numbers">5</div>
+</div>
+<div class="patch-row">
+<div class="patch-label">Rollen 8-12 (1-4 elk)</div>
+<div class="patch-bar-wrapper">
+<div class="patch-seg" style="width:9.5%;background:#e2e8f0;float:left;color:#64748b;">8</div>
+</div>
+<div class="patch-numbers">8</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th style="text-align:right;">Aantal Resources</th>
+<th style="text-align:right;">% van Totaal</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Primaire Rol (grootste)</td><td class="num">35</td><td class="num">29,7%</td><td><span class="pill pill-blue">Dominant</span></td></tr>
+<tr><td class="client-name">Geen Rol Toegewezen</td><td class="num num-danger">22</td><td class="num num-warn">18,6%</td><td><span class="pill pill-red">Aandacht vereist</span></td></tr>
+<tr><td class="client-name">Rol 2</td><td class="num">15</td><td class="num">12,7%</td><td><span class="pill pill-green">Gezond</span></td></tr>
+<tr><td class="client-name">Rol 3</td><td class="num">11</td><td class="num">9,3%</td><td><span class="pill pill-green">Gezond</span></td></tr>
+<tr><td class="client-name">Rollen 4, 5, 6</td><td class="num">6</td><td class="num">5,1% elk</td><td><span class="pill pill-gray">Specialist</span></td></tr>
+<tr><td class="client-name">Rol 7</td><td class="num">5</td><td class="num">4,2%</td><td><span class="pill pill-gray">Specialist</span></td></tr>
+<tr><td class="client-name">Overige rollen</td><td class="num">8</td><td class="num">6,8%</td><td><span class="pill pill-gray">Beperkt</span></td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+          Bekijk DAX Query — Rolverdeling
+        </div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_User_Details'[default_role_name],
+  "Resource Count", COUNTROWS('BI_Autotask_User_Details')
+)
+ORDER BY [Resource Count] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Sectie 3: Actief vs Totaal -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">3.0</span>
+<div>
+<div class="doc-section-title">Actief vs Totaal Hoofdaantal</div>
+<div class="doc-section-sub">Het hiaat begrijpen tussen geregistreerde en actieve resources</div>
+</div>
+</div>
+<div class="two-col">
+<div>
+<div class="doc-kpi-row" style="border-radius:8px;">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Totaal Geregistreerd</div>
+<div class="doc-kpi-value" style="font-size:1.4rem;">118</div>
+<div class="doc-kpi-note muted">Alle tijd</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Momenteel Actief</div>
+<div class="doc-kpi-value" style="font-size:1.4rem;">84</div>
+<div class="doc-kpi-note green">71,2% actief</div>
+</div>
+</div>
+<div style="margin-top:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;">
+<div style="font-size:0.78rem;font-weight:600;color:#334155;margin-bottom:6px;">Actief percentage: 71,2%</div>
+<div style="height:16px;background:#f1f5f9;border-radius:8px;overflow:hidden;">
+<div style="height:100%;width:71.2%;background:#10B981;border-radius:8px;"></div>
+</div>
+<div style="font-size:0.72rem;color:#64748b;margin-top:6px;">34 inactieve resources kunnen voormalige medewerkers, aannemers of gearchiveerde accounts zijn</div>
+</div>
+</div>
+<div>
+<div class="narrative">
+<p>Het verschil tussen 118 geregistreerde en 84 actieve resources is 34 mensen. In Autotask kunnen inactieve resources voormalige medewerkers zijn wier accounts zijn gedeactiveerd, externe aannemers die niet meer actief zijn, of gearchiveerde testaccounts.</p>
+<p>Een <strong>inactiviteitspercentage van 28,8%</strong> is de moeite waard om te onderzoeken. Oude inactieve records kunnen capaciteitsrapporten vertekenen en personeelsdata moeilijker leesbaar maken. Een kwartaalaudit van inactieve resources houdt de data schoon.</p>
+</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+          Bekijk DAX Query — Actief vs Totaal
+        </div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ROW(
+  "Resources Total",  [Resources - Total Count],
+  "Resources Active", [Resources - Active Count],
+  "Active Pct",       DIVIDE([Resources - Active Count], [Resources - Total Count])
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Sectie 4: Analyse -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Analyse</span>
+</div>
+<div class="narrative">
+<p>De managementspanne van 5,3 zit aan de onderkant van het gezonde bereik van 5 tot 8. Managers zijn niet overbelast, maar er is ruimte om de spanne licht te verbreden indien gewenst. Dat vermindert managementoverhead en geeft senior medewerkers meer ruimte voor werk met hogere toegevoegde waarde.</p>
+<p>De opvallendere bevinding is de <strong>22 resources zonder standaardrol</strong>. Met 18,6% van het totale personeelsaantal is dit een datakwaliteitsprobleem dat doorwerkt in rapporten. Op rollen gebaseerde rapporten, capaciteitsplanning en factuurtariefanalyse zijn allemaal afhankelijk van nauwkeurige roltoewijzingen. Die 22 records moeten worden geauditeerd en bijgewerkt.</p>
+<p>De rolverdeling laat een concentratiepatroon zien: één rol draagt 29,7% van alle resources. Dat niveau van concentratie is normaal voor MSP's waarbij L1-technici of service desk-medewerkers de meerderheid van het personeel uitmaken, maar het is de moeite waard om te controleren of de rollabels in Autotask overeenkomen met hoe jouw team daadwerkelijk werkt. Als de labels verouderd zijn, geven rapporten die daarop zijn gebouwd misleidende resultaten.</p>
+</div>
+</div>
+<!-- Sectie 5: Aanbevelingen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<div>
+<div class="doc-section-title">Wat Moet Je Doen Met Deze Data?</div>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">1</div>
+<div class="doc-finding-body">
+<h4>Wijs standaardrollen toe aan de 22 resources zonder rol</h4>
+<p>22 resources hebben geen standaardrol in Autotask. Dit heeft invloed op capaciteitsplanning, factuurtariefberekeningen en alle op rollen gesegmenteerde rapportages. Voer een gebruikersaudit uit in Autotask, bevestig tot welke rol elke persoon behoort en werk het standaardrol-veld bij. Dit is een eenmalige opschoning met voortdurende datakwaliteitsvoordelen.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">2</div>
+<div class="doc-finding-body">
+<h4>Auditeer de 34 inactieve resources</h4>
+<p>Inactieve resources verhogen het totale personeelsaantal en vertekenen actieve percentage-maten. Bekijk elk gedeactiveerd account om te bevestigen dat het een daadwerkelijke voormalige medewerker of aannemer vertegenwoordigt. Archiveer of verwijder test- of plaatshouderaccounts. Een schone lijst verbetert de nauwkeurigheid van elk personeelsrapport.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">3</div>
+<div class="doc-finding-body">
+<h4>Huidige managementspanne is gezond</h4>
+<p>Met 5,3 zit jouw gemiddelde binnen het aanbevolen bereik. Er is geen directe actie nodig op de managementstructuur. Als je van plan bent het personeelsbestand uit te breiden, houd dan dit getal in de gaten: als je structureel boven 8 directe rapportages per manager komt, is dat een signaal om teamleiders toe te voegen of te herstructureren.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">4</div>
+<div class="doc-finding-body">
+<h4>Controleer rollabelnauwkeurigheid voor opschaling</h4>
+<p>Als de rolnamen in Autotask jouw huidige servicemodel niet weerspiegelen (L1/L2/L3, specialist, accountmanager, etc.), werk ze dan bij voordat je meer personeel aanneemt. Nauwkeurige labels bovenstrooms zorgen voor nauwkeurige capaciteits- en factureringsrapporten.</p>
+</div>
+</div>
+</div>
+<!-- Sectie 6: Veelgestelde Vragen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<span class="doc-section-title">Veelgestelde Vragen</span>
+</div>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Wat is een gezonde managementspanne voor een MSP?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Het algemeen geaccepteerde bereik is 5 tot 8 directe rapportages per manager. Service desk-teams met repetitieve workflows kunnen bredere spannen aan. Projectuitvoering en accountmanagementrollen vereisen doorgaans smallere spannen vanwege gevarieerder en complexer werk.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Hoe wordt de managementspanne berekend in dit rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De maat Average Span of Control wordt berekend uit Autotask resource-hiërarchiedata via het Proxuma Power BI semantisch model. Het deelt het aantal actieve individuele medewerkers door het aantal actieve managers of teamleiders.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Waarom hebben sommige resources geen rol toegewezen?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Autotask staat toe dat resources worden aangemaakt zonder een standaardrol. Dit kan gebeuren wanneer gebruikers snel worden aangemeld zonder volledig profiel, of wanneer rollen worden gewijzigd en het standaardveld niet wordt bijgewerkt. Een beheerdersreview in Autotask Instellingen › Resources laat je deze toewijzen of corrigeren.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Kan ik dit rapport draaien op mijn eigen Autotask-data?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Ja. Koppel Proxuma Power BI aan je Autotask-account en stel vervolgens dezelfde vraag via Claude of ChatGPT via MCP. De AI schrijft de DAX, voert hem uit op jouw data en produceert dit rapport in minder dan 15 minuten.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Hoe vaak moet ik de managementspanne controleren?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Kwartaallijks is voldoende voor de meeste MSP's. Controleer vaker tijdens perioden van snelle groei, teamherstructurering of wanneer de kwaliteit van de servicelevering begint te dalen, want problemen met de managementspanne duiken dan vaak op als bijdragende factor.</p></div>
+</div>
+</div>
+</div>
+</div><!-- /doc-body -->
+<div class="doc-footer">
+<span>Proxuma Power BI · AI-Gegenereerd Rapport · proxuma.io/powerbi</span>
+<span>Gegenereerd via MCP · Maart 2026</span>
+</div>
+</div><!-- /doc -->
+</div><!-- /report-frame-outer -->
+<!-- Gerelateerde Rapporten -->
+<div style="margin-top:40px;margin-bottom:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:16px;">Gerelateerde Rapporten</div>
+<div class="related-grid">
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/meest-en-minst-productieve-technici">
+<div class="related-card-cat">Resource</div>
+<div class="related-card-title">Wie zijn onze meest en minst productieve technici?</div>
+<div class="related-card-arrow">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/capaciteitsbenutting-per-technicus">
+<div class="related-card-cat">Resource</div>
+<div class="related-card-title">Hoe vergelijkt resourcebenutting zich door het team?</div>
+<div class="related-card-arrow">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/resources">
+<div class="related-card-cat">Resource</div>
+<div class="related-card-title">Hoe zijn resources verdeeld over rollen?</div>
+<div class="related-card-arrow">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/billable-percentage-per-technician">
+<div class="related-card-cat">Resource</div>
+<div class="related-card-title">Wat is het factureerbaar percentage per technicus?</div>
+<div class="related-card-arrow">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/hoeveel-uren-logde-elke-technicus-deze-week-vs-zijn-capaciteit">
+<div class="related-card-cat">Resource</div>
+<div class="related-card-title">Hoeveel uren logde elke technicus deze week versus zijn capaciteit?</div>
+<div class="related-card-arrow">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gemiddelde-tijd-per-ticket-per-technician">
+<div class="related-card-cat">Resource</div>
+<div class="related-card-title">Wat is de gemiddelde tijd per ticket per technicus?</div>
+<div class="related-card-arrow">Bekijk rapport →</div>
+</a>
+</div>
+</div>
+<div class="cta-block">
+<h3>Draai dit rapport op jouw eigen Autotask-data</h3>
+<p>Koppel Proxuma Power BI aan Autotask, voeg je AI toe via MCP en genereer live organisatierapporten in minder dan 15 minuten.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten" style="margin-right:8px;"><span style="position:relative;z-index:10;">Bekijk alle rapporten</span></a>
+<a class="cta-btn" href="/nl-powerbi"><span style="position:relative;z-index:10;">Haal Proxuma Power BI</span></a>
+</div>
+</div><!-- /.prx-report -->
+<!-- JSON-LD FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is een gezonde managementspanne voor een MSP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Het algemeen geaccepteerde bereik is 5 tot 8 directe rapportages per manager. Service desk-teams kunnen bredere spannen aan. Projectuitvoering en accountmanagementrollen vereisen smallere spannen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Waarom hebben sommige resources geen rol toegewezen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Autotask staat toe dat resources worden aangemaakt zonder een standaardrol. Dit kan gebeuren wanneer gebruikers snel worden aangemeld zonder volledig profiel, of wanneer rollen worden gewijzigd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe vaak moet ik de managementspanne controleren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kwartaallijks is voldoende voor de meeste MSP's. Controleer vaker tijdens snelle groei, herstructurering of wanneer de kwaliteit van de servicelevering daalt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik dit rapport draaien op mijn eigen Autotask-data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Koppel Proxuma Power BI aan je Autotask-account en stel dezelfde vraag via Claude of ChatGPT via MCP. De AI produceert dit rapport in minder dan 15 minuten."
+      }
+    }
+  ]
+}
+</script>
+<!-- Scroll trigger + DAX copy JS -->
+<script>
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function getSiteHeader(){return document.querySelector('.c-header,.c-site__header,header.site-header,.site-header,#masthead,.l-header,.header-wrap,header[role="banner"]');}function getHeaderBottom(){var sh=getSiteHeader();if(!sh)return 0;var r=sh.getBoundingClientRect();return Math.max(0,Math.round(r.bottom));}function positionMorph(){morphBar.style.top=getHeaderBottom()+'px';}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var hh=getHeaderBottom();positionMorph();var rect=frameTop.getBoundingClientRect();if(rect.top<=hh){morphBar.classList.add('visible','active');}else{morphBar.classList.remove('visible','active');}ticking=false;});ticking=true;}}window.addEventListener('scroll',onScroll,{passive:true});onScroll();})();
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Gerelateerde Rapporten</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/span-of-control-trend/">
+<span class="rr-badge" style="background:#fef2f2;color:#b91c1c;">HR</span>
+<div class="rr-card-title">HiBob HR Span of Control Trend</div>
+<div class="rr-card-desc">Analyse en rapportage over span of control trend voor managed service providers.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/personeelstrend-in-de-tijd/">
+<span class="rr-badge" style="background:#fef2f2;color:#b91c1c;">HR</span>
+<div class="rr-card-title">HiBob HR Personeelstrend in de Tijd</div>
+<div class="rr-card-desc">Analyse en rapportage over personeelstrend in de tijd voor managed service providers.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/fte-equivalent-team/">
+<span class="rr-badge" style="background:#fef2f2;color:#b91c1c;">HR</span>
+<div class="rr-card-title">Team FTE Equivalent</div>
+<div class="rr-card-desc"></div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/hierarchiediepte-per-afdeling/">
+<span class="rr-badge" style="background:#fef2f2;color:#b91c1c;">HR</span>
+<div class="rr-card-title">HiBob HR Hiërarchiediepte per Afdeling</div>
+<div class="rr-card-desc">Analyse en rapportage over hiërarchiediepte per afdeling voor managed service providers.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/personeelsbestand-dashboard-medewerkers-managers/">
+<span class="rr-badge" style="background:#fef2f2;color:#b91c1c;">HR</span>
+<div class="rr-card-title">Personeelsbestand Dashboard: Totaal Medewerkers, Managers en Organisatiegezondheid</div>
+<div class="rr-card-desc">Volledige analyse van de personeelssamenstelling over 14 afdelingen. Managerverdeling, span of control benchmarking en d</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/billable-percentage-per-technician/">
+<span class="rr-badge" style="background:#ecfdf5;color:#059669;">Resources</span>
+<div class="rr-card-title">Analyse Billable Percentage per Technician</div>
+<div class="rr-card-desc"></div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Genereer rapporten als deze vanuit je eigen data</h3>
+<p>Koppel Proxuma's Power BI integratie, gebruik een MCP-compatible AI om vragen te stellen en genereer op maat gemaakte rapporten - in minuten, niet in dagen.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten/" style="margin-right:12px;">Bekijk meer rapporten</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Aan de slag</a>
+</div>
+</link></link></link></div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Span of Control Rapport",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/span-of-control/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA",
+  "articleSection": "HR & Workforce"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
+    {"@type": "ListItem", "position": 3, "name": "HR", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=hr"},
+    {"@type": "ListItem", "position": 4, "name": "Span of Control Rapport"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is een gezonde managementspanne voor een MSP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Het algemeen geaccepteerde bereik is 5 tot 8 directe rapportages per manager. Service desk-teams kunnen bredere spannen aan. Projectuitvoering en accountmanagementrollen vereisen smallere spannen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Waarom hebben sommige resources geen rol toegewezen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Autotask staat toe dat resources worden aangemaakt zonder een standaardrol. Dit kan gebeuren wanneer gebruikers snel worden aangemeld zonder volledig profiel, of wanneer rollen worden gewijzigd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe vaak moet ik de managementspanne controleren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kwartaallijks is voldoende voor de meeste MSP's. Controleer vaker tijdens snelle groei, herstructurering of wanneer de kwaliteit van de servicelevering daalt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik dit rapport draaien op mijn eigen Autotask-data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Koppel Proxuma Power BI aan je Autotask-account en stel dezelfde vraag via Claude of ChatGPT via MCP. De AI produceert dit rapport in minder dan 15 minuten."
+      }
+    }
+  ]
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+</body>
+</html>

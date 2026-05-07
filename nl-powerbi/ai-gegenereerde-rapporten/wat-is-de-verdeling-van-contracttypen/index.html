@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contractportfolio: Overzicht per Contracttype | Proxuma Power BI</title>
+<meta content="Gegenereerd door AI via de Proxuma Power BI MCP-server. Verdeling van 1.889 Autotask-contracten per contracttype, met uitsplitsing van actief versus inactief." name="description"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/wat-is-de-verdeling-van-contracttypen/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/wat-is-de-verdeling-van-contracttypen/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/wat-is-de-verdeling-van-contracttypen/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+ BLOCK VERBATIM into every report.
+  DO NOT modify, rewrite, or "optimize" any CSS rules.
+  DO NOT add custom CSS inside SVG <defs><style> tags.
+
+  Any report-specific CSS (custom charts, visualizations) goes
+  in a SEPARATE <style> block AFTER this one, scoped under .prx-report.
+
+  Last synced from GOLDEN-STANDARD.html: 2026-03-05
+-->
+<style>
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === SOURCE BADGES === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === DONUT CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === COMPARISON BAR (side-by-side pairs) === */
+.prx-report .cbar-chart{margin:18px 0 8px;}
+.prx-report .cbar-group{margin-bottom:14px;}
+.prx-report .cbar-group:last-child{margin-bottom:0;}
+.prx-report .cbar-group-label{font-size:0.74rem;font-weight:700;color:#1B365D;margin-bottom:5px;}
+.prx-report .cbar-pair{display:flex;gap:6px;align-items:center;}
+.prx-report .cbar-bar{height:16px;border-radius:3px;display:flex;align-items:center;padding:0 8px;min-width:2px;}
+.prx-report .cbar-bar span{font-size:0.64rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .cbar-legend{display:flex;gap:16px;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .cbar-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === SEGMENTED BAR (stacked) === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === LINE CHARTS === */
+.prx-report .line-chart-wrap{margin:20px 0 8px;overflow-x:auto;}
+.prx-report .line-chart-wrap svg{display:block;width:100%;max-width:560px;margin:0 auto;}
+.prx-report .line-grid{stroke:#e2e8f0;stroke-width:0.5;}
+.prx-report .line-axis{stroke:#cbd5e1;stroke-width:1;}
+.prx-report .line-path{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .line-path.teal{stroke:#0f766e;}
+.prx-report .line-path.blue{stroke:#3b82f6;}
+.prx-report .line-path.red{stroke:#ef4444;}
+.prx-report .line-path.amber{stroke:#f59e0b;}
+.prx-report .line-path.navy{stroke:#1B365D;}
+.prx-report .line-area{opacity:0.08;}
+.prx-report .line-area.teal{fill:#0f766e;}
+.prx-report .line-area.blue{fill:#3b82f6;}
+.prx-report .line-dot{r:4;stroke:white;stroke-width:2;}
+.prx-report .line-dot.teal{fill:#0f766e;}
+.prx-report .line-dot.blue{fill:#3b82f6;}
+.prx-report .line-dot.red{fill:#ef4444;}
+.prx-report .line-dot.amber{fill:#f59e0b;}
+.prx-report .line-dot.navy{fill:#1B365D;}
+.prx-report .line-val{font-family:'Open Sans',sans-serif;font-size:8px;font-weight:700;fill:#475569;text-anchor:middle;}
+.prx-report .line-label{font-family:'Open Sans',sans-serif;font-size:10px;fill:#64748b;text-anchor:middle;}
+.prx-report .line-y-label{font-family:'Open Sans',sans-serif;font-size:9px;fill:#94a3b8;text-anchor:end;}
+.prx-report .line-legend{display:flex;gap:18px;justify-content:center;margin-top:8px;font-size:0.72rem;color:#475569;}
+.prx-report .line-legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}}
+@media print{.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}}
+
+
+/* Report-specific styles */
+.prx-report .ci-cat-bar-fill{height:100%;border-radius:3px;}
+.prx-report .dist-bar-track{flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden;}
+.prx-report .dist-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding:0 8px;}
+.prx-report .dist-bar-fill span{font-size:0.7rem;font-weight:700;color:white;}
+
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Contractportfolio:</span>
+<span class="w" style="transition-delay:35ms"> Overzicht</span>
+<span class="w" style="transition-delay:70ms"> per</span>
+<span class="w" style="transition-delay:105ms"> Contracttype”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                Alle rapporten
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">Contractportfolio: Overzicht per Contracttype</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GEGENEREERD RAPPORT
+    </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Hoe ziet de contractportfolio eruit?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Contractportfolio: Overzicht per Contracttype</h1>
+<p class="search-hero-sub">
+        Gegenereerd door AI via de Proxuma Power BI MCP-server. Verdeling van 1.889 Autotask-contracten per contracttype, met uitsplitsing van actief versus inactief.
+    </p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#1E40AF;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg>
+            Autotask PSA
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Voorgebouwd MSP semantisch model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude of ChatGPT schrijft DAX-queries, voert ze uit en formatteert de output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">KPI's, uitsplitsingen, trends, aanbevelingen</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Klaar in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op je eigen <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Proxuma Power BI aanvragen</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Contractportfolio: Overzicht per Contracttype</h2>
+<div class="overview-body">
+<p>Gegenereerd door AI via de Proxuma Power BI MCP-server. Verdeling van 1.889 Autotask-contracten per contracttype, met uitsplitsing van actief versus inactief.</p>
+<p>De data dekt het volledige bereik van Autotask PSA-records die relevant zijn voor deze analyse, uitgesplitst naar de belangrijkste dimensies die je team nodig heeft voor dagelijkse beslissingen en klantrapportage.</p>
+<p><strong>Wie dit zou moeten gebruiken:</strong> Account managers, finance teams, and MSP owners managing renewals</p>
+<p><strong>Hoe vaak:</strong> Maandelijks for pipeline review, 90 days before expiry for renewal preparation</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Tracking contract dates across hundreds of clients in spreadsheets is error-prone. This report automates it.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Revenue protection</div>
+<div class="value-card-text">Missed renewals mean lost revenue. This report ensures every expiring contract gets attention.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Negotiation prep</div>
+<div class="value-card-text">Contract value, history, and service data in one view for informed renewal conversations.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">Contract Management</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Minder dan 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">Account managers,  finance teams</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar vind je dit in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Contracten › Contractportfolio: Overzicht per Cont...
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je kunt meten in dit rapport</div>
+<div class="metrics-grid">
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kerngetallen</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Uitsplitsing per Contracttype</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Actief vs. Inactief</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Actief Portfolio</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Belangrijkste Bevindingen</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Veelgestelde Vragen</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Gerelateerde Rapporten</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Totaal Contracten</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Actieve Contracten</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Recurring Service</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Inactief / Verlopen</div>
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<style>
+
+/* Report-specific styles */
+.prx-report .ci-cat-bar-fill{height:100%;border-radius:3px;}
+.prx-report .dist-bar-track{flex:1;background:#f1f5f9;border-radius:4px;height:22px;overflow:hidden;}
+.prx-report .dist-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding:0 8px;}
+.prx-report .dist-bar-fill span{font-size:0.7rem;font-weight:700;color:white;}
+
+</style>
+<div class="report-frame-outer">
+<div class="doc">
+<!-- Doc Header -->
+<div class="doc-header">
+<div>
+<div class="doc-logo">
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+</div>
+<div class="doc-type">Contractanalyse Rapport</div>
+</div>
+<div class="doc-header-right">
+</div>
+</div>
+<!-- Doc Title Block -->
+<div class="doc-title-block">
+<h2 class="doc-title">Contractportfolio: Overzicht per Contracttype</h2>
+<p class="doc-subtitle">Gegenereerd door AI via de Proxuma Power BI MCP-server. Verdeling van 1.889 Autotask-contracten per contracttype, met uitsplitsing van actief versus inactief.</p>
+<div class="doc-demo">
+<strong>Demorapport:</strong> Dit rapport maakt gebruik van synthetische demodata op basis van typische MSP-contractstructuren. Koppel jouw eigen Autotask PSA om jouw werkelijke cijfers te zien.
+        </div>
+</div>
+<!-- Doc Body -->
+<div class="doc-body">
+<!-- Section 1: Kerngetallen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">1.0</span>
+<div>
+<div class="doc-section-title">Kerngetallen</div>
+<div class="doc-section-sub">Portfolio-brede totalen over alle contracttypen en statussen</div>
+</div>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Totaal Contracten</div>
+<div class="doc-kpi-value">1,207 (63.9%)</div>
+<div class="doc-kpi-note muted">Managed services</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Actieve Contracten</div>
+<div class="doc-kpi-value">504 (26.7%)</div>
+<div class="doc-kpi-note green">Time &amp; Materials</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Recurring Service</div>
+<div class="doc-kpi-value">173 (9.2%)</div>
+<div class="doc-kpi-note green">Pre-paid blocks</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Inactief / Verlopen</div>
+<div class="doc-kpi-value">512</div>
+<div class="doc-kpi-note amber">27,1%, controle nodig</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              Bekijk DAX Query — Kerngetallen
+            </div>
+<div class="dax-content">
+<pre><code>EVALUATE SUMMARIZECOLUMNS('BI_Autotask_Contracts'[contract_type_name], "Count", COUNTROWS('BI_Autotask_Contracts'))</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Section 2: Uitsplitsing per Contracttype -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">2.0</span>
+<div>
+<div class="doc-section-title">Uitsplitsing per Contracttype</div>
+<div class="doc-section-sub">Totaal, actief en inactief aantal per contracttype</div>
+</div>
+</div>
+<table>
+<thead><tr><th>Status</th><th>Count</th><th>%</th></tr></thead>
+<tbody><tr><td>Active</td><td>1,377</td><td>72.9%</td></tr><tr><td>Inactive</td><td>512</td><td>27.1%</td></tr></tbody>
+</table>
+<!-- Distribution bar visualization -->
+<div class="dist-bar-wrap" style="margin-top:24px;">
+<div style="font-size:0.78rem;font-weight:700;color:#2c3e50;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.8px;">Aandeel van Totaal Portfolio</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Recurring Service</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:63.9%;background:#10B981;">
+<span>63,9%</span>
+</div>
+</div>
+<div class="dist-bar-pct">1.207</div>
+</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Time &amp; Materials</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:26.7%;background:#3b82f6;">
+<span>26,7%</span>
+</div>
+</div>
+<div class="dist-bar-pct">504</div>
+</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Block Hours</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:9.2%;background:#14b8a6;">
+<span>9,2%</span>
+</div>
+</div>
+<div class="dist-bar-pct">173</div>
+</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Fixed Price</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:0.5%;background:#94a3b8;min-width:30px;">
+<span>0,3%</span>
+</div>
+</div>
+<div class="dist-bar-pct">5</div>
+</div>
+</div>
+<div class="narrative" style="margin-top:20px;">
+<p>Recurring Service-contracten domineren met <strong>63,9%</strong> van het totale portfolio. Dat is een positief teken. Voor de meeste MSP's vertaalt een Recurring Service-meerderheid zich rechtstreeks in voorspelbare maandelijkse omzet. Het T&amp;M-aandeel van <strong>26,7%</strong> verdient aandacht: die contracten reageren op hoeveel werk klanten daadwerkelijk genereren, waardoor omzetplanning complexer wordt.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              Bekijk DAX Query — Uitsplitsing per Contracttype
+            </div>
+<div class="dax-content">
+<pre><code>EVALUATE SUMMARIZECOLUMNS('BI_Autotask_Contracts'[contract_status_name], "Count", COUNTROWS('BI_Autotask_Contracts'))</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Section 3: Actief vs. Inactief -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">3.0</span>
+<div>
+<div class="doc-section-title">Actief vs. Inactief</div>
+<div class="doc-section-sub">Retentiepercentages per contracttype laten zien welke structuren klanten vasthouden</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Contracttype</th>
+<th style="text-align:right;">Actief %</th>
+<th>Retentiesignaal</th>
+<th style="text-align:right;">Actief</th>
+<th style="text-align:right;">Inactief</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="client-name">Block Hours</td>
+<td><span class="pct-badge pct-ok">91,3%</span></td>
+<td style="font-size:0.82rem;color:#065f46;font-weight:600;">Sterke retentie</td>
+<td class="num num-ok">158</td>
+<td class="num">15</td>
+</tr>
+<tr>
+<td class="client-name">Recurring Service</td>
+<td><span class="pct-badge pct-ok">77,2%</span></td>
+<td style="font-size:0.82rem;color:#065f46;font-weight:600;">Solide</td>
+<td class="num num-ok">932</td>
+<td class="num">275</td>
+</tr>
+<tr>
+<td class="client-name">Time &amp; Materials</td>
+<td><span class="pct-badge pct-mid">56,9%</span></td>
+<td style="font-size:0.82rem;color:#92400e;font-weight:600;">Hoog verlooprisico</td>
+<td class="num num-warn">287</td>
+<td class="num num-warn">217</td>
+</tr>
+<tr>
+<td class="client-name">Fixed Price</td>
+<td><span class="pct-badge pct-bad">0%</span></td>
+<td style="font-size:0.82rem;color:#991b1b;font-weight:600;">Allemaal inactief</td>
+<td class="num">0</td>
+<td class="num num-danger">5</td>
+</tr>
+</tbody>
+</table>
+<div class="narrative" style="margin-top:20px;">
+<p>Block Hours-contracten hebben het hoogste actieve retentiepercentage met <strong>91,3%</strong>. Dit zijn vooraf gekochte urenpakketten, waardoor klanten upfront vastleggen. T&amp;M-contracten laten de laagste retentie zien met <strong>56,9%</strong>, wat logisch is: als het werk afneemt, laten klanten T&amp;M-contracten verlopen. Als een groot deel van jouw T&amp;M-contracten inactief wordt, overweeg dan een conversiecampagne om deze klanten naar Recurring Service-overeenkomsten met een vaste maandelijkse scope over te zetten.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              Bekijk DAX Query — Actief vs. Inactief per Type
+            </div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ADDCOLUMNS(
+    SUMMARIZECOLUMNS(
+        'BI_Autotask_Contracts'[contract_type_name],
+        "Total", COUNTROWS('BI_Autotask_Contracts'),
+        "Active", CALCULATE(COUNTROWS('BI_Autotask_Contracts'), 'BI_Autotask_Contracts'[contract_status_name] = "Active"),
+        "Inactive", CALCULATE(COUNTROWS('BI_Autotask_Contracts'), 'BI_Autotask_Contracts'[contract_status_name] &lt;&gt; "Active")
+    ),
+    "Active Rate %", DIVIDE([Active], [Total]) * 100
+)
+ORDER BY [Active Rate %] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Section 4: Actief Portfolio -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">4.0</span>
+<div>
+<div class="doc-section-title">Actief Portfolio</div>
+<div class="doc-section-sub">Alleen de 1.377 momenteel actieve contracten bekeken</div>
+</div>
+</div>
+<!-- Active portfolio bar visualization -->
+<div class="dist-bar-wrap">
+<div style="font-size:0.78rem;font-weight:700;color:#2c3e50;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.8px;">Alleen Actieve Contracten (1.377 totaal)</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Recurring Service</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:67.7%;background:#10B981;">
+<span>67,7%</span>
+</div>
+</div>
+<div class="dist-bar-pct">932</div>
+</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Time &amp; Materials</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:20.8%;background:#3b82f6;">
+<span>20,8%</span>
+</div>
+</div>
+<div class="dist-bar-pct">287</div>
+</div>
+<div class="dist-bar-row">
+<div class="dist-bar-label">Block Hours</div>
+<div class="dist-bar-track">
+<div class="dist-bar-fill" style="width:11.5%;background:#14b8a6;">
+<span>11,5%</span>
+</div>
+</div>
+<div class="dist-bar-pct">158</div>
+</div>
+</div>
+<table style="margin-top:20px;">
+<thead>
+<tr>
+<th>Contracttype</th>
+<th style="text-align:right;">Actief aantal</th>
+<th style="text-align:right;">Aandeel actief portfolio</th>
+<th>Omzetkarakter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="client-name">Recurring Service</td>
+<td class="num num-ok">932</td>
+<td><span class="pct-badge pct-ok">67,7%</span></td>
+<td style="font-size:0.82rem;color:#334155;">Vast maandelijks, voorspelbaar</td>
+</tr>
+<tr>
+<td class="client-name">Time &amp; Materials</td>
+<td class="num num-warn">287</td>
+<td><span class="pct-badge pct-mid">20,8%</span></td>
+<td style="font-size:0.82rem;color:#334155;">Variabel, vraaggestuurd</td>
+</tr>
+<tr>
+<td class="client-name">Block Hours</td>
+<td class="num num-ok">158</td>
+<td><span class="pct-badge pct-ok">11,5%</span></td>
+<td style="font-size:0.82rem;color:#334155;">Vooruitbetaald, verbruikt over tijd</td>
+</tr>
+</tbody>
+</table>
+<div class="narrative" style="margin-top:20px;">
+<p>Als je alleen naar actieve contracten kijkt, verschuift de mix verder richting Recurring Service: <strong>67,7%</strong>. Daar komt jouw stabiele omzet vandaan. De 158 actieve Block Hours-contracten vertegenwoordigen vooraf vastgelegde inzet: klanten die al betaald hebben voor een urenpakket. Dat is een handig gegeven voor capaciteitsplanning, omdat deze klanten tickets blijven genereren totdat hun uren op zijn.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+              Bekijk DAX Query — Actief Portfolio
+            </div>
+<div class="dax-content">
+<pre><code>EVALUATE
+VAR _active = CALCULATE(COUNTROWS('BI_Autotask_Contracts'), 'BI_Autotask_Contracts'[contract_status_name] = "Active")
+RETURN
+ADDCOLUMNS(
+    CALCULATETABLE(
+        SUMMARIZECOLUMNS(
+            'BI_Autotask_Contracts'[contract_type_name],
+            "Active Count", COUNTROWS('BI_Autotask_Contracts')
+        ),
+        'BI_Autotask_Contracts'[contract_status_name] = "Active"
+    ),
+    "Active Share %", DIVIDE([Active Count], _active) * 100
+)
+ORDER BY [Active Count] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- Section 5: Belangrijkste Bevindingen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<div>
+<div class="doc-section-title">Belangrijkste Bevindingen</div>
+<div class="doc-section-sub">Wat de data je vertelt over de gezondheid van jouw contractportfolio</div>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">OK</div>
+<div class="doc-finding-body">
+<h4>Recurring Service is het dominante type</h4>
+<p>63,9% van alle contracten en 67,7% van de actieve contracten zijn Recurring Service. Dit is een gezonde portfolioverdeling die jou een sterke basis van voorspelbare maandelijkse omzet geeft om tegen te plannen.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>T&amp;M-contracten verlopen vaker</h4>
+<p>Slechts 56,9% van de Time &amp; Materials-contracten is momenteel actief. Bijna de helft is inactief of verlopen. Dit verdient aandacht: een gerichte conversiecampagne kan sommige van deze klanten overzetten naar Recurring Service-overeenkomsten met stabielere facturering.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">OK</div>
+<div class="doc-finding-body">
+<h4>Block Hours zijn het kleverigst</h4>
+<p>91,3% van de Block Hours-contracten is actief. Vooraf vastgelegde uren zorgen voor betrouwbare betrokkenheid omdat klanten al betaald hebben. Deze contracten helpen ook bij capaciteitsplanning: actieve Block Hours-klanten blijven werk genereren totdat hun saldo nul is.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>Fixed Price-contracten zijn vrijwel verdwenen</h4>
+<p>Er zijn slechts 5 Fixed Price-contracten in het portfolio, en geen enkel is momenteel actief. Dit contracttype is effectief inactief. Het is niet de moeite waard om apart bij te houden, tenzij je van plan bent Fixed Price-overeenkomsten te herintroduceren als onderdeel van een nieuw serviceaanbod.</p>
+</div>
+</div>
+</div>
+<!-- Section 6: Veelgestelde Vragen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<div>
+<div class="doc-section-title">Veelgestelde Vragen</div>
+<div class="doc-section-sub">Veelvoorkomende vragen over contracttypeverdeling in Autotask</div>
+</div>
+</div>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Wat is een Recurring Service-contract in Autotask?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Recurring Service-contracten zijn vaste-prijs-overeenkomsten die op terugkerende basis worden gefactureerd, doorgaans maandelijks. Dit zijn de basis van managed services-omzet. Klanten betalen een vast bedrag per periode voor een gedefinieerde scope aan diensten, ongeacht hoeveel uren er daadwerkelijk worden gebruikt.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Waarom is contracttypeverdeling belangrijk?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Contracttypeverdeling geeft aan hoe voorspelbaar jouw omzet is. Een hoger Recurring Service-aandeel betekent meer planbare inkomsten waartegen je personeel en kosten kunt afzetten. Een hoger T&amp;M-aandeel betekent dat omzet schommelt met de vraag van klanten, wat nauwkeurig budgetteren van maand tot maand bemoeilijkt.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Wat is een goed Recurring Service-percentage voor een MSP?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Branchebenchmarks geven aan dat 70% of meer van de actieve contracten Recurring Service zou moeten zijn voor een goed gestructureerd MSP-portfolio. Dit demoportfolio zit op 67,7% actieve Recurring Service-contracten, wat dicht bij dat benchmark ligt en over het algemeen als gezond wordt beschouwd.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Hoe werken Block Hours-contracten?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Klanten kopen vooraf een vast aantal uren in en werk wordt van dat blok afgeschreven naarmate tickets en taken worden afgerond. Zodra het blok op is, verlengen klanten of kopen ze extra uren. Deze structuur geeft klanten budgetcontrole, terwijl de MSP vooraf vastgelegde omzet heeft.</p>
+</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+                Kan ik deze uitsplitsing filteren op bedrijf of datumbereik?
+                <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="faq-a">
+<p>Ja. In Proxuma Power BI kun je de contracttypeverdeling filteren op bedrijf, contractperiode, datumbereik en contractstatus. Je kunt ook inzoomen op individuele bedrijfsportfolio's om te zien welke contracttypen elke klant heeft en of hun overeenkomsten actief of verlopen zijn.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 7: Gerelateerde Rapporten -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">7.0</span>
+<div>
+<div class="doc-section-title">Gerelateerde Rapporten</div>
+<div class="doc-section-sub">Andere contract- en winstgevendheidsvragen die je kunt beantwoorden met Proxuma Power BI</div>
+</div>
+</div>
+<div class="related-grid">
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/welke-contracten-zijn-verliesgevend/">
+<div class="related-card-title">Welke contracten zijn verliesgevend?</div>
+<div class="related-card-link">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/welke-klanten-zijn-eigenlijk-winstgevend/">
+<div class="related-card-title">Welke klanten zijn eigenlijk winstgevend?</div>
+<div class="related-card-link">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/hoeveel-contracten-hebben-tariefconflicten/">
+<div class="related-card-title">Hoeveel contracten hebben tariefconflicten?</div>
+<div class="related-card-link">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/welke-contracten-verlopen-binnenkort/">
+<div class="related-card-title">Welke contracten verlopen binnenkort?</div>
+<div class="related-card-link">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/billable-percentage-per-technician/">
+<div class="related-card-title">Wat is het factureerbare percentage per technicus?</div>
+<div class="related-card-link">Bekijk rapport →</div>
+</a>
+<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/welke-contracten-zijn-het-meest-en-minst-winstgevend/">
+<div class="related-card-title">Welke contracten zijn het meest en minst winstgevend?</div>
+<div class="related-card-link">Bekijk rapport →</div>
+</a>
+</div>
+</div>
+</div><!-- end doc-body -->
+<!-- Doc Footer -->
+<div class="doc-footer">
+<span>Proxuma Power BI · Contractanalyse · Maart 2026</span>
+<span>Gegenereerd door AI via MCP-server · Demodata</span>
+</div>
+</div><!-- end doc -->
+</div><!-- end report-frame-outer -->
+<!-- CTA Block --><!-- end prx-report -->
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://proxuma.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Power BI",
+      "item": "https://proxuma.io/nl-powerbi/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI-gegenereerde Rapporten",
+      "item": "/nl-powerbi/ai-gegenereerde-rapporten/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Contractportfolio: Managed Service, T&M en Blokeenheden in Beeld",
+      "item": "/nl-powerbi/ai-gegenereerde-rapporten/wat-is-de-verdeling-van-contracttypen/"
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  var bar = document.getElementById('prx-morph-bar');
+  var frame = document.getElementById('prx-frame-top');
+  if(!bar) return;
+  function update(){
+    var show = frame ? window.scrollY > (frame.offsetTop - 80) : window.scrollY > 300;
+    bar.classList.toggle('visible', show);
+    bar.classList.toggle('active', show);
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+  function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
+document.querySelectorAll('.dax-toggle').forEach(function(t){
+    t.addEventListener('click', function(){ t.classList.toggle('expanded'); });
+  });
+  document.querySelectorAll('.faq-item').forEach(function(f){
+    f.addEventListener('click', function(){ f.classList.toggle('open'); });
+  });
+})();
+
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is een Recurring Service-contract in Autotask?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recurring Service-contracten zijn vaste-prijs-overeenkomsten die op terugkerende basis worden gefactureerd, doorgaans maandelijks. Dit zijn de basis van managed services-omzet. Klanten betalen een vast bedrag per periode voor een gedefinieerde scope aan diensten, ongeacht hoeveel uren er daadwerkelijk worden gebruikt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Waarom is contracttypeverdeling belangrijk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contracttypeverdeling geeft aan hoe voorspelbaar jouw omzet is. Een hoger Recurring Service-aandeel betekent meer planbare inkomsten waartegen je personeel en kosten kunt afzetten. Een hoger T&M-aandeel betekent dat omzet schommelt met de vraag van klanten, wat nauwkeurig budgetteren van maand tot maand bemoeilijkt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is een goed Recurring Service-percentage voor een MSP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Branchebenchmarks geven aan dat 70% of meer van de actieve contracten Recurring Service zou moeten zijn voor een goed gestructureerd MSP-portfolio. Dit demoportfolio zit op 67,7% actieve Recurring Service-contracten, wat dicht bij dat benchmark ligt en over het algemeen als gezond wordt beschouwd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe werken Block Hours-contracten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Klanten kopen vooraf een vast aantal uren in en werk wordt van dat blok afgeschreven naarmate tickets en taken worden afgerond. Zodra het blok op is, verlengen klanten of kopen ze extra uren. Deze structuur geeft klanten budgetcontrole, terwijl de MSP vooraf vastgelegde omzet heeft."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik deze uitsplitsing filteren op bedrijf of datumbereik?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. In Proxuma Power BI kun je de contracttypeverdeling filteren op bedrijf, contractperiode, datumbereik en contractstatus. Je kunt ook inzoomen op individuele bedrijfsportfolio's om te zien welke contracttypen elke klant heeft en of hun overeenkomsten actief of verlopen zijn."
+      }
+    }
+  ]
+}
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Gerelateerde Rapporten</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/nl-contract-tarief-afwijkingen/">
+<span class="rr-badge" style="background:#e0f2fe;color:#0369a1;">Contracten</span>
+<div class="rr-card-title">Contract Tarief Afwijkingen: Waar Gefactureerde Tarieven Afwijken van Contracttarieven</div>
+<div class="rr-card-desc">Een volledige vergelijking van standaard roltarieven versus contractspecifieke overschrijvingen. Gegenereerd door AI via</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contract-tarief-afwijkingen/">
+<span class="rr-badge" style="background:#e0f2fe;color:#0369a1;">Contracten</span>
+<div class="rr-card-title">Contract Tarief Afwijkingen</div>
+<div class="rr-card-desc">We hebben de cijfers over contract tarief afwijkingen uit je Power BI-data getrokken. Dit valt op, hier zitten de gaten,</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/verlenging-risico-radar/">
+<span class="rr-badge" style="background:#e0f2fe;color:#0369a1;">Contracten</span>
+<div class="rr-card-title">Verlengingsrisico Radar: Aflopende Contracten met Dalende SLA en Stijgende Tickets</div>
+<div class="rr-card-desc">Dit rapport kruist HubSpot deal pipeline data (115 deals in het portfolio) met Autotask PSA ticket metrics (67.521 ticke</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contract-benutting-vs-waarde/">
+<span class="rr-badge" style="background:#e0f2fe;color:#0369a1;">Contracten</span>
+<div class="rr-card-title">Autotask Contract Utilizatie vs Waarde</div>
+<div class="rr-card-desc">We hebben de cijfers over autotask contract utilizatie vs waarde uit je Power BI-data getrokken. Dit valt op, hier zitte</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/contracten-binnenkort-verlopend/">
+<span class="rr-badge" style="background:#e0f2fe;color:#0369a1;">Contracten</span>
+<div class="rr-card-title">Contracten Binnenkort Verlopend</div>
+<div class="rr-card-desc">We hebben de cijfers over contracten binnenkort verlopend uit je Power BI-data getrokken. Dit valt op, hier zitten de ga</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/klant-winstgevendheid-welke-klanten-kosten-geld/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
+<div class="rr-card-title">Klantwinstgevendheid: Welke Klanten Kosten je Geld?</div>
+<div class="rr-card-desc">Een complete uitsplitsing van omzet, kosten en winst per klant uit Autotask PSA billing data. Dit rapport identificeert </div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Genereer rapporten als deze vanuit je eigen data</h3>
+<p>Koppel Proxuma's Power BI integratie, gebruik een MCP-compatible AI om vragen te stellen en genereer op maat gemaakte rapporten - in minuten, niet in dagen.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten/" style="margin-right:12px;">Bekijk meer rapporten</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Aan de slag</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Contractportfolio: Overzicht per Contracttype",
+  "description": "Gegenereerd door AI via de Proxuma Power BI MCP-server. Verdeling van 1.889 Autotask-contracten per contracttype, met uitsplitsing van actief versus inactief.",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/wat-is-de-verdeling-van-contracttypen/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "Contract Management"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
+    {"@type": "ListItem", "position": 3, "name": "Contracten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=contract"},
+    {"@type": "ListItem", "position": 4, "name": "Contractportfolio: Overzicht per Contracttype"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://proxuma.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Power BI",
+      "item": "https://proxuma.io/nl-powerbi/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI-gegenereerde Rapporten",
+      "item": "/nl-powerbi/ai-gegenereerde-rapporten/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Contractportfolio: Managed Service, T&M en Blokeenheden in Beeld",
+      "item": "/nl-powerbi/ai-gegenereerde-rapporten/wat-is-de-verdeling-van-contracttypen/"
+    }
+  ]
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+</body>
+</html>

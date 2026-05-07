@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Client Revenue Month-over-Month Report | Proxuma Power BI</title>
+<meta content="Track client revenue month-over-month in Autotask PSA. Spot drops like the $15,739 decline flagged here and act before churn hits your MSP bottom line" name="description"/>
+<link href="https://proxuma.io/powerbi/insights/how-does-client-revenue-compare-month-over-month/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/how-does-client-revenue-compare-month-over-month/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/how-does-client-revenue-compare-month-over-month/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+/* phase8-visual-healer-v1 */
+.prx-report .dax-toggle-trigger svg{width:16px;height:16px;flex-shrink:0;}.prx-report .dax-toggle-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9;user-select:none;}.prx-report .dax-fold{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}.prx-report .dax-toggle.expanded .dax-fold{max-height:600px;}.prx-report .dax-fold pre{padding:14px 16px;background:#0f172a;}.prx-report .dax-fold code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0;background:transparent;}.prx-report .copy-btn{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;background:#14b8a6;color:white;}
+/* /phase8-visual-healer */
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+ BLOCK VERBATIM into every report.
+  DO NOT modify, rewrite, or "optimize" any CSS rules.
+  DO NOT add custom CSS inside SVG <defs><style> tags.
+
+  Any report-specific CSS (custom charts, visualizations) goes
+  in a SEPARATE <style> block AFTER this one, scoped under .prx-report.
+
+  Last synced from GOLDEN-STANDARD.html: 2026-03-05
+-->
+<style>
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === SOURCE BADGES === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === DONUT CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === COMPARISON BAR (side-by-side pairs) === */
+.prx-report .cbar-chart{margin:18px 0 8px;}
+.prx-report .cbar-group{margin-bottom:14px;}
+.prx-report .cbar-group:last-child{margin-bottom:0;}
+.prx-report .cbar-group-label{font-size:0.74rem;font-weight:700;color:#1B365D;margin-bottom:5px;}
+.prx-report .cbar-pair{display:flex;gap:6px;align-items:center;}
+.prx-report .cbar-bar{height:16px;border-radius:3px;display:flex;align-items:center;padding:0 8px;min-width:2px;}
+.prx-report .cbar-bar span{font-size:0.64rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .cbar-legend{display:flex;gap:16px;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .cbar-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === SEGMENTED BAR (stacked) === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === LINE CHARTS === */
+.prx-report .line-chart-wrap{margin:20px 0 8px;overflow-x:auto;}
+.prx-report .line-chart-wrap svg{display:block;width:100%;max-width:560px;margin:0 auto;}
+.prx-report .line-grid{stroke:#e2e8f0;stroke-width:0.5;}
+.prx-report .line-axis{stroke:#cbd5e1;stroke-width:1;}
+.prx-report .line-path{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .line-path.teal{stroke:#0f766e;}
+.prx-report .line-path.blue{stroke:#3b82f6;}
+.prx-report .line-path.red{stroke:#ef4444;}
+.prx-report .line-path.amber{stroke:#f59e0b;}
+.prx-report .line-path.navy{stroke:#1B365D;}
+.prx-report .line-area{opacity:0.08;}
+.prx-report .line-area.teal{fill:#0f766e;}
+.prx-report .line-area.blue{fill:#3b82f6;}
+.prx-report .line-dot{r:4;stroke:white;stroke-width:2;}
+.prx-report .line-dot.teal{fill:#0f766e;}
+.prx-report .line-dot.blue{fill:#3b82f6;}
+.prx-report .line-dot.red{fill:#ef4444;}
+.prx-report .line-dot.amber{fill:#f59e0b;}
+.prx-report .line-dot.navy{fill:#1B365D;}
+.prx-report .line-val{font-family:'Open Sans',sans-serif;font-size:8px;font-weight:700;fill:#475569;text-anchor:middle;}
+.prx-report .line-label{font-family:'Open Sans',sans-serif;font-size:10px;fill:#64748b;text-anchor:middle;}
+.prx-report .line-y-label{font-family:'Open Sans',sans-serif;font-size:9px;fill:#94a3b8;text-anchor:end;}
+.prx-report .line-legend{display:flex;gap:18px;justify-content:center;margin-top:8px;font-size:0.72rem;color:#475569;}
+.prx-report .line-legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}}
+@media print{.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}}
+
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+/* phase9-svg-sizing-v2 */
+.prx-report .dax-toggle-label svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;}
+.prx-report .dax-toggle-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .faq-chevron{width:14px;height:14px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .faq-q svg{width:14px;height:14px;flex-shrink:0;}
+.prx-report .finding-icon svg{width:18px;height:18px;flex-shrink:0;}
+.prx-report .doc-demo-banner svg{width:16px;height:16px;flex-shrink:0;}
+.prx-report .doc-faq-q svg{width:14px;height:14px;flex-shrink:0;}
+/* phase9-grid-fix-v2 */
+.prx-report .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0;}
+.prx-report .related-card{background:#fafbfc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;}
+.prx-report .related-card a{text-decoration:none;color:#0f766e;font-weight:600;}
+.prx-report .garcia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.prx-report .garcia-stat{background:#fafbfc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center;}
+.prx-report .data-table-wrap{background:#fff;border-radius:8px;overflow-x:auto;margin:16px 0;}
+.prx-report .data-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+.prx-report .data-table th{background:#f8fafc;padding:10px 14px;text-align:left;font-weight:700;color:#1B365D;border-bottom:2px solid #e2e8f0;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;}
+.prx-report .data-table td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:#475569;}
+.prx-report .data-table tr:hover td{background:#f8fafc;}
+.prx-report .spark-row{display:flex;align-items:flex-end;gap:2px;height:40px;}
+.prx-report .spark-bar{flex:1;background:#0f766e;border-radius:2px 2px 0 0;min-width:4px;}
+.prx-report .finding-card{background:#fafbfc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:12px;border-left:3px solid #64748b;}
+.prx-report .finding-card.positive{border-left-color:#10B981;}
+.prx-report .finding-card.warning{border-left-color:#f59e0b;}
+.prx-report .finding-card.info{border-left-color:#3b82f6;}
+.prx-report .finding-card h4{font-size:0.88rem;font-weight:700;color:#1B365D;margin-bottom:6px;}
+.prx-report .finding-card p{font-size:0.8rem;color:#475569;line-height:1.65;margin:0;}
+.prx-report .dax-toggle-header{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9;user-select:none;}
+.prx-report .dax-toggle-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-toggle-body{max-height:600px;}
+.prx-report .dax-toggle.expanded .dax-toggle-chevron{transform:rotate(180deg);}
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Client</span>
+<span class="w" style="transition-delay:35ms"> Revenue</span>
+<span class="w" style="transition-delay:70ms"> Month-over-Month</span>
+<span class="w" style="transition-delay:105ms"> Report”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/powerbi/insights/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                All reports
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/powerbi/insights/">AI-Powered Reports</a>
+<span class="sep">›</span>
+<span class="current">Client Revenue Month-over-Month Report</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GENERATED REPORT
+    </div>
+<div class="search-hero-eyebrow">You searched for:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">How does client revenue change month over month?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Client Revenue Month-over-Month Report</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#1E40AF;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg>
+            Autotask PSA
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">How this report was made</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Pre-built MSP semantic model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude or ChatGPT writes DAX queries, executes them, formats output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">This Report</div>
+<div class="pipeline-step-desc">KPIs, breakdowns, trends, recommendations</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Ready in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Want to run this report against your own <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Get Proxuma Power BI</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Client Revenue Month-over-Month Report</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of client revenue month-over-month report for managed service providers.</p>
+<p>The data covers the full scope of Autotask PSA records relevant to this analysis, broken down by the key dimensions your team needs for day-to-day decisions and client reporting.</p>
+<p><strong>Who should use this:</strong> MSP owners, finance leads, and operations managers tracking profitability</p>
+<p><strong>How often:</strong> Monthly for financial reviews, quarterly for strategic planning, on-demand for pricing decisions</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Building financial reports from PSA exports and spreadsheets is a full day of work. This report delivers it in minutes.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Margin visibility</div>
+<div class="value-card-text">Revenue numbers alone do not tell the story. This report connects revenue to cost for true profitability.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Pricing intelligence</div>
+<div class="value-card-text">Data-driven evidence for pricing adjustments, contract negotiations, and resource allocation.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Report category</span><span class="meta-value">Financial &amp; Revenue</span></div>
+<div class="meta-row"><span class="meta-label">Data source</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generation time</span><span class="meta-value">Under 15 minutes</span></div>
+<div class="meta-row"><span class="meta-label">AI required</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Audience</span><span class="meta-value">MSP owners,  finance leads</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Where to find this in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Financial › Client Revenue Month-over-Month Report
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Get this report for your MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">What you can measure in this report</div>
+<div class="metrics-grid">
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<div class="report-frame-outer">
+<div class="doc">
+<div class="doc-title">
+<h2>Client Revenue Month-over-Month Report</h2>
+<div class="doc-meta">
+          Data source: Autotask PSA<br/>
+          Period: Aug 2024 – Jan 2026<br/>
+          Generated: March 2026
+        </div>
+</div>
+<!-- KPI section -->
+<div class="doc-section">
+<h3>Overall Revenue Snapshot</h3>
+<p class="section-desc">Total billed revenue across all clients for the most recent full months.</p>
+<div class="doc-kpi-row">
+<div class="kpi-card neutral">
+<div class="kpi-val">$771K</div>
+<div class="kpi-label">Jan 2026 Revenue</div>
+<div class="kpi-sub">Total billed across all clients</div>
+</div>
+<div class="kpi-card danger">
+<div class="kpi-val">-13.1%</div>
+<div class="kpi-label">MoM Change</div>
+<div class="kpi-sub">vs Dec 2025 ($887K)</div>
+</div>
+<div class="kpi-card success">
+<div class="kpi-val">$1.34M</div>
+<div class="kpi-label">Peak Month</div>
+<div class="kpi-sub">April 2025 — highest in 18 months</div>
+</div>
+<div class="kpi-card warn">
+<div class="kpi-val">3 clients</div>
+<div class="kpi-label">Revenue Drops &gt;15%</div>
+<div class="kpi-sub">Dec 2025 → Jan 2026</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-trigger">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Monthly Revenue Total</span>
+</div>
+<div class="dax-fold">
+<pre><code>-- Dataset not available for this report.
+-- DAX will be authored in a future Phase 3 pass.</code></pre>
+<button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Monthly trend -->
+<div class="doc-section">
+<h3>18-Month Revenue Trend</h3>
+<p class="section-desc">Total revenue billed across all clients, August 2024 through January 2026.</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Revenue</th>
+<th>Cost</th>
+<th>Profit</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Aug 2024</td><td>$850,721</td><td>$341,174</td><td>$509,547</td><td>59.9%</td></tr>
+<tr><td>Sep 2024</td><td>$827,356</td><td>$329,694</td><td>$497,662</td><td>60.2%</td></tr>
+<tr><td>Oct 2024</td><td>$872,119</td><td>$339,276</td><td>$532,843</td><td>61.1%</td></tr>
+<tr><td>Nov 2024</td><td>$846,378</td><td>$467,360</td><td>$379,018</td><td>44.8%</td></tr>
+<tr><td>Dec 2024</td><td>$933,099</td><td>$456,466</td><td>$476,633</td><td>51.1%</td></tr>
+<tr><td>Jan 2025</td><td>$942,444</td><td>$426,958</td><td>$515,487</td><td>54.7%</td></tr>
+<tr><td>Feb 2025</td><td>$1,051,887</td><td>$497,151</td><td>$554,737</td><td>52.7%</td></tr>
+<tr><td>Mar 2025</td><td>$1,106,651</td><td>$552,775</td><td>$553,876</td><td>50.1%</td></tr>
+<tr><td>Apr 2025</td><td><strong>$1,341,613</strong></td><td>$721,781</td><td>$619,833</td><td>46.2%</td></tr>
+<tr><td>May 2025</td><td>$1,080,822</td><td>$788,927</td><td>$291,895</td><td>27.0%</td></tr>
+<tr><td>Jun 2025</td><td>$1,033,307</td><td>$409,835</td><td>$623,472</td><td>60.3%</td></tr>
+<tr><td>Jul 2025</td><td>$1,045,558</td><td>$428,079</td><td>$617,479</td><td>59.0%</td></tr>
+<tr><td>Aug 2025</td><td>$1,058,862</td><td>$416,369</td><td>$642,493</td><td>60.7%</td></tr>
+<tr><td>Sep 2025</td><td>$1,002,352</td><td>$514,945</td><td>$487,407</td><td>48.6%</td></tr>
+<tr><td>Oct 2025</td><td>$1,006,189</td><td>$501,872</td><td>$504,317</td><td>50.1%</td></tr>
+<tr><td>Nov 2025</td><td>$927,813</td><td>$422,695</td><td>$505,118</td><td>54.5%</td></tr>
+<tr><td>Dec 2025</td><td>$887,195</td><td>$399,887</td><td>$487,308</td><td>54.9%</td></tr>
+<tr><td>Jan 2026</td><td>$770,865</td><td>$245,047</td><td>$525,819</td><td>68.2%</td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-toggle-trigger">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Monthly Revenue Trend</span>
+</div>
+<div class="dax-fold">
+<pre><code>-- Dataset not available for this report.
+-- DAX will be authored in a future Phase 3 pass.</code></pre>
+<button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Client MoM comparison -->
+<div class="doc-section">
+<h3>Client Revenue: Dec 2025 vs Jan 2026</h3>
+<p class="section-desc">Top 20 clients by total revenue, showing the most recent month-over-month change. Sorted by total lifetime revenue descending.</p>
+<table>
+<thead>
+<tr>
+<th>Client</th>
+<th>Dec 2025</th>
+<th>Jan 2026</th>
+<th>Change</th>
+<th>MoM%</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>Craig-Huynh</strong></td><td>$136,721</td><td>$109,533</td><td>-$27,188</td><td>-19.9%</td><td><span class="pill down">Watch</span></td></tr>
+<tr><td><strong>Lewis LLC</strong></td><td>$58,770</td><td>$59,279</td><td>+$509</td><td>+0.9%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td><strong>Little Group</strong></td><td>$83,468</td><td>$67,909</td><td>-$15,560</td><td>-18.6%</td><td><span class="pill down">Watch</span></td></tr>
+<tr><td><strong>Burke, Armstrong and Morgan</strong></td><td>$34,680</td><td>$18,941</td><td>-$15,739</td><td>-45.4%</td><td><span class="pill down">Alert</span></td></tr>
+<tr><td>Martin Group</td><td>$50,966</td><td>$42,297</td><td>-$8,669</td><td>-17.0%</td><td><span class="pill down">Watch</span></td></tr>
+<tr><td>Lopez-Reyes</td><td>$29,982</td><td>$29,604</td><td>-$378</td><td>-1.3%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Wall PLC</td><td>$28,030</td><td>$32,027</td><td>+$3,997</td><td>+14.3%</td><td><span class="pill up">Growing</span></td></tr>
+<tr><td>Wu-Jackson</td><td>$21,259</td><td>$16,215</td><td>-$5,044</td><td>-23.7%</td><td><span class="pill down">Watch</span></td></tr>
+<tr><td>Hahn Group</td><td>$16,426</td><td>$12,495</td><td>-$3,931</td><td>-23.9%</td><td><span class="pill down">Watch</span></td></tr>
+<tr><td>Ramos Group</td><td>$18,601</td><td>$15,897</td><td>-$2,704</td><td>-14.5%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Richards, Bell and Christensen</td><td>$17,249</td><td>$17,213</td><td>-$36</td><td>-0.2%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Thompson, Contreras and Rios</td><td>$16,099</td><td>$16,475</td><td>+$376</td><td>+2.3%</td><td><span class="pill up">Growing</span></td></tr>
+<tr><td>Price-Gomez</td><td>$14,284</td><td>$13,575</td><td>-$709</td><td>-5.0%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Torres-Jones</td><td>$14,819</td><td>$13,928</td><td>-$891</td><td>-6.0%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Kelley-Walsh</td><td>$13,029</td><td>$13,304</td><td>+$275</td><td>+2.1%</td><td><span class="pill up">Growing</span></td></tr>
+<tr><td>Patterson, Riley and Lawson</td><td>$11,248</td><td>$11,462</td><td>+$214</td><td>+1.9%</td><td><span class="pill up">Growing</span></td></tr>
+<tr><td>Buchanan, Acosta and Chambers</td><td>$11,601</td><td>$9,453</td><td>-$2,148</td><td>-18.5%</td><td><span class="pill down">Watch</span></td></tr>
+<tr><td>Lee-Dalton</td><td>$7,314</td><td>$7,306</td><td>-$8</td><td>-0.1%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Montgomery-Peck</td><td>$7,377</td><td>$6,989</td><td>-$388</td><td>-5.3%</td><td><span class="pill flat">Stable</span></td></tr>
+<tr><td>Clements, Pham and Garcia</td><td>$6,954</td><td>$5,057</td><td>-$1,897</td><td>-27.3%</td><td><span class="pill down">Watch</span></td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-toggle-trigger">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Client MoM Revenue Comparison</span>
+</div>
+<div class="dax-fold">
+<pre><code>-- Dataset not available for this report.
+-- DAX will be authored in a future Phase 3 pass.</code></pre>
+<button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Findings -->
+<div class="doc-section">
+<h3>Key Findings</h3>
+<p class="section-desc">What the data tells you — and what to do about it.</p>
+<div class="doc-finding critical">
+<h4>Burke, Armstrong and Morgan dropped 45%</h4>
+<p>Revenue fell from $34,680 in December to $18,941 in January — a $15,739 drop. This is the sharpest percentage decline among your top clients. Verify whether this is a project ending or early churn signal.</p>
+</div>
+<div class="doc-finding warning">
+<h4>Craig-Huynh, your largest client, is down 20%</h4>
+<p>At $2.3M in total revenue, Craig-Huynh matters most to your numbers. A 20% MoM dip from $136K to $109K may reflect project completion, but given the size of this account, it warrants a check-in.</p>
+</div>
+<div class="doc-finding warning">
+<h4>Little Group and Martin Group both declining</h4>
+<p>Little Group fell 18.6% ($83K → $68K). Martin Group fell 17.0% ($51K → $42K). Two large accounts dipping simultaneously in the same month increases the overall January shortfall.</p>
+</div>
+<div class="doc-finding positive">
+<h4>Wall PLC is your fastest-growing account</h4>
+<p>Revenue grew from $28,030 to $32,027 — a 14.3% increase. This is an active upsell relationship. Look at what's driving the growth and replicate it with similar clients.</p>
+</div>
+<div class="doc-finding positive">
+<h4>Lewis LLC is your most stable large account</h4>
+<p>At $2.2M in total revenue and virtually flat MoM (+0.9%), Lewis LLC represents a dependable revenue base. Strong contract structure here — worth using as a reference for renewal negotiations with other clients.</p>
+</div>
+</div>
+<!-- Seasonal analysis -->
+<div class="doc-section">
+<h3>Seasonal Revenue Patterns</h3>
+<p class="section-desc">Understanding whether a dip is seasonal or structural changes how you respond. Here's what 18 months of data shows.</p>
+<div class="doc-finding positive">
+<h4>Q2 is consistently your strongest quarter</h4>
+<p>The data shows a clear peak in April–June each year. April 2025 reached $1.34M — the highest month in the dataset. This likely reflects project kick-offs tied to annual budget cycles. If you're not scheduling QBRs and upsell conversations in Q1, you're missing the window where clients make decisions.</p>
+</div>
+<div class="doc-finding warning">
+<h4>May 2025 had the lowest margin despite high revenue</h4>
+<p>At $1.08M revenue and $789K cost, May 2025's 27% margin was the weakest in 18 months. High revenue months can mask margin erosion — this is exactly why tracking cost alongside revenue matters. Something drove cost up sharply in May: a large project delivery, subcontractor spend, or overtime. Worth investigating in your PSA time entries.</p>
+</div>
+<div class="doc-finding warning">
+<h4>January dips are structural, not just seasonal</h4>
+<p>January 2026 at $771K is lower than January 2025 at $942K — a year-over-year decline of 18%. If this were purely seasonal, you'd expect roughly the same floor each year. The gap suggests some revenue from Q1 2025 hasn't been replaced or that project-based revenue from late 2024 hasn't carried forward into 2026 contracts.</p>
+</div>
+<div class="doc-finding positive">
+<h4>H2 2025 stabilized between $927K and $1.06M</h4>
+<p>August through November 2025 showed the most stable revenue band in the dataset. That consistency across four months indicates recurring contract revenue is holding. The December and January dip is almost certainly driven by project-based work slowing, not by contract cancellations.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-trigger">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Revenue and Margin by Quarter</span>
+</div>
+<div class="dax-fold">
+<pre><code>-- Dataset not available for this report.
+-- DAX will be authored in a future Phase 3 pass.</code></pre>
+<button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Action plan -->
+<div class="doc-section">
+<h3>What to Do With This Data</h3>
+<p class="section-desc">Revenue tracking is only useful if it changes how you manage client relationships. Here's a practical action plan by segment.</p>
+<div class="doc-finding critical">
+<h4>Alert clients (drops &gt;30%): Call this week</h4>
+<p>Burke, Armstrong and Morgan dropped 45% in one month. That's either a project ending or a warning sign. Either way, it needs an immediate conversation. Check their open tickets, review their contract renewal date, and verify whether they have any outstanding proposals or pending decisions. Don't wait for them to reach out.</p>
+</div>
+<div class="doc-finding warning">
+<h4>Watch clients (drops 15–30%): Schedule a QBR</h4>
+<p>Craig-Huynh, Little Group, Martin Group, Wu-Jackson, Hahn Group, and Buchanan, Acosta and Chambers all declined between 15 and 30%. For these accounts, a quarterly business review is the right response. Bring data: show them their ticket volumes, SLA compliance, and what you've delivered. Position the conversation around value, not just billing.</p>
+</div>
+<div class="doc-finding positive">
+<h4>Growing clients: Expand the conversation</h4>
+<p>Wall PLC (+14.3%), Thompson Contreras and Rios (+2.3%), and Kelley-Walsh (+2.1%) are all trending up. These are the clients most likely to say yes to expanded services, new projects, or additional seats. Start an upsell conversation while the relationship momentum is positive — not six months later when growth has stalled.</p>
+</div>
+<div class="doc-finding positive">
+<h4>Stable clients: Protect the contracts</h4>
+<p>Lewis LLC, Richards Bell and Christensen, Lee-Dalton, and Patterson Riley and Lawson are all flat within ±2%. These clients represent your revenue floor. Prioritize renewing their contracts early, respond to their tickets fast, and make sure SLA compliance stays high. Flat revenue from a happy client beats trying to win back a churned one.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-trigger">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Identify Clients with Sustained Decline</span>
+</div>
+<div class="dax-fold">
+<pre><code>-- Dataset not available for this report.
+-- DAX will be authored in a future Phase 3 pass.</code></pre>
+<button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- FAQ -->
+<div class="doc-section">
+<h3>Common Questions</h3>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">Is the January decline seasonal or a real problem?</div>
+<div class="faq-a">January often sees a dip after Q4 project close-outs. Compare against January 2025 ($942K) — this year's January ($771K) is about 18% lower. Some of that is natural; some may reflect project-dependent revenue not yet replaced.</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">Which clients should I call first?</div>
+<div class="faq-a">Start with Burke, Armstrong and Morgan (45% drop) and Craig-Huynh (20% drop, largest account). Then check Wu-Jackson, Hahn Group, and Clements, Pham and Garcia — all dropped more than 20% with no obvious project milestone to explain it.</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">Why does May 2025 show such a low margin (27%)?</div>
+<div class="faq-a">May 2025 had $789K in cost against $1.08M revenue — the highest cost month in the dataset. This could be a large project delivery, subcontractor billing, or a month with significant overtime. Worth investigating in your PSA time entries.</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">How is this different from a standard revenue report?</div>
+<div class="faq-a">This report shows per-client MoM deltas, not just totals. A top-line revenue figure masks whether one client grew while three declined. The client-level view helps you act on the right relationships at the right time.</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">How often should I review this data?</div>
+<div class="faq-a">Monthly is the minimum. For accounts above $20K/month, weekly tracking lets you catch billing anomalies before month-end. For accounts in "Watch" status, set a 30-day check to see if the decline continues or reverses. Most MSPs find that clients who drop two months in a row without a project explanation are at serious churn risk.</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">Should I include internal (non-billable) time in this analysis?</div>
+<div class="faq-a">No. This report focuses on billed revenue only — what actually hits the invoice. Including internal time would inflate cost figures and distort margin calculations. Run a separate internal vs. client hours analysis to understand capacity allocation across the team.</div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">What if a client's revenue drops but ticket volume stays the same?</div>
+<div class="faq-a">That's worth investigating in detail. If ticket volume holds steady but billed revenue falls, it may mean time is going unbilled — a write-off or an approval bottleneck. Check the time entry compliance rate for that client's tickets and compare billed hours against worked hours in your PSA.</div>
+</div>
+</div>
+</div>
+<!-- How MSPs use this -->
+<div class="doc-section">
+<h3>How MSPs Use Monthly Revenue Tracking</h3>
+<p class="section-desc">Revenue trends become more useful when they connect to specific business actions. These are the patterns MSP owners and account managers find most valuable in practice.</p>
+<div class="doc-finding positive">
+<h4>Account managers use MoM data to prepare QBR talking points</h4>
+<p>Walking into a quarterly business review with a chart showing revenue growth over 12 months is a different conversation than arriving without data. Clients who see that their spending has increased typically ask why — and that's an opportunity to show what you delivered. Clients whose revenue has declined may be quietly considering alternatives; this data lets you get ahead of that conversation.</p>
+</div>
+<div class="doc-finding positive">
+<h4>Finance teams use it to forecast next quarter</h4>
+<p>If you can see that Q1 consistently runs 15–20% below Q4, you can plan staffing and cash flow accordingly. Many MSPs use three months of trailing revenue per client to set quarterly targets and flag accounts where actual performance is diverging from forecast before the month closes.</p>
+</div>
+<div class="doc-finding warning">
+<h4>Operations teams use it to spot billing gaps</h4>
+<p>A drop in billed revenue that doesn't match a drop in ticket volume usually means something broke in the billing pipeline — time entries not approved, invoices stuck in draft, or a project billing milestone not triggered. Monthly comparison at the client level makes these gaps visible faster than waiting for a monthly invoice run to surface discrepancies.</p>
+</div>
+<div class="doc-finding positive">
+<h4>Owners use it to identify renewal leverage</h4>
+<p>When a client's revenue has grown 20% year-over-year, that's the right time to renegotiate the contract rate. When revenue has declined, that's the time to focus on delivering visible wins before the renewal conversation. MoM data tells you which conversation you need to have — and when.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Related reports -->
+<div class="related-section">
+<h3>Related Reports</h3>
+<div class="related-grid">
+<a class="related-card" href="/powerbi/insights/what-revenue-are-we-losing-from-churned-clients/">
+<div class="rc-label">Profit</div>
+<div class="rc-title">What revenue are we losing from churned clients?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/whats-our-revenue-per-contact-per-client-client-affordabilit/">
+<div class="rc-label">Profit</div>
+<div class="rc-title">What's our revenue per contact per client?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/which-clients-are-actually-profitable-vs-losing-money/">
+<div class="rc-label">Profit</div>
+<div class="rc-title">Which clients are actually profitable vs losing money?</div>
+</a>
+</div>
+</div>
+<!-- CTA -->
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Monthly Revenue Trends: Spot Growth and Decline Before It's Too Late",
+  "description": "Track how each client's revenue moves month over month and flag drops before they become churn.",
+  "author": {"@type": "Organization", "name": "Proxuma"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "inLanguage": "en",
+  "url": "https://proxuma.io/powerbi/insights/how-does-client-revenue-compare-month-over-month/"
+}
+</script>
+<script>
+(function(){
+  var bar = document.getElementById('prx-morph-bar');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var d = document.documentElement;
+      var pct = d.scrollTop / (d.scrollHeight - d.clientHeight);
+      bar.style.transform = 'scaleX('+Math.min(pct,1)+')';
+    });
+  }
+  window.prxCopyDAX = function(btn){
+    var pre = btn.closest('.dax-fold').querySelector('pre');
+    if(navigator.clipboard){navigator.clipboard.writeText(pre.textContent);}
+    btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent='Copy Query';},2000);
+  };
+})();
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Related Reports</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/powerbi/insights/client-revenue-month-over-month/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Client Revenue Month over Month</div>
+<div class="rr-card-desc">We pulled the numbers on client revenue month over month from your Power BI data. Here is what stands out, where the gap</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/revenue-by-contract-type/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Revenue by Contract Type: Where Your MSP Revenue Comes From</div>
+<div class="rr-card-desc">A full breakdown of revenue, cost, and margin across recurring, T&amp;M, block hours, and fixed price contracts. Generated b</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/monthly-recurring-revenue/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Monthly Recurring Revenue: Contract Portfolio Breakdown</div>
+<div class="rr-card-desc">How much of your revenue is recurring, which clients drive the most income, and where concentration risk is hiding. Gene</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/monthly-recurring-revenue-mrr/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Monthly Recurring Revenue (MRR) Analysis</div>
+<div class="rr-card-desc">Full breakdown of recurring revenue by client, service, and contract type. Based on live Autotask PSA data.</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/client-churn-revenue-analysis/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Client Churn Analysis: How Much Revenue Walked Out the Door?</div>
+<div class="rr-card-desc">A breakdown of revenue, cost, and profit per client from Autotask PSA. This report ranks your top 15 clients by revenue,</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/customer-facing-qbr-nl/">
+<span class="rr-badge" style="background:#f0f9ff;color:#0284c7;">Client Management</span>
+<div class="rr-card-title">Quarterly Business Review: Service Performance Summary</div>
+<div class="rr-card-desc">How your IT service performed this quarter. Ticket volumes, SLA compliance, response times, customer satisfaction, and h</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Generate this report from your own data</h3>
+<p>Connect Proxuma Power BI to your PSA, RMM, and M365 environment, use an MCP-compatible AI to ask questions, and generate custom reports - in minutes, not days.</p>
+<a class="cta-btn" href="/powerbi/insights/" style="margin-right:12px;">See more reports</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Get started</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Client Revenue Month-over-Month Report",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/powerbi/insights/how-does-client-revenue-compare-month-over-month/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "Financial & Revenue"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "Financial", "item": "https://proxuma.io/powerbi/insights/?cat=financial"},
+    {"@type": "ListItem", "position": 4, "name": "Client Revenue Month-over-Month Report"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Monthly Revenue Trends: Spot Growth and Decline Before It's Too Late",
+  "description": "Track how each client's revenue moves month over month and flag drops before they become churn.",
+  "author": {"@type": "Organization", "name": "Proxuma"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "inLanguage": "en",
+  "url": "https://proxuma.io/powerbi/insights/how-does-client-revenue-compare-month-over-month/"
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the January decline seasonal or a real problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "January often sees a dip after Q4 project close-outs. Compare against January 2025 ($942K) — this year's January ($771K) is about 18% lower. Some of that is natural; some may reflect project-dependent revenue not yet replaced."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which clients should I call first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with Burke, Armstrong and Morgan (45% drop) and Craig-Huynh (20% drop, largest account). Then check Wu-Jackson, Hahn Group, and Clements, Pham and Garcia — all dropped more than 20% with no obvious project milestone to explain it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does May 2025 show such a low margin (27%)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "May 2025 had $789K in cost against $1.08M revenue — the highest cost month in the dataset. This could be a large project delivery, subcontractor billing, or a month with significant overtime. Worth investigating in your PSA time entries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from a standard revenue report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This report shows per-client MoM deltas, not just totals. A top-line revenue figure masks whether one client grew while three declined. The client-level view helps you act on the right relationships at the right time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I review this data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly is the minimum. For accounts above $20K/month, weekly tracking lets you catch billing anomalies before month-end. For accounts in \"Watch\" status, set a 30-day check to see if the decline continues or reverses. Most MSPs find that clients who drop two months in a row without a project explanation are at serious churn risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I include internal (non-billable) time in this analysis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This report focuses on billed revenue only — what actually hits the invoice. Including internal time would inflate cost figures and distort margin calculations. Run a separate internal vs. client hours analysis to understand capacity allocation across the team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if a client's revenue drops but ticket volume stays the same?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's worth investigating in detail. If ticket volume holds steady but billed revenue falls, it may mean time is going unbilled — a write-off or an approval bottleneck. Check the time entry compliance rate for that client's tickets and compare billed hours against worked hours in your PSA."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

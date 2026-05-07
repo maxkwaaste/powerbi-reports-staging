@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Power Bi Mcp Server | Proxuma Power BI</title>
+<meta content="" name="description"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/power-bi-mcp-server/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/power-bi-mcp-server/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/power-bi-mcp-server/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Power</span>
+<span class="w" style="transition-delay:35ms"> Bi</span>
+<span class="w" style="transition-delay:70ms"> Mcp</span>
+<span class="w" style="transition-delay:105ms"> Server”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                Alle rapporten
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">Power Bi Mcp Server</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GEGENEREERD RAPPORT
+    </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Hoe ziet de power bi mcp server eruit?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Power Bi Mcp Server</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#6B7280;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            Editorial
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Voorgebouwd MSP semantisch model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude of ChatGPT schrijft DAX-queries, voert ze uit en formatteert de output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">KPI's, uitsplitsingen, trends, aanbevelingen</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Klaar in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op je eigen <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Proxuma Power BI aanvragen</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Power Bi Mcp Server</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of power bi mcp server for managed service providers.</p>
+<p>De data dekt het volledige bereik van Autotask PSA-records die relevant zijn voor deze analyse, uitgesplitst naar de belangrijkste dimensies die je team nodig heeft voor dagelijkse beslissingen en klantrapportage.</p>
+<p><strong>Wie dit zou moeten gebruiken:</strong> MSP operations teams and service delivery managers</p>
+<p><strong>Hoe vaak:</strong> As needed for specific analysis or reporting requirements</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Manual data extraction and formatting takes hours. This report delivers results in minutes.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Operational clarity</div>
+<div class="value-card-text">Key metrics and breakdowns that would otherwise require custom queries.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Decision support</div>
+<div class="value-card-text">Data-driven evidence for operational decisions and process improvements.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">Other</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Minder dan 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">MSP operations teams</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar vind je dit in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Rapport › Power Bi Mcp Server
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je kunt meten in dit rapport</div>
+<div class="metrics-grid">
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<!-- Proxuma.io Page: What Is an MCP Server? -->
+<!-- Paste as Custom HTML block in WordPress -->
+<!-- URL: /powerbi/insights/what-is-mcp -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR -->
+<style>
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+</style>
+<div class="prx-mcp">
+<!-- Logo bar -->
+<div class="logo-bar">
+<svg height="32" viewbox="0 0 960.97 282.29" width="109" xmlns="http://www.w3.org/2000/svg"><defs>
+<!-- MAIN REPORT STYLES -->
+<style>
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+/* Source badges */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+/* Report-specific styles */
+.pl1{fill:#002c60}
+.pl2{fill:#00b7ff}
+/* Responsive */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+/* ── Auto-fixed chart/viz CSS ── */
+.prx-report .analogy{padding:12px 16px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;font-size:0.82rem;color:#0c4a6e;margin:12px 0;font-style:italic;}
+.prx-report .build-step{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .build-steps{margin:12px 0;}
+.prx-report .c-amber{color:#f59e0b;}
+.prx-report .c-blue{color:#164487;}
+.prx-report .c-green{color:#10B981;}
+.prx-report .c-purple{color:#8b5cf6;}
+.prx-report .c-teal{color:#0f766e;}
+.prx-report .cm{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.78rem;background:#f1f5f9;padding:2px 6px;border-radius:3px;}
+.prx-report .code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.78rem;background:#f1f5f9;padding:2px 6px;border-radius:3px;color:#1B365D;}
+.prx-report .code-header{font-size:0.72rem;font-weight:600;color:#64748b;margin-bottom:4px;}
+.prx-report .cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-size:0.82rem;font-weight:600;text-decoration:none;color:white;background:#164487;transition:background 0.2s;}
+.prx-report .cta:hover{background:#0f3672;}
+.prx-report .dep-chip{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;background:#f1f5f9;color:#475569;}
+.prx-report .dep-chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+.prx-report .dep-desc{font-size:0.82rem;color:#64748b;margin-top:4px;}
+.prx-report .flow-block{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:12px 0;}
+.prx-report .flow-lanes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:12px 0;}
+.prx-report .flow-seg-label{font-size:0.72rem;font-weight:600;color:white;text-align:center;}
+.prx-report .flow-step{display:flex;align-items:center;gap:12px;padding:8px 0;}
+.prx-report .fn{font-size:0.72rem;color:#94a3b8;font-style:italic;margin-top:8px;}
+.prx-report .kw{font-weight:600;color:#0f766e;}
+.prx-report .label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#94a3b8;}
+.prx-report .layer{padding:12px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .layer-num{font-weight:800;color:#0f766e;margin-right:8px;}
+.prx-report .lead{font-size:0.95rem;color:#334155;line-height:1.8;}
+.prx-report .never{color:#dc2626 !important;}
+.prx-report .opener{font-size:0.92rem;color:#334155;line-height:1.8;margin-bottom:14px;}
+.prx-report .outline{border:2px solid #e2e8f0;background:transparent !important;}
+.prx-report .privacy-block{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:12px 0;}
+.prx-report .prx-reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.prx-report .prx-reveal.visible{opacity:1;transform:translateY(0);}
+.prx-report .prx-reveal-stagger{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.prx-report .quick-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;}
+.prx-report .quick-primary{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:#164487;color:white;border-radius:6px;font-size:0.78rem;font-weight:600;text-decoration:none;}
+.prx-report .related-report{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;font-size:0.78rem;font-weight:600;color:#0f766e;text-decoration:none;margin:4px 4px 4px 0;}
+.prx-report .rr-arrow{color:#94a3b8;font-size:1.2rem;}
+
+.prx-report .rr-desc{font-size:0.78rem;color:#64748b;}
+.prx-report .rr-icon{width:20px;height:20px;flex-shrink:0;color:#0f766e;}
+.prx-report .rr-title{font-size:0.85rem;font-weight:600;color:#1B365D;}
+.prx-report .section-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;margin-bottom:8px;}
+.prx-report .sees{font-size:0.72rem;color:#64748b;}
+.prx-report .seg-0{background:#164487;}
+.prx-report .seg-1{background:#10B981;}
+.prx-report .seg-2{background:#f59e0b;}
+.prx-report .seg-3{background:#8b5cf6;}
+.prx-report .st{font-weight:600;color:#1B365D;}
+.prx-report .step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .step-body{flex:1;}
+.prx-report .step-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:8px 0;}
+.prx-report .step-desc{font-size:0.82rem;color:#64748b;line-height:1.6;}
+.prx-report .step-icon{width:28px;height:28px;border-radius:50%;background:#eef2f7;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prx-report .step-num{width:28px;height:28px;border-radius:50%;background:#0f766e;color:white;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0;}
+.prx-report .step-sample{font-size:0.78rem;color:#94a3b8;font-style:italic;margin-top:4px;}
+.prx-report .step-spacer{height:8px;}
+.prx-report .step-title{font-size:0.88rem;font-weight:700;color:#1B365D;margin-bottom:4px;}
+.prx-report .steps{margin:12px 0;}
+.prx-report .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.68rem;font-weight:600;background:#f1f5f9;color:#475569;margin:2px;}
+.prx-report .takeaway{padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-size:0.85rem;color:#166534;margin:12px 0;}
+.prx-report .tk-icon{width:20px;height:20px;flex-shrink:0;}
+.prx-report .tool{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;}
+.prx-report .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0;}
+.prx-report .two-up{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0;}
+
+
+
+
+
+
+
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+
+
+
+
+
+
+
+.prx-report .prx-pillar-link{margin:24px 0 -8px;display:flex;align-items:center;}
+.prx-report .prx-pillar-link a{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:#164487;text-decoration:none;background:#eff6ff;border:1px solid #bfdbfe;border-radius:20px;padding:5px 12px;transition:background 0.15s,border-color 0.15s;}
+.prx-report .prx-pillar-link a:hover{background:#dbeafe;border-color:#93c5fd;}
+.prx-report .prx-pillar-link a svg{flex-shrink:0;}
+
+
+
+
+
+
+
+@media(max-width:768px){.prx-related-reports ul{grid-template-columns:1fr;}.prx-related-reports{padding:24px 20px;}}
+
+.prx-related-reports{max-width:1140px;margin:40px auto;padding:0 24px;box-sizing:border-box;}
+.prx-related-reports .rr-inner{background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:32px 36px;}
+.prx-related-reports .rr-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.prx-related-reports .rr-icon{width:32px;height:32px;background:linear-gradient(135deg,#0f766e,#134e4a);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.prx-related-reports .rr-icon svg{width:18px;height:18px;color:#5eead4;}
+.prx-related-reports h3{font-family:"Open Sans",sans-serif !important;font-weight:700 !important;font-size:1rem !important;color:#1B365D !important;margin:0 !important;padding:0 !important;border:none !important;background:none !important;}
+.prx-related-reports .rr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.prx-related-reports .rr-card{display:block;text-decoration:none !important;padding:16px 18px;border-radius:12px;border:1px solid #e2e8f0;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%);transition:all 0.2s ease;}
+.prx-related-reports .rr-card:hover{border-color:#0f766e;background:linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 100%);transform:translateY(-2px);box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-related-reports .rr-card-title{font-family:"Open Sans",sans-serif;font-weight:600;font-size:0.82rem;color:#1B365D !important;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-related-reports .rr-card-arrow{display:flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:#0f766e;margin-top:8px;}
+.prx-related-reports .rr-card-arrow svg{width:12px;height:12px;transition:transform 0.2s;}
+.prx-related-reports .rr-card:hover .rr-card-arrow svg{transform:translateX(3px);}
+@media(max-width:768px){.prx-related-reports .rr-grid{grid-template-columns:repeat(2,1fr);}.prx-related-reports .rr-inner{padding:24px 20px;}}
+@media(max-width:480px){.prx-related-reports .rr-grid{grid-template-columns:1fr;}}
+</style>
+</defs><path class="pl2" d="m216.45,16.34-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="pl2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="pl2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="pl1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="pl1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="pl1" cx="131.29" cy="244.38" r="6.19"></circle><path class="pl1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="pl1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="pl2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="pl1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="pl1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="pl1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="pl1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="pl1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="pl1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="pl1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="pl2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+<div style="display:flex;align-items:center;gap:12px;">
+<svg height="32" viewbox="0 0 630 630" xmlns="http://www.w3.org/2000/svg"><defs><lineargradient id="pg1" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#EBBB14"></stop><stop offset="100%" stop-color="#B25400"></stop></lineargradient><lineargradient id="pg2" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#F9E583"></stop><stop offset="100%" stop-color="#DE9800"></stop></lineargradient><lineargradient id="pg3" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#F9E68B"></stop><stop offset="100%" stop-color="#F3CD32"></stop></lineargradient></defs><g fill="none" transform="translate(77.5,0)"><rect fill="url(#pg1)" height="630" rx="26" width="219" x="256"></rect><path d="M346,604V630H153c-14.36,0-26-11.64-26-26V183c0-14.36,11.64-26,26-26h167c14.36,0,26,11.64,26,26V604Z" fill="url(#pg2)"></path><path d="M219,604V630H26C11.64,630,0,618.36,0,604V341c0-14.36,11.64-26,26-26h167c14.36,0,26,11.64,26,26V604Z" fill="url(#pg3)"></path></g></svg>
+</div>
+</div>
+<!-- Opening -->
+<div class="opener">
+<div class="label">Power BI + AI</div>
+<h1>Wat is een MCP-server, en hoe verbindt het AI met je Power BI?</h1>
+<p class="lead">Een heldere uitleg over de technologie achter AI-gegenereerde Power BI-rapporten. Hoe het werkt, hoe je de controle houdt over je data, en wat je nodig hebt om er zelf een te bouwen voor je eigen omgeving.</p>
+</div>
+<!-- Quick-jump buttons -->
+<div class="quick-nav">
+<a href="#prx-concept"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>Wat is MCP?</a>
+<a href="#prx-architecture"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>Hoe het werkt</a>
+<a href="#prx-privacy"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Is mijn data veilig?</a>
+<a class="quick-primary" href="#prx-build"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"></path></svg>Ik wil er een bouwen</a>
+<a href="/powerbi/insights/"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>Bekijk rapporten</a>
+</div>
+<hr/>
+<!-- SECTION 1: What is MCP -->
+<div class="section prx-reveal" id="prx-concept">
+<div class="section-label">Het concept</div>
+<h2>Wat is MCP?</h2>
+<p><strong>MCP staat voor Model Context Protocol.</strong> Het is een open standaard, ontwikkeld door Anthropic en inmiddels omarmd door <strong>Microsoft, GitHub en anderen</strong>, waarmee AI-assistenten op een gestructureerde, veilige manier met externe tools en diensten kunnen communiceren.</p>
+<p>Standaard kan een AI-assistent alleen werken met wat je erin typt. Het kan niet inloggen op Power BI, een DAX-query uitvoeren, of iets achter een inlogscherm benaderen. Een MCP-server overbrugt dat gat. Het is een klein programma dat fungeert als gecontroleerde tussenlaag tussen de AI en de data die het nodig heeft. Microsoft heeft dit zo volledig omarmd dat ze nu <strong>officiele MCP-servers voor Power BI</strong> leveren. Dit is geen omweg of hack. Het is de manier waarop Microsoft verwacht dat AI-tools verbinding maken met je data.</p>
+<div class="analogy">
+<div class="tag">Zo kun je het zien</div>
+<p>Stel je voor dat je een briljante analist aanneemt. Die kan elke dataset interpreteren, trends herkennen en rapporten schrijven, maar heeft geen login voor je bedrijf. Je zou nooit je wachtwoord geven. In plaats daarvan zet je <strong>een vertrouwde medewerker</strong> naast hen die <em>wel</em> toegang heeft. De analist zegt: <em>"Geef me de declarabele uren van vorig kwartaal."</em> De medewerker logt in, haalt de data op en geeft het door. De analist raakt het systeem nooit direct aan.</p>
+<p style="margin-top:8px;margin-bottom:0;">Die medewerker is de MCP-server.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTION 2: How data flows -->
+<div class="section prx-reveal" id="prx-architecture">
+<div class="section-label">Architectuur</div>
+<h2>Hoe data stroomt van vraag tot rapport</h2>
+<p>Dit is de volledige reis wanneer je een zakelijke vraag stelt en een opgemaakt rapport terugkrijgt. Let op wat er met de data gebeurt bij elke stap, en merk op hoe het onderweg transformeert.</p>
+<div class="flow-block" id="prxFlowBlock">
+<canvas id="prxFlowCanvas"></canvas>
+<div class="flow-lanes" id="prxFlowLanes">
+<!-- STEP 1: You -->
+<div class="flow-step left" data-step="0">
+<div class="step-card">
+<div class="step-icon c-blue" id="prxNode0"><svg viewbox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+<div class="step-num">Stap 1</div>
+<div class="step-title">Je stelt een zakelijke vraag</div>
+<div class="step-desc">In gewoon Nederlands. Geen code, geen DAX, geen querytaal. Gewoon de vraag die je beantwoord wilt hebben, op dezelfde manier als je het aan een collega zou vragen.</div>
+<div class="step-sample">"Laat me de omzet per klant zien van vorig kwartaal"</div>
+</div>
+<div class="step-spacer"></div>
+</div>
+<div class="flow-seg-label seg-0"><span>Natuurlijke taal</span></div>
+<!-- STEP 2: AI -->
+<div class="flow-step right" data-step="1">
+<div class="step-card">
+<div class="step-icon c-amber" id="prxNode1"><svg viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+<div class="step-num">Stap 2</div>
+<div class="step-title">De AI vertaalt het naar code</div>
+<div class="step-desc">De AI-assistent begrijpt je datamodel en schrijft de <strong>exacte DAX-queries</strong> die nodig zijn om de vraag te beantwoorden. Het weet welke tabellen, measures en filters het moet gebruiken, zodat jij dat niet hoeft te doen.</div>
+<div class="step-sample">EVALUATE SUMMARIZE(<br/>  'Revenue',<br/>  'Client'[Name],<br/>  "Total", [Total Revenue]<br/>)</div>
+</div>
+<div class="step-spacer"></div>
+</div>
+<div class="flow-seg-label seg-1"><span>DAX queries</span></div>
+<!-- STEP 3: MCP Server -->
+<div class="flow-step left" data-step="2">
+<div class="step-card">
+<div class="step-icon c-teal" id="prxNode2"><svg viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></div>
+<div class="step-num">Stap 3</div>
+<div class="step-title">De MCP-server voert het lokaal uit</div>
+<div class="step-desc">De server draait <strong>op je eigen machine</strong>, met je eigen inloggegevens. Het maakt verbinding met de Power BI API, voert de DAX-query uit en ontvangt de resultaten terug: echte klantnamen, echte cijfers, echte identificatoren. Dit is <strong>jouw data</strong>, en je krijgt alles.</div>
+<div class="step-sample">{"client":"Acme Corp","revenue":142500,"q":"Q4-2025"}<br/>{"client":"Contoso Ltd","revenue":98200,"q":"Q4-2025"}</div>
+</div>
+<div class="step-spacer"></div>
+</div>
+<div class="flow-seg-label seg-2"><span>Ruwe data (enen en nullen)</span></div>
+<!-- STEP 4: You decide what the AI sees -->
+<div class="flow-step right" data-step="3">
+<div class="step-card">
+<div class="step-icon c-purple" id="prxNode3"><svg viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div class="step-num">Stap 4</div>
+<div class="step-title">Jij bepaalt wat de AI ziet</div>
+<div class="step-desc"><strong>Voor intern gebruik</strong> werkt de AI met je volledige data: echte klantnamen, echte cijfers, echte context. Dat is het hele punt. Je wilt bruikbare inzichten over <em>jouw</em> klanten. Als je resultaten publiekelijk deelt, kun je een <strong>optioneel privacyfilter</strong> toevoegen dat persoonlijke data vervangt door tijdelijke aanduidingen voordat de AI het ziet.</div>
+<div class="step-sample">Internal: {"client":"Acme Corp","revenue":142500}<br/>Public: {"client":"&lt;PERSON&gt;","revenue":142500}</div>
+</div>
+<div class="step-spacer"></div>
+</div>
+<div class="flow-seg-label seg-3"><span>Jouw data, jouw regels</span></div>
+<!-- STEP 5: Report -->
+<div class="flow-step left" data-step="4">
+<div class="step-card">
+<div class="step-icon c-green" id="prxNode4"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div>
+<div class="step-num">Stap 5</div>
+<div class="step-title">Een compleet rapport, klaar voor gebruik</div>
+<div class="step-desc">De AI assembleert de data tot een opgemaakt rapport met KPI-kaarten, tabellen, grafieken, inzichten en verhalende tekst. Gebruik het intern voor klantbesprekingen, teamvergaderingen en managementrapportages, of publiceer het extern.</div>
+<div class="step-sample">Top 5 by revenue: 1. Acme Corp – $142.5K | 2. Contoso Ltd – $98.2K ...</div>
+</div>
+<div class="step-spacer"></div>
+</div>
+</div>
+</div>
+<p>Het cruciale detail: <strong>de AI heeft nooit directe toegang tot Power BI.</strong> Het kan alleen de MCP-server vragen om specifieke, vooraf gedefinieerde acties uit te voeren. De MCP-server bepaalt wat is toegestaan, welke data wordt teruggegeven, en of er iets wordt gefilterd voordat het wordt doorgegeven.</p>
+</div>
+<hr/>
+<!-- SECTION 3: Privacy -->
+<div class="section prx-reveal" id="prx-privacy">
+<div class="section-label">Beveiliging &amp; Privacy</div>
+<h2>Je houdt de controle over je data</h2>
+<p>Als je Power BI klantnamen, ticketdetails, werknemersdata of financiele cijfers bevat, is het terecht dat je vraagt hoe dit werkt. De MCP-aanpak is fundamenteel anders dan data plakken in een webgebaseerde AI-chatbot, en hier is waarom het veilig is voor intern gebruik met echte data.</p>
+<div class="privacy-block prx-reveal">
+<h3>Drie lagen van bescherming</h3>
+<div class="layer">
+<div class="layer-num">1</div>
+<p><strong>Lokale uitvoering.</strong> De MCP-server draait op jouw machine. API-calls gaan rechtstreeks van jouw computer naar Microsofts Power BI-service. Er gaat geen data door een server van derden.</p>
+</div>
+<div class="layer">
+<div class="layer-num">2</div>
+<p><strong>Afgebakende toegang.</strong> De MCP-server stelt alleen specifieke, alleen-lezen mogelijkheden beschikbaar. Geen bestandstoegang, geen schrijfbewerkingen, geen verwijderingen. Je definieert precies wat de AI mag doen. Niets meer.</p>
+</div>
+<div class="layer">
+<div class="layer-num">3</div>
+<p><strong>Optionele PII-anonimisering.</strong> Als je van plan bent AI-gegenereerde output <strong>publiekelijk</strong> te delen (bijv. op een website of in een marketingrapport), kun je een privacyfilter inschakelen dat persoonlijke data vervangt door tijdelijke aanduidingen voordat de AI het ziet. Voor intern gebruik, waar je echte klantnamen en werknemersdata <em>wilt</em> zien, laat je dit gewoon uit.</p>
+</div>
+</div>
+<div class="two-up prx-reveal">
+<div class="card never">
+<h4>Intern gebruik (de meeste MSPs)</h4>
+<p>De AI ziet je echte data (klantnamen, werknemersnamen, financiele details) en genereert rapporten die je kunt gebruiken voor klantbesprekingen, teamvergaderingen en managementbeslissingen. Dat is het hele punt.</p>
+</div>
+<div class="card sees">
+<h4>Publiek delen (optioneel)</h4>
+<p>Bij het extern publiceren van rapporten schakel je het privacyfilter in om persoonlijke identificatoren te verwijderen voordat de AI de data verwerkt. Wij gebruiken dit bij Proxuma voor de demorapporten op deze site.</p>
+</div>
+</div>
+<div class="analogy">
+<div class="tag">Het belangrijkste verschil</div>
+<p>Wanneer je data plakt in een webgebaseerde AI, reist die data naar een cloudserver die je niet beheert. Met een MCP-server blijft de data op jouw machine en stroomt het rechtstreeks naar Microsofts API. Jij bepaalt waar de AI toegang toe heeft, wat het kan doen, en of er tussentijds wordt gefilterd. Het is jouw infrastructuur, jouw inloggegevens, jouw regels.</p>
+</div>
+</div>
+<div class="related-report">
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsrisicoscore/">
+<div class="rr-icon"><svg viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div>
+<div class="rr-badge">Gerelateerd rapport</div>
+<div class="rr-title">AI Privacy &amp; Compliance Gids voor Power BI</div>
+<p class="rr-desc">Een datagedreven diepgaande analyse van de privacyarchitectuur, complianceframeworks en anonimisatieprestaties achter AI-aangedreven Power BI-rapportages.</p>
+<div class="rr-arrow">Lees het volledige rapport <svg viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+</div>
+</a>
+</div>
+<hr/>
+<!-- SECTION 4: Tools -->
+<div class="section prx-reveal" id="prx-tools">
+<div class="section-label">Mogelijkheden</div>
+<h2>Welke tools krijgt de AI?</h2>
+<p>Een MCP-server definieert een specifieke set <strong>tools</strong>, de acties die de AI mag uitvoeren. Voor Power BI bevat de standaardset:</p>
+<div class="tool-grid prx-reveal-stagger">
+<div class="tool primary">
+<h4>execute_dax</h4>
+<p>Voer een DAX-query uit tegen een dataset. De kern van alles. Elk rapport hangt hiervan af.</p>
+</div>
+<div class="tool primary">
+<h4>search_schema</h4>
+<p>Zoek naar specifieke measures, kolommen of tabellen in het datamodel.</p>
+</div>
+<div class="tool">
+<h4>list_measures</h4>
+<p>Snel overzicht van alle measure-namen in een dataset.</p>
+</div>
+<div class="tool">
+<h4>list_workspaces</h4>
+<p>Bekijk welke Power BI-werkruimten toegankelijk zijn.</p>
+</div>
+<div class="tool">
+<h4>list_datasets</h4>
+<p>Lijst alle datasets binnen een werkruimte.</p>
+</div>
+<div class="tool">
+<h4>list_fabric_items</h4>
+<p>Blader door items in een Microsoft Fabric-werkruimte.</p>
+</div>
+</div>
+<p>De AI kan geen nieuwe tools verzinnen of deze lijst overschrijden. Als de MCP-server geen "delete workspace"-tool aanbiedt, kan de AI die actie fysiek niet uitvoeren. <strong>Jij bepaalt wat mogelijk is.</strong></p>
+<div class="analogy">
+<div class="tag">Verschillende servers, verschillende tools</div>
+<p>Niet elke Power BI MCP-server biedt dezelfde mogelijkheden. Microsofts eigen <strong>Remote MCP-server</strong> richt zich op het bevragen van data en het genereren van inzichten – met dezelfde Copilot-engine die de ingebouwde AI van Power BI aandrijft. Hun <strong>Modeling MCP-server</strong> laat je semantische modellen bouwen en aanpassen. En een op maat gebouwde server zoals de onze voegt rapportgeneratie, aangepaste bedrijfslogica en optionele privacyfiltering voor publieke output toe. Je kiest de server – of combinatie van servers – die bij je workflow past.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTION 5: Real example -->
+<div class="section prx-reveal" id="prx-example">
+<div class="section-label">In de praktijk</div>
+<h2>Wat er gebeurt wanneer we een rapport genereren</h2>
+<div class="steps prx-reveal-stagger">
+<div class="step">
+<div class="step-body">
+<h4>Je stelt een zakelijke vraag</h4>
+<p>"Hoe ziet het KPI-dashboard van ons Professional Services-team eruit? Laat me beschikbare uren, declarabele uren en omzet versus target zien."</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>De AI verkent je datamodel</h4>
+<p>Het roept <code>search_schema</code> meerdere keren aan, op zoek naar measures gerelateerd aan "declarabel", "omzet", "bezettingsgraad". Het brengt in kaart welke data er is voordat het een enkele query schrijft.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>DAX-queries worden geschreven en uitgevoerd</h4>
+<p>Op basis van wat het heeft gevonden, stelt de AI gerichte DAX-queries samen en stuurt elk via <code>execute_dax</code>. De MCP-server authenticeert met jouw inloggegevens, voert de query uit tegen Power BI en stuurt de resultaten terug.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>De AI bouwt het rapport</h4>
+<p>Met alle data verzameld produceert de AI een opgemaakt rapport: KPI-kaarten, vergelijkingstabellen, trendanalyse en geschreven inzichten die uitleggen wat de cijfers betekenen.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Je krijgt een afgerond rapport in minder dan twee minuten</h4>
+<p>Het hele proces, van vraag tot publiceerbaar rapport, kost minder tijd dan het openen van Power BI Desktop.</p>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<!-- SECTION 6: Getting started -->
+<div class="section prx-reveal" id="prx-build">
+<div class="section-label">Aan de slag</div>
+<h2>Drie manieren om AI te verbinden met Power BI</h2>
+<p>Het MCP-ecosysteem voor Power BI is snel volwassen geworden. Microsoft levert nu <strong>officiele MCP-servers</strong>, en er bestaan meerdere door de community gebouwde opties. Hier is hoe ze zich verhouden, en wanneer je welke gebruikt.</p>
+<div class="tool-grid prx-reveal-stagger" style="grid-template-columns: 1fr !important;">
+<div class="tool primary" style="border-left: 4px solid #00D9A5 !important;">
+<h4>Optie 1: Microsofts Remote MCP-server</h4>
+<p>Een <strong>gehost endpoint</strong> van Microsoft dat dezelfde Copilot-engine gebruikt die de ingebouwde AI van Power BI aandrijft. Je verbindt je AI-tool (Claude, GitHub Copilot, etc.) en het kan je datasets bevragen, inzichten genereren en vragen beantwoorden zonder iets lokaal te draaien. Ideaal voor teams die direct willen starten zonder infrastructuur.</p>
+<p style="margin-top:8px;font-size:14px;color:#64748b;">Vereist een Power BI Pro- of Premium-licentie. Werkt met elke AI-client die MCP ondersteunt.</p>
+</div>
+<div class="tool primary" style="border-left: 4px solid #60a5fa !important;">
+<h4>Optie 2: Microsofts Modeling MCP-server</h4>
+<p>Een <strong>open-source server</strong> die lokaal draait en AI-tools semantische modellen laat bouwen en aanpassen. Schrijf measures, maak berekende kolommen, definieer relaties, allemaal via natuurlijke taal. Ideaal voor ontwikkelaars en datamodelleurs die AI-hulp willen bij modelontwikkeling.</p>
+<p style="margin-top:8px;font-size:14px;color:#64748b;">Open source op GitHub. Draait lokaal naast Power BI Desktop of SSMS.</p>
+</div>
+<div class="tool primary" style="border-left: 4px solid #f59e0b !important;">
+<h4>Optie 3: Bouw een custom MCP-server</h4>
+<p>Een <strong>enkel Python-bestand</strong> dat je volledig zelf beheert. Voeg aangepaste rapportgeneratie, Fabric-integratie, bedrijfslogica of optionele privacyfiltering voor publieke output toe. Dit is wat wij bij Proxuma gebruiken. Het geeft ons volledige controle over het outputformaat, de toegangsscope en wat de AI kan doen met je data.</p>
+<p style="margin-top:8px;font-size:14px;color:#64748b;">Volledige flexibiliteit. Vereist Python en een eenmalige Microsoft-login.</p>
+</div>
+</div>
+<h3 id="prx-build-custom" style="margin-top:40px;">Een custom server bouwen, stap voor stap</h3>
+<p>Als de officiele servers niet aan je behoeften voldoen, of je wilt volledige controle over wat de AI kan doen, dan is hier precies hoe je je eigen server bouwt. Het is een enkel Python-bestand.</p>
+<div class="build-steps">
+<div class="build-step">
+<h4>Installeer de afhankelijkheden</h4>
+<p>Drie pakketten om te beginnen. Voeg de optionele privacypakketten alleen toe als je anonimisering nodig hebt voor publieke output.</p>
+<div class="dep-chips">
+<div class="dep-chip">mcp <span class="dep-desc">– protocol layer</span></div>
+<div class="dep-chip">azure-identity <span class="dep-desc">– Microsoft auth</span></div>
+<div class="dep-chip">requests <span class="dep-desc">– HTTP calls</span></div>
+<div class="dep-chip">presidio-analyzer <span class="dep-desc">– PII detection (optional)</span></div>
+<div class="dep-chip">spacy <span class="dep-desc">– NLP engine (optional)</span></div>
+</div>
+<div class="code">
+<div class="code-header">Terminal</div>
+<pre><code><span class="cm"># Core (required)</span>
+pip install mcp azure-identity requests
+
+<span class="cm"># Optional: only needed for PII anonymisation</span>
+pip install presidio-analyzer presidio-anonymizer
+python -m spacy download en_core_web_lg</code></pre>
+</div>
+</div>
+<div class="build-step">
+<h4>Microsoft-authenticatie instellen</h4>
+<p>Bij de eerste keer opent een browservenster voor Microsoft-login. Daarna worden tokens automatisch gecached. Geen login meer nodig.</p>
+<div class="code">
+<div class="code-header">server.py – authentication</div>
+<pre><code><span class="kw">from</span> azure.identity <span class="kw">import</span> InteractiveBrowserCredential
+
+credential = <span class="fn">InteractiveBrowserCredential</span>(
+    cache_persistence_options=cache_options
+)
+token = credential.<span class="fn">get_token</span>(
+    <span class="st">"https://analysis.windows.net/powerbi/api/.default"</span>
+)</code></pre>
+</div>
+</div>
+<div class="build-step">
+<h4>Definieer je tools</h4>
+<p>Elke tool is een Python-functie voorzien van <code>@server.tool()</code>. Jij bepaalt precies wat de AI kan doen. Hier is de belangrijkste: het uitvoeren van een DAX-query.</p>
+<div class="code">
+<div class="code-header">server.py – defining a tool</div>
+<pre><code><span class="kw">@server</span>.<span class="fn">tool</span>()
+<span class="kw">async def</span> <span class="fn">execute_dax</span>(dataset_id: <span class="st">str</span>, dax_query: <span class="st">str</span>):
+    <span class="st">"""Run a DAX query against a Power BI dataset."""</span>
+    response = requests.<span class="fn">post</span>(
+        <span class="st">f"https://api.powerbi.com/v1.0/myorg/datasets/</span>{dataset_id}<span class="st">/executeQueries"</span>,
+        headers={<span class="st">"Authorization"</span>: <span class="st">f"Bearer </span>{token}<span class="st">"</span>},
+        json={<span class="st">"queries"</span>: [{<span class="st">"query"</span>: dax_query}]}
+    )
+    <span class="kw">return</span> response.json()</code></pre>
+</div>
+</div>
+<div class="build-step">
+<h4>Optioneel: voeg een privacyfilter toe voor publieke output</h4>
+<p>Als je van plan bent AI-gegenereerde rapporten publiekelijk te publiceren (op een website of in externe communicatie), kun je Microsoft Presidio toevoegen als privacylaag. Het scant antwoorden op persoonlijke data en vervangt deze door veilige tijdelijke aanduidingen. <strong>Voor intern gebruik sla je deze stap volledig over.</strong> Je wilt je echte data.</p>
+<div class="code">
+<div class="code-header">server.py – optional privacy filter</div>
+<pre><code><span class="cm"># Only needed for public-facing output</span>
+<span class="cm"># For internal reports, return data as-is</span>
+
+<span class="cm"># Scan for personal data using NLP</span>
+results = analyzer.<span class="fn">analyze</span>(text=response, score_threshold=<span class="st">0.4</span>)
+
+<span class="cm"># Replace with safe placeholders</span>
+safe_text = anonymizer.<span class="fn">anonymize</span>(text=response, analyzer_results=results)
+
+<span class="cm"># "John Smith logged 142 billable hours"</span>
+<span class="cm"># becomes: "&lt;PERSON&gt; logged 142 billable hours"</span></code></pre>
+</div>
+</div>
+<div class="build-step">
+<h4>Verbind het met je AI-tool</h4>
+<p>Wijs je AI-assistent (Claude, GitHub Copilot, Cursor, etc.) naar je server. Een regel configuratie en je bent live.</p>
+<div class="code">
+<div class="code-header">Claude Code – connect the server</div>
+<pre><code>claude mcp add powerbi python /path/to/server.py</code></pre>
+</div>
+<p style="margin-top:12px;">Dat is alles. Je AI kan nu Power BI bevragen, datamodellen verkennen en rapporten genereren, allemaal via een beveiligde, lokale verbinding met je eigen inloggegevens.</p>
+</div>
+</div>
+<h3 style="margin-top:40px;">Door de community gebouwde servers</h3>
+<p>De open-source community heeft meerdere alternatieven gebouwd, elk met een andere focus. Deze zijn het verkennen waard als je je opties evalueert.</p>
+<table>
+<thead><tr><th>Server</th><th>Focus</th></tr></thead>
+<tbody>
+<tr><td><strong>pbixray-mcp-server</strong></td><td>Leest en inspecteert <code>.pbix</code>-bestanden rechtstreeks – handig voor het offline auditen van modellen</td></tr>
+<tr><td><strong>mcpbi</strong></td><td>Lichtgewicht queryserver gericht op DAX-uitvoering en dataset-exploratie</td></tr>
+<tr><td><strong>powerbi-mcp</strong></td><td>Volledig uitgeruste server met werkruimtebeheer, rapporttoegang en dataset-queries</td></tr>
+<tr><td><strong>pbi-desktop-mcp</strong></td><td>Maakt rechtstreeks verbinding met een draaiende Power BI Desktop-instantie voor lokale ontwikkeling</td></tr>
+</tbody>
+</table>
+</div>
+<hr/>
+<!-- SECTION 7: Key takeaways -->
+<div class="section prx-reveal" id="prx-summary">
+<div class="section-label">Samenvatting</div>
+<h2>Belangrijkste punten</h2>
+<div class="prx-reveal-stagger">
+<div class="takeaway">
+<div class="tk-icon" style="background:#d1fae5;"><svg fill="none" stroke="#065f46" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></div>
+<div>
+<h4>Het draait lokaal, niet in de cloud</h4>
+<p>Data stroomt rechtstreeks tussen jouw machine en Microsoft. Geen servers van derden betrokken.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#ede9fe;"><svg fill="none" stroke="#6b21a8" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div>
+<h4>Jouw data, jouw keuze</h4>
+<p>Voor intern gebruik werkt de AI met je volledige data: echte klantnamen, echte cijfers, echte context. Moet je publiekelijk delen? Voeg een optioneel privacyfilter toe om output te anonimiseren. Jij kiest. <a href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsrisicoscore/" style="color:#92400e !important;font-weight:700;text-decoration:none;background:rgba(251,191,36,.15);border:1px dashed rgba(217,164,6,.4);padding:2px 10px;border-radius:4px;font-size:0.8rem;white-space:nowrap;">Lees het volledige rapport →</a></p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#fef3c7;"><svg fill="none" stroke="#92400e" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg></div>
+<div>
+<h4>Jij bepaalt de scope</h4>
+<p>Alleen de tools die jij definieert zijn beschikbaar. Standaard alleen-lezen. Geen bestandstoegang, geen schrijfbewerkingen, geen verrassingen.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#dbeafe;"><svg fill="none" stroke="#1e40af" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg></div>
+<div>
+<h4>Het is een open standaard, ondersteund door Microsoft</h4>
+<p>MCP is niet proprietary. Microsoft levert nu officiele Power BI MCP-servers, en het protocol werkt met Claude, GitHub Copilot en elke andere AI-tool die het ondersteunt.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Related report (bottom) -->
+<div class="related-report prx-reveal">
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsrisicoscore/">
+<div class="rr-icon"><svg viewbox="0 0 24 24"><path d="M9 12l2 2 4-4"></path><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div>
+<div class="rr-badge">Aanbevolen leesvoer</div>
+<div class="rr-title">Wil je de volledige beveiligings-deepdive? We schreven de definitieve gids.</div>
+<p class="rr-desc">Onze AI Privacy &amp; Compliance Gids behandelt de volledige beveiligingsarchitectuur: lokale uitvoering, afgebakende toegang, optionele anonimisering en AVG-complianceframeworks, met echte data uit onze eigen Power BI-omgeving.</p>
+<div class="rr-arrow">Lees de Privacy &amp; Compliance Gids <svg viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></div>
+</div>
+</a>
+</div>
+<!-- RELATED-REPORTS-START -->
+<!-- CTA -->
+<div class="cta prx-reveal">
+<h3>Bekijk het in actie</h3>
+<p>Bekijk onze AI-gegenereerde rapporten. Elk rapport is gebouwd met deze aanpak. Of neem contact op om te bespreken hoe je dit opzet voor jouw omgeving.</p>
+<a href="/powerbi/insights/">View AI-gegenereerde Rapporten</a>
+<a class="outline" href="/powerbi-self-onboarding/">Aan de slag met Power BI</a>
+</div>
+</div>
+<!-- Scroll trigger + DAX copy JS -->
+<script>
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+<!-- BREADCRUMB-SCHEMA-START -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"}, {"@type": "ListItem", "position": 2, "name": "AI-gegenereerde Rapporten", "item": "https://proxuma.io/powerbi/insights/"}, {"@type": "ListItem", "position": 3, "name": "Ticketing", "item": "https://proxuma.io/powerbi/insights/?cat=ticketing"}, {"@type": "ListItem", "position": 4, "name": "Power Bi Mcp Server"}]}
+</script>
+<div class="prx-related-reports"><div class="rr-inner"><div class="rr-header"><div class="rr-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div><h3>Gerelateerde Rapporten</h3></div><div class="rr-grid"><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/standaard-wijzigingen/"><div class="rr-card-title">Autotask Standaard Wijzigingen Rapport</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsstatus/"><div class="rr-card-title">MSP Beveiligingsstatus Rapport</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/voorspellende-storingsanalyse/"><div class="rr-card-title">Voorspellende Storingsanalyse</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsrisicoscore/"><div class="rr-card-title">MSP Beveiligingsrisicoscore per Klant</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/m365-app-adoptie/"><div class="rr-card-title">Microsoft 365 Applicatie Adoptie Rapport</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a><a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/ci-categorie-uitsplitsing/"><div class="rr-card-title">CI Categorie Uitsplitsing</div><div class="rr-card-arrow"><span>Lees rapport</span><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></a></div></div></div>
+<!-- BREADCRUMB-SCHEMA-END -->
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Gerelateerde Rapporten</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/test-nl-prioriteitsverdeling/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Rapport</span>
+<div class="rr-card-title">Ticket Prioriteitsverdeling: Waar besteedt je Service Desk zijn Tijd?</div>
+<div class="rr-card-desc">Prioriteitsniveaus, tickettypes, oplostijd en first-hour fix rates. Waar zitten de knelpunten en welke categorieen hebbe</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/crm-activiteiten-dashboard/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Rapport</span>
+<div class="rr-card-title">Autotask CRM Dashboard</div>
+<div class="rr-card-desc">We hebben de cijfers over autotask crm dashboard uit je Power BI-data getrokken. Dit valt op, hier zitten de gaten, en d</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/psa-vs-boekhouding-vergelijking/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Rapport</span>
+<div class="rr-card-title">PSA vs Boekhouding</div>
+<div class="rr-card-desc">We hebben de cijfers over psa vs boekhouding uit je Power BI-data getrokken. Dit valt op, hier zitten de gaten, en dit k</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/welke-cis-naderen-einde-garantie/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Rapport</span>
+<div class="rr-card-title">CI Garantiebewaking: Einde-Levensduur Risico in uw Portfolio</div>
+<div class="rr-card-desc"></div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/standaard-wijzigingen/">
+<span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Rapport</span>
+<div class="rr-card-title">Autotask Standaard Wijzigingen</div>
+<div class="rr-card-desc">We hebben de cijfers over autotask standaard wijzigingen uit je Power BI-data getrokken. Dit valt op, hier zitten de gat</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/alert-naar-ticket-conversie/">
+<span class="rr-badge" style="background:#dbeafe;color:#2563eb;">Ticketing</span>
+<div class="rr-card-title">Alert-naar-Ticket Conversie: Hoeveel RMM-ruis wordt echt werk?</div>
+<div class="rr-card-desc">Een cross-source analyse van 135.387 RMM alerts en 67.521 service tickets over 10 klanten. Dit rapport brengt alert-ruis</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Genereer rapporten als deze vanuit je eigen data</h3>
+<p>Koppel Proxuma's Power BI integratie, gebruik een MCP-compatible AI om vragen te stellen en genereer op maat gemaakte rapporten - in minuten, niet in dagen.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten/" style="margin-right:12px;">Bekijk meer rapporten</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Aan de slag</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Power Bi Mcp Server",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/power-bi-mcp-server/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "Other"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
+    {"@type": "ListItem", "position": 3, "name": "Rapport", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=other"},
+    {"@type": "ListItem", "position": 4, "name": "Power Bi Mcp Server"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"}, {"@type": "ListItem", "position": 2, "name": "AI-gegenereerde Rapporten", "item": "https://proxuma.io/powerbi/insights/"}, {"@type": "ListItem", "position": 3, "name": "Ticketing", "item": "https://proxuma.io/powerbi/insights/?cat=ticketing"}, {"@type": "ListItem", "position": 4, "name": "Power Bi Mcp Server"}]}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
+</script>
+</body>
+</html>

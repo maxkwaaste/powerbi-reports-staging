@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ai Privacy Compliance Guide | Proxuma Power BI</title>
+<meta content="" name="description"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/ai-privacy-compliance-guide/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/ai-privacy-compliance-guide/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/ai-privacy-compliance-guide/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Ai</span>
+<span class="w" style="transition-delay:35ms"> Privacy</span>
+<span class="w" style="transition-delay:70ms"> Compliance</span>
+<span class="w" style="transition-delay:105ms"> Guide”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                Alle rapporten
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">Ai Privacy Compliance Guide</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GEGENEREERD RAPPORT
+    </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Hoe zorg je voor AI-privacycompliance?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Ai Privacy Compliance Guide</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#6B7280;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            Editorial
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Voorgebouwd MSP semantisch model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude of ChatGPT schrijft DAX-queries, voert ze uit en formatteert de output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">KPI's, uitsplitsingen, trends, aanbevelingen</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Klaar in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op je eigen <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Proxuma Power BI aanvragen</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Ai Privacy Compliance Guide</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of ai privacy compliance guide for managed service providers.</p>
+<p>De data dekt het volledige bereik van Autotask PSA-records die relevant zijn voor deze analyse, uitgesplitst naar de belangrijkste dimensies die je team nodig heeft voor dagelijkse beslissingen en klantrapportage.</p>
+<p><strong>Wie dit zou moeten gebruiken:</strong> Security teams, compliance officers, and MSP owners managing risk</p>
+<p><strong>Hoe vaak:</strong> Wekelijks for security posture, monthly for compliance reporting, op aanvraag for audits</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Security audits across multiple tenants require logging into each one separately. This report aggregates it.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Risk visibility</div>
+<div class="value-card-text">Delegated privilege gaps, guest user sprawl, and compliance issues surfaced in one view.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Audit readiness</div>
+<div class="value-card-text">Pre-formatted compliance data for client audits and regulatory requirements.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">Security &amp; Compliance</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA · Datto RMM · Microsoft 365</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Minder dan 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">Security teams,  compliance officers</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar vind je dit in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Beveiliging › Ai Privacy Compliance Guide
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je kunt meten in dit rapport</div>
+<div class="metrics-grid">
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<!-- Proxuma.io Pagina: AI & Privacy Gids voor MSP's -->
+<!-- Plak als Custom HTML blok in WordPress -->
+<!-- URL: /nl-powerbi/ai-gegenereerde-rapporten/ai-privacy-compliance-guide -->
+<style>
+/* ===== AI Privacy Guide — Light editorial theme with animations ===== */
+.prx-mcp *, .prx-mcp *::before, .prx-mcp *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.prx-mcp {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1e293b;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff !important;
+}
+.prx-mcp h2, .prx-mcp h3, .prx-mcp h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1B365D !important;
+}
+
+/* --- Keyframes --- */
+@keyframes prxOrbFloat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.06; }
+    50% { transform: translate(-45%, -55%) scale(1.1); opacity: 0.09; }
+}
+@keyframes prxFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes prxPulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0,217,165,.2); }
+    50% { box-shadow: 0 0 35px rgba(0,217,165,.4); }
+}
+
+/* --- Reveal system --- */
+.prx-mcp .prx-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+.prx-mcp .prx-reveal.prx-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.prx-mcp .prx-reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+.prx-mcp .prx-reveal-stagger > .prx-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Logos header --- */
+.prx-mcp .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 56px;
+}
+.prx-mcp .logo-bar svg { height: 32px; width: auto; flex-shrink: 0; }
+.prx-mcp .logo-bar .logo-sep {
+    width: 1px;
+    height: 28px;
+    background: #cbd5e1;
+    margin: 0 20px;
+}
+
+/* --- Opening --- */
+.prx-mcp .source-badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: center; margin-bottom: 16px; opacity: 1 !important; }
+.prx-mcp .source-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; border: 1.5px solid transparent; }
+.prx-mcp .source-badges-label { font-size: 10px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-right: 8px; }
+.prx-mcp .source-badges-row { display: flex; gap: 8px; }
+.prx-mcp .badge-psa { background: #DBEAFE; color: #1E40AF; border-color: #1D4ED8; }
+.prx-mcp .badge-rmm { background: #FDE68A; color: #78350F; border-color: #B45309; }
+.prx-mcp .badge-m365 { background: #E9D5FF; color: #581C87; border-color: #7C3AED; }
+.prx-mcp .opener {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+    position: relative;
+}
+.prx-mcp .opener::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,183,255,0.07) 0%, rgba(0,217,165,0.05) 50%, transparent 70%);
+    transform: translate(-50%, -50%) scale(1);
+    animation: prxOrbFloat 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+.prx-mcp .opener > * {
+    position: relative;
+    z-index: 1;
+}
+.prx-mcp .opener .label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00b7ff;
+    margin-bottom: 16px;
+}
+.prx-mcp .opener h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #1B365D !important;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+.prx-mcp .opener .lead {
+    font-size: 1.12rem;
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* --- Section anchors --- */
+.prx-mcp .section {
+    margin-bottom: 56px;
+}
+.prx-mcp .section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+.prx-mcp .section h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.25;
+    color: #1B365D !important;
+}
+.prx-mcp .section p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin-bottom: 14px;
+}
+.prx-mcp .section p strong { color: #1B365D; }
+.prx-mcp a { color: #1e40af; text-decoration: underline; text-decoration-color: rgba(30,64,175,.3); text-underline-offset: 2px; transition: text-decoration-color .2s; }
+.prx-mcp a:hover { text-decoration-color: rgba(30,64,175,.8); }
+.prx-mcp .privacy-block a { color: #5eead4; text-decoration-color: rgba(94,234,212,.3); }
+.prx-mcp .privacy-block a:hover { text-decoration-color: rgba(94,234,212,.8); }
+.prx-mcp td a { text-decoration: none; }
+.prx-mcp td a:hover { text-decoration: underline; }
+.prx-mcp .pill a { color: inherit; text-decoration: none; }
+.prx-mcp .pill a:hover { text-decoration: underline; }
+.prx-mcp .check-text a { color: #1e40af; }
+.prx-mcp .risk-card a { color: #1e40af; text-decoration-color: rgba(30,64,175,.3); }
+.prx-mcp .risk-card a:hover { text-decoration-color: rgba(30,64,175,.8); }
+
+/* --- Analogy panel --- */
+.prx-mcp .analogy {
+    background: #f8fafc;
+    border-left: 3px solid #00b7ff;
+    border-radius: 0 14px 14px 0;
+    padding: 24px 28px;
+    margin: 24px 0;
+    transition: border-left-width .25s ease, box-shadow .3s ease;
+}
+.prx-mcp .analogy:hover {
+    border-left-width: 5px;
+    box-shadow: 0 4px 20px rgba(0,183,255,.08);
+}
+.prx-mcp .analogy .tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #00b7ff;
+    margin-bottom: 8px;
+}
+.prx-mcp .analogy p {
+    font-size: 0.92rem;
+    color: #475569;
+}
+.prx-mcp .analogy.warn {
+    border-left-color: #f59e0b;
+}
+.prx-mcp .analogy.warn .tag { color: #d97706; }
+.prx-mcp .analogy.danger {
+    border-left-color: #ef4444;
+}
+.prx-mcp .analogy.danger .tag { color: #dc2626; }
+.prx-mcp .analogy.success {
+    border-left-color: #22c55e;
+}
+.prx-mcp .analogy.success .tag { color: #16a34a; }
+
+/* --- Privacy block (navy gradient) --- */
+.prx-mcp .privacy-block {
+    background: linear-gradient(135deg, #1B365D 0%, #0f2240 100%) !important;
+    border-radius: 16px;
+    padding: 36px 40px;
+    color: white;
+    margin: 32px 0;
+}
+.prx-mcp .privacy-block h3 {
+    color: #f1f5f9 !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.prx-mcp .privacy-block p {
+    color: #c8d3e0;
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+}
+.prx-mcp .privacy-block .layer {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding: 16px 18px;
+    background: rgba(0,217,165,.06);
+    border-radius: 10px;
+    border: 1px solid rgba(0,217,165,.15);
+    border-left: 3px solid #00D9A5;
+}
+.prx-mcp .privacy-block .layer-num {
+    background: #00D9A5;
+    color: #0f2240;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+.prx-mcp .privacy-block .layer p {
+    color: #c8d3e0;
+    margin: 0;
+    font-size: 0.88rem;
+}
+.prx-mcp .privacy-block .layer strong { color: #f1f5f9; }
+
+/* --- Two-up comparison --- */
+.prx-mcp .two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+}
+@media (max-width: 600px) { .prx-mcp .two-up { grid-template-columns: 1fr; } }
+.prx-mcp .two-up .card {
+    padding: 22px 24px;
+    border-radius: 14px;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.prx-mcp .two-up .card:hover { transform: translateY(-3px); }
+.prx-mcp .two-up .card h4 {
+    font-size: 0.9rem;
+    font-weight: 650;
+    margin-bottom: 8px;
+}
+.prx-mcp .two-up .card p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+.prx-mcp .two-up .card.sees {
+    background: #fef2f2 !important;
+    border: 1px solid #fecaca;
+}
+.prx-mcp .two-up .card.sees:hover { box-shadow: 0 8px 24px rgba(239,68,68,.1); }
+.prx-mcp .two-up .card.sees h4 { color: #dc2626 !important; }
+.prx-mcp .two-up .card.sees p { color: #7f1d1d; }
+.prx-mcp .two-up .card.never {
+    background: #ecfdf5 !important;
+    border: 1px solid #a7f3d0;
+}
+.prx-mcp .two-up .card.never:hover { box-shadow: 0 8px 24px rgba(34,197,94,.1); }
+.prx-mcp .two-up .card.never h4 { color: #16a34a !important; }
+.prx-mcp .two-up .card.never p { color: #14532d; }
+
+/* --- Comparison table --- */
+.prx-mcp table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.82rem;
+}
+.prx-mcp th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+    font-weight: 600;
+}
+.prx-mcp td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+    vertical-align: top;
+}
+.prx-mcp td:first-child { font-weight: 600; color: #1B365D; }
+.prx-mcp .pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.prx-mcp .pill.green { background: #dcfce7; color: #166534; }
+.prx-mcp .pill.amber { background: #fef3c7; color: #92400e; }
+.prx-mcp .pill.red { background: #fee2e2; color: #991b1b; }
+.prx-mcp .pill.blue { background: #dbeafe; color: #1e40af; }
+.prx-mcp .pill.gray { background: #f1f5f9; color: #475569; }
+
+/* --- Tool grid (reused for provider cards) --- */
+.prx-mcp .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+@media (max-width: 700px) { .prx-mcp .tool-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .prx-mcp .tool-grid { grid-template-columns: 1fr; } }
+.prx-mcp .tool {
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .2s ease;
+}
+.prx-mcp .tool:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    border-color: #cbd5e1;
+}
+.prx-mcp .tool.primary {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+.prx-mcp .tool.primary:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 6px 20px rgba(59,130,246,.1);
+}
+.prx-mcp .tool h4 {
+    font-size: 0.88rem;
+    font-weight: 650;
+    margin-bottom: 6px;
+}
+.prx-mcp .tool p {
+    font-size: 0.78rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+}
+.prx-mcp .tool .tool-pills { margin-top: 8px; display: flex; gap: 4px; flex-wrap: wrap; }
+
+/* --- Numbered steps with timeline --- */
+.prx-mcp .steps {
+    counter-reset: step-counter;
+    margin: 24px 0;
+}
+.prx-mcp .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    counter-increment: step-counter;
+    padding: 18px 22px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+.prx-mcp .step::before {
+    content: counter(step-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #1B365D;
+    color: #ffffff;
+    border-radius: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    z-index: 2;
+}
+.prx-mcp .step::after {
+    content: '';
+    position: absolute;
+    left: 37px;
+    top: 52px;
+    width: 2px;
+    height: calc(100% - 14px);
+    background: #e2e8f0;
+    z-index: 1;
+}
+.prx-mcp .step:last-child::after { display: none; }
+.prx-mcp .step-body h4 {
+    font-size: 0.95rem;
+    font-weight: 650;
+    margin-bottom: 4px;
+    color: #1B365D !important;
+}
+.prx-mcp .step-body p {
+    font-size: 0.88rem;
+    color: #475569;
+    margin: 0;
+}
+
+/* --- Takeaways --- */
+.prx-mcp .takeaway {
+    display: flex;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 12px;
+    align-items: flex-start;
+}
+.prx-mcp .takeaway .tk-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.prx-mcp .takeaway .tk-icon svg { width: 18px; height: 18px; }
+.prx-mcp .takeaway h4 {
+    font-size: 0.9rem;
+    font-weight: 650;
+    margin-bottom: 3px;
+    color: #1B365D !important;
+}
+.prx-mcp .takeaway p {
+    font-size: 0.85rem;
+    color: #475569;
+    margin: 0;
+}
+
+/* --- Risk matrix --- */
+.prx-mcp .risk-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+}
+@media (max-width: 600px) { .prx-mcp .risk-matrix { grid-template-columns: 1fr; } }
+.prx-mcp .risk-card {
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+}
+.prx-mcp .risk-card.critical { border-left: 4px solid #ef4444; }
+.prx-mcp .risk-card.high { border-left: 4px solid #f59e0b; }
+.prx-mcp .risk-card.medium { border-left: 4px solid #3b82f6; }
+.prx-mcp .risk-card h4 { font-size: 0.88rem; margin-bottom: 4px; }
+.prx-mcp .risk-card p { font-size: 0.82rem; color: #64748b; margin: 0; }
+
+/* --- Checklist --- */
+.prx-mcp .checklist { margin: 20px 0; }
+.prx-mcp .check-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: flex-start;
+}
+.prx-mcp .check-item:last-child { border-bottom: none; }
+.prx-mcp .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.prx-mcp .check-item.critical .check-box { border-color: #ef4444; background: #fef2f2; }
+.prx-mcp .check-item.high .check-box { border-color: #f59e0b; background: #fffbeb; }
+.prx-mcp .check-item.medium .check-box { border-color: #3b82f6; background: #eff6ff; }
+.prx-mcp .check-text { flex: 1; }
+.prx-mcp .check-text strong { font-size: 0.88rem; color: #1B365D; display: block; }
+.prx-mcp .check-text span { font-size: 0.78rem; color: #64748b; }
+
+/* --- CTA (solid green gradient) --- */
+.prx-mcp .cta {
+    background: linear-gradient(135deg, #00D9A5 0%, #00c49a 100%) !important;
+    border-radius: 16px;
+    padding: 40px 44px;
+    text-align: center;
+    margin: 56px 0 36px;
+}
+.prx-mcp .cta h3 {
+    color: #1B365D !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.prx-mcp .cta p {
+    color: #0f2240;
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+}
+.prx-mcp .cta a {
+    display: inline-block;
+    background: #1B365D;
+    color: #ffffff !important;
+    padding: 12px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none !important;
+    transition: background 0.2s, transform 0.15s, box-shadow .2s;
+    margin: 0 6px 8px;
+    animation: prxPulseGlow 2.5s ease-in-out infinite;
+}
+.prx-mcp .cta a:hover { background: #0f2240; transform: translateY(-1px); }
+.prx-mcp .cta a.outline {
+    background: transparent;
+    color: #1B365D !important;
+    border: 2px solid rgba(27,54,93,.4);
+    box-shadow: none;
+    animation: none;
+}
+.prx-mcp .cta a.outline:hover { background: rgba(27,54,93,.08); border-color: rgba(27,54,93,.6); }
+
+/* --- Divider --- */
+.prx-mcp hr {
+    border: none;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 52px 0;
+}
+
+/* --- Collapsible sections --- */
+.prx-mcp .collapsible { margin: 20px 0; }
+.prx-mcp .collapse-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .2s;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1B365D;
+}
+.prx-mcp .collapse-trigger:hover { background: #f1f5f9; }
+.prx-mcp .collapse-trigger svg {
+    width: 16px;
+    height: 16px;
+    transition: transform .3s ease;
+    flex-shrink: 0;
+}
+.prx-mcp .collapse-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+}
+.prx-mcp .collapse-content .inner {
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: #fff;
+}
+.prx-mcp .collapsible.expanded .collapse-trigger svg { transform: rotate(180deg); }
+.prx-mcp .collapsible.expanded .collapse-content { max-height: 2000px; }
+.prx-mcp .collapse-content code {
+    font-family: 'SF Mono','Fira Code','Consolas', monospace;
+    font-size: 0.78rem;
+    background: #f1f5f9 !important;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #1e40af !important;
+}
+.prx-mcp .collapse-content pre {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-family: 'SF Mono','Fira Code','Consolas', monospace;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 12px 0;
+    white-space: pre-wrap;
+}
+
+/* --- Mobile: disable hover transforms on touch --- */
+@media (hover: none) {
+    .prx-mcp .two-up .card:hover,
+    .prx-mcp .tool:hover,
+    .prx-mcp .analogy:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* --- Print --- */
+@media print {
+    .prx-mcp { background: #fff !important; color: #1e293b; }
+    .prx-mcp .cta { display: none; }
+    .prx-mcp h2, .prx-mcp h3, .prx-mcp h4 { color: #1B365D !important; }
+    .prx-mcp .section p, .prx-mcp .takeaway p, .prx-mcp .step-body p { color: #475569 !important; }
+    .prx-mcp .prx-reveal, .prx-mcp .prx-reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+    .prx-mcp .collapse-content { max-height: none !important; }
+}
+</style>
+<div class="prx-mcp">
+<!-- Logo bar -->
+<div class="logo-bar">
+<svg height="32" viewbox="0 0 960.97 282.29" width="109" xmlns="http://www.w3.org/2000/svg"><defs><style>.pl1{fill:#002c60}.pl2{fill:#00b7ff}</style></defs><path class="pl2" d="m216.45,16.34-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="pl2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="pl2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="pl1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="pl1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="pl1" cx="131.29" cy="244.38" r="6.19"></circle><path class="pl1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="pl1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="pl2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon></svg>
+<div style="display:flex;align-items:center;gap:8px;">
+<svg fill="none" height="28" stroke="#1B365D" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#00D9A5" stroke-width="2"></path></svg>
+<span style="font-family:'Montserrat',sans-serif;font-weight:700;color:#1B365D;font-size:0.85rem;">Privacy &amp; Compliance</span>
+</div>
+</div>
+<!-- Opening -->
+<div class="opener">
+<div class="label">AI + Gegevensbescherming</div>
+<h1>AI inzetten met klantgegevens: een privacy- &amp; compliancegids voor MSP’s</h1>
+<p class="lead">Je wilt AI gebruiken om je bedrijfsdata via Power BI te bevragen. Maar de gegevens van je klanten stromen door die AI heen. Deze gids behandelt de wettelijke verplichtingen, hostingopties en praktische stappen zodat je een weloverwogen keuze kunt maken.</p>
+</div>
+<hr/>
+<!-- SECTIE 1: Het kernprobleem -->
+<div class="section prx-reveal">
+<div class="section-label">Het probleem</div>
+<h2>Waarom dit belangrijk is voor elke MSP</h2>
+<p>Je bent een MSP. Je bedrijfssystemen (PSA, RMM, CRM) bevatten <strong>ticketgegevens, klantnamen, medewerkersnamen, apparaatdetails, contractwaarden en operationele metrics</strong> van elke klant die je bedient. Dit zijn <a href="https://gdpr-info.eu/art-4-gdpr/" rel="noopener" target="_blank">persoonsgegevens onder de AVG</a>, en ze behoren toe aan je klanten, niet aan je.</p>
+<p>Wanneer je een AI-agent koppelt om die data te bevragen, wordt bij elke vraag die je stelt informatie naar de servers van de AI-leverancier gestuurd. Daarmee wordt de AI-leverancier een <strong>subverwerker</strong> onder de gegevensbeschermingswetgeving. En dat activeert een keten van <a href="https://gdpr-info.eu/art-28-gdpr/" rel="noopener" target="_blank">wettelijke verplichtingen onder Artikel 28 AVG</a> die je niet kunt negeren.</p>
+<div class="analogy warn">
+<div class="tag">De verantwoordelijkheidsketen</div>
+<p><strong>Je klant</strong> (verwerkingsverantwoordelijke) → <strong>Jij, de MSP</strong> (verwerker) → <strong>De AI-leverancier</strong> (subverwerker). Elke schakel in deze keten draagt wettelijke verplichtingen. Als een schakel breekt, ben je aansprakelijk.</p>
+</div>
+<p>Proxuma Power BI biedt je een gestructureerd semantisch model met duidelijk gelabelde measures, tabellen en relaties over je volledige toolstack. Dit is wat AI-queries mogelijk maakt: de data is <strong>gestructureerd en gelabeld</strong>, zodat een AI precieze DAX-queries kan schrijven in plaats van te zoeken in ruwe API’s. Maar de AI moet wel de queryresultaten zien. En daar begint de privacyvraag.</p>
+</div>
+<hr/>
+<!-- SECTIE 2: AVG subverwerkerverplichtingen -->
+<div class="section prx-reveal">
+<div class="section-label">Juridisch kader</div>
+<h2>Je verplichtingen onder de AVG (Artikel 28)</h2>
+<p>Onder de AVG zijn MSP’s <strong>verwerkers</strong>. Je klanten zijn verwerkingsverantwoordelijken. Wanneer je een AI-leverancier introduceert, worden zij een subverwerker. <a href="https://gdpr-info.eu/art-28-gdpr/" rel="noopener" target="_blank">Artikel 28(2) AVG</a> vereist voorafgaande schriftelijke toestemming van de verwerkingsverantwoordelijke voordat je een subverwerker inschakelt.</p>
+<div class="privacy-block prx-reveal">
+<h3>Twee autorisatiemodellen</h3>
+<div class="layer">
+<div class="layer-num">1</div>
+<p><strong>Specifieke autorisatie.</strong> De klant moet elke individuele subverwerker goedkeuren. Wijzigingen vereisen opnieuw goedkeuring. Maximale controle, maximale wrijving.</p>
+</div>
+<div class="layer">
+<div class="layer-num">2</div>
+<p><strong>Algemene autorisatie.</strong> De klant geeft brede voorafgaande goedkeuring. Je moet een subverwerkerlijst bijhouden, <strong>klanten informeren over wijzigingen</strong> en hen een redelijke termijn geven (doorgaans 30 dagen) om bezwaar te maken. Dit is wat de meeste MSP’s in de praktijk gebruiken.</p>
+</div>
+</div>
+<p>In beide gevallen geldt: <strong>je moet je verwerkingsovereenkomsten bijwerken</strong> voordat je AI koppelt aan klantgegevens. Als je verwerkingsovereenkomst is opgesteld voordat AI-tools bestonden (dat geldt voor de meeste), dekt deze vrijwel zeker dit gebruiksgeval niet. De <a href="https://www.edpb.europa.eu/our-work-tools/documents/public-consultations/2024/guidelines-022023-article-28-and-notion_en" rel="noopener" target="_blank">EDPB-richtlijnen over Artikel 28</a> bieden gedetailleerde guidance over wat verwerkingsovereenkomsten moeten bevatten.</p>
+<div class="analogy">
+<div class="tag">EDPB Opinie 22/2024</div>
+<p>In oktober 2024 heeft de European Data Protection Board <a href="https://www.edpb.europa.eu/system/files/2024-10/edpb_opinion_202422_relianceonprocessors-sub-processors_en.pdf" rel="noopener" target="_blank">Opinie 22/2024</a> aangenomen, specifiek gericht op verwerker- en subverwerkerketens. Belangrijkste conclusie: verwerkers blijven <strong>volledig aansprakelijk</strong> jegens verwerkingsverantwoordelijken voor het handelen van subverwerkers. Zelfs bij algemene autorisatie moet specifieke informatie over elke subverwerker aan de verwerkingsverantwoordelijke worden verstrekt.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 3: Waar gaan je gegevens heen -->
+<div class="section prx-reveal">
+<div class="section-label">Datastromen</div>
+<h2>Waar gaan je gegevens daadwerkelijk naartoe?</h2>
+<p>Dit is de cruciale vraag. Verschillende AI-leveranciers gaan zeer verschillend om met je data. Hier is de vergelijking die ertoe doet:</p>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th>Leverancier</th>
+<th>Traint op je data?</th>
+<th>EU-dataresidentie</th>
+<th>DPA beschikbaar</th>
+<th>DPF-gecertificeerd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy" rel="noopener" target="_blank">Azure OpenAI</a></td>
+<td><span class="pill green">Nee</span></td>
+<td><span class="pill green">Ja — <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" rel="noopener" target="_blank">EU Data Zone</a></span></td>
+<td><span class="pill green"><a href="https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA" rel="noopener" target="_blank">Ja</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/5581" rel="noopener" target="_blank">Ja</a></span></td>
+</tr>
+<tr>
+<td><a href="https://openai.com/enterprise-privacy/" rel="noopener" target="_blank">OpenAI API</a></td>
+<td><span class="pill green">Nee (API)</span></td>
+<td><span class="pill red">Nee</span></td>
+<td><span class="pill green"><a href="https://openai.com/policies/data-processing-addendum/" rel="noopener" target="_blank">Ja + SCCs</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/8211" rel="noopener" target="_blank">Ja</a></span></td>
+</tr>
+<tr>
+<td><a href="https://privacy.anthropic.com/en/" rel="noopener" target="_blank">Anthropic Claude</a></td>
+<td><span class="pill green"><a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training" rel="noopener" target="_blank">Nee (API)</a></span></td>
+<td><span class="pill amber">Via <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">AWS</a>/<a href="https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude" rel="noopener" target="_blank">GCP</a> only</span></td>
+<td><span class="pill green"><a href="https://privacy.claude.com/en/articles/7996862-how-do-i-view-and-sign-your-data-processing-addendum-dpa" rel="noopener" target="_blank">Ja + SCCs</a></span></td>
+<td><span class="pill amber">Onduidelijk</span></td>
+</tr>
+<tr>
+<td><a href="https://aws.amazon.com/bedrock/security-compliance/" rel="noopener" target="_blank">AWS Bedrock</a></td>
+<td><span class="pill green">Nee</span></td>
+<td><span class="pill green">Ja — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">Frankfurt, Ierland, Parijs, Stockholm</a></span></td>
+<td><span class="pill green"><a href="https://d1.awsstatic.com/legal/aws-dpa/aws-dpa.pdf" rel="noopener" target="_blank">Ja</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/5765" rel="noopener" target="_blank">Ja</a></span></td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance" rel="noopener" target="_blank">Google Vertex AI</a></td>
+<td><span class="pill green"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention" rel="noopener" target="_blank">Nee</a></span></td>
+<td><span class="pill green">Ja — EU-regio’s</span></td>
+<td><span class="pill green"><a href="https://cloud.google.com/terms/data-processing-addendum" rel="noopener" target="_blank">Ja</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/5780" rel="noopener" target="_blank">Ja</a></span></td>
+</tr>
+<tr>
+<td>Zelf gehost (Llama, Mistral)</td>
+<td><span class="pill green">Nee — jij hebt de controle</span></td>
+<td><span class="pill green">Waar je het host</span></td>
+<td><span class="pill gray">N.v.t.</span></td>
+<td><span class="pill gray">N.v.t.</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="analogy danger">
+<div class="tag">Cruciaal onderscheid</div>
+<p><strong>API-gebruik ≠ consumentengebruik.</strong> Wanneer je ChatGPT via de website gebruikt, kan OpenAI je invoer gebruiken voor training. Wanneer je de API gebruikt, doen ze dat niet. Hetzelfde geldt voor Claude. Gebruik altijd de <strong>commerciele API</strong>, nooit consumentenproducten, voor klantgegevens.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 4: AI-hostingopties -->
+<div class="section prx-reveal">
+<div class="section-label">Hostingopties</div>
+<h2>Vijf routes naar AI, vergeleken</h2>
+<p>Elk hostingmodel weegt af tussen capaciteit, privacy, kosten en compliancelast. Dit is wat elke optie in de praktijk betekent voor je MSP.</p>
+<div class="tool-grid prx-reveal-stagger">
+<div class="tool primary">
+<h4><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview" rel="noopener" target="_blank">Azure OpenAI</a></h4>
+<p>GPT-modellen gehost in <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" rel="noopener" target="_blank">Microsofts EU-datacenters</a>. Je data blijft in de EU Data Zone. <a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy" rel="noopener" target="_blank">Geen training op je data</a>. Privé-endpoints beschikbaar. Past al in je Microsoft-stack.</p>
+<div class="tool-pills">
+<span class="pill green">EU-residentie</span>
+<span class="pill green"><a href="https://learn.microsoft.com/en-us/azure/compliance/offerings/" rel="noopener" target="_blank">SOC 2 + ISO 27001</a></span>
+</div>
+</div>
+<div class="tool primary">
+<h4><a href="https://aws.amazon.com/bedrock/" rel="noopener" target="_blank">AWS Bedrock</a></h4>
+<p>Claude, Llama en andere modellen via AWS-infrastructuur. EU-regio’s: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">Frankfurt, Ierland, Parijs, Stockholm</a>. Volledige <a href="https://aws.amazon.com/compliance/programs/" rel="noopener" target="_blank">AWS-compliancestack</a>. Data verlaat nooit je gekozen regio.</p>
+<div class="tool-pills">
+<span class="pill green">EU-residentie</span>
+<span class="pill green">SOC 1/2/3 + ISO</span>
+</div>
+</div>
+<div class="tool">
+<h4><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/overview" rel="noopener" target="_blank">Google Vertex AI</a></h4>
+<p>Gemini- en Claude-modellen. EU-regio’s beschikbaar. <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention" rel="noopener" target="_blank">Zero-dataretentiebeleid</a>. Sterk <a href="https://cloud.google.com/security/compliance" rel="noopener" target="_blank">complianceportfolio</a>. Ideaal als je al in het Google Cloud-omgeving zit.</p>
+<div class="tool-pills">
+<span class="pill green">EU-residentie</span>
+<span class="pill green">SOC 2 + HIPAA</span>
+</div>
+</div>
+<div class="tool">
+<h4>Directe API (<a href="https://openai.com/api/" rel="noopener" target="_blank">OpenAI</a>/<a href="https://docs.anthropic.com/en/docs/welcome" rel="noopener" target="_blank">Anthropic</a>)</h4>
+<p>Eenvoudigste integratie. Goede DPA’s beschikbaar. Maar: data wordt verwerkt in de VS. Vereist <a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" rel="noopener" target="_blank">SCCs</a> + Transfer Impact Assessment voor EU-MSP’s. Toereikend voor Angelsaksische MSP’s.</p>
+<div class="tool-pills">
+<span class="pill amber">VS-verwerking</span>
+<span class="pill green">DPA + SCCs</span>
+</div>
+</div>
+<div class="tool">
+<h4>Zelf gehost (<a href="https://ollama.com/" rel="noopener" target="_blank">Ollama</a>/<a href="https://docs.vllm.ai/" rel="noopener" target="_blank">vLLM</a>)</h4>
+<p>Modellen zoals <a href="https://llama.meta.com/" rel="noopener" target="_blank">Llama 3</a>, <a href="https://mistral.ai/" rel="noopener" target="_blank">Mistral</a>, Phi draaien op je eigen hardware. Nul data verlaat je netwerk. Maar: lagere kwaliteit dan frontiermodellen, vereist GPU-hardware, geen leveranciersondersteuning.</p>
+<div class="tool-pills">
+<span class="pill green">Volledige controle</span>
+<span class="pill amber">Lagere kwaliteit</span>
+</div>
+</div>
+</div>
+<div class="analogy success">
+<div class="tag">De pragmatische keuze voor de meeste MSP’s</div>
+<p><strong>Azure OpenAI met EU Data Zone</strong> is de makkelijkste keuze. Je betaalt al voor Microsoft 365 en Azure. Je Power BI-data zit al in het Microsoft-stack. EU-dataresidentie is ingebouwd. SOC 2, ISO 27001, AVG: het is allemaal gedekt. Voor Angelsaksische MSP’s zonder EU-klanten is de directe API even geschikt.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 5: Datatransfer (Schrems) -->
+<div class="section prx-reveal">
+<div class="section-label">Internationale overdrachten</div>
+<h2>De EU-VS datatransfervraag (en Schrems III)</h2>
+<p>Als je AI-leverancier in de VS gevestigd is (en de meeste zijn dat), is het versturen van EU-klantgegevens naar hun servers een <strong>internationale gegevensoverdracht</strong> onder <a href="https://gdpr-info.eu/art-44-gdpr/" rel="noopener" target="_blank">AVG Hoofdstuk V (Artikelen 44-49)</a>. Het juridische mechanisme hiervoor is twee keer eerder ongeldig verklaard, en kan opnieuw worden aangevochten.</p>
+<div class="two-up prx-reveal">
+<div class="card sees">
+<h4>Huidige status: DPF onder toetsing</h4>
+<p>Het <a href="https://www.dataprivacyframework.gov/" rel="noopener" target="_blank">EU-US Data Privacy Framework</a> heeft zijn eerste juridische uitdaging overleefd in september 2025. Maar Philippe Latombe’s beroep werd ingediend op 31 oktober 2025 en escaleert naar het <a href="https://curia.europa.eu/jcms/jcms/j_6/en/" rel="noopener" target="_blank">Europees Hof van Justitie</a>. Het HvJ-EU heeft beide eerdere kaders ongeldig verklaard (<a href="https://curia.europa.eu/juris/liste.jsf?num=C-362/14" rel="noopener" target="_blank">Safe Harbor — Schrems I</a> en <a href="https://curia.europa.eu/juris/liste.jsf?num=C-311/18" rel="noopener" target="_blank">Privacy Shield — Schrems II</a>).</p>
+</div>
+<div class="card never">
+<h4>Wat te doen: riem en bretels</h4>
+<p>Vertrouw niet uitsluitend op het DPF. Houd <strong><a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" rel="noopener" target="_blank">Standaard Contractbepalingen (SCCs)</a></strong> als back-up aan. Voer een <a href="https://www.cnil.fr/en/new-standard-contractual-clauses-cnil-publishes-guide-transfers-personal-data-outside-eu" rel="noopener" target="_blank">Transfer Impact Assessment</a> uit. Als het DPF valt, heeft je direct SCCs met aanvullende maatregelen nodig.</p>
+</div>
+</div>
+<p><strong>De eenvoudigste manier om dit hele vraagstuk te vermijden:</strong> kies een AI-leverancier met EU-dataresidentie. Azure OpenAI met de <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" rel="noopener" target="_blank">EU Data Zone</a>, AWS Bedrock in <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">Frankfurt</a>, of Google Vertex AI in een EU-regio. Als je data de EU nooit verlaat, doet het transfervraagstuk zich niet voor.</p>
+</div>
+<hr/>
+<!-- SECTIE 6: Per jurisdictie -->
+<div class="section prx-reveal">
+<div class="section-label">Per jurisdictie</div>
+<h2>Wat geldt waar</h2>
+<p>MSP’s in verschillende landen hebben te maken met verschillende (maar overlappende) vereisten. Hier is het snelle overzicht:</p>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th>Jurisdictie</th>
+<th>Belangrijkste wet</th>
+<th>AI-specifieke opmerkingen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nederland, België, Luxemburg</td>
+<td><a href="https://gdpr-info.eu/" rel="noopener" target="_blank">AVG</a> + nationale implementaties</td>
+<td>Volledige AVG is van toepassing. <a href="https://artificialintelligenceact.eu/" rel="noopener" target="_blank">EU AI Act</a> (volledig van toepassing per 2 augustus 2026). De Nederlandse toezichthouder (<a href="https://www.autoriteitpersoonsgegevens.nl/en" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a>) is actief op AI-handhaving. Belgische toezichthouder: <a href="https://www.gegevensbeschermingsautoriteit.be/burger" rel="noopener" target="_blank">GBA</a>. Geef voorkeur aan AI-leveranciers met EU-residentie.</td>
+</tr>
+<tr>
+<td>Verenigd Koninkrijk</td>
+<td><a href="https://www.legislation.gov.uk/ukpga/2018/12/contents/enacted" rel="noopener" target="_blank">UK GDPR + Data Protection Act 2018</a></td>
+<td>Spiegelt in essentie de EU AVG. Het VK heeft eigen adequaatheidsbesluiten. De <a href="https://www.gov.uk/government/publications/uk-us-data-bridge-supporting-documents" rel="noopener" target="_blank">UK-US data bridge</a> bestaat los van het EU-US DPF. De <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" rel="noopener" target="_blank">ICO publiceerde AI-specifieke richtlijnen</a>.</td>
+</tr>
+<tr>
+<td>Verenigde Staten</td>
+<td>Staatswetten (<a href="https://oag.ca.gov/privacy/ccpa" rel="noopener" target="_blank">CCPA/CPRA</a>, etc.)</td>
+<td>Geen federale privacywet. CCPA/CPRA geldt voor gegevens van inwoners van Californië. <a href="https://iapp.org/resources/article/us-state-privacy-legislation-tracker/" rel="noopener" target="_blank">15+ staten hebben privacywetten</a>. Voor MSP’s die uitsluitend in de VS opereren met uitsluitend VS-klanten is de compliancelast lichter, maar groeiende.</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td><a href="https://laws-lois.justice.gc.ca/eng/acts/P-8.6/" rel="noopener" target="_blank">PIPEDA</a> + provinciale wetten</td>
+<td>Op toestemming gebaseerd kader. De voorgestelde <a href="https://www.parl.ca/legisinfo/en/bill/44-1/c-27" rel="noopener" target="_blank">CPPA (Consumer Privacy Protection Act)</a> zou AI-verplichtingen aanscherpen. In Quebec gelden via <a href="https://www.cai.gouv.qc.ca/english/" rel="noopener" target="_blank">Wet 25</a> al strenge eisen.</td>
+</tr>
+<tr>
+<td>Australië</td>
+<td><a href="https://www.legislation.gov.au/C2004A03712/latest/text" rel="noopener" target="_blank">Privacy Act 1988</a> + APP’s</td>
+<td><a href="https://www.oaic.gov.au/privacy/australian-privacy-principles" rel="noopener" target="_blank">Australian Privacy Principles</a> zijn van toepassing. Regels voor grensoverschrijdende openbaarmaking (APP 8) vereisen redelijke stappen om te waarborgen dat buitenlandse ontvangers voldoen. Nog geen AI-specifieke wetgeving.</td>
+</tr>
+<tr>
+<td>Nieuw-Zeeland</td>
+<td><a href="https://www.legislation.govt.nz/act/public/2020/0031/latest/LMS23223.html" rel="noopener" target="_blank">Privacy Act 2020</a></td>
+<td>12 Information Privacy Principles. Regels voor grensoverschrijdende overdracht vereisen adequate bescherming. NZ heeft <a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en" rel="noopener" target="_blank">EU-adequaatheidsstatus</a>, wat datastromen vereenvoudigt. Toezichthouder: <a href="https://www.privacy.org.nz/" rel="noopener" target="_blank">Office of the Privacy Commissioner</a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 7: Cyberverzekering -->
+<div class="section prx-reveal">
+<div class="section-label">Verzekering</div>
+<h2>Cyberverzekering en AI: de uitsluitingsgolf</h2>
+<p>Vanaf januari 2026 zijn grote verzekeraars begonnen met het toepassen van <strong>AI-uitsluitingsclausules</strong> op polissen. <a href="https://www.verisk.com/" rel="noopener" target="_blank">Verisk</a> (de sectorstandaard voor verzekeringsformulieren) heeft nieuwe AI-specifieke uitsluitingsteksten uitgebracht die verzekeraars snel overnemen. Dit treft MSP’s direct.</p>
+<div class="risk-matrix prx-reveal-stagger">
+<div class="risk-card critical">
+<h4>AI-outputfouten</h4>
+<p>Als AI onjuiste remediatie voorstelt en dit leidt tot een storing bij een klant, is de MSP aansprakelijk. AI-leveranciers sluiten universeel de nauwkeurigheid van output uit. Je beroepsaansprakelijkheidsverzekering dekt dit mogelijk niet. Zie het <a href="https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence" rel="noopener" target="_blank">NIST AI Risk Management Framework</a> voor richtlijnen voor risicobeoordeling.</p>
+</div>
+<div class="risk-card critical">
+<h4>Deepfake-fraude</h4>
+<p>Standaard cyberpolissen dekken deepfake-fraudeverliezen niet meer sinds januari 2026. De nieuwe clausules van Verisk sluiten generatieve AI-blootstellingen expliciet uit. De <a href="https://www.fbi.gov/how-can-we-help-you/scams-and-safety/common-frauds-and-scams/deepfakes-and-social-engineering" rel="noopener" target="_blank">FBI heeft richtlijnen gepubliceerd</a> over deepfake-bedreigingen.</p>
+</div>
+<div class="risk-card high">
+<h4>AI-platforms van derden</h4>
+<p>Nieuwe uitsluitingen dekken niet alleen je eigen AI, maar ook AI-platforms van derden die in je bedrijfsvoering worden gebruikt. Het gebruik van OpenAI of Claude in je workflow kan uitsluitingen activeren.</p>
+</div>
+<div class="risk-card high">
+<h4>Niet-meldingsrisico</h4>
+<p>Het niet melden van AI-gebruik aan je verzekeraar kan de dekking volledig ongeldig maken. Meld het zelf, ook als dat de premie beïnvloedt.</p>
+</div>
+</div>
+<div class="analogy warn">
+<div class="tag">Actie vereist</div>
+<p>Controleer je huidige cyber- en beroepsaansprakelijkheidspolissen op AI-uitsluitingsteksten <strong>voor je volgende verlenging</strong>. Vraag je makelaar specifiek naar AI-clausules. Documenteer je AI-governance. Verzekeraars koppelen premies steeds vaker aan aantoonbare AI-governance.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 8: Dataminimalisatie -->
+<div class="section prx-reveal">
+<div class="section-label">Dataminimalisatie</div>
+<h2>Welke data moet je daadwerkelijk naar de AI sturen?</h2>
+<p><a href="https://gdpr-info.eu/art-5-gdpr/" rel="noopener" target="_blank">AVG Artikel 5(1)(c)</a> vereist dat gegevens <strong>“beperkt zijn tot wat noodzakelijk is.”</strong> De <a href="https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_28-2024_ai-models_en.pdf" rel="noopener" target="_blank">EDPB Opinie 28/2024 over AI-modellen en persoonsgegevens</a> verduidelijkt verder hoe dit principe van toepassing is op AI-verwerking. Elke API-call naar een AI-dienst is een verwerkingshandeling. Hoe minder persoonsgegevens je verstuurt, hoe lager je compliancelast.</p>
+<div class="steps prx-reveal-stagger">
+<div class="step">
+<div class="step-body">
+<h4>Niveau 1: Filtering op veldniveau (minimum)</h4>
+<p>Verwijder persoonsgegevens voordat je ze naar de AI stuurt. Verwijder namen, e-mailadressen, telefoonnummers, IP-adressen. Vervang door ticket-ID’s, geanonimiseerde referenties (“Gebruiker-A”, “Klant-7”), apparaatcategorieën.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Niveau 2: Aggregatie (aanbevolen voor analytics)</h4>
+<p>Stuur voor rapportage en trendanalyse geaggregeerde data. In plaats van 500 individuele tickets, stuur “87 wachtwoordresetverzoeken over 12 klanten.” Dit kan kwalificeren als anonimisering, waardoor de AVG mogelijk helemaal niet meer van toepassing is.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Niveau 3: Pseudonimisering (goed compromis)</h4>
+<p>Vervang identificatoren door pseudoniemen voordat de AI-verwerking plaatsvindt. Bewaar een mappingtabel lokaal (wordt nooit naar de AI gestuurd). Let op: <a href="https://gdpr-info.eu/recitals/no-26/" rel="noopener" target="_blank">gepseudonimiseerde gegevens zijn nog steeds persoonsgegevens onder de AVG</a>, maar het is een erkende waarborg onder <a href="https://gdpr-info.eu/art-32-gdpr/" rel="noopener" target="_blank">Artikel 32</a>.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Niveau 4: On-premise AI (maximale privacy)</h4>
+<p>Draai modellen zoals Llama 3 of Mistral op je eigen hardware. Nul data verlaat je netwerk. Afweging: lagere modelkwaliteit, GPU-hardwarekosten, geen leveranciersondersteuning. Het beste voor zeer gevoelige omgevingen.</p>
+</div>
+</div>
+</div>
+<p><strong>Waar Proxuma Power BI past:</strong> Omdat de data al gestructureerd is in een semantisch model met duidelijke measures en dimensies, kun je <strong>geaggregeerde metrics</strong> opvragen (totale uren, ticketaantallen, omzet per dienstverlening) in plaats van ruwe recordgegevens. Dit sluit van nature aan bij Niveau 2 dataminimalisatie. De AI ziet getallen en categorieën, geen individuele namen en ticketomschrijvingen.</p>
+</div>
+<hr/>
+<!-- SECTIE 9: Wat je moet doen -->
+<div class="section prx-reveal">
+<div class="section-label">Compliance-checklist</div>
+<h2>De MSP AI-compliancechecklist</h2>
+<p>Werk deze lijst af voordat je AI koppelt aan klantgegevens. Items zijn gerangschikt op prioriteit.</p>
+<div class="checklist prx-reveal-stagger">
+<div class="check-item critical">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Werk alle verwerkingsovereenkomsten bij met AI-subverwerkerautorisatie</strong>
+<span><a href="https://gdpr-info.eu/art-28-gdpr/" rel="noopener" target="_blank">AVG Artikel 28(2)</a>. Zonder dit is elke AI-verwerking van klantgegevens een contractbreuk.</span>
+</div>
+</div>
+<div class="check-item critical">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Stuur een formele subverwerkermelding naar alle klanten</strong>
+<span>Benoem de AI-leverancier, het doel, de datacategorieën en de waarborgen. Geef een bezwaartermijn van 30 dagen.</span>
+</div>
+</div>
+<div class="check-item critical">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Controleer de DPA, certificeringen en transfermechanismen van de AI-leverancier</strong>
+<span>Controleer op SOC 2 Type II, DPF-certificering, SCCs. Zorg dat hun DPA voldoet aan de eisen in je verwerkingsovereenkomst met klanten.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Voer een Transfer Impact Assessment uit (EU/Benelux MSP’s met VS-leveranciers)</strong>
+<span><a href="https://gdpr-info.eu/art-44-gdpr/" rel="noopener" target="_blank">AVG Artikelen 44-49</a>. Vereist bij gebruik van SCCs. De <a href="https://www.cnil.fr/en/new-standard-contractual-clauses-cnil-publishes-guide-transfers-personal-data-outside-eu" rel="noopener" target="_blank">CNIL publiceerde een volledige TIA-gids</a>.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Implementeer een datasanitisatie-/minimalisatielaag</strong>
+<span>Bouw een filter tussen je bedrijfssystemen en de AI. Verwijder persoonsgegevens, aggregeer waar mogelijk, log alle verstuurde data.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Voer een Data Protection Impact Assessment (DPIA) uit</strong>
+<span><a href="https://gdpr-info.eu/art-35-gdpr/" rel="noopener" target="_blank">AVG Artikel 35</a>. Kan vereist zijn bij grootschalige geautomatiseerde verwerking van persoonsgegevens. Zie de <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" rel="noopener" target="_blank">ICO DPIA-richtlijn</a>.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Controleer cyber- en beroepsaansprakelijkheidsverzekeringen op AI-uitsluitingen</strong>
+<span>Controleer op AI-uitsluitingsclausules (<a href="https://www.verisk.com/" rel="noopener" target="_blank">Verisk</a>-formulieren, van kracht sinds januari 2026). Meld AI-gebruik proactief.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Stel AI-gebruiksbeleid op voor medewerkers</strong>
+<span>Geen inloggegevens in prompts. Geen ruwe klantdata in consumenten-AI-tools. Documenteer wat wel en niet is toegestaan.</span>
+</div>
+</div>
+<div class="check-item medium">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Zorg voor AI-geletterdheidstraining voor medewerkers</strong>
+<span><a href="https://artificialintelligenceact.eu/article/4/" rel="noopener" target="_blank">EU AI Act Artikel 4</a> (van kracht sinds 2 februari 2025). Medewerkers moeten de AI-systemen die ze gebruiken begrijpen.</span>
+</div>
+</div>
+<div class="check-item medium">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Houd SCCs als back-up voor het DPF aan bij VS-AI-leveranciers</strong>
+<span>Als het HvJ-EU het DPF ongeldig verklaart (Schrems III), heeft je direct SCCs nodig. Houd ze nu al gereed.</span>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 10: Klantnotificatiesjabloon -->
+<div class="section prx-reveal">
+<div class="section-label">Klantcommunicatie</div>
+<h2>Hoe je je klanten informeert</h2>
+<p>Onder het algemene autorisatiemodel van de AVG moet je klanten formeel informeren voordat je een nieuwe subverwerker introduceert. Hier is een sjabloon dat je kunt aanpassen:</p>
+<div class="collapsible" id="notifTemplate">
+<button class="collapse-trigger" onclick="this.parentElement.classList.toggle('expanded')">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+            Bekijk klantnotificatiesjabloon
+        </button>
+<div class="collapse-content">
+<div class="inner">
+<pre>Onderwerp: Melding nieuwe subverwerker — AI-ondersteund servicebeheer
+
+Geachte [Klantnaam],
+
+Als onderdeel van de continue verbetering van onze dienstverlening
+informeren wij u hierbij over ons voornemen om [AI-leverancier]
+in te schakelen als subverwerker onder onze bestaande
+verwerkingsovereenkomst van [datum].
+
+DOEL: [AI-leverancier] zal worden ingezet voor [specifiek doel,
+bijv. "geautomatiseerde ticketclassificatie, rapportageanalyse
+en analyse van servicetrends"] om responstijden en
+servicekwaliteit te verbeteren.
+
+VERWERKTE GEGEVENS: De volgende categorieen kunnen worden verwerkt:
+- Geaggregeerde servicemetrics en ticketstatistieken
+- Apparaatcategorieen en configuratiesamenvattingen
+- Service-prestatie-indicatoren
+
+Wij sturen het volgende NIET naar deze subverwerker:
+- Wachtwoorden of authenticatiegegevens
+- Financiele gegevens (bankgegevens, creditcardinformatie)
+- Individuele persoonlijke gegevens van medewerkers
+
+GETROFFEN WAARBORGEN:
+- Data versleuteld tijdens transport (TLS 1.2+) en in rust
+- [Leverancier] beschikt over SOC 2 Type II / ISO 27001-certificering
+- Data verwerkt binnen [EU/onder EU-US Data Privacy Framework
+  met standaard contractbepalingen]
+- [Leverancier] gebruikt klantdata niet voor modeltraining
+
+UW RECHT OM BEZWAAR TE MAKEN: Conform sectie [X] van onze
+verwerkingsovereenkomst heb je 30 dagen na ontvangst van deze
+melding om bezwaar te maken. Richt bezwaren schriftelijk aan [e-mail].
+
+Met vriendelijke groet,
+[MSP-naam]
+[Compliance Officer / FG]</pre>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<!-- SECTIE 11: EU AI Act -->
+<div class="section prx-reveal">
+<div class="section-label">EU AI Act</div>
+<h2>De EU AI Act: wat MSP’s moeten weten</h2>
+<p>De <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" rel="noopener" target="_blank">EU AI Act (Verordening 2024/1689)</a> is <strong>volledig van toepassing per 2 augustus 2026</strong>. Zelfs daarvoor gelden al bepaalde verplichtingen. De <a href="https://artificialintelligenceact.eu/" rel="noopener" target="_blank">AI Act Explorer</a> biedt een navigeerbare versie van de volledige tekst.</p>
+<div class="two-up prx-reveal">
+<div class="card never">
+<h4>Al van kracht (sinds 2 feb 2025)</h4>
+<p><strong><a href="https://artificialintelligenceact.eu/article/4/" rel="noopener" target="_blank">AI-geletterdheidsverplichtingen (Artikel 4)</a>.</strong> MSP’s moeten ervoor zorgen dat medewerkers de AI-systemen die zij inzetten begrijpen. Dit omvat kennis over welke data waarheen stroomt, wat de beperkingen zijn en wanneer menselijk toezicht nodig is.</p>
+</div>
+<div class="card sees">
+<h4>Per 2 augustus 2026</h4>
+<p><strong>Volledige toepasselijkheid.</strong> De meeste AI-toepassingen bij MSP’s (ticketverwerking, rapportage) zullen niet als “<a href="https://artificialintelligenceact.eu/annex/3/" rel="noopener" target="_blank">hoog risico</a>” worden aangemerkt. Maar AI die wordt ingezet voor personeelsbeheer of toegangscontrolebeslissingen kan wel <a href="https://artificialintelligenceact.eu/article/6/" rel="noopener" target="_blank">hoog-risicoverplichtingen</a> activeren met aanvullende documentatievereisten.</p>
+</div>
+</div>
+<p>Ongeacht de risicoclassificatie geldt: <strong><a href="https://artificialintelligenceact.eu/article/50/" rel="noopener" target="_blank">transparantie is vereist (Artikel 50)</a></strong>: als klanten interacteren met AI-gegenereerde content, moeten zij daarover worden geïnformeerd.</p>
+</div>
+<hr/>
+<!-- SECTIE 12: Belangrijkste conclusies -->
+<div class="section prx-reveal">
+<div class="section-label">Samenvatting</div>
+<h2>Belangrijkste conclusies</h2>
+<div class="prx-reveal-stagger">
+<div class="takeaway">
+<div class="tk-icon" style="background:#dbeafe;"><svg fill="none" stroke="#1e40af" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div>
+<h4>Werk je verwerkingsovereenkomsten bij voordat je iets koppelt</h4>
+<p>AI gebruiken zonder bijgewerkte klantovereenkomsten is een contractbreuk, ongeacht AVG-compliance. Dit is de allerbelangrijkste stap.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#d1fae5;"><svg fill="none" stroke="#065f46" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg></div>
+<div>
+<h4>EU-dataresidentie elimineert de moeilijkste compliancevragen</h4>
+<p>Azure OpenAI (EU Data Zone), AWS Bedrock (Frankfurt) of Google Vertex (EU) houden data in de EU. Geen internationale overdracht, geen Schrems III-risico, geen TIA vereist.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#fef3c7;"><svg fill="none" stroke="#92400e" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg></div>
+<div>
+<h4>Controleer je verzekering: AI-uitsluitingen zijn er</h4>
+<p>De AI-uitsluitingsformulieren van Verisk zijn van kracht sinds januari 2026. Ga er niet van uit dat je gedekt bent. Meld AI-gebruik en documenteer je governance.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#ede9fe;"><svg fill="none" stroke="#6b21a8" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></div>
+<div>
+<h4>Gestructureerde data is je compliancevoordeel</h4>
+<p>Omdat Proxuma Power BI je operationele data structureert in gelabelde measures en dimensies, kan AI geaggregeerde metrics opvragen in plaats van ruwe records. Minder persoonsgegevens naar de AI betekent minder compliancelast voor je.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#fee2e2;"><svg fill="none" stroke="#991b1b" stroke-width="2" viewbox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div>
+<div>
+<h4>Gebruik nooit consumenten-AI-producten voor klantdata</h4>
+<p>ChatGPT.com, Claude.ai, Gemini: deze consumenteninterfaces kunnen je invoer gebruiken voor training. Gebruik altijd commerciële API’s met een ondertekende DPA. Stel duidelijk personeelsbeleid op.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bronnen / Referenties -->
+<div class="section prx-reveal">
+<div class="section-label">Referenties</div>
+<h2>Bronnen &amp; verdere lectuur</h2>
+<p style="font-size:0.88rem;color:#64748b;margin-bottom:18px;">Alle beweringen in deze gids worden ondersteund door de onderstaande officiële bronnen. Links geverifieerd in februari 2026.</p>
+<div class="privacy-block">
+<h3>EU &amp; internationale wetgeving</h3>
+<div class="layer"><div class="layer-num">1</div><p><a href="https://gdpr-info.eu/" rel="noopener" target="_blank">AVG volledige tekst</a> — gdpr-info.eu (onderling gelinkt, met overwegingen)</p></div>
+<div class="layer"><div class="layer-num">2</div><p><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" rel="noopener" target="_blank">EU AI Act (Verordening 2024/1689)</a> — EUR-Lex officiële publicatie</p></div>
+<div class="layer"><div class="layer-num">3</div><p><a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" rel="noopener" target="_blank">Standaard Contractbepalingen</a> — Europese Commissie</p></div>
+<div class="layer"><div class="layer-num">4</div><p><a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en" rel="noopener" target="_blank">EU-adequaatheidsbesluiten</a> — Europese Commissie</p></div>
+</div>
+<div class="privacy-block" style="margin-top:16px;">
+<h3>Gegevensbeschermingsautoriteiten</h3>
+<div class="layer"><div class="layer-num">🇪🇺</div><p><a href="https://www.edpb.europa.eu/" rel="noopener" target="_blank">European Data Protection Board (EDPB)</a> — EU-brede richtlijnen en opinies</p></div>
+<div class="layer"><div class="layer-num">🇳🇱</div><p><a href="https://www.autoriteitpersoonsgegevens.nl/en" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a> — Nederlandse toezichthouder gegevensbescherming</p></div>
+<div class="layer"><div class="layer-num">🇬🇧</div><p><a href="https://ico.org.uk/" rel="noopener" target="_blank">Information Commissioner’s Office (ICO)</a> — Britse toezichthouder gegevensbescherming</p></div>
+<div class="layer"><div class="layer-num">🇫🇷</div><p><a href="https://www.cnil.fr/en" rel="noopener" target="_blank">CNIL</a> — Franse toezichthouder gegevensbescherming (TIA-richtlijnen)</p></div>
+<div class="layer"><div class="layer-num">🇦🇺</div><p><a href="https://www.oaic.gov.au/" rel="noopener" target="_blank">OAIC</a> — Australische informatiecommissaris</p></div>
+<div class="layer"><div class="layer-num">🇳🇿</div><p><a href="https://www.privacy.org.nz/" rel="noopener" target="_blank">Office of the Privacy Commissioner</a> — Nieuw-Zeeland</p></div>
+</div>
+<div style="overflow-x:auto;margin-top:24px;">
+<table>
+<thead>
+<tr>
+<th>EDPB-opinies &amp; -richtlijnen</th>
+<th>Onderwerp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.edpb.europa.eu/system/files/2024-10/edpb_opinion_202422_relianceonprocessors-sub-processors_en.pdf" rel="noopener" target="_blank">Opinie 22/2024</a></td>
+<td>Verwerker- en subverwerkerketens onder Artikel 28</td>
+</tr>
+<tr>
+<td><a href="https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_28-2024_ai-models_en.pdf" rel="noopener" target="_blank">Opinie 28/2024</a></td>
+<td>AI-modellen en persoonsgegevens — dataminimalisatie bij AI</td>
+</tr>
+<tr>
+<td><a href="https://www.edpb.europa.eu/our-work-tools/documents/public-consultations/2024/guidelines-022023-article-28-and-notion_en" rel="noopener" target="_blank">Richtlijnen 02/2023</a></td>
+<td>Artikel 28 en het begrip verwerker</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="overflow-x:auto;margin-top:16px;">
+<table>
+<thead>
+<tr>
+<th>AI-leverancier</th>
+<th>DPA</th>
+<th>Privacy</th>
+<th>DPF-status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft (Azure OpenAI)</td>
+<td><a href="https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy" rel="noopener" target="_blank">Dataprivacy</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/5581" rel="noopener" target="_blank">Gecertificeerd</a></td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td><a href="https://openai.com/policies/data-processing-addendum/" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://openai.com/enterprise-privacy/" rel="noopener" target="_blank">Enterprise privacy</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/8211" rel="noopener" target="_blank">Gecertificeerd</a></td>
+</tr>
+<tr>
+<td>Anthropic (Claude)</td>
+<td><a href="https://privacy.claude.com/en/articles/7996862-how-do-i-view-and-sign-your-data-processing-addendum-dpa" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://privacy.anthropic.com/en/" rel="noopener" target="_blank">Privacycentrum</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>AWS (Bedrock)</td>
+<td><a href="https://d1.awsstatic.com/legal/aws-dpa/aws-dpa.pdf" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://aws.amazon.com/bedrock/security-compliance/" rel="noopener" target="_blank">Beveiliging &amp; compliance</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/5765" rel="noopener" target="_blank">Gecertificeerd</a></td>
+</tr>
+<tr>
+<td>Google (Vertex AI)</td>
+<td><a href="https://cloud.google.com/terms/data-processing-addendum" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance" rel="noopener" target="_blank">Datagovernance</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/5780" rel="noopener" target="_blank">Gecertificeerd</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin-top:20px;">
+<p style="font-size:0.85rem;"><strong>Aanvullende bronnen:</strong></p>
+<p style="font-size:0.82rem;color:#64748b;">• <a href="https://www.dataprivacyframework.gov/" rel="noopener" target="_blank">EU-US Data Privacy Framework</a> — US Department of Commerce<br/>
+        • <a href="https://www.gov.uk/government/publications/uk-us-data-bridge-supporting-documents" rel="noopener" target="_blank">UK-US Data Bridge</a> — Britse overheid<br/>
+        • <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" rel="noopener" target="_blank">ICO AI-richtlijnen</a> — UK Information Commissioner’s Office<br/>
+        • <a href="https://www.nist.gov/artificial-intelligence" rel="noopener" target="_blank">NIST AI</a> — US National Institute of Standards and Technology<br/>
+        • <a href="https://www.cnil.fr/en/new-standard-contractual-clauses-cnil-publishes-guide-transfers-personal-data-outside-eu" rel="noopener" target="_blank">CNIL Transfer Impact Assessment Gids</a> — Franse toezichthouder<br/>
+        • <a href="https://curia.europa.eu/jcms/jcms/j_6/en/" rel="noopener" target="_blank">Hof van Justitie van de EU (HvJ-EU)</a> — Schrems I &amp; II jurisprudentie<br/>
+        • <a href="https://oag.ca.gov/privacy/ccpa" rel="noopener" target="_blank">California Consumer Privacy Act (CCPA)</a> — CA Attorney General<br/>
+        • <a href="https://laws-lois.justice.gc.ca/eng/acts/P-8.6/" rel="noopener" target="_blank">PIPEDA</a> — Canadese federale privacywet</p>
+</div>
+</div>
+<hr/>
+<!-- CTA -->
+<div class="cta prx-reveal">
+<h3>Klaar om AI-gedreven rapportages te verkennen?</h3>
+<p>Proxuma Power BI geeft je de gestructureerde datalaag die AI-queries mogelijk maakt, met de labeling en organisatie die je compliancelast laag houdt.</p>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">Bekijk AI-gegenereerde rapporten</a>
+<a class="outline" href="/powerbi-self-onboarding/">Aan de slag met Power BI</a>
+</div>
+</div>
+<script>
+(function() {
+    // Scroll reveal
+    var reveals = document.querySelectorAll('.prx-mcp .prx-reveal');
+    var staggers = document.querySelectorAll('.prx-mcp .prx-reveal-stagger');
+
+    if (!('IntersectionObserver' in window)) {
+        reveals.forEach(function(el) { el.classList.add('prx-visible'); });
+        staggers.forEach(function(el) {
+            Array.from(el.children).forEach(function(c) { c.style.opacity = '1'; c.style.transform = 'none'; });
+        });
+        return;
+    }
+
+    var revealObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('prx-visible');
+                revealObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(function(el) { revealObs.observe(el); });
+
+    var staggerObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                var children = e.target.children;
+                for (var i = 0; i < children.length; i++) {
+                    children[i].style.transitionDelay = (i * 0.08) + 's';
+                    children[i].classList.add('prx-visible');
+                }
+                staggerObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    staggers.forEach(function(el) { staggerObs.observe(el); });
+})();
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Gerelateerde Rapporten</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/directory-rol-audit-beheerderverdeling/">
+<span class="rr-badge" style="background:#fef2f2;color:#dc2626;">Beveiliging</span>
+<div class="rr-card-title">Microsoft 365 Directory Rol Audit</div>
+<div class="rr-card-desc">Verdeling en risicoanalyse van geprivilegieerde beheerderrollen in beheerde tenants.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsstatus/">
+<span class="rr-badge" style="background:#fef2f2;color:#dc2626;">Beveiliging</span>
+<div class="rr-card-title">MSP Beveiligingsstatus</div>
+<div class="rr-card-desc">We hebben de cijfers over msp beveiligingsstatus uit je Power BI-data getrokken. Dit valt op, hier zitten de gaten, en d</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gastgebruiker-audit-externe-toegang/">
+<span class="rr-badge" style="background:#fef2f2;color:#dc2626;">Beveiliging</span>
+<div class="rr-card-title">Microsoft 365 Gastgebruiker Audit</div>
+<div class="rr-card-desc">Uitgebreide audit van externe gastaccounts, hun toegangsniveaus en activiteitsstatus.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/beveiligingsbeleid-dekkingshiaten/">
+<span class="rr-badge" style="background:#fef2f2;color:#dc2626;">Beveiliging</span>
+<div class="rr-card-title">Microsoft 365 Beveiligingsbeleid Dekking</div>
+<div class="rr-card-desc">Hiatenanalyse van beveiligingsbeleid in uw beheerde tenantportfolio.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gedelegeerd-privilege-compliance-gdap/">
+<span class="rr-badge" style="background:#fef2f2;color:#dc2626;">Beveiliging</span>
+<div class="rr-card-title">M365 Lighthouse Gedelegeerd Privilege Compliance</div>
+<div class="rr-card-desc">Analyse en rapportage over gedelegeerd privilege compliance - gdap-relaties voor managed service providers.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/backup-toezicht-werklast/">
+<span class="rr-badge" style="background:#fef2f2;color:#dc2626;">Backup</span>
+<div class="rr-card-title">Backup Toezicht Werklast: Welke Engineers Beheren Te Veel Klant-Backups?</div>
+<div class="rr-card-desc">Dit rapport kruist HiBob-personeelsdata met Datto Backup-telemetrie om de werklast voor backup-monitoring per engineer i</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Genereer rapporten als deze vanuit je eigen data</h3>
+<p>Koppel Proxuma's Power BI integratie, gebruik een MCP-compatible AI om vragen te stellen en genereer op maat gemaakte rapporten - in minuten, niet in dagen.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten/" style="margin-right:12px;">Bekijk meer rapporten</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Aan de slag</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Ai Privacy Compliance Guide",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/ai-privacy-compliance-guide/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Microsoft 365",
+  "articleSection": "Security & Compliance"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
+    {"@type": "ListItem", "position": 3, "name": "Beveiliging", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=security"},
+    {"@type": "ListItem", "position": 4, "name": "Ai Privacy Compliance Guide"}
+  ]
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
+</script>
+</body>
+</html>

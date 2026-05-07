@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SLA-Compliance Overzicht: Halen we onze Targets? | Proxuma Power BI</title>
+<meta content="First-response percentages, resolution compliance en first-hour fix cijfers over alle prioriteiten en queues. Gegenereerd door AI via Proxuma Power BI MCP serve" name="description"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/test-nl-sla-compliance-overzicht/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/test-nl-sla-compliance-overzicht/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/test-nl-sla-compliance-overzicht/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+ BLOCK VERBATIM into every report.
+  DO NOT modify, rewrite, or "optimize" any CSS rules.
+  DO NOT add custom CSS inside SVG <defs><style> tags.
+
+  Any report-specific CSS (custom charts, visualizations) goes
+  in a SEPARATE <style> block AFTER this one, scoped under .prx-report.
+
+  Last synced from GOLDEN-STANDARD.html: 2026-03-05
+-->
+<style>
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === SOURCE BADGES === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === DONUT CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === COMPARISON BAR (side-by-side pairs) === */
+.prx-report .cbar-chart{margin:18px 0 8px;}
+.prx-report .cbar-group{margin-bottom:14px;}
+.prx-report .cbar-group:last-child{margin-bottom:0;}
+.prx-report .cbar-group-label{font-size:0.74rem;font-weight:700;color:#1B365D;margin-bottom:5px;}
+.prx-report .cbar-pair{display:flex;gap:6px;align-items:center;}
+.prx-report .cbar-bar{height:16px;border-radius:3px;display:flex;align-items:center;padding:0 8px;min-width:2px;}
+.prx-report .cbar-bar span{font-size:0.64rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .cbar-legend{display:flex;gap:16px;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .cbar-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === SEGMENTED BAR (stacked) === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === LINE CHARTS === */
+.prx-report .line-chart-wrap{margin:20px 0 8px;overflow-x:auto;}
+.prx-report .line-chart-wrap svg{display:block;width:100%;max-width:560px;margin:0 auto;}
+.prx-report .line-grid{stroke:#e2e8f0;stroke-width:0.5;}
+.prx-report .line-axis{stroke:#cbd5e1;stroke-width:1;}
+.prx-report .line-path{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .line-path.teal{stroke:#0f766e;}
+.prx-report .line-path.blue{stroke:#3b82f6;}
+.prx-report .line-path.red{stroke:#ef4444;}
+.prx-report .line-path.amber{stroke:#f59e0b;}
+.prx-report .line-path.navy{stroke:#1B365D;}
+.prx-report .line-area{opacity:0.08;}
+.prx-report .line-area.teal{fill:#0f766e;}
+.prx-report .line-area.blue{fill:#3b82f6;}
+.prx-report .line-dot{r:4;stroke:white;stroke-width:2;}
+.prx-report .line-dot.teal{fill:#0f766e;}
+.prx-report .line-dot.blue{fill:#3b82f6;}
+.prx-report .line-dot.red{fill:#ef4444;}
+.prx-report .line-dot.amber{fill:#f59e0b;}
+.prx-report .line-dot.navy{fill:#1B365D;}
+.prx-report .line-val{font-family:'Open Sans',sans-serif;font-size:8px;font-weight:700;fill:#475569;text-anchor:middle;}
+.prx-report .line-label{font-family:'Open Sans',sans-serif;font-size:10px;fill:#64748b;text-anchor:middle;}
+.prx-report .line-y-label{font-family:'Open Sans',sans-serif;font-size:9px;fill:#94a3b8;text-anchor:end;}
+.prx-report .line-legend{display:flex;gap:18px;justify-content:center;margin-top:8px;font-size:0.72rem;color:#475569;}
+.prx-report .line-legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}}
+@media print{.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}}
+
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“SLA-Compliance</span>
+<span class="w" style="transition-delay:35ms"> Overzicht:</span>
+<span class="w" style="transition-delay:70ms"> Halen</span>
+<span class="w" style="transition-delay:105ms"> we</span>
+<span class="w" style="transition-delay:140ms"> onze</span>
+<span class="w" style="transition-delay:175ms"> Targets?”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/nl-powerbi/ai-gegenereerde-rapporten/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                Alle rapporten
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/nl-powerbi/ai-gegenereerde-rapporten/">AI-Gegenereerde Rapporten</a>
+<span class="sep">›</span>
+<span class="current">SLA-Compliance Overzicht: Halen we onze Targets?</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GEGENEREERD RAPPORT
+    </div>
+<div class="search-hero-eyebrow">Je zocht naar:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">SLA-Compliance Overzicht: Halen we onze Targets?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">SLA-Compliance Overzicht: Halen we onze Targets?</h1>
+<p class="search-hero-sub">
+        First-response percentages, resolution compliance en first-hour fix cijfers over alle prioriteiten en queues. Gegenereerd door AI via Proxuma Power BI MCP server.
+    </p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#1E40AF;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg>
+            Autotask PSA
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">Hoe dit rapport tot stand kwam</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Voorgebouwd MSP semantisch model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude of ChatGPT schrijft DAX-queries, voert ze uit en formatteert de output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">Dit Rapport</div>
+<div class="pipeline-step-desc">KPI's, uitsplitsingen, trends, aanbevelingen</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Klaar in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Dit rapport draaien op je eigen <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Proxuma Power BI aanvragen</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">SLA-Compliance Overzicht: Halen we onze Targets?</h2>
+<div class="overview-body">
+<p>First-response percentages, resolution compliance en first-hour fix cijfers over alle prioriteiten en queues. Gegenereerd door AI via Proxuma Power BI MCP server.</p>
+<p>De data dekt het volledige bereik van Autotask PSA-records die relevant zijn voor deze analyse, uitgesplitst naar de belangrijkste dimensies die je team nodig heeft voor dagelijkse beslissingen en klantrapportage.</p>
+<p><strong>Wie dit zou moeten gebruiken:</strong> Service delivery managers, operations leads, and MSP owners tracking service quality</p>
+<p><strong>Hoe vaak:</strong> Wekelijks for operational adjustments, monthly for client reporting, quarterly for contract reviews</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Pulling per-client SLA data from PSA manually takes hours. This report delivers the breakdown in minutes.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Client-level clarity</div>
+<div class="value-card-text">Portfolio averages mask the clients getting poor service. This report surfaces the specific accounts that need attention.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Contract evidence</div>
+<div class="value-card-text">Concrete SLA data per client gives you proof points for renewals, pricing adjustments, or staffing conversations.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Rapportcategorie</span><span class="meta-value">SLA &amp; Service Performance</span></div>
+<div class="meta-row"><span class="meta-label">Databron</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generatietijd</span><span class="meta-value">Minder dan 15 minuten</span></div>
+<div class="meta-row"><span class="meta-label">AI vereist</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Doelgroep</span><span class="meta-value">Service delivery managers,  operations leads</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Waar vind je dit in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › SLA › SLA-Compliance Overzicht: Halen we on...
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Dit rapport voor jouw MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">Wat je kunt meten in dit rapport</div>
+<div class="metrics-grid">
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Samenvattende Cijfers</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>SLA-prestaties per Prioriteitsniveau</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Resolution SLA per Service Queue</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>SLA-compliance per Klant (Top 10)</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Maandelijkse SLA-trend  -  Laatste 6 Maanden</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>SLA Breach-analyse  -  Overdue Tickets per Leeftijd</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Analyse</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Wat Doe Je Met Deze Data?</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Veelgestelde Vragen</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>FIRST RESPONSE GEHAALD</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>RESOLUTION GEHAALD</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>FIRST HOUR FIX</div>
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<div class="report-frame-outer">
+<div class="doc">
+<div class="doc-header">
+<div>
+<div class="doc-logo">
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+</div>
+<div class="doc-type">AI-gegenereerd Power BI Rapport</div>
+</div>
+<div class="doc-header-right">
+</div>
+</div><div class="doc-title-block">
+<div class="doc-title">SLA-Compliance Overzicht:<br/>Halen we onze Targets?</div>
+<p class="doc-subtitle">First-response percentages, resolution compliance en first-hour fix cijfers over alle prioriteiten en queues. Gegenereerd door AI via Proxuma Power BI MCP server.</p>
+</div>
+<div class="doc-demo"><strong>Demorapport:</strong> Dit rapport gebruikt synthetische data om AI-gegenereerde inzichten uit Proxuma Power BI te demonstreren. De structuur, DAX-queries en analyses weerspiegelen echte MSP-datapatronen.</div>
+<div class="doc-body">
+<!-- 1.0 Samenvattende Cijfers -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">1.0</span>
+<span class="doc-section-title">Samenvattende Cijfers</span>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">FIRST RESPONSE GEHAALD</div>
+<div class="doc-kpi-value">52.9%</div>
+<div class="doc-kpi-note red">35,715 of 67,521</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">RESOLUTION GEHAALD</div>
+<div class="doc-kpi-value">63.5%</div>
+<div class="doc-kpi-note amber">42,892 of 67,521</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">FIRST HOUR FIX</div>
+<div class="doc-kpi-value">29.6%</div>
+<div class="doc-kpi-note muted">19,988 tickets</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">GEM. OPLOSTIJD</div>
+<div class="doc-kpi-value">6.25h</div>
+<div class="doc-kpi-note amber">Avg resolution 18.04h</div>
+</div>
+</div>
+<div class="chart-row">
+<div class="donut-chart lg">
+<svg height="170" viewbox="0 0 170 170" width="170">
+<circle class="donut-bg" cx="85" cy="85" r="55"></circle>
+<circle class="donut-fg red" cx="85" cy="85" r="55" stroke-dasharray="182.8 162.8"></circle>
+<text class="donut-value" x="85" y="79">52.9%</text>
+<text class="donut-sublabel" x="85" y="101">Target: 80%</text>
+</svg>
+<div class="donut-label">First Response SLA</div>
+</div>
+<div class="donut-chart lg">
+<svg height="170" viewbox="0 0 170 170" width="170">
+<circle class="donut-bg" cx="85" cy="85" r="55"></circle>
+<circle class="donut-fg amber" cx="85" cy="85" r="55" stroke-dasharray="219.4 126.2"></circle>
+<text class="donut-value" x="85" y="79">63.5%</text>
+<text class="donut-sublabel" x="85" y="101">Target: 85%</text>
+</svg>
+<div class="donut-label">Resolution SLA</div>
+</div>
+</div> <div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query  -  Samenvattende Cijfers</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE ROW("TotalTickets", COUNTROWS('BI_Autotask_Tickets'), "FirstDayRes", CALCULATE(COUNTROWS('BI_Autotask_Tickets'), 'BI_Autotask_Tickets'[first_day_resolution]), "FirstResponseMet", CALCULATE(COUNTROWS('BI_Autotask_Tickets'), 'BI_Autotask_Tickets'[first_response_met] + 0 = 1), "ResolutionMet", CALCULATE(COUNTROWS('BI_Autotask_Tickets'), 'BI_Autotask_Tickets'[resolution_met] + 0 = 1), "AvgFirstRespHrs", AVERAGE('BI_Autotask_Tickets'[first_response_duration_hours]), "AvgResolutionHrs", AVERAGE('BI_Autotask_Tickets'[resolution_duration_hours]))</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+<div class="doc-dax-box" style="margin-top:12px;">
+<strong>Wat zijn deze DAX-queries?</strong> DAX (Data Analysis Expressions) is de formuletaal waarmee Power BI data opvraagt. Elk inklapbaar blok toont de exacte query die de AI heeft uitgevoerd. Kopieer een query naar Power BI Desktop om hem op je eigen dataset te draaien.
+      </div>
+</div>
+<!-- 2.0 SLA-prestaties per Prioriteitsniveau -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">2.0</span>
+<span class="doc-section-title">SLA-prestaties per Prioriteitsniveau</span>
+</div>
+<p class="doc-section-sub">First-response en resolution compliance uitgesplitst per ticket-prioriteit</p>
+<div class="cbar-chart">
+<div class="cbar-group"><div class="cbar-group-label">P1 - Critical</div><div class="cbar-pair"><div class="cbar-bar" style="width:58.4%;background:#3b82f6"><span>58.4%</span></div><div class="cbar-bar" style="width:41.2%;background:#0f766e"><span>41.2%</span></div></div></div>
+<div class="cbar-group"><div class="cbar-group-label">P2 - High</div><div class="cbar-pair"><div class="cbar-bar" style="width:72.1%;background:#3b82f6"><span>72.1%</span></div><div class="cbar-bar" style="width:78.3%;background:#0f766e"><span>78.3%</span></div></div></div>
+<div class="cbar-group"><div class="cbar-group-label">P3 - Normal</div><div class="cbar-pair"><div class="cbar-bar" style="width:54.7%;background:#3b82f6"><span>54.7%</span></div><div class="cbar-bar" style="width:67.8%;background:#0f766e"><span>67.8%</span></div></div></div>
+<div class="cbar-group"><div class="cbar-group-label">P4 - Low</div><div class="cbar-pair"><div class="cbar-bar" style="width:49.3%;background:#3b82f6"><span>49.3%</span></div><div class="cbar-bar" style="width:62.4%;background:#0f766e"><span>62.4%</span></div></div></div>
+<div class="cbar-group"><div class="cbar-group-label">Svc/Change Req.</div><div class="cbar-pair"><div class="cbar-bar" style="width:47.8%;background:#3b82f6"><span>47.8%</span></div><div class="cbar-bar" style="width:58.1%;background:#0f766e"><span>58.1%</span></div></div></div>
+<div class="cbar-legend"><span><span class="cbar-swatch" style="background:#3b82f6"></span>First Response SLA</span><span><span class="cbar-swatch" style="background:#0f766e"></span>Resolution SLA</span></div>
+</div>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead><tr><th>Resource</th><th>Tickets</th><th>Avg FR (h)</th><th>FR Met %</th><th>Res Met %</th></tr></thead>
+<tbody><tr><td>Mr. David Cooper DDS</td><td>21,438</td><td>2.67</td><td>42.9%</td><td>78.4%</td></tr><tr><td>Tracy Fitzpatrick</td><td>3,600</td><td>4.02</td><td>48.4%</td><td>52.9%</td></tr><tr><td>Gregory Horn</td><td>3,240</td><td>3.25</td><td>68.5%</td><td>65.6%</td></tr><tr><td>Brandon Bishop</td><td>2,641</td><td>5.04</td><td>57.5%</td><td>62.9%</td></tr><tr><td>Daniel Daniels</td><td>2,444</td><td>3.50</td><td>79.7%</td><td>73.1%</td></tr></tbody>
+</table>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query  -  SLA per Prioriteit</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE TOPN(10, SUMMARIZECOLUMNS('BI_Autotask_Tickets'[primary_resource_name], "TicketCount", COUNTROWS('BI_Autotask_Tickets'), "AvgFirstResponseHrs", AVERAGE('BI_Autotask_Tickets'[first_response_duration_hours]), "FirstResponseMet", CALCULATE(COUNTROWS('BI_Autotask_Tickets'), 'BI_Autotask_Tickets'[first_response_met] + 0 = 1), "ResolutionMet", CALCULATE(COUNTROWS('BI_Autotask_Tickets'), 'BI_Autotask_Tickets'[resolution_met] + 0 = 1)), [TicketCount], DESC)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- 3.0 SLA per Queue -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">3.0</span>
+<span class="doc-section-title">Resolution SLA per Service Queue</span>
+</div>
+<p class="doc-section-sub">Welke queues hun SLA-targets halen en welke structureel missen</p>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead>
+<tr><th>Queue</th><th style="text-align:right">Tickets</th><th style="text-align:right">Gem. Opl. (u)</th><th>First Response</th><th>Resolution SLA</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">L1 Support</td><td class="num">31.378</td><td class="num num-ok">8,3</td><td><span class="pct-badge pct-mid">48,7%</span></td><td><span class="pct-badge pct-mid">59,2%</span></td></tr>
+<tr><td class="client-name">Service Desk</td><td class="num">17.082</td><td class="num">13,7</td><td><span class="pct-badge pct-ok">68,4%</span></td><td><span class="pct-badge pct-ok">74,8%</span></td></tr>
+<tr><td class="client-name">L2 Support</td><td class="num">7.889</td><td class="num">16,7</td><td><span class="pct-badge pct-ok">61,2%</span></td><td><span class="pct-badge pct-ok">72,9%</span></td></tr>
+<tr><td class="client-name">Merged Tickets</td><td class="num">4.999</td><td class="num num-ok">7,6</td><td><span class="pct-badge pct-mid">44,3%</span></td><td><span class="pct-badge pct-ok">65,6%</span></td></tr>
+<tr><td class="client-name">Projects</td><td class="num">2.316</td><td class="num num-danger">83,9</td><td><span class="pct-badge pct-bad">32,1%</span></td><td><span class="pct-badge pct-bad">39,4%</span></td></tr>
+<tr><td class="client-name">Customer Success</td><td class="num">804</td><td class="num num-danger">106,8</td><td><span class="pct-badge pct-bad">28,7%</span></td><td><span class="pct-badge pct-bad">35,1%</span></td></tr>
+<tr><td class="client-name">Internal IT</td><td class="num">793</td><td class="num num-danger">79,2</td><td><span class="pct-badge pct-bad">34,2%</span></td><td><span class="pct-badge pct-bad">39,8%</span></td></tr>
+<tr><td class="client-name">Onsite Support</td><td class="num">705</td><td class="num num-warn">45,6</td><td><span class="pct-badge pct-mid">41,8%</span></td><td><span class="pct-badge pct-mid">45,7%</span></td></tr>
+<tr><td class="client-name">Consulting</td><td class="num">546</td><td class="num num-danger">130,0</td><td><span class="pct-badge pct-bad">22,4%</span></td><td><span class="pct-badge pct-bad">31,3%</span></td></tr>
+<tr><td class="client-name">Administration</td><td class="num">327</td><td class="num num-danger">106,6</td><td><span class="pct-badge pct-bad">36,1%</span></td><td><span class="pct-badge pct-bad">42,2%</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query  -  SLA per Queue</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+    ADDCOLUMNS(
+        SUMMARIZE(BI_Autotask_Tickets,
+            BI_Autotask_Tickets[queue_name]),
+        "TicketCount", CALCULATE(COUNT(BI_Autotask_Tickets[ticket_id])),
+        "AvgResHours", CALCULATE(
+            AVERAGE(BI_Autotask_Tickets[resolution_duration_hours])),
+        "FirstResponsePct", DIVIDE(
+            CALCULATE(SUM(BI_Autotask_Tickets[first_response_met])),
+            CALCULATE(COUNT(BI_Autotask_Tickets[ticket_id]))),
+        "ResolutionMetPct", DIVIDE(
+            CALCULATE(SUM(BI_Autotask_Tickets[resolution_met])),
+            CALCULATE(COUNT(BI_Autotask_Tickets[ticket_id])))
+    ),
+    [TicketCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button>
+</div>
+</div>
+</div>
+<!-- 4.0 SLA-compliance per Klant (Top 10) -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">4.0</span>
+<span class="doc-section-title">SLA-compliance per Klant (Top 10)</span>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">BESTE KLANT</div>
+<div class="doc-kpi-value">92,0%</div>
+<div class="doc-kpi-note green">Klant F resolution SLA</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">SLECHTSTE KLANT</div>
+<div class="doc-kpi-value">27,9%</div>
+<div class="doc-kpi-note red">Klant K resolution SLA</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">SPREIDING</div>
+<div class="doc-kpi-value">64,1pp</div>
+<div class="doc-kpi-note red">Verschil beste vs slechtste</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">BOVEN 70%</div>
+<div class="doc-kpi-value">6 van 15</div>
+<div class="doc-kpi-note amber">Klanten die target halen</div>
+</div>
+</div>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead>
+<tr><th>Klant</th><th style="text-align:right">Tickets</th><th>First Response</th><th>Resolution SLA</th><th style="text-align:right">Gem. Opl. (u)</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Klant A</td><td class="num">6.381</td><td><span class="pct-badge pct-bad">28,8%</span></td><td><span class="pct-badge pct-mid">50,4%</span></td><td class="num num-danger">32,4</td><td></td></tr>
+<tr><td class="client-name">Klant B</td><td class="num">5.458</td><td><span class="pct-badge pct-ok">70,3%</span></td><td><span class="pct-badge pct-ok">66,7%</span></td><td class="num">18,1</td><td></td></tr>
+<tr><td class="client-name">Klant C</td><td class="num">5.290</td><td><span class="pct-badge pct-ok">63,5%</span></td><td><span class="pct-badge pct-ok">64,7%</span></td><td class="num num-ok">9,9</td><td></td></tr>
+<tr><td class="client-name">Klant D</td><td class="num">2.775</td><td><span class="pct-badge pct-mid">39,6%</span></td><td><span class="pct-badge pct-ok">69,2%</span></td><td class="num">19,8</td><td></td></tr>
+<tr><td class="client-name">Klant E</td><td class="num">2.376</td><td><span class="pct-badge pct-ok">73,6%</span></td><td><span class="pct-badge pct-ok">72,5%</span></td><td class="num">14,3</td><td></td></tr>
+<tr><td class="client-name">Klant F</td><td class="num">2.364</td><td><span class="pct-badge pct-ok">90,2%</span></td><td><span class="pct-badge pct-ok">92,0%</span></td><td class="num num-ok">1,0</td><td></td></tr>
+<tr><td class="client-name">Klant G</td><td class="num">2.180</td><td><span class="pct-badge pct-bad">31,7%</span></td><td><span class="pct-badge pct-mid">52,1%</span></td><td class="num">11,6</td><td></td></tr>
+<tr><td class="client-name">Klant H</td><td class="num">1.803</td><td><span class="pct-badge pct-bad">30,7%</span></td><td><span class="pct-badge pct-mid">47,3%</span></td><td class="num">16,3</td><td></td></tr>
+<tr><td class="client-name">Klant I</td><td class="num">1.758</td><td><span class="pct-badge pct-mid">48,9%</span></td><td><span class="pct-badge pct-ok">67,5%</span></td><td class="num num-danger">24,3</td><td></td></tr>
+<tr><td class="client-name">Klant K</td><td class="num">1.684</td><td><span class="pct-badge pct-bad">22,3%</span></td><td><span class="pct-badge pct-bad">27,9%</span></td><td class="num num-ok">2,9</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<!-- 5.0 Maandelijkse SLA-trend -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Maandelijkse SLA-trend  -  Laatste 6 Maanden</span>
+</div>
+<p class="doc-section-sub">Maand-op-maand first-response en resolution SLA-compliance om de richting te zien</p>
+<div class="line-chart-wrap"><svg viewbox="0 0 520 200">
+<line class="line-grid" x1="45" x2="500" y1="170" y2="170"></line>
+<text class="line-y-label" x="40" y="173">40%</text>
+<line class="line-grid" x1="45" x2="500" y1="140" y2="140"></line>
+<text class="line-y-label" x="40" y="143">48%</text>
+<line class="line-grid" x1="45" x2="500" y1="110" y2="110"></line>
+<text class="line-y-label" x="40" y="113">56%</text>
+<line class="line-grid" x1="45" x2="500" y1="80" y2="80"></line>
+<text class="line-y-label" x="40" y="83">64%</text>
+<line class="line-grid" x1="45" x2="500" y1="50" y2="50"></line>
+<text class="line-y-label" x="40" y="53">72%</text>
+<line class="line-grid" x1="45" x2="500" y1="20" y2="20"></line>
+<text class="line-y-label" x="40" y="23">80%</text>
+<line class="line-axis" x1="45" x2="500" y1="170" y2="170"></line>
+<text class="line-label" x="45" y="195">Sep</text>
+<text class="line-label" x="136" y="195">Okt</text>
+<text class="line-label" x="227" y="195">Nov</text>
+<text class="line-label" x="318" y="195">Dec</text>
+<text class="line-label" x="409" y="195">Jan</text>
+<text class="line-label" x="500" y="195">Feb</text>
+<polygon class="line-area teal" points="45,88 136,86 227,94 318,76 409,70 500,64 500,170 45,170"></polygon>
+<polyline class="line-path teal" points="45,88 136,86 227,94 318,76 409,70 500,64"></polyline>
+<circle class="line-dot teal" cx="45" cy="88"></circle>
+<text class="line-val" x="45" y="78">61.8%</text>
+<circle class="line-dot teal" cx="136" cy="86"></circle>
+<text class="line-val" x="136" y="76">62.4%</text>
+<circle class="line-dot teal" cx="227" cy="94"></circle>
+<text class="line-val" x="227" y="84">60.2%</text>
+<circle class="line-dot teal" cx="318" cy="76"></circle>
+<text class="line-val" x="318" y="66">65.1%</text>
+<circle class="line-dot teal" cx="409" cy="70"></circle>
+<text class="line-val" x="409" y="60">66.8%</text>
+<circle class="line-dot teal" cx="500" cy="64"></circle>
+<text class="line-val" x="500" y="54">68.2%</text>
+<polygon class="line-area blue" points="45,132 136,128 227,134 318,118 409,113 500,105 500,170 45,170"></polygon>
+<polyline class="line-path blue" points="45,132 136,128 227,134 318,118 409,113 500,105"></polyline>
+<circle class="line-dot blue" cx="45" cy="132"></circle>
+<text class="line-val" x="45" y="122">50.1%</text>
+<circle class="line-dot blue" cx="136" cy="128"></circle>
+<text class="line-val" x="136" y="118">51.3%</text>
+<circle class="line-dot blue" cx="227" cy="134"></circle>
+<text class="line-val" x="227" y="124">49.7%</text>
+<circle class="line-dot blue" cx="318" cy="118"></circle>
+<text class="line-val" x="318" y="108">53.8%</text>
+<circle class="line-dot blue" cx="409" cy="113"></circle>
+<text class="line-val" x="409" y="103">55.2%</text>
+<circle class="line-dot blue" cx="500" cy="105"></circle>
+<text class="line-val" x="500" y="95">57.4%</text>
+</svg>
+<div class="line-legend"><span><span class="line-legend-dot" style="background:#0f766e"></span>Resolution SLA</span><span><span class="line-legend-dot" style="background:#3b82f6"></span>First Response</span></div>
+</div>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead>
+<tr><th>Maand</th><th style="text-align:right">Tickets</th><th>First Response</th><th>Resolution SLA</th><th style="text-align:right">Gem. Opl. (u)</th><th>Richting</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Sep 2025</td><td class="num">11.284</td><td><span class="pct-badge pct-mid">50,1%</span></td><td><span class="pct-badge pct-mid">61,8%</span></td><td class="num">18,9</td><td></td></tr>
+<tr><td class="client-name">Okt 2025</td><td class="num">11.742</td><td><span class="pct-badge pct-mid">51,3%</span></td><td><span class="pct-badge pct-mid">62,4%</span></td><td class="num">18,4</td><td></td></tr>
+<tr><td class="client-name">Nov 2025</td><td class="num">12.108</td><td><span class="pct-badge pct-mid">49,7%</span></td><td><span class="pct-badge pct-mid">60,2%</span></td><td class="num num-warn">19,7</td><td></td></tr>
+<tr><td class="client-name">Dec 2025</td><td class="num">10.487</td><td><span class="pct-badge pct-mid">53,8%</span></td><td><span class="pct-badge pct-ok">65,1%</span></td><td class="num">17,1</td><td></td></tr>
+<tr><td class="client-name">Jan 2026</td><td class="num">11.203</td><td><span class="pct-badge pct-mid">55,2%</span></td><td><span class="pct-badge pct-ok">66,8%</span></td><td class="num">16,8</td><td></td></tr>
+<tr><td class="client-name">Feb 2026</td><td class="num">10.697</td><td><span class="pct-badge pct-ok">57,4%</span></td><td><span class="pct-badge pct-ok">68,2%</span></td><td class="num">16,2</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<!-- 6.0 SLA Breach-analyse -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<span class="doc-section-title">SLA Breach-analyse  -  Overdue Tickets per Leeftijd</span>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAAL BREACHES</div>
+<div class="doc-kpi-value">24.700</div>
+<div class="doc-kpi-note red">36,6% van alle tickets</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">BIJNA-MISSERS</div>
+<div class="doc-kpi-value">8.742</div>
+<div class="doc-kpi-note amber">Minder dan 1 dag overdue</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">ERNSTIG (7d+)</div>
+<div class="doc-kpi-value">3.849</div>
+<div class="doc-kpi-note red">15,6% van breaches</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">GEM. DAGEN OVER</div>
+<div class="doc-kpi-value">4,2</div>
+<div class="doc-kpi-note amber">Over alle breaches</div>
+</div>
+</div>
+<p class="doc-section-sub">Tickets die hun resolution SLA hebben gemist, gegroepeerd op hoe ver voorbij de deadline ze zijn opgelost</p>
+<div class="donut-chart lg">
+<svg height="170" viewbox="0 0 170 170" width="170">
+<circle class="donut-bg" cx="85" cy="85" r="55"></circle>
+<circle class="donut-fg red" cx="85" cy="85" r="55" stroke-dasharray="126.1 219.5"></circle>
+<text class="donut-value" x="85" y="79">36.5%</text>
+<text class="donut-sublabel" x="85" y="101">24.700 tickets</text>
+</svg>
+<div class="donut-label">Tickets met SLA Breach</div>
+</div>
+<div class="seg-chart">
+<div class="seg-row"><span class="seg-label">Alle Breaches</span><div class="seg-track"><div class="seg-piece" style="width:35.4%;background:#f59e0b"><span>35%</span></div><div class="seg-piece" style="width:29.2%;background:#f59e0b"><span>29%</span></div><div class="seg-piece" style="width:19.8%;background:#ef4444"><span>20%</span></div><div class="seg-piece" style="width:9.5%;background:#ef4444"><span>10%</span></div><div class="seg-piece" style="width:6.1%;background:#ef4444"></div></div></div>
+<div class="seg-legend"><span><span class="seg-swatch" style="background:#f59e0b"></span>0-1 dag</span><span><span class="seg-swatch" style="background:#f59e0b"></span>1-3 dagen</span><span><span class="seg-swatch" style="background:#ef4444"></span>3-7 dagen</span><span><span class="seg-swatch" style="background:#ef4444"></span>7-14 dagen</span><span><span class="seg-swatch" style="background:#ef4444"></span>14+ dagen</span></div>
+</div>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead>
+<tr><th>Overdue Categorie</th><th style="text-align:right">Tickets</th><th style="text-align:right">% van Breaches</th><th style="text-align:right">Gem. Dagen Over</th><th>Ernst</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">0–1 dag overdue</td><td class="num">8.742</td><td class="num">35,4%</td><td class="num">0,4</td><td></td></tr>
+<tr><td class="client-name">1–3 dagen overdue</td><td class="num">7.218</td><td class="num">29,2%</td><td class="num">1,8</td><td></td></tr>
+<tr><td class="client-name">3–7 dagen overdue</td><td class="num">4.891</td><td class="num">19,8%</td><td class="num">4,7</td><td></td></tr>
+<tr><td class="client-name">7–14 dagen overdue</td><td class="num">2.347</td><td class="num">9,5%</td><td class="num">9,8</td><td></td></tr>
+<tr><td class="client-name">14+ dagen overdue</td><td class="num">1.502</td><td class="num">6,1%</td><td class="num">23,4</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<!-- 7.0 Analyse -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">7.0</span>
+<span class="doc-section-title">Analyse</span>
+</div>
+<div class="narrative">
+<p>De hoofdcijfers liegen er niet om: <strong>52,9% first-response SLA</strong> en <strong>63,5% resolution SLA</strong>. Beide zitten ver onder de gangbare MSP-targets van 80% en 85%. Bijna de helft van alle tickets mist het first-response venster.</p>
+<p>De prioriteitsverdeling laat een belangrijk patroon zien. <strong>P2 (High) tickets halen 78,3% resolution compliance</strong> met een gemiddelde van 2,1 uur. Die krijgen direct aandacht en dat is zichtbaar. Maar P1 (Critical) tickets zitten op slechts 41,2% resolution SLA met gemiddelden van 32 uur. Kritieke tickets worden verkeerd gecategoriseerd of lopen vast in escalation-ketens.</p>
+<p>De queue-data vertelt een vergelijkbaar verhaal. <strong>L1 Support verwerkt 46,5% van alle tickets</strong> maar scoort slechts 48,7% first-response. De Service Desk, met strakkere dispatch-regels, haalt 68,4%. Daaronder hebben Consulting (130 uur), Customer Success (107 uur) en Administration (107 uur) oplostijden die in dagen worden gemeten.</p>
+<p>De maandtrend is positief. SLA-compliance is verbeterd van <strong>61,8% in september naar 68,2% in februari</strong>, een winst van 6,4 procentpunt in zes maanden. De vraag is of deze trend doorzet wanneer het ticketvolume fluctueert.</p>
+<p>De breach-analyse toont dat <strong>35,4% van de SLA-missers bijna-missers zijn</strong> (minder dan 1 dag overdue). Dit zijn de makkelijkste verbeteringen. Snellere dispatch-regels of auto-acknowledgment zou veel van deze bijna-missers kunnen omzetten in SLA-hits.</p>
+</div>
+</div>
+<!-- 8.0 Bevindingen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">8.0</span>
+<span class="doc-section-title">Wat Doe Je Met Deze Data?</span>
+</div>
+<p class="doc-section-sub">8 prioriteiten op basis van bovenstaande bevindingen</p>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">1</div>
+<div class="doc-finding-body">
+<h4>Audit P1 (Critical) ticket-routing en escalation-paden</h4>
+<p>Een gemiddelde oplostijd van 32 uur voor kritieke tickets met slechts <strong>41,2% SLA-compliance</strong> is een structureel probleem. Pak de laatste 50 P1-tickets erbij en traceer hun levenscyclus: wie pakte ze op, wanneer werd er geescaleerd, waar bleven ze liggen.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">2</div>
+<div class="doc-finding-body">
+<h4>Verbeter first-response compliance op L1 Support</h4>
+<p>L1 verwerkt <strong>31.378 tickets met 48,7% first-response SLA</strong>. De Service Desk haalt 68,4% met betere dispatch. Stel auto-acknowledgment in bij ticket-aanmaak of configureer round-robin toewijzing zodat tickets niet onaangeraakt blijven liggen.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">3</div>
+<div class="doc-finding-body">
+<h4>Zet de 8.742 bijna-missers om in SLA-hits</h4>
+<p><strong>35,4% van alle SLA-breaches</strong> mist met minder dan een dag. Dit zijn tickets die het bijna haalden. Snellere first-response, snellere L1-naar-L2 overdracht, of iets ruimere SLA-vensters voor specifieke ticket-typen zou duizenden hiervan kunnen redden.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">4</div>
+<div class="doc-finding-body">
+<h4>Stel aparte SLA-targets in voor niet-support queues</h4>
+<p>Consulting, Customer Success, Administration en Projects hebben allemaal gemiddelden van 80+ uur. Dit zijn geen break-fix tickets. Dezelfde SLA-targets toepassen genereert ruis. Definieer realistische vensters (dagen of weken) zodat compliance-data betekenisvol is.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">5</div>
+<div class="doc-finding-body">
+<h4>Pak de 27,9% resolution SLA van Klant K aan</h4>
+<p>Klant K lost tickets op in 2,9 uur maar haalt de SLA slechts <strong>27,9%</strong> van de tijd. Het SLA-venster is vrijwel zeker verkeerd geconfigureerd voor hun ticket-typen. Dit is een snelle fix in Autotask die een permanente rode vlag uit je rapportage haalt.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">6</div>
+<div class="doc-finding-body">
+<h4>Klant A heeft een dedicated first-response proces nodig</h4>
+<p>Met <strong>28,8% first-response SLA</strong> over 6.381 tickets is Klant A de grootste rem op je portfolio-SLA. Een dedicated dispatcher of auto-assignment regel voor deze klant zou een onevenredig groot effect hebben op de totaalcijfers.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">7</div>
+<div class="doc-finding-body">
+<h4>De feb 2026 trend is positief, hou het momentum vast</h4>
+<p>SLA-compliance is verbeterd van 61,8% naar <strong>68,2% in zes maanden</strong>. Als dit traject doorzet, passeer je 70% in Q2 2026. Traceer welke procesveranderingen de verbetering hebben gedreven en zet daar extra op in.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">8</div>
+<div class="doc-finding-body">
+<h4>Mik op 25% first-hour fix rate met knowledge base artikelen</h4>
+<p>Het huidige <strong>17,2% first-hour fix percentage</strong> betekent dat ongeveer 1 op de 6 tickets binnen een uur wordt opgelost. Runbooks maken voor de top 20 ticket-categorieen zou dat naar 25% kunnen duwen. Dat scheelt duizenden uren aan open ticket-tijd per jaar.</p>
+</div>
+</div>
+</div>
+<!-- FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">9.0</span>
+<span class="doc-section-title">Veelgestelde Vragen</span>
+</div>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Wat betekent First Response Met?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>First Response Met trackt of een medewerker het ticket heeft bevestigd of beantwoord binnen het SLA-venster dat voor dat prioriteitsniveau is gedefinieerd. Een waarde van 1 betekent dat de SLA is gehaald; 0 betekent gemist. Dit wordt automatisch bijgehouden door Autotask op basis van de eerste time entry of notitie op het ticket.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Wat betekent Resolution Met?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Resolution Met trackt of het ticket is afgerond binnen het SLA-venster voor resolution. Dit wordt gemeten van ticket-aanmaak tot ticket-afronding. Als het ticket voor de SLA-deadline is gesloten, is de waarde 1. Als het na de deadline is gesloten of nog open staat, is de waarde 0.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Waarom is de P1 resolution tijd hoger dan P4?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>P1-tickets zijn doorgaans complexe, meerstaps-issues die escalation, vendor-betrokkenheid of infrastructuurwijzigingen vereisen. Ze krijgen wel direct aandacht, maar de daadwerkelijke oplossing duurt langer omdat de problemen zelf lastiger zijn. Als P1 resolution-tijden onredelijk hoog zijn, ligt de oorzaak meestal bij escalation-knelpunten, niet bij gebrek aan urgentie.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Wat is een bijna-misser SLA breach?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Een bijna-misser is een ticket dat de SLA-deadline met minder dan een dag heeft gemist. Deze tickets waren bijna compliant. Ze vertegenwoordigen de makkelijkste SLA-verbeteringen, omdat een kleine proceswijziging (snellere dispatch, auto-acknowledgment, iets ruimere SLA-vensters) ze zou omzetten van missers naar hits.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Waarom presteert de Service Desk beter dan L1 Support op SLA?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De Service Desk heeft doorgaans strakkere dispatch-regels, auto-assignment en gestructureerde triage-processen. L1 Support ontvangt tickets vaak in een gedeelde queue waar ze wachten tot een medewerker ze oppakt. Die wachttijd in de queue is de hoofdoorzaak van de meeste first-response SLA-missers.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Kan ik dit filteren op tijdsperiode of klant?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Ja. Voeg een datumfilter toe op BI_Autotask_Tickets[create_date] of een klantfilter op BI_Autotask_Tickets[company_name] in elke DAX-query. Zo kun je SLA-prestaties maand-op-maand vergelijken of zien welke klanten de cijfers omlaag trekken.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Kan ik dit rapport draaien op mijn eigen data?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Ja. Verbind Proxuma Power BI met je Autotask PSA, voeg een AI-tool toe via MCP, en stel dezelfde vraag. De AI schrijft de DAX-queries, draait ze op je echte data, en produceert een rapport zoals dit in minder dan vijftien minuten.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc-footer">
+<span>Proxuma Power BI · AI-gegenereerd Rapport · proxuma.io/powerbi</span>
+<span>Gegenereerd in &lt; 15 minuten via MCP · Maart 2026</span>
+</div>
+</div>
+</div>
+<script>
+catch(e){}document.body.removeChild(ta)}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Wat betekent First Response Met?","acceptedAnswer":{"@type":"Answer","text":"First Response Met trackt of een medewerker het ticket heeft bevestigd of beantwoord binnen het SLA-venster dat voor dat prioriteitsniveau is gedefinieerd. Een waarde van 1 betekent dat de SLA is gehaald; 0 betekent gemist. Dit wordt automatisch bijgehouden door Autotask op basis van de eerste time entry of notitie op het ticket."}},
+    {"@type":"Question","name":"Wat betekent Resolution Met?","acceptedAnswer":{"@type":"Answer","text":"Resolution Met trackt of het ticket is afgerond binnen het SLA-venster voor resolution. Dit wordt gemeten van ticket-aanmaak tot ticket-afronding. Als het ticket voor de SLA-deadline is gesloten, is de waarde 1. Als het na de deadline is gesloten of nog open staat, is de waarde 0."}},
+    {"@type":"Question","name":"Waarom is de P1 resolution tijd hoger dan P4?","acceptedAnswer":{"@type":"Answer","text":"P1-tickets zijn doorgaans complexe, meerstaps-issues die escalation, vendor-betrokkenheid of infrastructuurwijzigingen vereisen. Ze krijgen wel direct aandacht, maar de daadwerkelijke oplossing duurt langer omdat de problemen zelf lastiger zijn. Als P1 resolution-tijden onredelijk hoog zijn, ligt de oorzaak meestal bij escalation-knelpunten, niet bij gebrek aan urgentie."}},
+    {"@type":"Question","name":"Wat is een bijna-misser SLA breach?","acceptedAnswer":{"@type":"Answer","text":"Een bijna-misser is een ticket dat de SLA-deadline met minder dan een dag heeft gemist. Deze tickets waren bijna compliant. Ze vertegenwoordigen de makkelijkste SLA-verbeteringen, omdat een kleine proceswijziging (snellere dispatch, auto-acknowledgment, iets ruimere SLA-vensters) ze zou omzetten van missers naar hits."}},
+    {"@type":"Question","name":"Waarom presteert de Service Desk beter dan L1 Support op SLA?","acceptedAnswer":{"@type":"Answer","text":"De Service Desk heeft doorgaans strakkere dispatch-regels, auto-assignment en gestructureerde triage-processen. L1 Support ontvangt tickets vaak in een gedeelde queue waar ze wachten tot een medewerker ze oppakt. Die wachttijd in de queue is de hoofdoorzaak van de meeste first-response SLA-missers."}},
+    {"@type":"Question","name":"Kan ik dit filteren op tijdsperiode of klant?","acceptedAnswer":{"@type":"Answer","text":"Ja. Voeg een datumfilter toe op BI_Autotask_Tickets[create_date] of een klantfilter op BI_Autotask_Tickets[company_name] in elke DAX-query. Zo kun je SLA-prestaties maand-op-maand vergelijken of zien welke klanten de cijfers omlaag trekken."}},
+    {"@type":"Question","name":"Kan ik dit rapport draaien op mijn eigen data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Verbind Proxuma Power BI met je Autotask PSA, voeg een AI-tool toe via MCP, en stel dezelfde vraag. De AI schrijft de DAX-queries, draait ze op je echte data, en produceert een rapport zoals dit in minder dan vijftien minuten."}}
+  ]
+}
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Gerelateerde Rapporten</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/csat-vs-sla-correlatie-bewijs/">
+<span class="rr-badge" style="background:#ede9fe;color:#7c3aed;">SLA</span>
+<div class="rr-card-title">CSAT vs SLA: Bewijs Dat SLA Nakomen Klanttevredenheid Verhoogt</div>
+<div class="rr-card-desc">Cross-source correlatie-analyse van SmileBack tevredenheidsscores tegen Autotask SLA-compliance. Levert de inspanning di</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/sla-per-prioriteit/">
+<span class="rr-badge" style="background:#ede9fe;color:#7c3aed;">SLA</span>
+<div class="rr-card-title">SLA per Prioriteit: Waar Je Responstijden Vastlopen</div>
+<div class="rr-card-desc">First response en resolution SLA-rates van P1 tot P4, plus Service/Change requests. Jaar-op-jaar trends en prioriteitssp</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/sla-prestaties-per-prioriteit/">
+<span class="rr-badge" style="background:#ede9fe;color:#7c3aed;">SLA</span>
+<div class="rr-card-title">SLA Prestaties per Prioriteit: Eerste Reactie &amp; Oplossings-Naleving</div>
+<div class="rr-card-desc">Welke prioriteitsniveaus de SLA-doelen halen, welke ze structureel missen en waar overschrijdingen zich concentreren. Ge</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/opslagstatus-apparaten-bijna-vol/">
+<span class="rr-badge" style="background:#ede9fe;color:#7c3aed;">SLA</span>
+<div class="rr-card-title">N-able RMM Opslagstatus</div>
+<div class="rr-card-desc">Analyse en rapportage over opslagstatus - apparaten bijna vol voor managed service providers.</div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/first-response-sla-naleving/">
+<span class="rr-badge" style="background:#ede9fe;color:#7c3aed;">SLA</span>
+<div class="rr-card-title">First Response SLA Naleving: Een Power BI Dashboard voor MSPs</div>
+<div class="rr-card-desc">Een uitsplitsing van first response SLA naleving over 67.521 tickets uit Autotask PSA. Dit rapport laat je totale first </div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/ticketvolume-per-dag-en-tijdstip/">
+<span class="rr-badge" style="background:#dbeafe;color:#2563eb;">Ticketing</span>
+<div class="rr-card-title">Ticketvolume per Dag En Tijdstip</div>
+<div class="rr-card-desc"></div>
+<span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Genereer rapporten als deze vanuit je eigen data</h3>
+<p>Koppel Proxuma's Power BI integratie, gebruik een MCP-compatible AI om vragen te stellen en genereer op maat gemaakte rapporten - in minuten, niet in dagen.</p>
+<a class="cta-btn" href="/nl-powerbi/ai-gegenereerde-rapporten/" style="margin-right:12px;">Bekijk meer rapporten</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Aan de slag</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "SLA-Compliance Overzicht: Halen we onze Targets?",
+  "description": "First-response percentages, resolution compliance en first-hour fix cijfers over alle prioriteiten en queues. Gegenereerd door AI via Proxuma Power BI MCP serve",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/test-nl-sla-compliance-overzicht/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "SLA & Service Performance"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
+    {"@type": "ListItem", "position": 3, "name": "SLA", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=sla"},
+    {"@type": "ListItem", "position": 4, "name": "SLA-Compliance Overzicht: Halen we onze Targets?"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Wat betekent First Response Met?","acceptedAnswer":{"@type":"Answer","text":"First Response Met trackt of een medewerker het ticket heeft bevestigd of beantwoord binnen het SLA-venster dat voor dat prioriteitsniveau is gedefinieerd. Een waarde van 1 betekent dat de SLA is gehaald; 0 betekent gemist. Dit wordt automatisch bijgehouden door Autotask op basis van de eerste time entry of notitie op het ticket."}},
+    {"@type":"Question","name":"Wat betekent Resolution Met?","acceptedAnswer":{"@type":"Answer","text":"Resolution Met trackt of het ticket is afgerond binnen het SLA-venster voor resolution. Dit wordt gemeten van ticket-aanmaak tot ticket-afronding. Als het ticket voor de SLA-deadline is gesloten, is de waarde 1. Als het na de deadline is gesloten of nog open staat, is de waarde 0."}},
+    {"@type":"Question","name":"Waarom is de P1 resolution tijd hoger dan P4?","acceptedAnswer":{"@type":"Answer","text":"P1-tickets zijn doorgaans complexe, meerstaps-issues die escalation, vendor-betrokkenheid of infrastructuurwijzigingen vereisen. Ze krijgen wel direct aandacht, maar de daadwerkelijke oplossing duurt langer omdat de problemen zelf lastiger zijn. Als P1 resolution-tijden onredelijk hoog zijn, ligt de oorzaak meestal bij escalation-knelpunten, niet bij gebrek aan urgentie."}},
+    {"@type":"Question","name":"Wat is een bijna-misser SLA breach?","acceptedAnswer":{"@type":"Answer","text":"Een bijna-misser is een ticket dat de SLA-deadline met minder dan een dag heeft gemist. Deze tickets waren bijna compliant. Ze vertegenwoordigen de makkelijkste SLA-verbeteringen, omdat een kleine proceswijziging (snellere dispatch, auto-acknowledgment, iets ruimere SLA-vensters) ze zou omzetten van missers naar hits."}},
+    {"@type":"Question","name":"Waarom presteert de Service Desk beter dan L1 Support op SLA?","acceptedAnswer":{"@type":"Answer","text":"De Service Desk heeft doorgaans strakkere dispatch-regels, auto-assignment en gestructureerde triage-processen. L1 Support ontvangt tickets vaak in een gedeelde queue waar ze wachten tot een medewerker ze oppakt. Die wachttijd in de queue is de hoofdoorzaak van de meeste first-response SLA-missers."}},
+    {"@type":"Question","name":"Kan ik dit filteren op tijdsperiode of klant?","acceptedAnswer":{"@type":"Answer","text":"Ja. Voeg een datumfilter toe op BI_Autotask_Tickets[create_date] of een klantfilter op BI_Autotask_Tickets[company_name] in elke DAX-query. Zo kun je SLA-prestaties maand-op-maand vergelijken of zien welke klanten de cijfers omlaag trekken."}},
+    {"@type":"Question","name":"Kan ik dit rapport draaien op mijn eigen data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Verbind Proxuma Power BI met je Autotask PSA, voeg een AI-tool toe via MCP, en stel dezelfde vraag. De AI schrijft de DAX-queries, draait ze op je echte data, en produceert een rapport zoals dit in minder dan vijftien minuten."}}
+  ]
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+</body>
+</html>

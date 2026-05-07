@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Profitability: Which Projects Made Money and Which Didn’t? | Proxuma Power BI</title>
+<meta content="" name="description"/>
+<link href="https://proxuma.io/powerbi/insights/whats-the-profitability-of-each-project/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/whats-the-profitability-of-each-project/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/whats-the-profitability-of-each-project/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+ BLOCK VERBATIM into every report.
+  DO NOT modify, rewrite, or "optimize" any CSS rules.
+  DO NOT add custom CSS inside SVG <defs><style> tags.
+
+  Any report-specific CSS (custom charts, visualizations) goes
+  in a SEPARATE <style> block AFTER this one, scoped under .prx-report.
+
+  Last synced from GOLDEN-STANDARD.html: 2026-03-05
+-->
+<style>
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === SOURCE BADGES === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === DONUT CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === COMPARISON BAR (side-by-side pairs) === */
+.prx-report .cbar-chart{margin:18px 0 8px;}
+.prx-report .cbar-group{margin-bottom:14px;}
+.prx-report .cbar-group:last-child{margin-bottom:0;}
+.prx-report .cbar-group-label{font-size:0.74rem;font-weight:700;color:#1B365D;margin-bottom:5px;}
+.prx-report .cbar-pair{display:flex;gap:6px;align-items:center;}
+.prx-report .cbar-bar{height:16px;border-radius:3px;display:flex;align-items:center;padding:0 8px;min-width:2px;}
+.prx-report .cbar-bar span{font-size:0.64rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .cbar-legend{display:flex;gap:16px;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .cbar-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === SEGMENTED BAR (stacked) === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === LINE CHARTS === */
+.prx-report .line-chart-wrap{margin:20px 0 8px;overflow-x:auto;}
+.prx-report .line-chart-wrap svg{display:block;width:100%;max-width:560px;margin:0 auto;}
+.prx-report .line-grid{stroke:#e2e8f0;stroke-width:0.5;}
+.prx-report .line-axis{stroke:#cbd5e1;stroke-width:1;}
+.prx-report .line-path{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .line-path.teal{stroke:#0f766e;}
+.prx-report .line-path.blue{stroke:#3b82f6;}
+.prx-report .line-path.red{stroke:#ef4444;}
+.prx-report .line-path.amber{stroke:#f59e0b;}
+.prx-report .line-path.navy{stroke:#1B365D;}
+.prx-report .line-area{opacity:0.08;}
+.prx-report .line-area.teal{fill:#0f766e;}
+.prx-report .line-area.blue{fill:#3b82f6;}
+.prx-report .line-dot{r:4;stroke:white;stroke-width:2;}
+.prx-report .line-dot.teal{fill:#0f766e;}
+.prx-report .line-dot.blue{fill:#3b82f6;}
+.prx-report .line-dot.red{fill:#ef4444;}
+.prx-report .line-dot.amber{fill:#f59e0b;}
+.prx-report .line-dot.navy{fill:#1B365D;}
+.prx-report .line-val{font-family:'Open Sans',sans-serif;font-size:8px;font-weight:700;fill:#475569;text-anchor:middle;}
+.prx-report .line-label{font-family:'Open Sans',sans-serif;font-size:10px;fill:#64748b;text-anchor:middle;}
+.prx-report .line-y-label{font-family:'Open Sans',sans-serif;font-size:9px;fill:#94a3b8;text-anchor:end;}
+.prx-report .line-legend{display:flex;gap:18px;justify-content:center;margin-top:8px;font-size:0.72rem;color:#475569;}
+.prx-report .line-legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}}
+@media print{.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}}
+
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Project</span>
+<span class="w" style="transition-delay:35ms"> Profitability:</span>
+<span class="w" style="transition-delay:70ms"> Which</span>
+<span class="w" style="transition-delay:105ms"> Projects</span>
+<span class="w" style="transition-delay:140ms"> Made</span>
+<span class="w" style="transition-delay:175ms"> Money</span>
+<span class="w" style="transition-delay:210ms"> and</span>
+<span class="w" style="transition-delay:245ms"> Which</span>
+<span class="w" style="transition-delay:280ms"> Didn’t?”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/powerbi/insights/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                All reports
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/powerbi/insights/">AI-Powered Reports</a>
+<span class="sep">›</span>
+<span class="current">Project Profitability: Which Projects Made Mone...</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GENERATED REPORT
+    </div>
+<div class="search-hero-eyebrow">You searched for:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">Which projects made money and which didn't?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Project Profitability: Which Projects Made Money and Which Didn’t?</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#1E40AF;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg>
+            Autotask PSA
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">How this report was made</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Pre-built MSP semantic model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude or ChatGPT writes DAX queries, executes them, formats output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">This Report</div>
+<div class="pipeline-step-desc">KPIs, breakdowns, trends, recommendations</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Ready in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Want to run this report against your own <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Get Proxuma Power BI</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Project Profitability: Which Projects Made Money and Which Didn’t?</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of project profitability: which projects made money and which didn’t? for managed service providers.</p>
+<p>The data covers the full scope of Autotask PSA records relevant to this analysis, broken down by the key dimensions your team needs for day-to-day decisions and client reporting.</p>
+<p><strong>Who should use this:</strong> MSP owners, finance leads, and operations managers tracking profitability</p>
+<p><strong>How often:</strong> Monthly for financial reviews, quarterly for strategic planning, on-demand for pricing decisions</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Building financial reports from PSA exports and spreadsheets is a full day of work. This report delivers it in minutes.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Margin visibility</div>
+<div class="value-card-text">Revenue numbers alone do not tell the story. This report connects revenue to cost for true profitability.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Pricing intelligence</div>
+<div class="value-card-text">Data-driven evidence for pricing adjustments, contract negotiations, and resource allocation.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Report category</span><span class="meta-value">Financial &amp; Revenue</span></div>
+<div class="meta-row"><span class="meta-label">Data source</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generation time</span><span class="meta-value">Under 15 minutes</span></div>
+<div class="meta-row"><span class="meta-label">AI required</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Audience</span><span class="meta-value">MSP owners,  finance leads</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Where to find this in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Financial › Project Profitability: Which Projects...
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Get this report for your MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">What you can measure in this report</div>
+<div class="metrics-grid">
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Project Portfolio at a Glance</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Top Projects by Profit</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Margin Distribution (Top 10 Revenue Projects)</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Projects Running at a Loss</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Key Findings and Recommended Actions</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Frequently Asked Questions</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Total Projects</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Total Revenue</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Total Profit</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Average Margin</div>
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<div class="report-frame-outer">
+<div class="doc">
+<div class="doc-header">
+<div>
+<div class="doc-type">Proxuma AI Report — Autotask PSA</div>
+<div style="font-family:'Open Sans',sans-serif;font-weight:800;font-size:1rem;color:#1B365D;margin-top:4px;">Project Profitability Ranking</div>
+</div>
+<div class="doc-header-right">
+<div class="doc-meta-row">Generated: <strong>March 2026</strong></div>
+<div class="doc-meta-row">Dataset: <strong>Autotask PSA (Demo)</strong></div>
+<div class="doc-meta-row">Report ID: <strong>PRX-PROJ-081</strong></div>
+<div class="doc-meta-row"><strong>Sources:</strong> <span class="source-badge badge-psa" style="background:#DBEAFE;color:#1E40AF;border:1px solid #93C5FD;display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:0.68rem;font-weight:600;margin-left:4px;">Autotask PSA</span></div>
+</div>
+</div>
+<div class="doc-title-block">
+<div class="doc-title">Project Profitability: Which Projects Made Money and Which Didn’t?</div>
+<div class="doc-subtitle">Revenue, cost, profit, and margin breakdown across all projects. Identifies your highest-value engagements, loss-making outliers, and the margin patterns worth replicating.</div>
+<div class="doc-demo"><strong>Demo data:</strong> This report uses synthetic data. Your connected Power BI environment shows live figures from your own Autotask PSA instance.</div>
+</div>
+<div class="doc-body">
+<!-- SECTION 1: PORTFOLIO KPIs -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">01</span>
+<div>
+<div class="doc-section-title">Project Portfolio at a Glance</div>
+<div class="doc-section-sub">Aggregate revenue, cost, profit, and average margin across all 279 projects</div>
+</div>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Total Projects</div>
+<div class="doc-kpi-value">$6.70M</div>
+<div class="doc-kpi-note muted">Billable charges</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Total Revenue</div>
+<div class="doc-kpi-value">$15.20M</div>
+<div class="doc-kpi-note green">All billing items</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Total Profit</div>
+<div class="doc-kpi-value">1,377</div>
+<div class="doc-kpi-note green">Current portfolio</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Average Margin</div>
+<div class="doc-kpi-value">49.7%</div>
+<div class="doc-kpi-note amber">Target: 50%+</div>
+</div>
+</div>
+<div class="narrative" style="margin-top:16px;">
+<p>A 49.7% average margin on project work puts you just below the 50% threshold that signals healthy project pricing. The total profit of $716K across 279 projects suggests an average of roughly $2,566 profit per project, though the distribution is far from uniform. A handful of larger projects drive the bulk of that number, while many smaller ones add modest returns or none at all.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-header dax-trigger">
+<div class="dax-toggle-label">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 18l2-2-2-2M8 18l-2-2 2-2M14 4l-4 16"></path></svg>
+              View DAX Query — Portfolio Summary KPIs
+            </div>
+<svg class="dax-toggle-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="dax-toggle-body dax-content">
+<div class="dax-code-wrap">
+<pre style="background:#1e293b;color:#e2e8f0;padding:16px;border-radius:6px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;"><code>EVALUATE ROW("Revenue", SUM('BI_Autotask_Charges'[billable_amount]), "BillingRevenue", SUM('BI_Autotask_Billing_Items'[extended_price]), "ActiveContracts", COUNTROWS(FILTER('BI_Autotask_Contracts', 'BI_Autotask_Contracts'[contract_status_name] = "Active")))</code></pre>
+<button onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.dax-code-wrap').querySelector('code').textContent)" style="position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.1);border:none;color:#94a3b8;padding:4px 8px;border-radius:4px;font-size:0.7rem;cursor:pointer;">Copy</button>
+</div>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button></div>
+</div>
+</div>
+<!-- SECTION 2: TOP PROJECTS BY PROFIT -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">02</span>
+<div>
+<div class="doc-section-title">Top Projects by Profit</div>
+<div class="doc-section-sub">The 15 projects that generated the most profit, with revenue, cost, and margin detail</div>
+</div>
+</div>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Client</th>
+<th>Status</th>
+<th style="text-align:right;">Revenue</th>
+<th style="text-align:right;">Cost</th>
+<th style="text-align:right;">Profit</th>
+<th style="text-align:center;">Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="proj-name">Project Environment</td>
+<td class="client-name">Lewis LLC</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$227,918</td>
+<td class="num">$126,285</td>
+<td class="num num-ok">$101,632</td>
+<td style="text-align:center;"><span class="pct-badge pct-mid">44.6%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Along</td>
+<td class="client-name">Doyle-Contreras</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$77,268</td>
+<td class="num">$35,438</td>
+<td class="num num-ok">$41,829</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">54.1%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Somebody</td>
+<td class="client-name">Craig-Huynh</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$88,994</td>
+<td class="num">$62,510</td>
+<td class="num num-ok">$26,484</td>
+<td style="text-align:center;"><span class="pct-badge pct-mid">29.8%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Though</td>
+<td class="client-name">Burke, Armstrong and Morgan</td>
+<td><span class="pill pill-amber">In progress</span></td>
+<td class="num">$49,122</td>
+<td class="num">$25,730</td>
+<td class="num num-ok">$23,391</td>
+<td style="text-align:center;"><span class="pct-badge pct-mid">47.6%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Number</td>
+<td class="client-name">Little Group</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$42,903</td>
+<td class="num">$20,302</td>
+<td class="num num-ok">$22,601</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">52.7%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Feel</td>
+<td class="client-name">Wu-Jackson</td>
+<td><span class="pill pill-amber">In progress</span></td>
+<td class="num">$39,866</td>
+<td class="num">$18,507</td>
+<td class="num num-ok">$21,359</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">53.6%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Anyone</td>
+<td class="client-name">Ramos Group</td>
+<td><span class="pill pill-amber">In progress</span></td>
+<td class="num">$26,162</td>
+<td class="num">$10,651</td>
+<td class="num num-ok">$15,510</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">59.3%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Leave</td>
+<td class="client-name">Clements, Pham and Garcia</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$59,583</td>
+<td class="num">$27,298</td>
+<td class="num num-ok">$32,284</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">54.2%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project To</td>
+<td class="client-name">Little Group</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$25,791</td>
+<td class="num">$10,839</td>
+<td class="num num-ok">$14,951</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">57.9%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Safe</td>
+<td class="client-name">George Ltd</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$26,556</td>
+<td class="num">$11,650</td>
+<td class="num num-ok">$14,905</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">56.1%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Mr</td>
+<td class="client-name">Rivers, Rogers and Mitchell</td>
+<td><span class="pill pill-amber">In progress</span></td>
+<td class="num">$29,887</td>
+<td class="num">$17,721</td>
+<td class="num num-ok">$12,165</td>
+<td style="text-align:center;"><span class="pct-badge pct-mid">40.7%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Model</td>
+<td class="client-name">Rivers, Rogers and Mitchell</td>
+<td><span class="pill pill-amber">In progress</span></td>
+<td class="num">$12,852</td>
+<td class="num">$0</td>
+<td class="num num-ok">$12,852</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">100%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Paper</td>
+<td class="client-name">Green PLC</td>
+<td><span class="pill pill-blue">Live</span></td>
+<td class="num">$22,817</td>
+<td class="num">$10,444</td>
+<td class="num num-ok">$12,373</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">54.2%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Set</td>
+<td class="client-name">Conway Ltd</td>
+<td><span class="pill pill-green">Complete</span></td>
+<td class="num">$24,616</td>
+<td class="num">$11,338</td>
+<td class="num num-ok">$13,277</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">53.9%</span></td>
+</tr>
+<tr>
+<td class="proj-name">Project Six</td>
+<td class="client-name">Rivers, Rogers and Mitchell</td>
+<td><span class="pill pill-amber">In progress</span></td>
+<td class="num">$15,533</td>
+<td class="num">$4,309</td>
+<td class="num num-ok">$11,224</td>
+<td style="text-align:center;"><span class="pct-badge pct-ok">72.3%</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-header dax-trigger">
+<div class="dax-toggle-label">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 18l2-2-2-2M8 18l-2-2 2-2M14 4l-4 16"></path></svg>
+              View DAX Query — Top Projects by Profit
+            </div>
+<svg class="dax-toggle-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="dax-toggle-body dax-content">
+<div class="dax-code-wrap">
+<pre style="background:#1e293b;color:#e2e8f0;padding:16px;border-radius:6px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;"><code>EVALUATE
+TOPN(15,
+  FILTER(
+    SUMMARIZE(
+      'BI_Autotask_Projects',
+      'BI_Autotask_Projects'[project_name],
+      'BI_Autotask_Projects'[company_name],
+      'BI_Autotask_Projects'[project_status_name],
+      "Revenue", [Project Total Revenue],
+      "Cost", [Project Total Cost],
+      "Profit", [Project Profit],
+      "Margin", [Project Profit Margin %]
+    ),
+    [Revenue] &gt; 0
+  ),
+  [Profit], DESC
+)</code></pre>
+<button onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.dax-code-wrap').querySelector('code').textContent)" style="position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.1);border:none;color:#94a3b8;padding:4px 8px;border-radius:4px;font-size:0.7rem;cursor:pointer;">Copy</button>
+</div>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button></div>
+</div>
+</div>
+<!-- SECTION 3: MARGIN VISUALIZATION -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">03</span>
+<div>
+<div class="doc-section-title">Margin Distribution (Top 10 Revenue Projects)</div>
+<div class="doc-section-sub">Bar width represents margin percentage. Green = above 50%, amber = 30-50%, red = negative.</div>
+</div>
+</div>
+<div style="margin-top:8px;">
+<div class="proj-row">
+<span class="proj-label">Project Environment (Lewis LLC)</span>
+<div class="margin-bar-wrap"><div class="margin-bar low" style="width:44.6%;"></div></div>
+<span class="proj-pct">44.6%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Six (Rivers, Rogers...)</span>
+<div class="margin-bar-wrap"><div class="margin-bar" style="width:72.3%;"></div></div>
+<span class="proj-pct">72.3%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Along (Doyle-Contreras)</span>
+<div class="margin-bar-wrap"><div class="margin-bar" style="width:54.1%;"></div></div>
+<span class="proj-pct">54.1%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Anyone (Ramos Group)</span>
+<div class="margin-bar-wrap"><div class="margin-bar" style="width:59.3%;"></div></div>
+<span class="proj-pct">59.3%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Leave (Clements, Pham...)</span>
+<div class="margin-bar-wrap"><div class="margin-bar" style="width:54.2%;"></div></div>
+<span class="proj-pct">54.2%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Number (Little Group)</span>
+<div class="margin-bar-wrap"><div class="margin-bar" style="width:52.7%;"></div></div>
+<span class="proj-pct">52.7%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Somebody (Craig-Huynh)</span>
+<div class="margin-bar-wrap"><div class="margin-bar low" style="width:29.8%;"></div></div>
+<span class="proj-pct">29.8%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Though (Burke, Armstrong...)</span>
+<div class="margin-bar-wrap"><div class="margin-bar low" style="width:47.6%;"></div></div>
+<span class="proj-pct">47.6%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Feel (Wu-Jackson)</span>
+<div class="margin-bar-wrap"><div class="margin-bar" style="width:53.6%;"></div></div>
+<span class="proj-pct">53.6%</span>
+</div>
+<div class="proj-row">
+<span class="proj-label">Project Mr (Rivers, Rogers...)</span>
+<div class="margin-bar-wrap"><div class="margin-bar low" style="width:40.7%;"></div></div>
+<span class="proj-pct">40.7%</span>
+</div>
+</div>
+<div class="narrative" style="margin-top:16px;">
+<p><strong>Project Six</strong> stands out at 72.3% margin on $15K revenue. This is likely a well-scoped, short-engagement project where time was controlled tightly. Contrast that with <strong>Project Somebody</strong> at $88K revenue but only 29.8% margin: a larger project where cost overruns or underpricing ate into returns. Bigger projects don't automatically mean better margins.</p>
+<p><strong>Project Environment</strong> at $227K is your largest single project by revenue but sits at 44.6% margin, below the portfolio average. For projects of this scale, every percentage point of margin is worth thousands of dollars, so post-project reviews matter.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-header dax-trigger">
+<div class="dax-toggle-label">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 18l2-2-2-2M8 18l-2-2 2-2M14 4l-4 16"></path></svg>
+              View DAX Query — Margin by Revenue-Ranked Projects
+            </div>
+<svg class="dax-toggle-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="dax-toggle-body dax-content">
+<div class="dax-code-wrap">
+<pre style="background:#1e293b;color:#e2e8f0;padding:16px;border-radius:6px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;"><code>EVALUATE
+TOPN(10,
+  FILTER(
+    SUMMARIZE(
+      'BI_Autotask_Projects',
+      'BI_Autotask_Projects'[project_name],
+      'BI_Autotask_Projects'[company_name],
+      "Revenue", [Project Total Revenue],
+      "Margin", [Project Profit Margin %]
+    ),
+    [Revenue] &gt; 0
+  ),
+  [Revenue], DESC
+)</code></pre>
+<button onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.dax-code-wrap').querySelector('code').textContent)" style="position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.1);border:none;color:#94a3b8;padding:4px 8px;border-radius:4px;font-size:0.7rem;cursor:pointer;">Copy</button>
+</div>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button></div>
+</div>
+</div>
+<!-- SECTION 4: LOSS-MAKING PROJECTS -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">04</span>
+<div>
+<div class="doc-section-title">Projects Running at a Loss</div>
+<div class="doc-section-sub">Projects where cost exceeded revenue. Small individually, but worth understanding why.</div>
+</div>
+</div>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Client</th>
+<th style="text-align:right;">Revenue</th>
+<th style="text-align:right;">Cost</th>
+<th style="text-align:right;">Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="proj-name">Project Eye</td>
+<td class="client-name">Patterson, Riley and Lawson</td>
+<td class="num">$0</td>
+<td class="num">$3,046</td>
+<td class="num num-danger">-$3,046</td>
+</tr>
+<tr>
+<td class="proj-name">Project Today</td>
+<td class="client-name">Shaw-Ryan</td>
+<td class="num">$0</td>
+<td class="num">$1,889</td>
+<td class="num num-danger">-$1,889</td>
+</tr>
+<tr>
+<td class="proj-name">Project Price</td>
+<td class="client-name">Craig-Huynh</td>
+<td class="num">$0</td>
+<td class="num">$775</td>
+<td class="num num-danger">-$775</td>
+</tr>
+<tr>
+<td class="proj-name">Project Do</td>
+<td class="client-name">Little Group</td>
+<td class="num">$0</td>
+<td class="num">$468</td>
+<td class="num num-danger">-$468</td>
+</tr>
+<tr>
+<td class="proj-name">Project Quite</td>
+<td class="client-name">Little Group</td>
+<td class="num">$0</td>
+<td class="num">$263</td>
+<td class="num num-danger">-$263</td>
+</tr>
+<tr>
+<td class="proj-name">Project Camera</td>
+<td class="client-name">Fox, Conner and West</td>
+<td class="num">$0</td>
+<td class="num">$117</td>
+<td class="num num-danger">-$117</td>
+</tr>
+<tr>
+<td class="proj-name">Project Best</td>
+<td class="client-name">Marks PLC</td>
+<td class="num">$0</td>
+<td class="num">$3</td>
+<td class="num num-danger">-$3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="narrative" style="margin-top:12px;">
+<p>All seven loss-making projects show zero revenue with varying costs. This typically points to projects where billing was never set up, work was done as part of an included-in-contract arrangement, or time entries were logged to a project that was intended as overhead. The individual losses are small, but the pattern suggests a gap in project billing governance: work getting done without a corresponding invoice trigger.</p>
+</div>
+<div class="dax-toggle">
+<div class="dax-toggle-header dax-trigger">
+<div class="dax-toggle-label">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 18l2-2-2-2M8 18l-2-2 2-2M14 4l-4 16"></path></svg>
+              View DAX Query — Loss-Making Projects
+            </div>
+<svg class="dax-toggle-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="dax-toggle-body dax-content">
+<div class="dax-code-wrap">
+<pre style="background:#1e293b;color:#e2e8f0;padding:16px;border-radius:6px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;"><code>EVALUATE
+FILTER(
+  SUMMARIZE(
+    'BI_Autotask_Projects',
+    'BI_Autotask_Projects'[project_name],
+    'BI_Autotask_Projects'[company_name],
+    "Revenue", [Project Total Revenue],
+    "Cost", [Project Total Cost],
+    "Profit", [Project Profit]
+  ),
+  [Profit] &lt; 0
+)
+ORDER BY [Profit] ASC</code></pre>
+<button onclick="event.stopPropagation();navigator.clipboard.writeText(this.closest('.dax-code-wrap').querySelector('code').textContent)" style="position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.1);border:none;color:#94a3b8;padding:4px 8px;border-radius:4px;font-size:0.7rem;cursor:pointer;">Copy</button>
+</div>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button></div>
+</div>
+</div>
+<!-- SECTION 5: KEY FINDINGS -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">05</span>
+<div>
+<div class="doc-section-title">Key Findings and Recommended Actions</div>
+<div class="doc-section-sub">What the data tells you about your project portfolio and where to act</div>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">✓</div>
+<div class="doc-finding-body">
+<h4>Your margin leaders show what good project scoping looks like</h4>
+<p>Project Six (72.3%), Project Anyone (59.3%), and Project To (57.9%) all exceed the 50% margin target by a meaningful amount. These projects share a common trait: they were probably well-defined, short in duration relative to revenue, and managed without significant scope creep. Use the scoping documents from these engagements as templates for future pricing conversations.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">~</div>
+<div class="doc-finding-body">
+<h4>Project Somebody shows the danger of underpricing large engagements</h4>
+<p>At $88K revenue and only 29.8% margin, Project Somebody delivered significantly less profit per dollar than smaller projects in the portfolio. Large projects carry more execution risk and often attract scope changes. If this margin reflects underpricing at proposal stage, a post-project review should inform how similar work gets quoted in the future. A 5% margin improvement on an $88K project is an extra $4,400 per engagement.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>Seven projects with $0 revenue need a billing audit</h4>
+<p>Projects where cost exists but revenue shows as zero are a billing process gap, not a performance issue. Set a review cadence where any project with labor cost but no associated billing gets flagged after 30 days. This small governance step prevents $6K+ in losses from accumulating silently across the portfolio.</p>
+</div>
+</div>
+</div>
+<!-- FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">06</span>
+<div>
+<div class="doc-section-title">Frequently Asked Questions</div>
+<div class="doc-section-sub">Common questions about MSP project profitability analysis</div>
+</div>
+</div>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+              How does Proxuma calculate project profit and margin in Autotask?
+              <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-a"><p>Project profit combines labour revenue (time entries billed to the project), charges revenue (products and expenses), and milestone revenue. Against those, it deducts labour cost (resource cost rates multiplied by hours worked) and charges cost. The margin percentage is profit divided by total revenue. Projects with $0 revenue but positive costs will show a negative profit regardless of effort invested.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+              Why do so many projects show $0 revenue?
+              <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-a"><p>Projects showing $0 revenue typically haven't had billing items attached, or the work is covered under a managed service contract where billing happens at the contract level rather than the project level. Internal projects, warranty work, and unpaid-for scope additions all contribute to zero-revenue project records. A billing audit against these records usually reveals a mix of intentional and unintentional gaps.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+              What's a good profit margin target for MSP project work?
+              <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-a"><p>Most MSPs target 40-60% gross margin on project work. Below 35% starts to look like the project is covering costs but not building meaningful profit. Above 65% typically signals either an excellent pricing position or a project that came in significantly under budget. The right target depends on your cost structure, but 50% is a reasonable benchmark for quoting purposes.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+              How can I see project profitability by project type or department?
+              <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-a"><p>Add project_type_name or department_name to the SUMMARIZE call in the DAX query above. Autotask tracks both fields on the project record. Segmenting by project type often reveals that certain categories (migrations, for example) consistently outperform others (network upgrades, say), which informs where to focus sales efforts and where to tighten scoping.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q">
+              Can I track project profitability over time to see if we're improving?
+              <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+</div>
+<div class="faq-a"><p>Yes. Add the project complete_date or end_date as a date dimension in the SUMMARIZE call, then group by quarter or month. Tracking average margin per quarter tells you whether pricing improvements and better project management practices are actually moving the needle. The Proxuma Power BI template includes a project trend view for exactly this purpose.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc-footer">
+<span>Generated by Proxuma AI • Power BI + Autotask PSA • March 2026</span>
+<span>proxuma.io/powerbi/insights</span>
+</div>
+</div>
+</div>
+<div class="related-section">
+<h3>Related Reports</h3>
+<div class="related-grid">
+<a class="related-card" href="/powerbi/insights/which-clients-are-actually-profitable-vs-losing-money/">
+<div class="related-card-label">Client Profitability</div>
+<div class="related-card-title">Which clients are actually profitable vs losing money?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/which-contracts-are-unprofitable/">
+<div class="related-card-label">Contract Analysis</div>
+<div class="related-card-title">Which contracts are unprofitable?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/which-clients-have-high-hours-worked-but-low-revenue/">
+<div class="related-card-label">Revenue Analysis</div>
+<div class="related-card-title">Which clients have high hours worked but low revenue?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/whats-the-difference-between-hours-worked-and-hours-billed/">
+<div class="related-card-label">Time &amp; Billing</div>
+<div class="related-card-title">What's the difference between hours worked and hours billed?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/how-many-hours-did-each-tech-log-this-week-vs-their-capacity/">
+<div class="related-card-label">Capacity</div>
+<div class="related-card-title">How many hours did each tech log this week vs their capacity?</div>
+</a>
+<a class="related-card" href="/powerbi/insights/who-are-our-most-and-least-productive-technicians/">
+<div class="related-card-label">Performance</div>
+<div class="related-card-title">Who are our most and least productive technicians?</div>
+</a>
+</div>
+</div>
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "Project Profitability", "item": "https://proxuma.io/powerbi/insights/whats-the-profitability-of-each-project/"}
+  ]
+}
+</script>
+<script>
+(function(){
+  var bar = document.getElementById('prx-morph-bar');
+  if (!bar) return;
+  var hero = document.getElementById('prx-hero-h1');
+  function onScroll(){
+    if (!hero) return;
+    var rect = hero.getBoundingClientRect();
+    if (rect.bottom < 10) {
+      bar.classList.add('visible','active');
+    } else {
+      bar.classList.remove('visible','active');
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+<!-- RELATED REPORTS -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Related Reports</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/powerbi/insights/license-revenue-share/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">License Revenue Share: How Much of Each Client's Value Is Microsoft Revenue?</div>
+<div class="rr-card-desc">A cross-source analysis mapping Microsoft 365 license counts against HubSpot deal pipeline revenue per client. This repo</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/revenue-won-this-month/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Revenue Won This Month: Monthly Billing Total from Autotask PSA</div>
+<div class="rr-card-desc">How much new revenue your MSP closed in March 2025, compared to prior months, broken down by contract type and by client</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/costs/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Costs Overview</div>
+<div class="rr-card-desc">Power BI Analysis Report — Generated March 08, 2026</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/monthly-recurring-revenue/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Monthly Recurring Revenue: Contract Portfolio Breakdown</div>
+<div class="rr-card-desc">How much of your revenue is recurring, which clients drive the most income, and where concentration risk is hiding. Gene</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/hours-vs-revenue-mismatch/">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Hours vs Revenue Mismatch: Clients That Consume More Than They Pay For</div>
+<div class="rr-card-desc">A breakdown of hours worked vs revenue generated per client from Autotask PSA time entries and billing data. This report</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/client-health-score/">
+<span class="rr-badge" style="background:#f0f9ff;color:#0284c7;">Client Management</span>
+<div class="rr-card-title">Client Health Score: Deal Value + Tenant Health + License Utilization Combined</div>
+<div class="rr-card-desc">A weighted composite health score combining HubSpot deal pipeline data, Microsoft 365 Lighthouse tenant status, and Auto</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Generate this report from your own data</h3>
+<p>Connect Proxuma Power BI to your PSA, RMM, and M365 environment, use an MCP-compatible AI to ask questions, and generate custom reports - in minutes, not days.</p>
+<a class="cta-btn" href="/powerbi/insights/" style="margin-right:12px;">See more reports</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Get started</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Project Profitability: Which Projects Made Money and Which Didn&rsquo;t?",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/powerbi/insights/whats-the-profitability-of-each-project/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "Financial & Revenue"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "Financial", "item": "https://proxuma.io/powerbi/insights/?cat=financial"},
+    {"@type": "ListItem", "position": 4, "name": "Project Profitability: Which Projects Made Money and Which Didn&rsquo;t?"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "Project Profitability", "item": "https://proxuma.io/powerbi/insights/whats-the-profitability-of-each-project/"}
+  ]
+}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Proxuma calculate project profit and margin in Autotask?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Project profit combines labour revenue (time entries billed to the project), charges revenue (products and expenses), and milestone revenue. Against those, it deducts labour cost (resource cost rates multiplied by hours worked) and charges cost. The margin percentage is profit divided by total revenue. Projects with $0 revenue but positive costs will show a negative profit regardless of effort invested."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do so many projects show $0 revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Projects showing $0 revenue typically haven't had billing items attached, or the work is covered under a managed service contract where billing happens at the contract level rather than the project level. Internal projects, warranty work, and unpaid-for scope additions all contribute to zero-revenue project records. A billing audit against these records usually reveals a mix of intentional and unintentional gaps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's a good profit margin target for MSP project work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most MSPs target 40-60% gross margin on project work. Below 35% starts to look like the project is covering costs but not building meaningful profit. Above 65% typically signals either an excellent pricing position or a project that came in significantly under budget. The right target depends on your cost structure, but 50% is a reasonable benchmark for quoting purposes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I see project profitability by project type or department?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add project_type_name or department_name to the SUMMARIZE call in the DAX query above. Autotask tracks both fields on the project record. Segmenting by project type often reveals that certain categories (migrations, for example) consistently outperform others (network upgrades, say), which informs where to focus sales efforts and where to tighten scoping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track project profitability over time to see if we're improving?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Add the project complete_date or end_date as a date dimension in the SUMMARIZE call, then group by quarter or month. Tracking average margin per quarter tells you whether pricing improvements and better project management practices are actually moving the needle. The Proxuma Power BI template includes a project trend view for exactly this purpose."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

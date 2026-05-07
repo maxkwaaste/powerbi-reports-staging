@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ai Privacy Compliance Guide | Proxuma Power BI</title>
+<meta content="" name="description"/>
+<link href="https://proxuma.io/powerbi/insights/ai-privacy-compliance-guide/" rel="canonical"/>
+<link href="https://proxuma.io/powerbi/insights/ai-privacy-compliance-guide/" hreflang="en" rel="alternate"/>
+<link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/ai-privacy-compliance-guide/" hreflang="nl" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR CSS -->
+<style>
+
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+
+</style>
+<!-- ORIGINAL REPORT CSS (teal frame + report-specific charts/viz) -->
+<style>
+</style>
+<!-- MARKETING SHELL CSS (search hero, pipeline, overview, related, CTA) -->
+<style>
+
+/* === BASE RESET === */
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+
+/* === SEARCH HERO === */
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+.prx-report .search-hero-sources{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prx-report .search-hero-sources-label{font-size:0.78rem;color:#94a3b8;}
+.prx-report .source-badge{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid #e2e8f0;border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:600;color:#475569;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.prx-report .source-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;}
+
+/* === PIPELINE === */
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+
+/* === REPORT OVERVIEW === */
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+
+/* === TEAL FRAME + DOCUMENT === */
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+
+/* === KPI ROW === */
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+
+/* === DAX INFO BOX === */
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+
+/* === TABLES === */
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+
+/* === BADGES & PILLS === */
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+
+/* === DAX TOGGLE === */
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+
+/* === FINDINGS === */
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+
+/* === NARRATIVE === */
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+
+/* === FAQ ACCORDION === */
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+
+/* === DEMO BANNER + FOOTER === */
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+
+/* === CTA BLOCK === */
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+
+/* === RELATED REPORTS === */
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+
+/* === SOURCE BADGES (doc header) === */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+
+/* === CHARTS === */
+.prx-report .chart-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:20px 0 8px;}
+.prx-report .chart-row.left{justify-content:flex-start;gap:40px;padding-left:4px;}
+.prx-report .donut-chart{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.prx-report .donut-chart.lg svg{width:170px;height:170px;}
+.prx-report .donut-chart svg{transform:rotate(-90deg);}
+.prx-report .donut-bg{fill:none;stroke:#e2e8f0;stroke-width:10;}
+.prx-report .donut-fg{fill:none;stroke-width:10;stroke-linecap:round;}
+.prx-report .donut-fg.green{stroke:#10B981;}
+.prx-report .donut-fg.red{stroke:#ef4444;}
+.prx-report .donut-fg.amber{stroke:#f59e0b;}
+.prx-report .donut-fg.teal{stroke:#0f766e;}
+.prx-report .donut-fg.blue{stroke:#3b82f6;}
+.prx-report .donut-fg.purple{stroke:#8b5cf6;}
+.prx-report .donut-fg.slate{stroke:#64748b;}
+.prx-report .donut-fg.navy{stroke:#1B365D;}
+.prx-report .donut-value{font-family:'Open Sans',sans-serif;font-size:1.1rem;font-weight:800;fill:#1B365D;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-chart.lg .donut-value{font-size:1.4rem;}
+.prx-report .donut-sublabel{font-family:'Open Sans',sans-serif;font-size:0.58rem;font-weight:600;fill:#94a3b8;transform:rotate(90deg);dominant-baseline:central;text-anchor:middle;}
+.prx-report .donut-label{font-size:0.72rem;font-weight:600;color:#64748b;text-align:center;max-width:120px;line-height:1.3;}
+
+/* === HORIZONTAL BAR CHART === */
+.prx-report .hbar-chart{margin:18px 0 8px;}
+.prx-report .hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prx-report .hbar-row:last-child{margin-bottom:0;}
+.prx-report .hbar-label{font-size:0.76rem;font-weight:600;color:#1B365D;width:120px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-report .hbar-track{flex:1;height:22px;background:#f1f5f9;border-radius:3px;position:relative;overflow:hidden;}
+.prx-report .hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;min-width:2px;}
+.prx-report .hbar-fill.teal{background:#0f766e;}
+.prx-report .hbar-fill.blue{background:#3b82f6;}
+.prx-report .hbar-fill.navy{background:#1B365D;}
+.prx-report .hbar-fill.green{background:#10B981;}
+.prx-report .hbar-fill.amber{background:#f59e0b;}
+.prx-report .hbar-fill.red{background:#ef4444;}
+.prx-report .hbar-fill.purple{background:#8b5cf6;}
+.prx-report .hbar-fill.slate{background:#94a3b8;}
+.prx-report .hbar-val{font-size:0.68rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .hbar-val.outside{color:#475569;position:absolute;right:-50px;top:50%;transform:translateY(-50%);}
+.prx-report .hbar-note{font-size:0.68rem;color:#94a3b8;width:60px;flex-shrink:0;text-align:left;}
+
+/* === SEGMENTED BAR === */
+.prx-report .seg-chart{margin:18px 0 8px;}
+.prx-report .seg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prx-report .seg-row:last-child{margin-bottom:0;}
+.prx-report .seg-label{font-size:0.74rem;font-weight:600;color:#1B365D;width:100px;flex-shrink:0;text-align:right;}
+.prx-report .seg-track{flex:1;height:22px;display:flex;border-radius:3px;overflow:hidden;}
+.prx-report .seg-piece{height:100%;display:flex;align-items:center;justify-content:center;min-width:1px;}
+.prx-report .seg-piece span{font-size:0.6rem;font-weight:700;color:white;white-space:nowrap;}
+.prx-report .seg-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:0.7rem;color:#64748b;}
+.prx-report .seg-swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;">
+<!-- MORPH BAR -->
+<div class="prx-morph-bar" id="prx-morph-bar">
+<div class="prx-morph-bg"></div>
+<div class="prx-morph-inner">
+<span class="prx-morph-q">
+<span class="w" style="transition-delay:0ms">“Ai</span>
+<span class="w" style="transition-delay:35ms"> Privacy</span>
+<span class="w" style="transition-delay:70ms"> Compliance</span>
+<span class="w" style="transition-delay:105ms"> Guide”</span>
+</span>
+<div class="prx-morph-extras">
+<span class="prx-morph-pill">Autotask PSA</span>
+<span class="prx-morph-pill">Datto RMM</span>
+<span class="prx-morph-pill">Datto Backup</span>
+<span class="prx-morph-pill">Microsoft 365</span>
+<span class="prx-morph-pill">SmileBack</span>
+<span class="prx-morph-pill">HubSpot</span>
+<span class="prx-morph-pill">IT Glue</span>
+<a class="prx-morph-back" href="/powerbi/insights/">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg>
+                All reports
+            </a>
+</div>
+</div>
+</div>
+<div class="prx-report">
+<!-- BREADCRUMB NAV -->
+<nav class="series-nav">
+<a href="/powerbi">Power BI</a>
+<span class="sep">›</span>
+<a href="/powerbi/insights/">AI-Powered Reports</a>
+<span class="sep">›</span>
+<span class="current">Ai Privacy Compliance Guide</span>
+</nav>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<div class="search-hero-badge">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+        AI-GENERATED REPORT
+    </div>
+<div class="search-hero-eyebrow">You searched for:</div>
+<div class="search-bar">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<div class="search-bar-text">How to ensure AI privacy compliance?<span class="search-bar-cursor"></span></div>
+</div>
+<h1 id="prx-hero-h1">Ai Privacy Compliance Guide</h1>
+<p class="search-hero-sub">
+</p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#6B7280;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            Editorial
+        </span>
+</div>
+</div>
+<!-- PIPELINE -->
+<div class="pipeline-section">
+<div class="pipeline-label">How this report was made</div>
+<div class="pipeline-track">
+<div class="pipeline-step">
+<div class="pipeline-step-num">1</div>
+<div class="pipeline-step-icon"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></div>
+<div class="pipeline-step-title">Autotask PSA</div>
+<div class="pipeline-step-desc">Multiple data sources combined</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">2</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+<div class="pipeline-step-title">Proxuma Power BI</div>
+<div class="pipeline-step-desc">Pre-built MSP semantic model, 50+ measures</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step">
+<div class="pipeline-step-num">3</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg></div>
+<div class="pipeline-step-title">AI via MCP</div>
+<div class="pipeline-step-desc">Claude or ChatGPT writes DAX queries, executes them, formats output</div>
+</div>
+<div class="pipeline-arrow"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+<div class="pipeline-step highlight">
+<div class="pipeline-step-num">4</div>
+<div class="pipeline-step-icon"><svg viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="9 15 11 17 15 13"></polyline></svg></div>
+<div class="pipeline-step-title">This Report</div>
+<div class="pipeline-step-desc">KPIs, breakdowns, trends, recommendations</div>
+<div class="pipeline-badge">
+<svg fill="none" height="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="9"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Ready in &lt; 15 min
+            </div>
+</div>
+</div>
+<div class="pipeline-footer">
+<div class="pipeline-footer-text">Want to run this report against your own <strong>Autotask PSA</strong> data?</div>
+<a class="pipeline-cta-link" href="/powerbi"><span style="position:relative;z-index:10;">Get Proxuma Power BI</span> <svg stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:10;" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- REPORT OVERVIEW -->
+<div class="report-overview">
+<div class="overview-grid">
+<div>
+<h2 class="overview-h2">Ai Privacy Compliance Guide</h2>
+<div class="overview-body">
+<p>This report provides a detailed breakdown of ai privacy compliance guide for managed service providers.</p>
+<p>The data covers the full scope of Autotask PSA records relevant to this analysis, broken down by the key dimensions your team needs for day-to-day decisions and client reporting.</p>
+<p><strong>Who should use this:</strong> Security teams, compliance officers, and MSP owners managing risk</p>
+<p><strong>How often:</strong> Weekly for security posture, monthly for compliance reporting, on-demand for audits</p>
+</div>
+<div class="value-grid">
+<div class="value-card green">
+<div class="value-card-title">Time saved</div>
+<div class="value-card-text">Security audits across multiple tenants require logging into each one separately. This report aggregates it.</div>
+</div>
+<div class="value-card">
+<div class="value-card-title">Risk visibility</div>
+<div class="value-card-text">Delegated privilege gaps, guest user sprawl, and compliance issues surfaced in one view.</div>
+</div>
+<div class="value-card amber">
+<div class="value-card-title">Audit readiness</div>
+<div class="value-card-text">Pre-formatted compliance data for client audits and regulatory requirements.</div>
+</div>
+</div>
+</div>
+<div>
+<div class="overview-meta">
+<div class="meta-row"><span class="meta-label">Report category</span><span class="meta-value">Security &amp; Compliance</span></div>
+<div class="meta-row"><span class="meta-label">Data source</span><span class="meta-value">Autotask PSA · Datto RMM · Datto Backup · Microsoft 365 · SmileBack · HubSpot · IT Glue</span></div>
+<div class="meta-row"><span class="meta-label">Refresh</span><span class="meta-value">Real-time via Power BI</span></div>
+<div class="meta-row"><span class="meta-label">Generation time</span><span class="meta-value">Under 15 minutes</span></div>
+<div class="meta-row"><span class="meta-label">AI required</span><span class="meta-value">Claude, ChatGPT or Copilot</span></div>
+<div class="meta-row"><span class="meta-label">Audience</span><span class="meta-value">Security teams,  compliance officers</span></div>
+</div>
+<div style="margin-top:16px;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:8px;">Where to find this in Proxuma</div>
+<div class="proxuma-path">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    Power BI › Security › Ai Privacy Compliance Guide
+                </div>
+<div style="margin-top:14px;">
+<a class="pipeline-cta-link" href="/powerbi">
+<span style="position:relative;z-index:10;">Get this report for your MSP</span>
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="13"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
+<div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">What you can measure in this report</div>
+<div class="metrics-grid">
+</div>
+</div>
+</div>
+<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<div id="prx-frame-top"></div>
+<!-- Proxuma.io Page: AI & Privacy Guide for MSPs -->
+<!-- Paste as Custom HTML block in WordPress -->
+<!-- URL: /powerbi/insights/ai-privacy-guide -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Open+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- MORPH BAR -->
+<style>
+.prx-morph-bar{position:fixed;top:0;left:0;right:0;z-index:10000;height:50px;pointer-events:none;display:flex;align-items:center;padding:0 28px;overflow:hidden;}
+.prx-morph-bar.active{pointer-events:all;}
+.prx-morph-bg{position:absolute;inset:0;background:#115e58;opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.3,0.64,1);}
+.prx-morph-bar.visible .prx-morph-bg{opacity:1;transform:scaleY(1);}
+.prx-morph-bar:not(.visible) .prx-morph-bg{transition:opacity 0.2s ease,transform 0.2s ease;}
+.prx-morph-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px;}
+.prx-morph-q{font-family:'Open Sans',-apple-system,sans-serif;font-style:italic;font-size:0.88rem;color:white;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prx-morph-q .w{display:inline-block;opacity:0;transform:translateY(-18px) scale(0.8);filter:blur(2px);transition:opacity 0.25s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-q .w{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+.prx-morph-bar:not(.visible) .prx-morph-q .w{transition-duration:0.15s;transition-delay:0s !important;}
+.prx-morph-extras{display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0;transition:opacity 0.25s ease;}
+.prx-morph-bar.visible .prx-morph-extras{opacity:1;transition-delay:0.45s;}
+.prx-morph-pill{background:rgba(255,255,255,0.1);border-radius:100px;padding:3px 10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.prx-morph-back{color:#5eead4;text-decoration:none;font-size:0.78rem;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.prx-morph-back:hover{color:white;}
+.prx-morph-back svg{width:12px;height:12px;}
+@media(max-width:900px){.prx-morph-extras{display:none !important;}}
+.prx-report .search-hero{background-color:#e8f4fd;background-image:radial-gradient(circle,#b8dff5 1px,transparent 1px);background-size:24px 24px;border-radius:20px;padding:48px 52px 40px;margin:24px 0 0;position:relative;overflow:hidden;}
+.prx-report .search-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(232,244,253,0.93) 0%,rgba(210,235,250,0.9) 100%);border-radius:inherit;pointer-events:none;}
+.prx-report .search-hero > *{position:relative;}
+.prx-report .search-hero-deco{position:absolute;top:-40px;right:-40px;width:240px;height:240px;background:radial-gradient(circle,rgba(46,163,242,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.prx-report .search-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,163,242,0.12);color:#1a5276;border:1px solid rgba(46,163,242,0.35);border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;margin-bottom:18px;}
+.prx-report .search-hero-badge svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.5;fill:none;}
+.prx-report .search-hero-eyebrow{font-size:0.85rem;color:#64748b;margin-bottom:8px;font-weight:500;}
+.prx-report .search-hero h1{font-family:'Open Sans',sans-serif;font-weight:800;font-size:clamp(1.65rem,3.2vw,2.3rem);color:#2c3e50 !important;line-height:1.15;margin-bottom:14px;max-width:780px;}
+.prx-report .search-hero-sub{font-size:1rem;color:#475569;margin-bottom:28px;max-width:640px;line-height:1.65;}
+.prx-report .search-hero-sub strong{color:#2c3e50;}
+</style>
+<div class="prx-mcp">
+<!-- Logo bar -->
+<div class="logo-bar">
+<svg height="32" viewbox="0 0 960.97 282.29" width="109" xmlns="http://www.w3.org/2000/svg"><defs>
+<!-- MAIN REPORT STYLES -->
+<style>
+.prx-report *,.prx-report *::before,.prx-report *::after{box-sizing:border-box;margin:0;padding:0;}
+.prx-report{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:#333;line-height:1.7;max-width:1140px;margin:0 auto;padding:0 24px;-webkit-font-smoothing:antialiased;}
+.prx-report .series-nav{display:flex;align-items:center;gap:8px;margin:32px 0 0;font-size:0.85rem;}
+.prx-report .series-nav a{color:#2c3e50;text-decoration:none;font-weight:600;}
+.prx-report .series-nav a:hover{text-decoration:underline;}
+.prx-report .series-nav .sep{color:#94a3b8;}
+.prx-report .series-nav .current{color:#64748b;}
+.prx-report .search-bar{display:flex;align-items:center;gap:12px;background:white;border-radius:40px;padding:13px 22px;box-shadow:0 4px 20px rgba(44,62,80,0.11),0 1px 4px rgba(44,62,80,0.06);max-width:620px;margin-bottom:24px;border:1px solid #e2e8f0;}
+.prx-report .search-bar svg{width:20px;height:20px;stroke:#94a3b8;stroke-width:2;flex-shrink:0;fill:none;}
+.prx-report .search-bar-text{font-size:0.95rem;color:#334155;flex:1;}
+.prx-report .search-bar-cursor{display:inline-block;width:2px;height:1.1em;background:#2c3e50;margin-left:2px;vertical-align:text-bottom;animation:prx-blink 1.1s step-end infinite;}
+@keyframes prx-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.prx-report .pipeline-section{background:white;border-radius:0 0 20px 20px;border:1px solid #e2e8f0;border-top:none;padding:28px 52px 28px;margin-bottom:28px;}
+.prx-report .pipeline-label{font-size:0.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#0f766e;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.prx-report .pipeline-label::after{content:'';flex:1;height:1px;background:#e2e8f0;}
+.prx-report .pipeline-track{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr 28px 1fr;align-items:center;gap:0;margin-bottom:22px;}
+.prx-report .pipeline-step{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:18px 14px 16px;text-align:center;position:relative;}
+.prx-report .pipeline-step.highlight{background:linear-gradient(135deg,#0f766e 0%,#115e58 100%) !important;border-color:#0f766e !important;}
+.prx-report .pipeline-step-num{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0f766e;color:white;font-size:0.58rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:#eef2f7;border:1px solid #e2e8f0;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-step-icon svg{width:20px;height:20px;stroke:#2c3e50;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon{background:rgba(255,255,255,0.12) !important;border-color:rgba(255,255,255,0.2) !important;}
+.prx-report .pipeline-step.highlight .pipeline-step-icon svg{stroke:#5eead4 !important;}
+.prx-report .pipeline-step-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:4px;line-height:1.2;}
+.prx-report .pipeline-step.highlight .pipeline-step-title{color:white !important;}
+.prx-report .pipeline-step-desc{font-size:0.7rem;color:#64748b;line-height:1.4;}
+.prx-report .pipeline-step.highlight .pipeline-step-desc{color:rgba(255,255,255,0.7) !important;}
+.prx-report .pipeline-arrow{text-align:center;display:flex;align-items:center;justify-content:center;}
+.prx-report .pipeline-arrow svg{width:16px;height:16px;stroke:#0f766e;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .pipeline-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(94,234,212,0.2);color:#5eead4;border:1px solid rgba(94,234,212,0.4);border-radius:20px;font-size:0.62rem;font-weight:700;padding:2px 8px;margin-top:7px;}
+.prx-report .pipeline-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #f1f5f9;}
+.prx-report .pipeline-footer-text{font-size:0.85rem;color:#64748b;}
+.prx-report .pipeline-footer-text strong{color:#2c3e50;}
+.prx-report .pipeline-cta-link{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#10B981 0%,#059669 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:9px 18px;font-size:0.82rem;font-weight:600;white-space:nowrap;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(16,185,129,0.3);position:relative;overflow:hidden;}
+.prx-report .pipeline-cta-link::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#1B5299 0%,#164487 40%,#123a70 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .pipeline-cta-link:hover::before{width:600px;height:600px;}
+.prx-report .pipeline-cta-link:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(22,68,135,0.4) !important;}
+.prx-report .pipeline-cta-link svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:10;}
+.prx-report .report-overview{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:36px 40px;margin-bottom:28px;}
+.prx-report .overview-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;}
+.prx-report .overview-h2{font-family:'Open Sans',sans-serif;font-size:1.25rem;font-weight:700;color:#2c3e50 !important;margin-bottom:14px;line-height:1.3;}
+.prx-report .overview-body{font-size:0.92rem;color:#334155;line-height:1.7;}
+.prx-report .overview-body p{margin-bottom:0.9rem;}
+.prx-report .overview-body strong{color:#2c3e50;}
+.prx-report .overview-meta{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:22px 22px;font-size:0.82rem;}
+.prx-report .meta-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f1f5f9;gap:12px;}
+.prx-report .meta-row:last-child{border-bottom:none;}
+.prx-report .meta-label{color:#64748b;font-weight:500;white-space:nowrap;}
+.prx-report .meta-value{color:#2c3e50;font-weight:600;text-align:right;}
+.prx-report .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;}
+.prx-report .value-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;border-top:3px solid #2c3e50;}
+.prx-report .value-card.green{border-top-color:#10B981;}
+.prx-report .value-card.amber{border-top-color:#f59e0b;}
+.prx-report .value-card-title{font-family:'Open Sans',sans-serif;font-size:0.8rem;font-weight:700;color:#2c3e50;margin-bottom:5px;}
+.prx-report .value-card-text{font-size:0.78rem;color:#64748b;line-height:1.5;}
+.prx-report .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0;}
+.prx-report .metric-item{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:#475569;line-height:1.4;}
+.prx-report .metric-check{color:#10B981;flex-shrink:0;margin-top:2px;}
+.prx-report .metric-check svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prx-report .proxuma-path{display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:1px solid #dde3ec;border-radius:6px;padding:6px 14px;font-size:0.78rem;font-family:'JetBrains Mono','Courier New',monospace;color:#2c3e50;margin-top:6px;font-weight:500;}
+.prx-report .proxuma-path svg{width:12px;height:12px;stroke:#2c3e50;stroke-width:2;fill:none;opacity:0.6;}
+.prx-report .report-frame-outer{background:linear-gradient(180deg,#0f766e 0%,#115e58 50%,#134e4a 100%);border-radius:12px;padding:50px;margin-bottom:0;}
+.prx-report .doc{background:white;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);position:relative;}
+.prx-report .doc-header{padding:36px 48px 28px;border-bottom:3px solid #1B365D;display:flex;justify-content:space-between;align-items:flex-start;}
+.prx-report .doc-logo{display:flex;align-items:center;margin-bottom:4px;}
+.prx-report .doc-type{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;}
+.prx-report .doc-header-right{text-align:right;}
+.prx-report .doc-header-right .doc-meta-row{font-size:0.74rem;color:#64748b;line-height:1.8;}
+.prx-report .doc-header-right .doc-meta-row strong{color:#1B365D;font-weight:600;}
+.prx-report .doc-title-block{padding:32px 48px 28px;border-bottom:1px solid #e2e8f0;}
+.prx-report .doc-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;color:#1B365D !important;line-height:1.25;margin-bottom:8px;}
+.prx-report .doc-subtitle{font-size:0.88rem;color:#64748b;line-height:1.6;}
+.prx-report .doc-body{padding:0 48px;}
+.prx-report .doc-section{padding:28px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-section:last-child{border-bottom:none;}
+.prx-report .doc-section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.prx-report .doc-section-num{font-family:'Open Sans',sans-serif;font-weight:800;font-size:0.82rem;color:#0f766e;flex-shrink:0;}
+.prx-report .doc-section-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:1rem;color:#1B365D !important;}
+.prx-report .doc-section-sub{font-size:0.8rem;color:#64748b;margin-top:2px;}
+.prx-report .doc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;}
+.prx-report .doc-kpi{padding:18px 20px;border-right:1px solid #e2e8f0;background:#fafbfc !important;}
+.prx-report .doc-kpi:last-child{border-right:none;}
+.prx-report .doc-kpi-label{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#94a3b8;margin-bottom:4px;}
+.prx-report .doc-kpi-value{font-family:'Open Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#1B365D !important;line-height:1.1;}
+.prx-report .doc-kpi-note{font-size:0.72rem;margin-top:3px;}
+.prx-report .doc-kpi-note.green{color:#10B981;}
+.prx-report .doc-kpi-note.red{color:#ef4444;}
+.prx-report .doc-kpi-note.amber{color:#f59e0b;}
+.prx-report .doc-kpi-note.muted{color:#94a3b8;}
+.prx-report .doc-dax-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:14px 18px;margin-top:16px;font-size:0.8rem;color:#475569;line-height:1.65;}
+.prx-report .doc-dax-box strong{color:#1B365D;}
+.prx-report table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.prx-report th{text-align:left;padding:10px 12px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#64748b;background:#f8fafc !important;border-bottom:2px solid #e2e8f0;font-weight:600;}
+.prx-report td{padding:10px 12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.prx-report tbody tr:hover td{background:#f8fafc !important;}
+.prx-report .num{font-weight:700;font-family:'Open Sans',sans-serif;font-size:0.9rem;text-align:right;}
+.prx-report .num-danger{color:#dc2626 !important;}
+.prx-report .num-warn{color:#d97706 !important;}
+.prx-report .num-ok{color:#16a34a !important;}
+.prx-report .client-name{font-weight:600;color:#1B365D !important;white-space:nowrap;}
+.prx-report .pct-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:600;}
+.prx-report .pct-bad{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pct-mid{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pct-ok{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pct-none{background:#f1f5f9 !important;color:#64748b !important;}
+.prx-report .pill{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.prx-report .pill-blue{background:#dbeafe !important;color:#1e40af !important;}
+.prx-report .pill-green{background:#d1fae5 !important;color:#065f46 !important;}
+.prx-report .pill-amber{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .pill-red{background:#fee2e2 !important;color:#991b1b !important;}
+.prx-report .pill-gray{background:#f1f5f9 !important;color:#475569 !important;}
+.prx-report .dax-toggle{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin-top:16px;}
+.prx-report .dax-toggle .dax-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;color:#0f766e;background:#f1f5f9 !important;user-select:none;}
+.prx-report .dax-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .dax-toggle.expanded .dax-chevron{transform:rotate(180deg);}
+.prx-report .dax-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .dax-toggle.expanded .dax-content{max-height:600px;}
+.prx-report .dax-content pre{padding:14px 16px;background:#0f172a !important;border-radius:0;}
+.prx-report .dax-content code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.72rem;line-height:1.65;color:#e2e8f0 !important;background:transparent !important;}
+.prx-report .dax-copy{display:block;margin:8px 16px 12px auto;border:none;border-radius:4px;padding:5px 14px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;background:#14b8a6;color:white;}
+.prx-report .dax-copy:hover{background:#0d9488;color:white;}
+.prx-report .doc-finding{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .doc-finding:last-child{border-bottom:none;}
+.prx-report .doc-finding-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.72rem;font-weight:800;color:white;margin-top:2px;}
+.prx-report .doc-finding-icon.critical{background:#ef4444;}
+.prx-report .doc-finding-icon.warning{background:#f59e0b;}
+.prx-report .doc-finding-icon.ok{background:#10B981;}
+.prx-report .doc-finding-body h4{font-size:1rem;font-weight:700;margin:0 0 4px 0;line-height:1.3;color:#0f172a;}
+.prx-report .doc-finding-body p{font-size:0.85rem;color:#475569;line-height:1.7;margin:0;}
+.prx-report .narrative{margin:8px 0;}
+.prx-report .narrative p{font-size:0.9rem;line-height:1.8;color:#334155;margin-bottom:14px;}
+.prx-report .narrative p:last-child{margin-bottom:0;}
+.prx-report .narrative strong{color:#1B365D;}
+.prx-report .doc-faq{border-top:1px solid #e2e8f0;}
+.prx-report .doc-faq .faq-item{border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.prx-report .doc-faq .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;font-size:0.88rem;font-weight:600;color:#1B365D !important;}
+.prx-report .doc-faq .faq-chevron{width:16px;height:16px;flex-shrink:0;transition:transform 0.25s ease;}
+.prx-report .doc-faq .faq-item.open .faq-chevron{transform:rotate(180deg);}
+.prx-report .doc-faq .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .doc-faq .faq-item.open .faq-a{max-height:300px;}
+.prx-report .doc-faq .faq-a p{font-size:0.84rem;line-height:1.7;color:#475569;padding-bottom:14px;}
+.prx-report .doc-demo{margin:20px 0 0;padding:12px 16px;background:#fefce8 !important;border:1px solid #fde68a;border-radius:6px;font-size:0.8rem;color:#92400e;}
+.prx-report .doc-demo strong{color:#78350f;}
+.prx-report .doc-footer{margin-top:16px;padding:16px 48px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;}
+.prx-report .doc-footer span{font-size:0.68rem;color:#94a3b8;}
+.prx-report .cta-block{background:linear-gradient(135deg,#E8F4FD 0%,#ffffff 100%);border-radius:16px;padding:40px 44px;text-align:center;margin-top:40px;margin-bottom:60px;}
+.prx-report .cta-block h3{font-family:'Open Sans','Inter',sans-serif;font-weight:800;font-size:1.4rem;color:#1B365D !important;margin-bottom:10px;}
+.prx-report .cta-block p{font-size:0.95rem;color:#475569;margin-bottom:22px;}
+.prx-report .cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#164487 0%,#1B5299 100%);color:white !important;text-decoration:none !important;border-radius:8px;padding:14px 28px;font-size:0.9rem;font-weight:700;margin:4px 6px;transition:transform 0.3s ease,box-shadow 0.3s ease;box-shadow:0 4px 14px rgba(22,68,135,0.3);position:relative;overflow:hidden;cursor:pointer;}
+.prx-report .cta-btn span,.prx-report .cta-btn svg{position:relative;z-index:10;}
+.prx-report .cta-btn::before{content:'';position:absolute;top:var(--mouse-y,50%);left:var(--mouse-x,50%);width:0;height:0;background:radial-gradient(circle,#00D9A5 0%,#00B386 40%,#009973 100%);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94),height 0.7s cubic-bezier(0.25,0.46,0.45,0.94);z-index:1;}
+.prx-report .cta-btn:hover::before{width:600px;height:600px;}
+.prx-report .cta-btn:hover{transform:translateY(-3px) !important;box-shadow:0 8px 25px rgba(0,217,165,0.4) !important;}
+/* Source badges */
+.prx-report .badge-psa{background:#DBEAFE;color:#1E40AF;border-color:#1D4ED8;}
+.prx-report .badge-rmm{background:#FDE68A;color:#78350F;border-color:#B45309;}
+.prx-report .badge-backup{background:#FECACA;color:#7F1D1D;border-color:#DC2626;}
+.prx-report .badge-m365{background:#E9D5FF;color:#581C87;border-color:#7C3AED;}
+.prx-report .badge-itglue{background:#A7F3D0;color:#064E3B;border-color:#059669;}
+.prx-report .badge-smileback{background:#FEF3C7;color:#713F12;border-color:#D97706;}
+.prx-report .badge-hubspot{background:#FFE4E6;color:#881337;border-color:#E11D48;}
+/* Report-specific styles */
+.pl1{fill:#002c60}
+.pl2{fill:#00b7ff}
+/* Responsive */
+@media(max-width:900px){.prx-report .report-frame-outer{padding:28px;}.prx-report .doc-kpi-row{grid-template-columns:repeat(2,1fr);}.prx-report .pipeline-track{grid-template-columns:1fr 1fr;}.prx-report .pipeline-arrow{display:none;}.prx-report .overview-grid{grid-template-columns:1fr;}.prx-report .value-grid{grid-template-columns:1fr 1fr;}.prx-report .metrics-grid{grid-template-columns:1fr 1fr;}.prx-report .doc-header{flex-direction:column;gap:12px;}.prx-report .doc-header-right{text-align:left;}}
+@media(max-width:600px){.prx-report .search-hero{padding:28px 20px 24px;border-radius:14px;}.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}.prx-report .pipeline-section{padding:22px 20px;}.prx-report .report-overview{padding:24px 20px;}.prx-report .value-grid{grid-template-columns:1fr;}.prx-report .metrics-grid{grid-template-columns:1fr;}.prx-report .cta-block{padding:28px 24px;}}
+@media print{.prx-report .cta-block{display:none;}.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}.prx-morph-bar{display:none;}}
+
+/* ── Auto-fixed chart/viz CSS ── */
+.prx-report .analogy{padding:12px 16px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;font-size:0.82rem;color:#0c4a6e;margin:12px 0;font-style:italic;}
+.prx-report .check-box{width:16px;height:16px;border:2px solid #e2e8f0;border-radius:3px;flex-shrink:0;margin-top:2px;}
+.prx-report .check-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:0.85rem;color:#334155;}
+.prx-report .check-text{flex:1;}
+.prx-report .checklist{margin:8px 0;}
+.prx-report .collapse-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.prx-report .collapse-trigger{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;font-size:0.82rem;font-weight:600;color:#0f766e;background:#f1f5f9;}
+.prx-report .collapsible{border:1px solid #e2e8f0;border-radius:6px;overflow:hidden;margin:8px 0;}
+.prx-report .cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-size:0.82rem;font-weight:600;text-decoration:none;color:white;background:#164487;transition:background 0.2s;}
+.prx-report .cta:hover{background:#0f3672;}
+.prx-report .label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#94a3b8;}
+.prx-report .layer{padding:12px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .layer-num{font-weight:800;color:#0f766e;margin-right:8px;}
+.prx-report .lead{font-size:0.95rem;color:#334155;line-height:1.8;}
+.prx-report .medium{background:#fef3c7 !important;color:#92400e !important;}
+.prx-report .never{color:#dc2626 !important;}
+.prx-report .opener{font-size:0.92rem;color:#334155;line-height:1.8;margin-bottom:14px;}
+.prx-report .outline{border:2px solid #e2e8f0;background:transparent !important;}
+.prx-report .privacy-block{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:12px 0;}
+.prx-report .prx-reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.prx-report .prx-reveal.visible{opacity:1;transform:translateY(0);}
+.prx-report .prx-reveal-stagger{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.prx-report .risk-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;}
+.prx-report .risk-matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0;}
+.prx-report .section-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#94a3b8;margin-bottom:8px;}
+.prx-report .sees{font-size:0.72rem;color:#64748b;}
+.prx-report .step{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #f1f5f9;}
+.prx-report .step-body{flex:1;}
+.prx-report .steps{margin:12px 0;}
+.prx-report .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.68rem;font-weight:600;background:#f1f5f9;color:#475569;margin:2px;}
+.prx-report .takeaway{padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-size:0.85rem;color:#166534;margin:12px 0;}
+.prx-report .tk-icon{width:20px;height:20px;flex-shrink:0;}
+.prx-report .tool{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;}
+.prx-report .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0;}
+.prx-report .tool-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+.prx-report .two-up{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0;}
+.prx-report .warn{background:#fef3c7 !important;color:#92400e !important;}
+
+.prx-report .related-reports{margin-top:40px;margin-bottom:0;padding:0;}
+.prx-report .related-reports-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.prx-report .related-reports-label{font-family:'Open Sans',sans-serif;font-weight:800;font-size:1.1rem;color:#2c3e50;white-space:nowrap;}
+.prx-report .related-reports-line{flex:1;height:1px;background:#e2e8f0;}
+.prx-report .related-reports-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.prx-report .rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;text-decoration:none !important;color:inherit !important;transition:border-color 0.2s ease,box-shadow 0.2s ease;display:flex;flex-direction:column;gap:10px;}
+.prx-report .rr-card:hover{border-color:#0f766e;box-shadow:0 4px 12px rgba(15,118,110,0.1);}
+.prx-report .rr-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:3px 10px;border-radius:100px;width:fit-content;}
+.prx-report .rr-card-title{font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.88rem;color:#2c3e50;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prx-report .rr-card-desc{font-size:0.78rem;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;}
+.prx-report .rr-card-link{font-size:0.78rem;font-weight:600;color:#0f766e;display:flex;align-items:center;gap:4px;margin-top:auto;}
+.prx-report .rr-card-link svg{width:14px;height:14px;}
+@media(max-width:900px){.prx-report .related-reports-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.prx-report .related-reports-grid{grid-template-columns:1fr;}}
+</style></defs><path class="pl2" d="m216.45,16.34-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="pl2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="pl2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="pl1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="pl1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="pl1" cx="131.29" cy="244.38" r="6.19"></circle><path class="pl1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="pl1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="pl2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon></svg>
+<div style="display:flex;align-items:center;gap:8px;">
+<svg fill="none" height="28" stroke="#1B365D" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#00D9A5" stroke-width="2"></path></svg>
+<span style="font-family:'Montserrat',sans-serif;font-weight:700;color:#1B365D;font-size:0.85rem;">Privacy &amp; Compliance</span>
+</div>
+</div>
+<!-- Opening -->
+<div class="opener">
+<div class="label">AI + Data Protection</div>
+<h1>Using AI with Client Data: A Privacy &amp; Compliance Guide for MSPs</h1>
+<p class="lead">You want to use AI to query your business data through Power BI. But your clients' data flows through that AI. This guide covers the legal obligations, hosting options, and practical steps so you can make an informed decision.</p>
+</div>
+<!-- SEARCH HERO -->
+<div class="search-hero">
+<div class="search-hero-deco"></div>
+<span class="search-hero-badge">
+<svg viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        Power BI Report
+    </span>
+<div class="search-hero-eyebrow">You searched for:</div>
+<h1>proxuma-io-ai-privacy-compliance-guide-post.html</h1>
+<p class="search-hero-sub"></p>
+<div class="search-hero-sources">
+<span class="search-hero-sources-label">Built from:</span>
+<span class="source-badge" style="color:#1E40AF;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg>
+            Autotask PSA
+        </span>
+<span class="source-badge" style="color:#0891b2;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            N-able RMM
+        </span>
+<span class="source-badge" style="color:#E11D48;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            HubSpot CRM
+        </span>
+<span class="source-badge" style="color:#475569;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg>
+            IT Glue
+        </span>
+<span class="source-badge" style="color:#D97706;">
+<svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"></path></svg>
+            SmileBack
+        </span>
+</div>
+</div>
+<hr/>
+<!-- SECTION 1: The core problem -->
+<div class="section prx-reveal">
+<div class="section-label">The Problem</div>
+<h2>Why this matters for every MSP</h2>
+<p>You’re an MSP. Your business systems (PSA, RMM, CRM) contain <strong>ticket data, client names, employee names, device details, contract values, and operational metrics</strong> for every customer you serve. This is <a href="https://gdpr-info.eu/art-4-gdpr/" rel="noopener" target="_blank">personal data under GDPR</a>, and it belongs to your clients, not to you.</p>
+<p>When you connect an AI agent to query that data, every question you ask sends information to the AI provider’s servers. That makes the AI provider a <strong>sub-processor</strong> under data protection law. And that triggers a chain of <a href="https://gdpr-info.eu/art-28-gdpr/" rel="noopener" target="_blank">legal obligations under Article 28 GDPR</a> you cannot ignore.</p>
+<div class="analogy warn">
+<div class="tag">The chain of responsibility</div>
+<p><strong>Your client</strong> (data controller) → <strong>You, the MSP</strong> (data processor) → <strong>The AI provider</strong> (sub-processor). Each link in this chain carries legal obligations. If any link breaks, you are liable.</p>
+</div>
+<p>Proxuma Power BI gives you a structured semantic model with clearly labeled measures, tables, and relationships across your entire tool stack. This is what makes AI queries possible in the first place: the data is <strong>structured and labeled</strong>, so an AI can write precise DAX queries instead of fumbling through raw APIs. But the AI still needs to see the query results. And that’s where the privacy question begins.</p>
+</div>
+<hr/>
+<!-- SECTION 2: GDPR sub-processor obligations -->
+<div class="section prx-reveal">
+<div class="section-label">Legal Framework</div>
+<h2>Your obligations under GDPR (Article 28)</h2>
+<p>Under GDPR, MSPs are <strong>data processors</strong>. Your clients are data controllers. When you introduce an AI provider, they become a sub-processor. <a href="https://gdpr-info.eu/art-28-gdpr/" rel="noopener" target="_blank">Article 28(2) GDPR</a> requires prior written authorization from the controller before engaging any sub-processor.</p>
+<div class="privacy-block prx-reveal">
+<h3>Two authorization models</h3>
+<div class="layer">
+<div class="layer-num">1</div>
+<p><strong>Specific authorization.</strong> The client must approve each individual sub-processor. Any changes require fresh approval. Maximum control, maximum friction.</p>
+</div>
+<div class="layer">
+<div class="layer-num">2</div>
+<p><strong>General authorization.</strong> The client gives broad pre-approval. You must maintain a sub-processor list, <strong>notify clients of changes</strong>, and give them a reasonable window (typically 30 days) to object. This is what most MSPs use in practice.</p>
+</div>
+</div>
+<p>In either case: <strong>you must update your Data Processing Agreements</strong> before connecting any AI to client data. If your DPA was written before AI tools existed (most were), it almost certainly does not cover this use case. The <a href="https://www.edpb.europa.eu/our-work-tools/documents/public-consultations/2024/guidelines-022023-article-28-and-notion_en" rel="noopener" target="_blank">EDPB’s guidelines on Article 28</a> provide detailed guidance on what DPAs must contain.</p>
+<div class="analogy">
+<div class="tag">EDPB Opinion 22/2024</div>
+<p>In October 2024, the European Data Protection Board adopted <a href="https://www.edpb.europa.eu/system/files/2024-10/edpb_opinion_202422_relianceonprocessors-sub-processors_en.pdf" rel="noopener" target="_blank">Opinion 22/2024</a>, specifically addressing processor and sub-processor chains. Key takeaway: processors remain <strong>fully liable</strong> to controllers for sub-processor performance. Even under general authorization, specific information about each sub-processor must be provided to the controller.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTION 3: Where your data goes -->
+<div class="section prx-reveal">
+<div class="section-label">Data Flows</div>
+<h2>Where does your data actually go?</h2>
+<p>This is the critical question. Different AI providers handle your data very differently. Here’s the comparison that matters:</p>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Trains on your data?</th>
+<th>EU data residency</th>
+<th>DPA available</th>
+<th>DPF certified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy" rel="noopener" target="_blank">Azure OpenAI</a></td>
+<td><span class="pill green">No</span></td>
+<td><span class="pill green">Yes — <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" rel="noopener" target="_blank">EU Data Zone</a></span></td>
+<td><span class="pill green"><a href="https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA" rel="noopener" target="_blank">Yes</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/5581" rel="noopener" target="_blank">Yes</a></span></td>
+</tr>
+<tr>
+<td><a href="https://openai.com/enterprise-privacy/" rel="noopener" target="_blank">OpenAI API</a></td>
+<td><span class="pill green">No (API)</span></td>
+<td><span class="pill red">No</span></td>
+<td><span class="pill green"><a href="https://openai.com/policies/data-processing-addendum/" rel="noopener" target="_blank">Yes + SCCs</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/8211" rel="noopener" target="_blank">Yes</a></span></td>
+</tr>
+<tr>
+<td><a href="https://privacy.anthropic.com/en/" rel="noopener" target="_blank">Anthropic Claude</a></td>
+<td><span class="pill green"><a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training" rel="noopener" target="_blank">No (API)</a></span></td>
+<td><span class="pill amber">Via <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">AWS</a>/<a href="https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude" rel="noopener" target="_blank">GCP</a> only</span></td>
+<td><span class="pill green"><a href="https://privacy.claude.com/en/articles/7996862-how-do-i-view-and-sign-your-data-processing-addendum-dpa" rel="noopener" target="_blank">Yes + SCCs</a></span></td>
+<td><span class="pill amber">Unclear</span></td>
+</tr>
+<tr>
+<td><a href="https://aws.amazon.com/bedrock/security-compliance/" rel="noopener" target="_blank">AWS Bedrock</a></td>
+<td><span class="pill green">No</span></td>
+<td><span class="pill green">Yes — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">Frankfurt, Ireland, Paris, Stockholm</a></span></td>
+<td><span class="pill green"><a href="https://d1.awsstatic.com/legal/aws-dpa/aws-dpa.pdf" rel="noopener" target="_blank">Yes</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/5765" rel="noopener" target="_blank">Yes</a></span></td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance" rel="noopener" target="_blank">Google Vertex AI</a></td>
+<td><span class="pill green"><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention" rel="noopener" target="_blank">No</a></span></td>
+<td><span class="pill green">Yes — EU regions</span></td>
+<td><span class="pill green"><a href="https://cloud.google.com/terms/data-processing-addendum" rel="noopener" target="_blank">Yes</a></span></td>
+<td><span class="pill green"><a href="https://www.dataprivacyframework.gov/participant/5780" rel="noopener" target="_blank">Yes</a></span></td>
+</tr>
+<tr>
+<td>Self-hosted (Llama, Mistral)</td>
+<td><span class="pill green">No — you control it</span></td>
+<td><span class="pill green">Wherever you host it</span></td>
+<td><span class="pill gray">N/A</span></td>
+<td><span class="pill gray">N/A</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="analogy danger">
+<div class="tag">Critical distinction</div>
+<p><strong>API usage ≠ consumer usage.</strong> When you use ChatGPT via the website, OpenAI may use your input for training. When you use the API, they don’t. The same applies to Claude. Always use the <strong>commercial API</strong>, never consumer products, for client data.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTION 4: AI hosting options -->
+<div class="section prx-reveal">
+<div class="section-label">Hosting Options</div>
+<h2>Five paths to AI, compared</h2>
+<p>Each hosting model trades off between capability, privacy, cost, and compliance burden. Here’s what each means for your MSP in practice.</p>
+<div class="tool-grid prx-reveal-stagger">
+<div class="tool primary">
+<h4><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview" rel="noopener" target="_blank">Azure OpenAI</a></h4>
+<p>GPT models hosted in <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" rel="noopener" target="_blank">Microsoft’s EU data centers</a>. Your data stays in the EU Data Zone. <a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy" rel="noopener" target="_blank">No training on your data</a>. Private endpoints available. Already in your Microsoft ecosystem.</p>
+<div class="tool-pills">
+<span class="pill green">EU residency</span>
+<span class="pill green"><a href="https://learn.microsoft.com/en-us/azure/compliance/offerings/" rel="noopener" target="_blank">SOC 2 + ISO 27001</a></span>
+</div>
+</div>
+<div class="tool primary">
+<h4><a href="https://aws.amazon.com/bedrock/" rel="noopener" target="_blank">AWS Bedrock</a></h4>
+<p>Claude, Llama, and others via AWS infrastructure. EU regions: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">Frankfurt, Ireland, Paris, Stockholm</a>. Full <a href="https://aws.amazon.com/compliance/programs/" rel="noopener" target="_blank">AWS compliance stack</a>. Data never leaves your chosen region.</p>
+<div class="tool-pills">
+<span class="pill green">EU residency</span>
+<span class="pill green">SOC 1/2/3 + ISO</span>
+</div>
+</div>
+<div class="tool">
+<h4><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/overview" rel="noopener" target="_blank">Google Vertex AI</a></h4>
+<p>Gemini and Claude models. EU regions available. <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention" rel="noopener" target="_blank">Zero data retention policy</a>. Strong <a href="https://cloud.google.com/security/compliance" rel="noopener" target="_blank">compliance portfolio</a>. Ideal if you’re already in the Google Cloud ecosystem.</p>
+<div class="tool-pills">
+<span class="pill green">EU residency</span>
+<span class="pill green">SOC 2 + HIPAA</span>
+</div>
+</div>
+<div class="tool">
+<h4>Direct API (<a href="https://openai.com/api/" rel="noopener" target="_blank">OpenAI</a>/<a href="https://docs.anthropic.com/en/docs/welcome" rel="noopener" target="_blank">Anthropic</a>)</h4>
+<p>Simplest integration. Good DPAs available. But: data processed in the US. Requires <a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" rel="noopener" target="_blank">SCCs</a> + Transfer Impact Assessment for EU MSPs. Adequate for Anglosphere MSPs.</p>
+<div class="tool-pills">
+<span class="pill amber">US processing</span>
+<span class="pill green">DPA + SCCs</span>
+</div>
+</div>
+<div class="tool">
+<h4>Self-hosted (<a href="https://ollama.com/" rel="noopener" target="_blank">Ollama</a>/<a href="https://docs.vllm.ai/" rel="noopener" target="_blank">vLLM</a>)</h4>
+<p>Models like <a href="https://llama.meta.com/" rel="noopener" target="_blank">Llama 3</a>, <a href="https://mistral.ai/" rel="noopener" target="_blank">Mistral</a>, Phi run on your own hardware. Zero data leaves your network. But: lower quality than frontier models, requires GPU hardware, no vendor support.</p>
+<div class="tool-pills">
+<span class="pill green">Full control</span>
+<span class="pill amber">Lower quality</span>
+</div>
+</div>
+</div>
+<div class="analogy success">
+<div class="tag">The pragmatic choice for most MSPs</div>
+<p><strong>Azure OpenAI with EU Data Zone</strong> hits the sweet spot. You’re already paying for Microsoft 365 and Azure. Your Power BI data is already in the Microsoft ecosystem. EU data residency is built in. SOC 2, ISO 27001, GDPR: it’s all covered. For Anglosphere MSPs without EU clients, the direct API is equally viable.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTION 5: Data transfer (Schrems) -->
+<div class="section prx-reveal">
+<div class="section-label">International Transfers</div>
+<h2>The EU-US data transfer question (and Schrems III)</h2>
+<p>If your AI provider is US-based (and most are), sending EU client data to their servers is an <strong>international data transfer</strong> under <a href="https://gdpr-info.eu/art-44-gdpr/" rel="noopener" target="_blank">GDPR Chapter V (Articles 44-49)</a>. The legal mechanism for this has been invalidated twice before, and may be challenged again.</p>
+<div class="two-up prx-reveal">
+<div class="card sees">
+<h4>Current status: DPF under review</h4>
+<p>The <a href="https://www.dataprivacyframework.gov/" rel="noopener" target="_blank">EU-US Data Privacy Framework</a> survived its first legal challenge in September 2025. But Philippe Latombe’s appeal was filed October 31, 2025, escalating to the <a href="https://curia.europa.eu/jcms/jcms/j_6/en/" rel="noopener" target="_blank">European Court of Justice</a>. The ECJ invalidated both previous frameworks (<a href="https://curia.europa.eu/juris/liste.jsf?num=C-362/14" rel="noopener" target="_blank">Safe Harbor — Schrems I</a> and <a href="https://curia.europa.eu/juris/liste.jsf?num=C-311/18" rel="noopener" target="_blank">Privacy Shield — Schrems II</a>).</p>
+</div>
+<div class="card never">
+<h4>What to do: belt and suspenders</h4>
+<p>Don’t rely solely on the DPF. Maintain <strong><a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" rel="noopener" target="_blank">Standard Contractual Clauses (SCCs)</a></strong> as a backup. Conduct a <a href="https://www.cnil.fr/en/new-standard-contractual-clauses-cnil-publishes-guide-transfers-personal-data-outside-eu" rel="noopener" target="_blank">Transfer Impact Assessment</a>. If the DPF falls, you’ll need SCCs with supplementary measures immediately.</p>
+</div>
+</div>
+<p><strong>The simplest way to avoid this entire issue:</strong> choose an AI provider with EU data residency. Azure OpenAI with the <a href="https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/" rel="noopener" target="_blank">EU Data Zone</a>, AWS Bedrock in <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" rel="noopener" target="_blank">Frankfurt</a>, or Google Vertex AI in an EU region. If your data never leaves the EU, the transfer question doesn’t arise.</p>
+</div>
+<hr/>
+<!-- SECTION 6: By jurisdiction -->
+<div class="section prx-reveal">
+<div class="section-label">By Jurisdiction</div>
+<h2>What applies where</h2>
+<p>MSPs in different countries face different (but overlapping) requirements. Here’s the quick reference:</p>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th>Jurisdiction</th>
+<th>Key law</th>
+<th>AI-specific notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Netherlands, Belgium, Luxembourg</td>
+<td><a href="https://gdpr-info.eu/" rel="noopener" target="_blank">GDPR</a> + national implementations</td>
+<td>Full GDPR applies. <a href="https://artificialintelligenceact.eu/" rel="noopener" target="_blank">EU AI Act</a> (full applicability August 2, 2026). Dutch DPA (<a href="https://www.autoriteitpersoonsgegevens.nl/en" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a>) is active on AI enforcement. Belgian DPA: <a href="https://www.gegevensbeschermingsautoriteit.be/burger" rel="noopener" target="_blank">GBA</a>. Prefer EU-resident AI providers.</td>
+</tr>
+<tr>
+<td>United Kingdom</td>
+<td><a href="https://www.legislation.gov.uk/ukpga/2018/12/contents/enacted" rel="noopener" target="_blank">UK GDPR + Data Protection Act 2018</a></td>
+<td>Essentially mirrors EU GDPR. UK has its own adequacy decisions. <a href="https://www.gov.uk/government/publications/uk-us-data-bridge-supporting-documents" rel="noopener" target="_blank">UK-US data bridge</a> exists separately from EU-US DPF. The <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" rel="noopener" target="_blank">ICO published AI-specific guidance</a>.</td>
+</tr>
+<tr>
+<td>United States</td>
+<td>State laws (<a href="https://oag.ca.gov/privacy/ccpa" rel="noopener" target="_blank">CCPA/CPRA</a>, etc.)</td>
+<td>No federal privacy law. CCPA/CPRA applies to California residents’ data. <a href="https://iapp.org/resources/article/us-state-privacy-legislation-tracker/" rel="noopener" target="_blank">15+ states have privacy laws</a>. For US-only MSPs with US-only clients, compliance burden is lighter, but growing.</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td><a href="https://laws-lois.justice.gc.ca/eng/acts/P-8.6/" rel="noopener" target="_blank">PIPEDA</a> + provincial laws</td>
+<td>Consent-based framework. The proposed <a href="https://www.parl.ca/legisinfo/en/bill/44-1/c-27" rel="noopener" target="_blank">CPPA (Consumer Privacy Protection Act)</a> would strengthen AI obligations. Quebec’s <a href="https://www.cai.gouv.qc.ca/english/" rel="noopener" target="_blank">Law 25</a> already imposes strict requirements.</td>
+</tr>
+<tr>
+<td>Australia</td>
+<td><a href="https://www.legislation.gov.au/C2004A03712/latest/text" rel="noopener" target="_blank">Privacy Act 1988</a> + APPs</td>
+<td><a href="https://www.oaic.gov.au/privacy/australian-privacy-principles" rel="noopener" target="_blank">Australian Privacy Principles</a> apply. Cross-border disclosure rules (APP 8) require reasonable steps to ensure overseas recipients comply. No AI-specific legislation yet.</td>
+</tr>
+<tr>
+<td>New Zealand</td>
+<td><a href="https://www.legislation.govt.nz/act/public/2020/0031/latest/LMS23223.html" rel="noopener" target="_blank">Privacy Act 2020</a></td>
+<td>12 Information Privacy Principles. Cross-border transfer rules require adequate protections. NZ has <a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en" rel="noopener" target="_blank">EU adequacy status</a>, simplifying data flows. DPA: <a href="https://www.privacy.org.nz/" rel="noopener" target="_blank">Office of the Privacy Commissioner</a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr/>
+<!-- SECTION 7: Cyber insurance -->
+<div class="section prx-reveal">
+<div class="section-label">Insurance</div>
+<h2>Cyber insurance and AI: the exclusion wave</h2>
+<p>Starting January 2026, major insurers began applying <strong>AI exclusion endorsements</strong> to policies. <a href="https://www.verisk.com/" rel="noopener" target="_blank">Verisk</a> (the industry standard-setter for insurance forms) released new AI-specific exclusion language that carriers are adopting rapidly. This directly affects MSPs.</p>
+<div class="risk-matrix prx-reveal-stagger">
+<div class="risk-card critical">
+<h4>AI output errors</h4>
+<p>If AI suggests incorrect remediation and causes a client outage, the MSP is liable. AI providers universally disclaim output accuracy. Your E&amp;O may not cover this. See the <a href="https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence" rel="noopener" target="_blank">NIST AI Risk Management Framework</a> for risk assessment guidance.</p>
+</div>
+<div class="risk-card critical">
+<h4>Deepfake fraud</h4>
+<p>Standard cyber policies no longer cover deepfake fraud losses as of January 2026. Verisk’s new endorsements explicitly exclude generative AI exposures. The <a href="https://www.fbi.gov/how-can-we-help-you/scams-and-safety/common-frauds-and-scams/deepfakes-and-social-engineering" rel="noopener" target="_blank">FBI has issued guidance</a> on deepfake threats.</p>
+</div>
+<div class="risk-card high">
+<h4>Third-party AI platforms</h4>
+<p>New exclusions cover not just your own AI, but third-party AI platforms used in operations. Using OpenAI or Claude in your workflow may trigger exclusions.</p>
+</div>
+<div class="risk-card high">
+<h4>Non-disclosure risk</h4>
+<p>Failing to disclose AI usage to your insurer could void coverage entirely. Proactive disclosure is essential, even if it affects premiums.</p>
+</div>
+</div>
+<div class="analogy warn">
+<div class="tag">Action required</div>
+<p>Review your current cyber and E&amp;O policies for AI exclusion language <strong>before your next renewal</strong>. Ask your broker specifically about AI endorsements. Document your AI governance. Insurers increasingly tie premiums to demonstrable AI governance maturity.</p>
+</div>
+</div>
+<hr/>
+<!-- SECTION 8: Data minimization -->
+<div class="section prx-reveal">
+<div class="section-label">Data Minimization</div>
+<h2>What data should you actually send to the AI?</h2>
+<p><a href="https://gdpr-info.eu/art-5-gdpr/" rel="noopener" target="_blank">GDPR Article 5(1)(c)</a> requires data to be <strong>“limited to what is necessary.”</strong> The <a href="https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_28-2024_ai-models_en.pdf" rel="noopener" target="_blank">EDPB Opinion 28/2024 on AI models and personal data</a> further clarifies how this principle applies to AI processing. Every API call to an AI service is a processing operation. The less personal data you send, the lower your compliance burden.</p>
+<div class="steps prx-reveal-stagger">
+<div class="step">
+<div class="step-body">
+<h4>Level 1: Field-level filtering (minimum)</h4>
+<p>Strip PII before sending to AI. Remove names, emails, phone numbers, IP addresses. Replace with ticket IDs, anonymized references (“User-A”, “Client-7”), device categories.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Level 2: Aggregation (recommended for analytics)</h4>
+<p>For reporting and trend analysis, send aggregated data. Instead of 500 individual tickets, send “87 password reset requests across 12 clients.” This may qualify as anonymization, removing GDPR applicability entirely.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Level 3: Pseudonymization (good compromise)</h4>
+<p>Replace identifiers with pseudonyms before AI processing. Maintain a mapping table locally (never sent to the AI). Note: <a href="https://gdpr-info.eu/recitals/no-26/" rel="noopener" target="_blank">pseudonymized data is still personal data under GDPR</a>, but it’s a recognized safeguard under <a href="https://gdpr-info.eu/art-32-gdpr/" rel="noopener" target="_blank">Article 32</a>.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-body">
+<h4>Level 4: On-premise AI (maximum privacy)</h4>
+<p>Run models like Llama 3 or Mistral on your own hardware. Zero data leaves your network. Trade-off: lower model quality, GPU hardware costs, no vendor support. Best for highly sensitive environments.</p>
+</div>
+</div>
+</div>
+<p><strong>Where Proxuma Power BI fits:</strong> Because the data is already structured in a semantic model with clear measures and dimensions, you can query <strong>aggregated metrics</strong> (total hours, ticket counts, revenue per service line) rather than raw record-level data. This naturally aligns with Level 2 data minimization. The AI sees numbers and categories, not individual names and ticket descriptions.</p>
+</div>
+<hr/>
+<!-- SECTION 9: What you need to do -->
+<div class="section prx-reveal">
+<div class="section-label">Compliance Checklist</div>
+<h2>The MSP AI compliance checklist</h2>
+<p>Before connecting any AI to your client data, work through this list. Items are ordered by priority.</p>
+<div class="checklist prx-reveal-stagger">
+<div class="check-item critical">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Update all client DPAs to include AI sub-processor authorization</strong>
+<span><a href="https://gdpr-info.eu/art-28-gdpr/" rel="noopener" target="_blank">GDPR Article 28(2)</a>. Without this, any AI processing of client data is a contractual breach.</span>
+</div>
+</div>
+<div class="check-item critical">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Send formal sub-processor notification to all clients</strong>
+<span>Name the AI provider, purpose, data categories, safeguards. Give a 30-day objection window.</span>
+</div>
+</div>
+<div class="check-item critical">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Verify AI provider’s DPA, certifications, and transfer mechanisms</strong>
+<span>Check for SOC 2 Type II, DPF certification, SCCs. Ensure their DPA meets your client DPA requirements.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Conduct a Transfer Impact Assessment (EU/Benelux MSPs with US providers)</strong>
+<span><a href="https://gdpr-info.eu/art-44-gdpr/" rel="noopener" target="_blank">GDPR Articles 44-49</a>. Required if relying on SCCs. The <a href="https://www.cnil.fr/en/new-standard-contractual-clauses-cnil-publishes-guide-transfers-personal-data-outside-eu" rel="noopener" target="_blank">CNIL published a comprehensive TIA guide</a>.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Implement data sanitization/minimization layer</strong>
+<span>Build a filter between your business systems and the AI. Strip PII, aggregate where possible, log all data sent.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Conduct a Data Protection Impact Assessment (DPIA)</strong>
+<span><a href="https://gdpr-info.eu/art-35-gdpr/" rel="noopener" target="_blank">GDPR Article 35</a>. May be required for large-scale automated processing of personal data. See <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" rel="noopener" target="_blank">ICO DPIA guidance</a>.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Review cyber and E&amp;O insurance for AI exclusions</strong>
+<span>Check for AI exclusion endorsements (<a href="https://www.verisk.com/" rel="noopener" target="_blank">Verisk</a> forms, effective January 2026). Disclose AI usage proactively.</span>
+</div>
+</div>
+<div class="check-item high">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Establish AI usage policies for staff</strong>
+<span>No credentials in prompts. No raw client data in consumer AI tools. Document what’s allowed and what isn’t.</span>
+</div>
+</div>
+<div class="check-item medium">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Ensure AI literacy training for staff</strong>
+<span><a href="https://artificialintelligenceact.eu/article/4/" rel="noopener" target="_blank">EU AI Act Article 4</a> (in effect since February 2, 2025). Staff must understand the AI systems they use.</span>
+</div>
+</div>
+<div class="check-item medium">
+<div class="check-box"></div>
+<div class="check-text">
+<strong>Maintain SCCs as backup to DPF for US AI providers</strong>
+<span>If the ECJ invalidates the DPF (Schrems III), you need SCCs immediately. Keep them in place now.</span>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<!-- SECTION 10: Client notification template -->
+<div class="section prx-reveal">
+<div class="section-label">Client Communication</div>
+<h2>How to notify your clients</h2>
+<p>Under GDPR’s general authorization model, you must formally notify clients before introducing a new sub-processor. Here’s a template you can adapt:</p>
+<div class="collapsible" id="notifTemplate">
+<button class="collapse-trigger" onclick="this.parentElement.classList.toggle('expanded')">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+            View client notification template
+        </button>
+<div class="collapse-content">
+<div class="inner">
+<pre>Subject: Notice of New Sub-Processor — AI-Assisted Service Management
+
+Dear [Client Name],
+
+As part of our continuous improvement of service delivery, we are
+writing to inform you of our intention to engage [AI Provider Name]
+as a sub-processor under our existing Data Processing Agreement
+dated [Date].
+
+PURPOSE: [AI Provider] will be used for [specific purpose, e.g.,
+"automated ticket classification, reporting analytics, and service
+trend analysis"] to improve response times and service quality.
+
+DATA PROCESSED: The following categories may be processed:
+- Aggregated service metrics and ticket statistics
+- Device categories and configuration summaries
+- Service performance indicators
+
+We do NOT send the following to this sub-processor:
+- Passwords or authentication credentials
+- Financial data (banking, credit card information)
+- Individual employee personal details
+
+SAFEGUARDS IN PLACE:
+- Data encrypted in transit (TLS 1.2+) and at rest
+- [Provider] maintains SOC 2 Type II / ISO 27001 certification
+- Data processed within [EU/under EU-US Data Privacy Framework
+  with Standard Contractual Clauses]
+- [Provider] does not use customer data for model training
+
+YOUR RIGHT TO OBJECT: In accordance with Section [X] of our Data
+Processing Agreement, you have 30 days from receipt of this notice
+to object. Please direct objections in writing to [email].
+
+Kind regards,
+[MSP Name]
+[Compliance Officer / DPO]</pre>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<!-- SECTION 11: EU AI Act -->
+<div class="section prx-reveal">
+<div class="section-label">EU AI Act</div>
+<h2>The EU AI Act: what MSPs need to know</h2>
+<p>The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" rel="noopener" target="_blank">EU AI Act (Regulation 2024/1689)</a> reaches <strong>full applicability on August 2, 2026</strong>. Even before then, some obligations already apply. The <a href="https://artificialintelligenceact.eu/" rel="noopener" target="_blank">AI Act Explorer</a> provides a navigable version of the full text.</p>
+<div class="two-up prx-reveal">
+<div class="card never">
+<h4>Already in effect (since Feb 2, 2025)</h4>
+<p><strong><a href="https://artificialintelligenceact.eu/article/4/" rel="noopener" target="_blank">AI literacy obligations (Article 4)</a>.</strong> MSPs must ensure staff understands the AI systems they deploy. This includes knowing what data flows where, what the limitations are, and when human oversight is needed.</p>
+</div>
+<div class="card sees">
+<h4>Coming August 2, 2026</h4>
+<p><strong>Full applicability.</strong> Most MSP AI use cases (ticket processing, reporting) won’t be “<a href="https://artificialintelligenceact.eu/annex/3/" rel="noopener" target="_blank">high-risk</a>.” But AI used for workforce management or access control decisions could trigger <a href="https://artificialintelligenceact.eu/article/6/" rel="noopener" target="_blank">high-risk obligations</a> with additional documentation requirements.</p>
+</div>
+</div>
+<p>Regardless of risk classification, <strong><a href="https://artificialintelligenceact.eu/article/50/" rel="noopener" target="_blank">transparency is required (Article 50)</a></strong>: if clients interact with AI-generated content, they must be informed.</p>
+</div>
+<hr/>
+<!-- SECTION 12: Key takeaways -->
+<div class="section prx-reveal">
+<div class="section-label">Summary</div>
+<h2>Key takeaways</h2>
+<div class="prx-reveal-stagger">
+<div class="takeaway">
+<div class="tk-icon" style="background:#dbeafe;"><svg fill="none" stroke="#1e40af" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+<div>
+<h4>Update your DPAs before you connect anything</h4>
+<p>Using AI without updated client agreements is a contractual breach, regardless of GDPR compliance. This is the single most important step.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#d1fae5;"><svg fill="none" stroke="#065f46" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"></path></svg></div>
+<div>
+<h4>EU data residency eliminates the hardest compliance questions</h4>
+<p>Azure OpenAI (EU Data Zone), AWS Bedrock (Frankfurt), or Google Vertex (EU) keep data in the EU. No international transfer, no Schrems III risk, no TIA required.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#fef3c7;"><svg fill="none" stroke="#92400e" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg></div>
+<div>
+<h4>Check your insurance: AI exclusions are here</h4>
+<p>Verisk’s AI exclusion forms took effect January 2026. Don’t assume you’re covered. Disclose AI usage and document your governance.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#ede9fe;"><svg fill="none" stroke="#6b21a8" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path></svg></div>
+<div>
+<h4>Structured data is your compliance advantage</h4>
+<p>Because Proxuma Power BI structures your operational data into labeled measures and dimensions, AI can query aggregated metrics instead of raw records. Less personal data to the AI means less compliance burden for you.</p>
+</div>
+</div>
+<div class="takeaway">
+<div class="tk-icon" style="background:#fee2e2;"><svg fill="none" stroke="#991b1b" stroke-width="2" viewbox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div>
+<div>
+<h4>Never use consumer AI products for client data</h4>
+<p>ChatGPT.com, Claude.ai, Gemini: these consumer interfaces may use your input for training. Always use commercial APIs with a signed DPA. Establish clear staff policies.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sources / References -->
+<div class="section prx-reveal">
+<div class="section-label">References</div>
+<h2>Sources &amp; further reading</h2>
+<p style="font-size:0.88rem;color:#64748b;margin-bottom:18px;">All claims in this guide are supported by the official sources below. Links verified February 2026.</p>
+<div class="privacy-block">
+<h3>EU &amp; International Legislation</h3>
+<div class="layer"><div class="layer-num">1</div><p><a href="https://gdpr-info.eu/" rel="noopener" target="_blank">GDPR full text</a> — gdpr-info.eu (interlinked, with recitals)</p></div>
+<div class="layer"><div class="layer-num">2</div><p><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" rel="noopener" target="_blank">EU AI Act (Regulation 2024/1689)</a> — EUR-Lex official publication</p></div>
+<div class="layer"><div class="layer-num">3</div><p><a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en" rel="noopener" target="_blank">Standard Contractual Clauses</a> — European Commission</p></div>
+<div class="layer"><div class="layer-num">4</div><p><a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en" rel="noopener" target="_blank">EU Adequacy Decisions</a> — European Commission</p></div>
+</div>
+<div class="privacy-block" style="margin-top:16px;">
+<h3>Data Protection Authorities</h3>
+<div class="layer"><div class="layer-num">🇪🇺</div><p><a href="https://www.edpb.europa.eu/" rel="noopener" target="_blank">European Data Protection Board (EDPB)</a> — EU-level guidance and opinions</p></div>
+<div class="layer"><div class="layer-num">🇳🇱</div><p><a href="https://www.autoriteitpersoonsgegevens.nl/en" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a> — Dutch Data Protection Authority</p></div>
+<div class="layer"><div class="layer-num">🇬🇧</div><p><a href="https://ico.org.uk/" rel="noopener" target="_blank">Information Commissioner’s Office (ICO)</a> — UK Data Protection Authority</p></div>
+<div class="layer"><div class="layer-num">🇫🇷</div><p><a href="https://www.cnil.fr/en" rel="noopener" target="_blank">CNIL</a> — French Data Protection Authority (TIA guidance)</p></div>
+<div class="layer"><div class="layer-num">🇦🇺</div><p><a href="https://www.oaic.gov.au/" rel="noopener" target="_blank">OAIC</a> — Office of the Australian Information Commissioner</p></div>
+<div class="layer"><div class="layer-num">🇳🇿</div><p><a href="https://www.privacy.org.nz/" rel="noopener" target="_blank">Office of the Privacy Commissioner</a> — New Zealand</p></div>
+</div>
+<div style="overflow-x:auto;margin-top:24px;">
+<table>
+<thead>
+<tr>
+<th>EDPB Opinions &amp; Guidelines</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.edpb.europa.eu/system/files/2024-10/edpb_opinion_202422_relianceonprocessors-sub-processors_en.pdf" rel="noopener" target="_blank">Opinion 22/2024</a></td>
+<td>Processor and sub-processor chains under Article 28</td>
+</tr>
+<tr>
+<td><a href="https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_28-2024_ai-models_en.pdf" rel="noopener" target="_blank">Opinion 28/2024</a></td>
+<td>AI models and personal data — data minimization in AI</td>
+</tr>
+<tr>
+<td><a href="https://www.edpb.europa.eu/our-work-tools/documents/public-consultations/2024/guidelines-022023-article-28-and-notion_en" rel="noopener" target="_blank">Guidelines 02/2023</a></td>
+<td>Article 28 and the notion of processor</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="overflow-x:auto;margin-top:16px;">
+<table>
+<thead>
+<tr>
+<th>AI Provider</th>
+<th>DPA</th>
+<th>Privacy</th>
+<th>DPF Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft (Azure OpenAI)</td>
+<td><a href="https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy" rel="noopener" target="_blank">Data privacy</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/5581" rel="noopener" target="_blank">Certified</a></td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td><a href="https://openai.com/policies/data-processing-addendum/" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://openai.com/enterprise-privacy/" rel="noopener" target="_blank">Enterprise privacy</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/8211" rel="noopener" target="_blank">Certified</a></td>
+</tr>
+<tr>
+<td>Anthropic (Claude)</td>
+<td><a href="https://privacy.claude.com/en/articles/7996862-how-do-i-view-and-sign-your-data-processing-addendum-dpa" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://privacy.anthropic.com/en/" rel="noopener" target="_blank">Privacy center</a></td>
+<td>—</td>
+</tr>
+<tr>
+<td>AWS (Bedrock)</td>
+<td><a href="https://d1.awsstatic.com/legal/aws-dpa/aws-dpa.pdf" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://aws.amazon.com/bedrock/security-compliance/" rel="noopener" target="_blank">Security &amp; compliance</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/5765" rel="noopener" target="_blank">Certified</a></td>
+</tr>
+<tr>
+<td>Google (Vertex AI)</td>
+<td><a href="https://cloud.google.com/terms/data-processing-addendum" rel="noopener" target="_blank">DPA</a></td>
+<td><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance" rel="noopener" target="_blank">Data governance</a></td>
+<td><a href="https://www.dataprivacyframework.gov/participant/5780" rel="noopener" target="_blank">Certified</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin-top:20px;">
+<p style="font-size:0.85rem;"><strong>Additional resources:</strong></p>
+<p style="font-size:0.82rem;color:#64748b;">• <a href="https://www.dataprivacyframework.gov/" rel="noopener" target="_blank">EU-US Data Privacy Framework</a> — US Department of Commerce<br/>
+        • <a href="https://www.gov.uk/government/publications/uk-us-data-bridge-supporting-documents" rel="noopener" target="_blank">UK-US Data Bridge</a> — UK Government<br/>
+        • <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" rel="noopener" target="_blank">ICO AI Guidance</a> — UK Information Commissioner’s Office<br/>
+        • <a href="https://www.nist.gov/artificial-intelligence" rel="noopener" target="_blank">NIST AI</a> — US National Institute of Standards and Technology<br/>
+        • <a href="https://www.cnil.fr/en/new-standard-contractual-clauses-cnil-publishes-guide-transfers-personal-data-outside-eu" rel="noopener" target="_blank">CNIL Transfer Impact Assessment Guide</a> — French DPA<br/>
+        • <a href="https://curia.europa.eu/jcms/jcms/j_6/en/" rel="noopener" target="_blank">Court of Justice of the EU (CJEU)</a> — Schrems I &amp; II case law<br/>
+        • <a href="https://oag.ca.gov/privacy/ccpa" rel="noopener" target="_blank">California Consumer Privacy Act (CCPA)</a> — CA Attorney General<br/>
+        • <a href="https://laws-lois.justice.gc.ca/eng/acts/P-8.6/" rel="noopener" target="_blank">PIPEDA</a> — Canadian federal privacy law</p>
+</div>
+</div>
+<hr/>
+<!-- RELATED-REPORTS-START -->
+<div class="related-reports">
+<div class="related-reports-header">
+<span class="related-reports-label">Related Reports</span>
+<span class="related-reports-line"></span>
+</div>
+<div class="related-reports-grid">
+<a class="rr-card" href="/powerbi/insights/average-first-response-time">
+<span class="rr-badge" style="background:#eff6ff;color:#3b82f6;">Ticketing</span>
+<div class="rr-card-title">Average First Response Time:Full Breakdown by Priority, Queue &amp;...</div>
+<div class="rr-card-desc">How many hours your team takes to send a first response, across every dimension that matters. Generated by AI via Proxuma Power BI MCP se...</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/average-hours-per-ticket">
+<span class="rr-badge" style="background:#eff6ff;color:#3b82f6;">Ticketing</span>
+<div class="rr-card-title">Autotask Average Hours Per Ticket Report: Time Effort Analysis Acro...</div>
+<div class="rr-card-desc">Autotask Average Hours Per Ticket Report: Time Effort Analysis Across Priorit...</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/client-health-report">
+<span class="rr-badge" style="background:#f0f9ff;color:#0284c7;">Client Reports</span>
+<div class="rr-card-title">MSP Client IT Health Dashboard</div>
+<div class="rr-card-desc">Complete client-facing IT health overview combining service delivery, backup status, security posture, project progress, and CSAT in one ...</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+<a class="rr-card" href="/powerbi/insights/effective-hourly-rate">
+<span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financial</span>
+<div class="rr-card-title">Autotask Effective Hourly Rate Report</div>
+<div class="rr-card-desc">Revenue divided by hours worked per client, with rate distribution bands, billable efficiency, and 19-month trend analysis.</div>
+<span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</div>
+</div>
+<!-- RELATED-REPORTS-END -->
+<!-- CTA -->
+<div class="cta prx-reveal">
+<h3>Ready to explore AI-powered reporting?</h3>
+<p>Proxuma Power BI gives you the structured data layer that makes AI queries possible, with the labeling and organization that keeps your compliance burden low.</p>
+<a href="/powerbi/insights">View AI-Powered Reports</a>
+<a class="outline" href="/powerbi-self-onboarding/">Get Started with Power BI</a>
+</div>
+</div>
+<!-- Scroll trigger + DAX copy JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+</script>
+<!-- BREADCRUMB-SCHEMA-START -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"}, {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"}, {"@type": "ListItem", "position": 3, "name": "Ticketing", "item": "https://proxuma.io/powerbi/insights/?cat=ticketing"}, {"@type": "ListItem", "position": 4, "name": "Ai Privacy Compliance Guide"}]}
+</script>
+<!-- BREADCRUMB-SCHEMA-END -->
+<!-- RELATED REPORTS -->
+
+<!-- RELATED-REPORTS-END -->
+<!-- CTA BLOCK -->
+<div class="cta-block">
+<h3>Generate this report from your own data</h3>
+<p>Connect Proxuma Power BI to your PSA, RMM, and M365 environment, use an MCP-compatible AI to ask questions, and generate custom reports - in minutes, not days.</p>
+<a class="cta-btn" href="/powerbi/insights/" style="margin-right:12px;">See more reports</a>
+<a class="cta-btn" href="https://proxuma.io/powerbi-self-onboarding/">Get started</a>
+</div>
+</div><!-- /.prx-report -->
+<!-- TechArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Ai Privacy Compliance Guide",
+  "description": "",
+  "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
+  "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": "https://proxuma.io/powerbi/insights/ai-privacy-compliance-guide/",
+  "proficiencyLevel": "Beginner",
+  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
+  "articleSection": "Security & Compliance"
+}
+</script>
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
+    {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
+    {"@type": "ListItem", "position": 3, "name": "Security", "item": "https://proxuma.io/powerbi/insights/?cat=security"},
+    {"@type": "ListItem", "position": 4, "name": "Ai Privacy Compliance Guide"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"}, {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"}, {"@type": "ListItem", "position": 3, "name": "Ticketing", "item": "https://proxuma.io/powerbi/insights/?cat=ticketing"}, {"@type": "ListItem", "position": 4, "name": "Ai Privacy Compliance Guide"}]}
+</script>
+<!-- Scroll trigger + DAX copy + CTA hover JS -->
+<script>
+catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
+
+(function(){var morphBar=document.getElementById('prx-morph-bar');var siteHeader=document.querySelector('.c-header,.c-site__header');var frameTop=document.getElementById('prx-frame-top');if(!morphBar||!frameTop)return;function positionMorph(){if(siteHeader){morphBar.style.top=siteHeader.offsetHeight+'px'}}positionMorph();window.addEventListener('resize',positionMorph);var ticking=false;function onScroll(){if(!ticking){requestAnimationFrame(function(){var rect=frameTop.getBoundingClientRect();var hh=siteHeader?siteHeader.offsetHeight:0;if(rect.top<=hh){morphBar.classList.add('visible','active')}else{morphBar.classList.remove('visible','active')}ticking=false});ticking=true}}window.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
+
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
+</script>
+</body>
+</html>
