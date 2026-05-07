@@ -1022,16 +1022,18 @@
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Welke databronnen gebruikt het Open Tickets Maandelijkse Verandering per Bedrijf rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Dit rapport haalt data op uit PSA via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel.</p></div>
+<div class="faq-q"><span>Hoe wordt TOTAAL TICKETS berekend in het Open Tickets Maandelijkse Verandering per Bedrijf rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De TOTAAL TICKETS metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal tickets performance.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Hoe vaak worden deze gegevens ververst?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kunnen op elk moment opnieuw worden gegenereerd voor de meest recente cijfers.</p></div>
+<div class="faq-q"><span>Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Kan ik dit open tickets maandelijkse verandering per bedrijf rapport aanpassen?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen of de analyse aanpassen aan je specifieke MSP-behoeften.</p></div>
+<div class="faq-q"><span>Welke actie moet ik ondernemen naar aanleiding van de "Onderzoek het volume van Wilson-Murphy" aanbeveling?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties.</p></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1053,9 +1055,30 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt het Open Tickets Maandelijkse Verandering per Bedrijf rapport?","acceptedAnswer":{"@type":"Answer","text":"Dit rapport haalt data op uit PSA via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel."}},
-    {"@type":"Question","name":"Hoe vaak worden deze gegevens ververst?","acceptedAnswer":{"@type":"Answer","text":"De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kunnen op elk moment opnieuw worden gegenereerd voor de meest recente cijfers."}},
-    {"@type":"Question","name":"Kan ik dit open tickets maandelijkse verandering per bedrijf rapport aanpassen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen of de analyse aanpassen aan je specifieke MSP-behoeften."}}
+    {
+      "@type": "Question",
+      "name": "Hoe wordt TOTAAL TICKETS berekend in het Open Tickets Maandelijkse Verandering per Bedrijf rapport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De TOTAAL TICKETS metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal tickets performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke actie moet ik ondernemen naar aanleiding van de \"Onderzoek het volume van Wilson-Murphy\" aanbeveling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties."
+      }
+    }
   ]
 }
 </script>
@@ -1140,17 +1163,6 @@
     {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
     {"@type": "ListItem", "position": 3, "name": "Ticketing", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=ticketing"},
     {"@type": "ListItem", "position": 4, "name": "Open Tickets Maandelijkse Verandering per Bedrijf"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt het Open Tickets Maandelijkse Verandering per Bedrijf rapport?","acceptedAnswer":{"@type":"Answer","text":"Dit rapport haalt data op uit PSA via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel."}},
-    {"@type":"Question","name":"Hoe vaak worden deze gegevens ververst?","acceptedAnswer":{"@type":"Answer","text":"De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kunnen op elk moment opnieuw worden gegenereerd voor de meest recente cijfers."}},
-    {"@type":"Question","name":"Kan ik dit open tickets maandelijkse verandering per bedrijf rapport aanpassen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen of de analyse aanpassen aan je specifieke MSP-behoeften."}}
   ]
 }
 </script>

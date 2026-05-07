@@ -1367,28 +1367,18 @@ TOPN(
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Welke databronnen gebruikt dit rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Drie systemen: Autotask PSA (tickets, time entries, SLA-data), Datto RMM (device alerts en resolution status) en SmileBack (klanttevredenheids-enquêtes). Alle data loopt via Proxuma's Power BI semantic model, dat de bronnen koppelt via gedeelde keys zoals ticketnummers en resource ID's.</p></div>
+<div class="faq-q"><span>Hoe wordt Totaal Tickets berekend in het dit rapport rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De Totaal Tickets metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal tickets performance.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Waarom wordt de CSAT-score als percentage getoond in plaats van een 1-5 rating?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>SmileBack gebruikt een driepuntsschaal: positief (1), neutraal (0) en negatief (-1). Het CSAT-percentage is de verhouding positieve responses tot totaal. De 87,7% betekent dat van elke 100 enquêtes er circa 88 positief terugkomen.</p></div>
+<div class="faq-q"><span>Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Hoe zijn RMM-alerts gekoppeld aan Autotask-tickets?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Datto RMM kan automatisch Autotask-tickets aanmaken bij bepaalde alert-prioriteiten. De koppeling is het ticket_number veld op de BI_Datto_Rmm_Alerts tabel. Als een alert een niet-leeg ticketnummer heeft, is er een PSA-ticket voor die alert aangemaakt.</p></div>
+<div class="faq-q"><span>Welke actie moet ik ondernemen naar aanleiding van de "Centralized Services: hoog volume, lage tevredenheid" aanbeveling?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties.</p></div>
 </div>
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Wat betekent "billable %" in de resource-tabel?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Billable % is de verhouding van billable uren tot totaal gelogde uren. Een rate van 75% betekent dat driekwart van de gelogde tijd aan klanten doorbelast kan worden. De rest is intern werk, training, meetings of niet-declarabele administratie. Verschillende rollen hebben verschillende verwachte bandbreedtes.</p></div>
 </div>
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Kan ik dit rapport genereren vanuit mijn eigen MSP-data?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Ja. Koppel je Autotask PSA, Datto RMM en SmileBack aan Proxuma's Power BI-integratie. Zodra het datamodel staat, kun je elke MCP-compatibele AI (zoals Claude) vragen om je dataset te bevragen en een rapport als dit te genereren.</p></div>
-</div>
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Waarom zijn de namen van engineers geanonimiseerd?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Dit is een publiek demorapport. Echte MSP-rapporten gegenereerd vanuit je eigen data tonen de werkelijke namen en zijn privé voor jouw organisatie. We anonimiseren hier om de demodataset te beschermen.</p></div>
 </div>
 </div>
 </div>
@@ -1404,10 +1394,30 @@ TOPN(
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt dit cross-source MSP operations rapport?","acceptedAnswer":{"@type":"Answer","text":"Drie systemen: Autotask PSA (tickets, time entries, SLA-data), Datto RMM (device alerts en resolution status) en SmileBack (klanttevredenheidsenquêtes). Alle data loopt via Proxuma's Power BI semantic model."}},
-    {"@type":"Question","name":"Hoe zijn Datto RMM-alerts gekoppeld aan Autotask PSA-tickets?","acceptedAnswer":{"@type":"Answer","text":"Datto RMM kan automatisch Autotask-tickets aanmaken bij bepaalde alert-prioriteiten. De koppeling is het ticket_number veld op de BI_Datto_Rmm_Alerts tabel. Als een alert een niet-leeg ticketnummer heeft, is er een PSA-ticket aangemaakt."}},
-    {"@type":"Question","name":"Wat betekent billable percentage voor MSP-engineers?","acceptedAnswer":{"@type":"Answer","text":"Billable % is de verhouding van billable uren tot totaal gelogde uren. Een rate van 75% betekent dat driekwart van de gelogde tijd aan klanten doorbelast kan worden. Verschillende rollen hebben verschillende verwachte bandbreedtes."}},
-    {"@type":"Question","name":"Kan ik dit MSP operations intelligence rapport genereren vanuit mijn eigen data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Koppel je Autotask PSA, Datto RMM en SmileBack aan Proxuma's Power BI-integratie. Zodra het datamodel staat, kan elke MCP-compatibele AI je dataset bevragen en maatwerkrapporten genereren."}}
+    {
+      "@type": "Question",
+      "name": "Hoe wordt Totaal Tickets berekend in het dit rapport rapport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De Totaal Tickets metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal tickets performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke actie moet ik ondernemen naar aanleiding van de \"Centralized Services: hoog volume, lage tevredenheid\" aanbeveling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties."
+      }
+    }
   ]
 }
 </script>
@@ -1498,18 +1508,6 @@ TOPN(
     {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
     {"@type": "ListItem", "position": 3, "name": "QBR", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=qbr"},
     {"@type": "ListItem", "position": 4, "name": "MSP Operations Intelligence: Cross-Source Performance Analyse"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt dit cross-source MSP operations rapport?","acceptedAnswer":{"@type":"Answer","text":"Drie systemen: Autotask PSA (tickets, time entries, SLA-data), Datto RMM (device alerts en resolution status) en SmileBack (klanttevredenheidsenquêtes). Alle data loopt via Proxuma's Power BI semantic model."}},
-    {"@type":"Question","name":"Hoe zijn Datto RMM-alerts gekoppeld aan Autotask PSA-tickets?","acceptedAnswer":{"@type":"Answer","text":"Datto RMM kan automatisch Autotask-tickets aanmaken bij bepaalde alert-prioriteiten. De koppeling is het ticket_number veld op de BI_Datto_Rmm_Alerts tabel. Als een alert een niet-leeg ticketnummer heeft, is er een PSA-ticket aangemaakt."}},
-    {"@type":"Question","name":"Wat betekent billable percentage voor MSP-engineers?","acceptedAnswer":{"@type":"Answer","text":"Billable % is de verhouding van billable uren tot totaal gelogde uren. Een rate van 75% betekent dat driekwart van de gelogde tijd aan klanten doorbelast kan worden. Verschillende rollen hebben verschillende verwachte bandbreedtes."}},
-    {"@type":"Question","name":"Kan ik dit MSP operations intelligence rapport genereren vanuit mijn eigen data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Koppel je Autotask PSA, Datto RMM en SmileBack aan Proxuma's Power BI-integratie. Zodra het datamodel staat, kan elke MCP-compatibele AI je dataset bevragen en maatwerkrapporten genereren."}}
   ]
 }
 </script>

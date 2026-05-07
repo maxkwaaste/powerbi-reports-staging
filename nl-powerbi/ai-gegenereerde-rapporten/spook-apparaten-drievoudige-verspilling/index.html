@@ -1054,24 +1054,18 @@
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Wat is een spookapparaat?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Een spookapparaat is een machine die een actieve M365-licentie heeft en een RMM-agent draait, maar weinig tot geen daadwerkelijke gebruikersactiviteit toont. Het blijft monitoring-alerts genereren en licentiekosten verbruiken zonder enige waarde te leveren aan de eindgebruiker of het bedrijf.</p></div>
+<div class="faq-q"><span>Hoe wordt Totaal M365-licenties berekend in het dit rapport rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De Totaal M365-licenties metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal m365-licenties performance.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Hoe wordt de drievoudige verspilling berekend?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>De drievoudige verspilling combineert drie kostencomponenten: (1) de licentiekosten voor ongebruikte M365-seats, (2) de techniciantijd die wordt besteed aan het triagen van RMM-alerts van die apparaten, en (3) de opportuniteitskosten van die techniciantijd die niet wordt ingezet voor factureerbaar of waardecreërend werk. Het rapport schat de triagetijd op 5 minuten per alert en gebruikt een blended tarief van $50/uur.</p></div>
+<div class="faq-q"><span>Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Waarom is het gebruikspercentage zo laag?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Het gebruikspercentage van 0,13% weerspiegelt de volledige portfolio inclusief trial-SKU's, legacy-abonnementen en bulkingerichte licenties die nooit zijn geactiveerd. In MSP-omgevingen is het gebruikelijk dat Partner Center grote licentiepools rapporteert die gratis of trial-abonnementen bevatten. Het absolute getal is minder belangrijk dan de trend en de uitsplitsing per bedrijf.</p></div>
+<div class="faq-q"><span>Welke actie moet ik ondernemen naar aanleiding van de "Audit de 3,2 miljoen licentieseats van Client B en verwijder ongebruikte SKU's" aanbeveling?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties.</p></div>
 </div>
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Welke databronnen gebruikt dit rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Microsoft 365-licentiedata van Partner Center (gekochte, verbruikte en beschikbare seats per SKU per tenant) en Datto RMM-alertdata (alle monitoring-alerts over beheerde apparaten). Proxuma Power BI verbindt de twee via Bridge_All_Companies met proxuma_company_id.</p></div>
 </div>
-<div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Kan ik dit rapport draaien op mijn eigen data?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Ja. Verbind Proxuma Power BI met je Microsoft 365 Partner Center en Datto RMM-instantie, voeg een AI-tool toe (Claude, ChatGPT of Copilot) via MCP, en stel dezelfde vraag. De AI schrijft de DAX-queries, voert ze uit op jouw data en bouwt een rapport zoals dit in minder dan vijftien minuten.</p></div>
 </div>
 </div>
 </div>
@@ -1099,42 +1093,26 @@ document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addE
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Wat is een spookapparaat?",
+      "name": "Hoe wordt Totaal M365-licenties berekend in het dit rapport rapport?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Een spookapparaat is een machine die een actieve M365-licentie heeft en een RMM-agent draait, maar weinig tot geen daadwerkelijke gebruikersactiviteit toont. Het blijft monitoring-alerts genereren en licentiekosten verbruiken zonder enige waarde te leveren."
+        "text": "De Totaal M365-licenties metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal m365-licenties performance."
       }
     },
     {
       "@type": "Question",
-      "name": "Hoe wordt de drievoudige verspilling berekend?",
+      "name": "Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "De drievoudige verspilling combineert drie kostencomponenten: de licentiekosten voor ongebruikte M365-seats, de techniciantijd die wordt besteed aan het triagen van RMM-alerts van die apparaten, en de opportuniteitskosten van die techniciantijd die niet wordt ingezet voor factureerbaar werk."
+        "text": "Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen."
       }
     },
     {
       "@type": "Question",
-      "name": "Waarom is het gebruikspercentage zo laag?",
+      "name": "Welke actie moet ik ondernemen naar aanleiding van de \"Audit de 3,2 miljoen licentieseats van Client B en verwijder ongebruikte SKU's\" aanbeveling?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Het gebruikspercentage van 0,13% weerspiegelt de volledige portfolio inclusief trial-SKU's, legacy-abonnementen en bulkingerichte licenties die nooit zijn geactiveerd. In MSP-omgevingen rapporteert Partner Center vaak grote licentiepools die gratis of trial-abonnementen bevatten."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Welke databronnen gebruikt dit rapport?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Microsoft 365-licentiedata van Partner Center en Datto RMM-alertdata. Proxuma Power BI verbindt de twee via Bridge_All_Companies met proxuma_company_id."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kan ik dit rapport draaien op mijn eigen data?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Verbind Proxuma Power BI met je Microsoft 365 Partner Center en Datto RMM-instantie, voeg een AI-tool toe via MCP, en stel dezelfde vraag. De AI schrijft de DAX-queries, voert ze uit op jouw data en bouwt een rapport in minder dan vijftien minuten."
+        "text": "Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties."
       }
     }
   ]
@@ -1221,54 +1199,6 @@ document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addE
     {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
     {"@type": "ListItem", "position": 3, "name": "Apparaten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=device"},
     {"@type": "ListItem", "position": 4, "name": "Spookapparaten: Gelicentieerd, Ongebruikt en Kapot &mdash; Het Drievoudige Verspilling Rapport"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Wat is een spookapparaat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Een spookapparaat is een machine die een actieve M365-licentie heeft en een RMM-agent draait, maar weinig tot geen daadwerkelijke gebruikersactiviteit toont. Het blijft monitoring-alerts genereren en licentiekosten verbruiken zonder enige waarde te leveren."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Hoe wordt de drievoudige verspilling berekend?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "De drievoudige verspilling combineert drie kostencomponenten: de licentiekosten voor ongebruikte M365-seats, de techniciantijd die wordt besteed aan het triagen van RMM-alerts van die apparaten, en de opportuniteitskosten van die techniciantijd die niet wordt ingezet voor factureerbaar werk."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Waarom is het gebruikspercentage zo laag?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Het gebruikspercentage van 0,13% weerspiegelt de volledige portfolio inclusief trial-SKU's, legacy-abonnementen en bulkingerichte licenties die nooit zijn geactiveerd. In MSP-omgevingen rapporteert Partner Center vaak grote licentiepools die gratis of trial-abonnementen bevatten."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Welke databronnen gebruikt dit rapport?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Microsoft 365-licentiedata van Partner Center en Datto RMM-alertdata. Proxuma Power BI verbindt de twee via Bridge_All_Companies met proxuma_company_id."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kan ik dit rapport draaien op mijn eigen data?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Verbind Proxuma Power BI met je Microsoft 365 Partner Center en Datto RMM-instantie, voeg een AI-tool toe via MCP, en stel dezelfde vraag. De AI schrijft de DAX-queries, voert ze uit op jouw data en bouwt een rapport in minder dan vijftien minuten."
-      }
-    }
   ]
 }
 </script>

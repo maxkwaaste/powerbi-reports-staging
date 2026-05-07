@@ -824,16 +824,18 @@
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What data sources does the Security Overview report use?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This report pulls data from PSA, RMM through the Proxuma Power BI integration, using DAX queries against the live data model.</p></div>
+<div class="faq-q"><span>What does the "Data-Driven Visibility" insight mean in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>This insight highlights a pattern detected in your data that may require attention. The Security Overview report surfaces this through automated analysis of the underlying dataset.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>How often is this data refreshed?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>The underlying Power BI dataset refreshes daily. Reports can be regenerated at any time for the latest figures.</p></div>
+<div class="faq-q"><span>Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Can I customize this security overview report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Yes. Proxuma reports are fully customizable. You can modify the DAX queries, add new sections, or adjust the analysis to match your specific MSP needs.</p></div>
+<div class="faq-q"><span>What action should I take based on the "Data-Driven Visibility" recommendation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions.</p></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -857,26 +859,26 @@ document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addE
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What data sources does the Security Overview report use?",
+      "name": "What does the \"Data-Driven Visibility\" insight mean in this report?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This report pulls data from PSA, RMM through the Proxuma Power BI integration, using DAX queries against the live data model."
+        "text": "This insight highlights a pattern detected in your data that may require attention. The Security Overview report surfaces this through automated analysis of the underlying dataset."
       }
     },
     {
       "@type": "Question",
-      "name": "How often is this data refreshed?",
+      "name": "Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The underlying Power BI dataset refreshes daily. Reports can be regenerated at any time for the latest figures."
+        "text": "This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I customize this security overview report?",
+      "name": "What action should I take based on the \"Data-Driven Visibility\" recommendation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Proxuma reports are fully customizable. You can modify the DAX queries, add new sections, or adjust the analysis to match your specific MSP needs."
+        "text": "Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions."
       }
     }
   ]

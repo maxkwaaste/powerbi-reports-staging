@@ -980,16 +980,18 @@
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Welke databronnen gebruikt het Spookapparaten (Ongefactureerde RMM)-rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Dit rapport haalt data op uit RMM via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel.</p></div>
+<div class="faq-q"><span>Hoe wordt TOTAAL TICKETS berekend in het Spookapparaten (Ongefactureerde RMM) rapport?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De TOTAAL TICKETS metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal tickets performance.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Hoe vaak wordt deze data ververst?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kun je op elk moment opnieuw laten genereren voor de meest recente cijfers.</p></div>
+<div class="faq-q"><span>Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Kan ik dit spookapparaten (ongefactureerde rmm)-rapport aanpassen?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen, of de analyse aanpassen aan jouw specifieke MSP-behoeften.</p></div>
+<div class="faq-q"><span>Welke actie moet ik ondernemen naar aanleiding van de "Onderzoek Volume Wolters-Kuipers" aanbeveling?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties.</p></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1011,20 +1013,30 @@ catch(e){}document.body.removeChild(ta)}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt het Spookapparaten (Ongefactureerde RMM)-rapport?","acceptedAnswer":{"@type":"Answer","text":"Dit rapport haalt data op uit RMM via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel."}},
-    {"@type":"Question","name":"Hoe vaak wordt deze data ververst?","acceptedAnswer":{"@type":"Answer","text":"De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kun je op elk moment opnieuw laten genereren voor de meest recente cijfers."}},
-    {"@type":"Question","name":"Kan ik dit spookapparaten (ongefactureerde rmm)-rapport aanpassen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen, of de analyse aanpassen aan jouw specifieke MSP-behoeften."}}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt het Spookapparaten (Ongefactureerde RMM)-rapport?","acceptedAnswer":{"@type":"Answer","text":"Dit rapport haalt data op uit RMM via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel."}},
-    {"@type":"Question","name":"Hoe vaak wordt deze data ververst?","acceptedAnswer":{"@type":"Answer","text":"De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kun je op elk moment opnieuw laten genereren voor de meest recente cijfers."}},
-    {"@type":"Question","name":"Kan ik dit spookapparaten (ongefactureerde rmm)-rapport aanpassen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen, of de analyse aanpassen aan jouw specifieke MSP-behoeften."}}
+    {
+      "@type": "Question",
+      "name": "Hoe wordt TOTAAL TICKETS berekend in het Spookapparaten (Ongefactureerde RMM) rapport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De TOTAAL TICKETS metric wordt afgeleid uit het onderliggende Power BI dataset met DAX queries. Het aggregeert data over de rapportageperiode voor een geconsolideerd overzicht van totaal tickets performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke data uit Autotask PSA, Datto RMM, Datto Backup is opgenomen in deze analyse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dit rapport haalt operationele data op uit Autotask PSA, Datto RMM, Datto Backup via de Proxuma Power BI integratie. De analyse dekt de standaard rapportageperiode en bevat alle actieve records die aan de rapportcriteria voldoen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke actie moet ik ondernemen naar aanleiding van de \"Onderzoek Volume Wolters-Kuipers\" aanbeveling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bekijk de specifieke datapunten in deze sectie en vergelijk ze met je operationele context. Gebruik het rapport als startpunt voor teamdiscussies en prioritering van vervolgacties."
+      }
+    }
   ]
 }
 </script>
@@ -1109,17 +1121,6 @@ catch(e){}document.body.removeChild(ta)}
     {"@type": "ListItem", "position": 2, "name": "AI-Gegenereerde Rapporten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
     {"@type": "ListItem", "position": 3, "name": "Apparaten", "item": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/?cat=device"},
     {"@type": "ListItem", "position": 4, "name": "Spookapparaten (Ongefactureerde RMM)"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Welke databronnen gebruikt het Spookapparaten (Ongefactureerde RMM)-rapport?","acceptedAnswer":{"@type":"Answer","text":"Dit rapport haalt data op uit RMM via de Proxuma Power BI-integratie, met DAX-queries tegen het live datamodel."}},
-    {"@type":"Question","name":"Hoe vaak wordt deze data ververst?","acceptedAnswer":{"@type":"Answer","text":"De onderliggende Power BI-dataset wordt dagelijks ververst. Rapporten kun je op elk moment opnieuw laten genereren voor de meest recente cijfers."}},
-    {"@type":"Question","name":"Kan ik dit spookapparaten (ongefactureerde rmm)-rapport aanpassen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Proxuma-rapporten zijn volledig aanpasbaar. Je kunt de DAX-queries wijzigen, nieuwe secties toevoegen, of de analyse aanpassen aan jouw specifieke MSP-behoeften."}}
   ]
 }
 </script>
