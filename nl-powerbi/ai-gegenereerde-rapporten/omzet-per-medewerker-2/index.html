@@ -256,6 +256,7 @@
 @media(max-width:600px){.prx-report .report-frame-outer{padding:16px;}.prx-report .doc-kpi-row{grid-template-columns:1fr;}.prx-report .doc-body{padding:0 20px;}.prx-report .doc-header,.prx-report .doc-title-block,.prx-report .doc-demo{padding-left:20px;padding-right:20px;}.prx-report .doc-footer{padding-left:20px;padding-right:20px;}}
 @media print{.prx-report .dax-toggle{display:none;}.prx-report .dax-copy{display:none;}.prx-report .doc-section{break-inside:avoid;}}
 
+
 /* Report-specific styles */
 .prx-report .bar-track{width:100%;background:#f1f5f9;border-radius:3px;height:16px;overflow:hidden;}
 
@@ -1013,6 +1014,8 @@ ROW(
   observer.observe(frame);
 })();
 
+
+
 function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},1500)})}
 document.querySelectorAll('.dax-toggle').forEach(function(t){
   t.addEventListener('click', function(){ this.classList.toggle('expanded'); });
@@ -1040,7 +1043,7 @@ document.querySelectorAll('.dax-toggle').forEach(function(t){
 <a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/marges-per-servicetype/">
 <span class="rr-badge" style="background:#f0fdf4;color:#10B981;">Financieel</span>
 <div class="rr-card-title">Marges per Servicetype</div>
-<div class="rr-card-desc"></div>
+<div class="rr-card-desc">Marges per Servicetype — AI-gegenereerd Power BI rapport voor MSP's.</div>
 <span class="rr-card-link">Lees rapport <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
 </a>
 <a class="rr-card" href="/nl-powerbi/ai-gegenereerde-rapporten/arbeidswinstgevendheid/">
