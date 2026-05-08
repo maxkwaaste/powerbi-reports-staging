@@ -707,110 +707,419 @@ A data-driven analysis of <strong>average task cycle</strong> time from your Pow
 <div class="doc-header">
 <div>
 <div class="doc-logo">
-<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
 </div>
 <div class="doc-type">AI-Generated Power BI Report</div>
 </div>
 <div class="doc-header-right">
+<div class="doc-meta-row"><strong>Report ID:</strong> PRX-TASK-CYCLE-001</div>
+<div class="doc-meta-row"><strong>Generated:</strong> May 2026</div>
+<div class="doc-meta-row"><strong>Source:</strong> Autotask PSA</div>
 </div>
-</div><div class="doc-title-block">
-<div class="doc-title">Average Task Cycle Time</div>
-<p class="doc-subtitle">A data-driven analysis of <strong>average task cycle</strong> time from your Power BI environment, with breakdowns and actionable findings.</p>
 </div>
-<div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
+<div class="doc-title-block">
+<div class="doc-title">Average Task Cycle Time:<br/>From Creation to Completion</div>
+<p class="doc-subtitle">How long completed tasks take from creation to completion, which departments lead or lag the cycle, and where estimation accuracy breaks down. Generated by AI via Proxuma Power BI MCP server.</p>
+</div>
+<div class="doc-demo"><strong>Demo Report:</strong> This report uses anonymized data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
 <div class="doc-body">
+<!-- 1.0 Summary Metrics -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">1.0</span>
 <span class="doc-section-title">Summary Metrics</span>
 </div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">AVG CYCLE TIME</div>
+<div class="doc-kpi-value">97.7d</div>
+<div class="doc-kpi-note red">From creation to completion</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">COMPLETION RATE</div>
+<div class="doc-kpi-value">68.6%</div>
+<div class="doc-kpi-note amber">967 of 1,409 tasks</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">EST vs ACTUAL</div>
+<div class="doc-kpi-value">2.17x</div>
+<div class="doc-kpi-note red">Avg worked 15.5h vs 7.1h estimated</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAL WORKED</div>
+<div class="doc-kpi-value">10,216h</div>
+<div class="doc-kpi-note muted">Across 1,409 tasks</div>
+</div>
+</div>
 <div class="dax-toggle">
 <div class="dax-trigger">
 <svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
-<span>View DAX Query — Summary query</span>
+<span>View DAX Query — Summary Metrics</span>
 </div>
 <div class="dax-content">
 <pre><code>EVALUATE
 ROW(
     "TotalTasks", COUNTROWS(BI_Autotask_Tasks),
-    "AvgEstimatedHours", AVERAGE(BI_Autotask_Tasks[proxuma_estimated_in_hours]),
-    "AvgActualHours", AVERAGE(BI_Autotask_Tasks[proxuma_actual_in_hours]),
-    "TotalWorkedHours", SUM(BI_Autotask_Tasks[worked_hours]),
-    "AvgBillableHours", AVERAGE(BI_Autotask_Tasks[billable_hours]),
+    "CompletedTasks", CALCULATE(
+        COUNTROWS(BI_Autotask_Tasks),
+        BI_Autotask_Tasks[status_name] = "Complete"
+    ),
+    "AvgCycleTimeDays", AVERAGEX(
+        FILTER(
+            BI_Autotask_Tasks,
+            NOT(ISBLANK(BI_Autotask_Tasks[complete_datetime]))
+                &amp;&amp; NOT(ISBLANK(BI_Autotask_Tasks[create_datetime]))
+        ),
+        DATEDIFF(
+            BI_Autotask_Tasks[create_datetime],
+            BI_Autotask_Tasks[complete_datetime],
+            HOUR
+        )
+    ) / 24,
+    "AvgEstimatedHours", AVERAGE(BI_Autotask_Tasks[estimated_hours]),
+    "AvgWorkedHours", AVERAGE(BI_Autotask_Tasks[worked_hours]),
     "CompletionRate", DIVIDE(
-        CALCULATE(COUNTROWS(BI_Autotask_Tasks), BI_Autotask_Tasks[status] = 5),
-        COUNTROWS(BI_Autotask_Tasks))
+        CALCULATE(
+            COUNTROWS(BI_Autotask_Tasks),
+            BI_Autotask_Tasks[status_name] = "Complete"
+        ),
+        COUNTROWS(BI_Autotask_Tasks), 0
+    )
 )</code></pre>
 <button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 <div class="doc-dax-box" style="margin-top:12px;">
-<strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran. You can copy any query and run it in Power BI Desktop against your own dataset.
-      </div>
+<strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language used by Power BI to query data. Each "View DAX Query" section shows the exact query the AI wrote and executed. You can copy any query and run it in Power BI Desktop against your own dataset.
 </div>
+</div>
+<!-- 2.0 Cycle Time Distribution -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">2.0</span>
-<span class="doc-section-title">Analysis</span>
+<span class="doc-section-title">Cycle Time Distribution</span>
 </div>
-<p class="doc-section-sub">What the data is telling us</p>
-<div class="narrative"><p>The data above paints a picture of <strong>average task cycle time</strong> across your MSP operations. Look for patterns, outliers, and trends that warrant attention. Each section includes the DAX query used, so you can drill deeper into any metric that catches your eye.</p></div>
+<p class="doc-section-sub">How completed tasks distribute across cycle time buckets, from same-day to 90+ days</p>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Over 90 days</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:100%;"><span class="hbar-val">364</span></div></div>
+<div class="hbar-note">37.6%</div>
 </div>
+<div class="hbar-row">
+<div class="hbar-label">30 - 90 days</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:94.2%;"><span class="hbar-val">343</span></div></div>
+<div class="hbar-note">35.5%</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">7 - 30 days</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:63.5%;"><span class="hbar-val">231</span></div></div>
+<div class="hbar-note">23.9%</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">3 - 7 days</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:3.8%;"><span class="hbar-val outside">14</span></div></div>
+<div class="hbar-note">1.4%</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">1 - 3 days</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:2%;min-width:4px;"><span class="hbar-val outside">2</span></div></div>
+<div class="hbar-note">0.2%</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Under 24h</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:3.6%;"><span class="hbar-val outside">13</span></div></div>
+<div class="hbar-note">1.3%</div>
+</div>
+</div>
+<div class="narrative"><p><strong>73.1%</strong> of completed tasks take longer than 30 days from creation to completion. Only 15 tasks (1.6%) are resolved within 3 days, indicating that project tasks carry significant calendar overhead beyond the active working hours.</p></div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Cycle Time Distribution</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ROW(
+    "Under24h", COUNTROWS(FILTER(BI_Autotask_Tasks,
+        NOT(ISBLANK(BI_Autotask_Tasks[complete_datetime]))
+        &amp;&amp; NOT(ISBLANK(BI_Autotask_Tasks[create_datetime]))
+        &amp;&amp; DATEDIFF(BI_Autotask_Tasks[create_datetime],
+            BI_Autotask_Tasks[complete_datetime], HOUR) &lt; 24)),
+    "Day1to3", COUNTROWS(FILTER(BI_Autotask_Tasks,
+        ... HOUR &gt;= 24 &amp;&amp; ... HOUR &lt; 72)),
+    "Day3to7", COUNTROWS(FILTER(BI_Autotask_Tasks,
+        ... HOUR &gt;= 72 &amp;&amp; ... HOUR &lt; 168)),
+    "Day7to30", COUNTROWS(FILTER(BI_Autotask_Tasks,
+        ... HOUR &gt;= 168 &amp;&amp; ... HOUR &lt; 720)),
+    "Day30to90", COUNTROWS(FILTER(BI_Autotask_Tasks,
+        ... HOUR &gt;= 720 &amp;&amp; ... HOUR &lt; 2160)),
+    "Over90d", COUNTROWS(FILTER(BI_Autotask_Tasks,
+        ... HOUR &gt;= 2160))
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- 3.0 Department Breakdown -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">3.0</span>
-<span class="doc-section-title">Recommended Actions</span>
+<span class="doc-section-title">Department Breakdown</span>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>1. Schedule Recurring Review</h4>
-<p>Set up a weekly or monthly review of average task cycle time metrics. Trends matter more than snapshots. Use the DAX queries in this report as your starting point.</p>
+<p class="doc-section-sub">Average cycle time, completion rates, and estimation accuracy per department</p>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead><tr><th>Department</th><th>Tasks</th><th>Completed</th><th style="text-align:right;">Comp %</th><th style="text-align:right;">Avg Cycle</th><th style="text-align:right;">Avg Est h</th><th style="text-align:right;">Avg Worked h</th></tr></thead>
+<tbody>
+<tr><td class="client-name">Service Desk</td><td class="num">357</td><td class="num">271</td><td class="num">75.9%</td><td class="num num-warn">121.6d</td><td class="num">10.7</td><td class="num">16.2</td></tr>
+<tr><td class="client-name">Projects</td><td class="num">35</td><td class="num">34</td><td class="num num-ok">97.1%</td><td class="num">77.1d</td><td class="num">9.7</td><td class="num">11.7</td></tr>
+<tr><td class="client-name">Infrastructure</td><td class="num">8</td><td class="num">6</td><td class="num">75.0%</td><td class="num num-danger">197.9d</td><td class="num">14.4</td><td class="num">23.7</td></tr>
+<tr><td class="client-name">Security</td><td class="num">8</td><td class="num">6</td><td class="num">75.0%</td><td class="num num-warn">110.1d</td><td class="num">9.0</td><td class="num">8.8</td></tr>
+<tr><td class="client-name">Onboarding</td><td class="num">5</td><td class="num">5</td><td class="num num-ok">100%</td><td class="num num-ok">38.1d</td><td class="num">16.0</td><td class="num">25.5</td></tr>
+<tr><td class="client-name">Consulting</td><td class="num">5</td><td class="num">5</td><td class="num num-ok">100%</td><td class="num">89.9d</td><td class="num">4.9</td><td class="num num-danger">50.8</td></tr>
+<tr><td class="client-name">Compliance</td><td class="num">1</td><td class="num">1</td><td class="num num-ok">100%</td><td class="num">79.5d</td><td class="num">4.0</td><td class="num">11.5</td></tr>
+<tr><td style="color:#94a3b8;font-style:italic;">Unassigned</td><td class="num">989</td><td class="num">639</td><td class="num">64.6%</td><td class="num">88.2d</td><td class="num">5.7</td><td class="num">15.0</td></tr>
+</tbody>
+</table>
+</div>
+<div style="font-size:0.74rem;font-weight:700;color:#1B365D;margin:20px 0 4px;">Average Cycle Time by Department (days)</div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Infrastructure</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:100%;"><span class="hbar-val">197.9d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Service Desk</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:61.4%;"><span class="hbar-val">121.6d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Security</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:55.6%;"><span class="hbar-val">110.1d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Consulting</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:45.4%;"><span class="hbar-val">89.9d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Unassigned</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:44.6%;"><span class="hbar-val">88.2d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Compliance</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:40.2%;"><span class="hbar-val">79.5d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Projects</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:38.9%;"><span class="hbar-val">77.1d</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Onboarding</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:19.3%;"><span class="hbar-val">38.1d</span></div></div>
 </div>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>2. Connect Your Own Data</h4>
-<p>This report uses demo data. Connect Proxuma Power BI to your own Autotask PSA to generate this analysis from your real numbers.</p>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Department Breakdown</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ADDCOLUMNS(
+    VALUES(BI_Autotask_Tasks[department_name]),
+    "TaskCount", CALCULATE(COUNTROWS(BI_Autotask_Tasks)),
+    "CompletedCount", CALCULATE(
+        COUNTROWS(BI_Autotask_Tasks),
+        BI_Autotask_Tasks[status_name] = "Complete"
+    ),
+    "AvgCycleHours", CALCULATE(
+        AVERAGEX(
+            FILTER(BI_Autotask_Tasks,
+                NOT(ISBLANK(BI_Autotask_Tasks[complete_datetime]))
+                &amp;&amp; NOT(ISBLANK(BI_Autotask_Tasks[create_datetime]))
+            ),
+            DATEDIFF(
+                BI_Autotask_Tasks[create_datetime],
+                BI_Autotask_Tasks[complete_datetime], HOUR
+            )
+        )
+    ),
+    "AvgEstHours", CALCULATE(
+        AVERAGE(BI_Autotask_Tasks[estimated_hours])
+    ),
+    "AvgWorkedHours", CALCULATE(
+        AVERAGE(BI_Autotask_Tasks[worked_hours])
+    )
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>
-<!-- FAQ -->
+<!-- 4.0 Client Analysis -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Client Analysis</span>
+</div>
+<p class="doc-section-sub">Top 10 clients by task volume with cycle time and completion metrics</p>
+<div style="overflow-x:auto;margin-top:14px;">
+<table>
+<thead><tr><th>Client</th><th style="text-align:right;">Tasks</th><th style="text-align:right;">Completed</th><th style="text-align:right;">Comp %</th><th style="text-align:right;">Avg Cycle</th><th style="text-align:right;">Worked h</th></tr></thead>
+<tbody>
+<tr><td class="client-name">Client A</td><td class="num">326</td><td class="num">132</td><td class="num num-danger">40.5%</td><td class="num num-ok">28.9d</td><td class="num">-</td></tr>
+<tr><td class="client-name">Client B</td><td class="num">76</td><td class="num">67</td><td class="num num-ok">88.2%</td><td class="num">68.3d</td><td class="num">571.3</td></tr>
+<tr><td class="client-name">Client C</td><td class="num">72</td><td class="num">58</td><td class="num">80.6%</td><td class="num">85.7d</td><td class="num">741.0</td></tr>
+<tr><td class="client-name">Client D</td><td class="num">58</td><td class="num">12</td><td class="num num-danger">20.7%</td><td class="num num-danger">230.4d</td><td class="num">295.7</td></tr>
+<tr><td class="client-name">Client E</td><td class="num">41</td><td class="num">1</td><td class="num num-danger">2.4%</td><td class="num">32.8d</td><td class="num">101.5</td></tr>
+<tr><td class="client-name">Client F</td><td class="num">40</td><td class="num">28</td><td class="num">70.0%</td><td class="num num-ok">19.6d</td><td class="num">25.5</td></tr>
+<tr><td class="client-name">Client G</td><td class="num">37</td><td class="num">37</td><td class="num num-ok">100%</td><td class="num num-danger">155.4d</td><td class="num num-danger">1,594.9</td></tr>
+<tr><td class="client-name">Client H</td><td class="num">34</td><td class="num">30</td><td class="num num-ok">88.2%</td><td class="num">59.4d</td><td class="num">180.3</td></tr>
+<tr><td class="client-name">Client I</td><td class="num">31</td><td class="num">31</td><td class="num num-ok">100%</td><td class="num num-danger">204.0d</td><td class="num">795.3</td></tr>
+<tr><td class="client-name">Client J</td><td class="num">31</td><td class="num">20</td><td class="num">64.5%</td><td class="num num-warn">120.4d</td><td class="num">625.0</td></tr>
+</tbody>
+</table>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query — Client Analysis</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+    ADDCOLUMNS(
+        VALUES(BI_Autotask_Tasks[company_name]),
+        "TaskCount", CALCULATE(COUNTROWS(BI_Autotask_Tasks)),
+        "CompletedCount", CALCULATE(
+            COUNTROWS(BI_Autotask_Tasks),
+            BI_Autotask_Tasks[status_name] = "Complete"
+        ),
+        "AvgCycleHours", CALCULATE(
+            AVERAGEX(
+                FILTER(BI_Autotask_Tasks,
+                    NOT(ISBLANK(BI_Autotask_Tasks[complete_datetime]))
+                    &amp;&amp; NOT(ISBLANK(BI_Autotask_Tasks[create_datetime]))
+                ),
+                DATEDIFF(
+                    BI_Autotask_Tasks[create_datetime],
+                    BI_Autotask_Tasks[complete_datetime], HOUR
+                )
+            )
+        ),
+        "TotalWorkedHours", CALCULATE(
+            SUM(BI_Autotask_Tasks[worked_hours])
+        )
+    ),
+    [TaskCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- 5.0 Key Findings -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Key Findings</span>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>97-Day Average Cycle Time</h4>
+<p>The average completed task takes 97.7 days from creation to completion. Over 37% of tasks exceed 90 days, pointing to systemic delays rather than occasional outliers. The distribution is heavily right-skewed with only 1.6% of tasks closing within 3 days.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>Estimation Accuracy Gap at 2.17x</h4>
+<p>Actual worked hours average 15.5h per task against an estimated 7.1h, a 2.17x overrun. The median estimate is just 1 hour, suggesting many tasks are created without proper scoping. Consulting stands out with a 10.4x overrun (50.8h actual vs 4.9h estimated).</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>Client D: 230-Day Average with 20.7% Completion</h4>
+<p>Client D shows the longest average cycle at 230 days with only 12 of 58 tasks completed. Similarly, Client E has 41 tasks but only 1 completed (2.4%). These accounts likely contain stalled projects or deprioritized work that should be reviewed or formally closed.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&#10003;</div>
+<div class="doc-finding-body">
+<h4>Onboarding Department Sets the Benchmark</h4>
+<p>The Onboarding department achieves a 38-day average cycle with 100% completion rate across its 5 tasks. Projects follows closely at 77 days with 97.1% completion. Their focused scope and structured handoff processes serve as a model for other teams.</p>
+</div>
+</div>
+</div>
+<!-- 6.0 Status Distribution -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<span class="doc-section-title">Task Status Distribution</span>
+</div>
+<p class="doc-section-sub">Current status breakdown across all 1,409 tasks</p>
+<div class="chart-row">
+<div class="donut-chart lg">
+<svg width="170" height="170" viewBox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="45"/>
+<circle class="donut-fg green" cx="60" cy="60" r="45" stroke-dasharray="194.0 282.74"/>
+<text class="donut-value" x="60" y="56">68.6%</text>
+<text class="donut-sublabel" x="60" y="70">967</text>
+</svg>
+<div class="donut-label">Complete</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewBox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="45"/>
+<circle class="donut-fg amber" cx="60" cy="60" r="45" stroke-dasharray="63.3 282.74"/>
+<text class="donut-value" x="60" y="56">22.4%</text>
+<text class="donut-sublabel" x="60" y="70">316</text>
+</svg>
+<div class="donut-label">New</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewBox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="45"/>
+<circle class="donut-fg teal" cx="60" cy="60" r="45" stroke-dasharray="23.8 282.74"/>
+<text class="donut-value" x="60" y="56">8.4%</text>
+<text class="donut-sublabel" x="60" y="70">119</text>
+</svg>
+<div class="donut-label">In Progress</div>
+</div>
+</div>
+<div class="narrative"><p><strong>31.4%</strong> of tasks remain open (316 New + 119 In Progress + 7 other). The large number of tasks in "New" status (22.4%) may indicate a backlog of unstarted work or tasks created in advance for future phases.</p></div>
+</div>
+<!-- 7.0 FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">7.0</span>
 <span class="doc-section-title">Frequently Asked Questions</span>
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What does the "Schedule Recurring Review" insight mean in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This insight highlights a pattern detected in your data that may require attention. The Average Task Cycle Time report surfaces this through automated analysis of the underlying dataset.</p></div>
+<div class="faq-q"><span>Why is the average cycle time nearly 100 days?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Task cycle time measures calendar time from creation to completion, including weekends, holidays, and waiting periods. Many project tasks are created at project kickoff but completed weeks later as part of phased delivery. The 97.7-day average reflects this project timeline reality rather than continuous active work.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria.</p></div>
+<div class="faq-q"><span>How should I interpret the 2.17x estimation overrun?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>The gap between estimated hours (7.1h average) and actual worked hours (15.5h average) reveals systematic underestimation. The median estimate of 1 hour suggests many tasks lack proper scoping at creation. Improving estimation accuracy starts with post-completion reviews to calibrate future estimates.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What action should I take based on the "Schedule Recurring Review" recommendation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions.</p></div>
-</div>
-</div>
+<div class="faq-q"><span>Which departments should I focus on to reduce overall cycle time?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Service Desk handles 357 tasks (85% of assigned work) with a 121.6-day average cycle. Reducing that by even 20% would move the overall average significantly. Infrastructure at 197.9 days has the longest cycle but only 8 tasks, so the operational impact is smaller.</p></div>
 </div>
 </div>
 </div>
 </div>
 <div class="doc-footer">
-<span>Proxuma Power BI · AI-Generated Report · proxuma.io/powerbi</span>
-<span>Generated in &lt; 15 minutes via MCP · March 2026</span>
+<span>Proxuma Power BI &middot; AI-Generated Report &middot; proxuma.io/powerbi</span>
+<span>Generated in &lt; 15 minutes via MCP &middot; May 2026</span>
 </div>
 </div>
 </div>
 <script>
-catch(e){}document.body.removeChild(ta)}
-</script>
-<script>
-catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
+document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
 </script>
 <script type="application/ld+json">
 {
@@ -819,31 +1128,32 @@ catch(e){}document.body.removeChild(ta)}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does the \"Schedule Recurring Review\" insight mean in this report?",
+      "name": "Why is the average cycle time nearly 100 days?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This insight highlights a pattern detected in your data that may require attention. The Average Task Cycle Time report surfaces this through automated analysis of the underlying dataset."
+        "text": "Task cycle time measures calendar time from creation to completion, including weekends, holidays, and waiting periods. Many project tasks are created at project kickoff but completed weeks later as part of phased delivery. The 97.7-day average reflects this project timeline reality rather than continuous active work."
       }
     },
     {
       "@type": "Question",
-      "name": "Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?",
+      "name": "How should I interpret the 2.17x estimation overrun?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria."
+        "text": "The gap between estimated hours (7.1h average) and actual worked hours (15.5h average) reveals systematic underestimation. The median estimate of 1 hour suggests many tasks lack proper scoping at creation. Improving estimation accuracy starts with post-completion reviews to calibrate future estimates."
       }
     },
     {
       "@type": "Question",
-      "name": "What action should I take based on the \"Schedule Recurring Review\" recommendation?",
+      "name": "Which departments should I focus on to reduce overall cycle time?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions."
+        "text": "Service Desk handles 357 tasks (85% of assigned work) with a 121.6-day average cycle. Reducing that by even 20% would move the overall average significantly. Infrastructure at 197.9 days has the longest cycle but only 8 tasks, so the operational impact is smaller."
       }
     }
   ]
 }
 </script>
+
 <!-- RELATED REPORTS -->
 <div class="related-reports">
 <div class="related-reports-header">
@@ -908,7 +1218,7 @@ catch(e){}document.body.removeChild(ta)}
   "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
   "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
   "datePublished": "2026-04-06",
-  "dateModified": "2026-04-06",
+  "dateModified": "2026-05-07",
   "mainEntityOfPage": "https://proxuma.io/powerbi/insights/average-task-cycle-time/",
   "proficiencyLevel": "Beginner",
   "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",

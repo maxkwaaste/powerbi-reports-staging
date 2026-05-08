@@ -699,148 +699,388 @@
 <!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
 <div id="prx-frame-top"></div>
 <div class="report-frame-outer">
-<div class="report-frame-inner">
-<div class="report-frame-label">↓ Live rapport — Power BI + DAX ↓</div>
 <div class="doc">
-<div class="doc-letterhead">
-<div class="doc-letterhead-brand">Proxuma<span>.io</span></div>
-<div class="doc-letterhead-meta">
-          Rapporttype: Projectwinstgevendheid<br/>
-          Databron: Autotask PSA<br/>
-          Gegenereerd: maart 2026
-        </div>
+<div class="doc-header">
+<div>
+<div class="doc-logo">
+
 </div>
+<div class="doc-type">AI-Gegenereerd Power BI Rapport</div>
+</div>
+<div class="doc-header-right">
+<div class="doc-meta-row"><strong>Rapport:</strong> PRX-PROJ-001</div>
+<div class="doc-meta-row"><strong>Bron:</strong> Autotask PSA</div>
+<div class="doc-meta-row"><strong>Gegenereerd:</strong> Mei 2026</div>
+</div>
+</div><div class="doc-title-block">
+<div class="doc-title">Projectomzet versus Arbeidskosten</div>
+<p class="doc-subtitle">Een datagedreven analyse van <strong>projectomzet versus arbeidskosten</strong> over 279 projecten in uw Autotask PSA-omgeving, met uitsplitsingen per status, klant, contracttype en projectleider.</p>
+</div>
+<div class="doc-demo"><strong>Geanonimiseerd Rapport:</strong> Dit rapport gebruikt echte operationele data uit Autotask PSA. Bedrijfsnamen en contactgegevens zijn geanonimiseerd. Projectnamen zijn generiek weergegeven.</div>
 <div class="doc-body">
-<div class="doc-title">Projectomzet versus arbeidskosten</div>
-<div class="doc-subtitle">Portfoliowinstgevendheidsanalyse over 279 projecten</div>
-<!-- KPI ROW -->
+<!-- Sectie 1.0 — Samenvattende Metrics -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">1.0</span>
+<span class="doc-section-title">Samenvattende Metrics</span>
+</div>
 <div class="doc-kpi-row">
-<div class="doc-kpi green">
-<div class="doc-kpi-value">€1,44M</div>
-<div class="doc-kpi-label">Totale omzet</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTALE ARBEIDSOMZET</div>
+<div class="doc-kpi-value">&euro;1,43M</div>
+<div class="doc-kpi-note muted">214 projecten met omzet</div>
 </div>
-<div class="doc-kpi amber">
-<div class="doc-kpi-value">€725K</div>
-<div class="doc-kpi-label">Arbeidskosten</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTALE ARBEIDSKOSTEN</div>
+<div class="doc-kpi-value">&euro;724,9K</div>
+<div class="doc-kpi-note muted">15.616 uren gelogd</div>
 </div>
-<div class="doc-kpi green">
-<div class="doc-kpi-value">€716K</div>
-<div class="doc-kpi-label">Brutowinst</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">ARBEIDSMARGE</div>
+<div class="doc-kpi-value">49,4%</div>
+<div class="doc-kpi-note green">Mediaan project: &euro;1.879</div>
 </div>
-<div class="doc-kpi green">
-<div class="doc-kpi-value">49,7%</div>
-<div class="doc-kpi-label">Winstmarge</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">GEM. OMZET / PROJECT</div>
+<div class="doc-kpi-value">&euro;6.730</div>
+<div class="doc-kpi-note muted">Gem. kosten: &euro;3.387</div>
 </div>
 </div>
 <div class="dax-toggle">
-<button class="dax-toggle-header dax-trigger" onclick="this.classList.toggle('expanded')">
-<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M19 9l-7 7-7-7"></path></svg>
-            DAX bekijken — Portfoliooverzicht omzet, kosten en winst
-          </button>
-<div class="dax-toggle-body dax-content">
-<pre><code>EVALUATE
-ROW(
-    "TotaleOmzet",  [Project Total Revenue],
-    "Arbeidskosten",[Labour Cost],
-    "Brutowinst",   [Project Profit],
-    "Winstmarge",   DIVIDE([Project Profit], [Project Total Revenue])
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query &mdash; Samenvatting</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE ROW(
+  "TotalProjects", COUNTROWS('BI_Autotask_Projects'),
+  "TotalLabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+  "TotalLabourCost", SUM('BI_Autotask_Projects'[Labour Cost]),
+  "LabourMargin", DIVIDE(
+    SUM('BI_Autotask_Projects'[Labour Revenue]) - SUM('BI_Autotask_Projects'[Labour Cost]),
+    SUM('BI_Autotask_Projects'[Labour Revenue]), 0
+  ),
+  "TotalHoursWorked", SUM('BI_Autotask_Time_Entries'[hours_worked])
 )</code></pre>
-<button class="dax-copy-btn dax-copy" onclick="prxCopyDAX('dax1', this)">Copy</button>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
-<div class="doc-divider"></div>
-<!-- SECTION 1: Top projects -->
+<div class="doc-dax-box" style="margin-top:12px;">
+<strong>Wat zijn deze DAX queries?</strong> DAX (Data Analysis Expressions) is de formuletaal die Power BI gebruikt om data te bevragen. Elke inklapbare sectie hieronder toont de exacte query die de AI heeft geschreven en uitgevoerd. U kunt elke query kopieren en uitvoeren in Power BI Desktop op uw eigen dataset.
+</div>
+</div>
+<!-- Sectie 2.0 — Omzet vs Kosten per Projectstatus -->
 <div class="doc-section">
-<h2>Top 10 projecten op omzet</h2>
-<p>Project Environment (Lewis LLC) is de duidelijke uitschieter met €227.918 aan totale omzet — meer dan 2,5 keer groter dan het tweede project. De meeste klantprojecten liggen tussen de €20K en €90K, met marges die doorgaans tussen 40% en 58% vallen.</p>
-<p>Project Somebody (Craig-Huynh) toont de laagste marge met 29,8%, wat betekent dat arbeidskosten 70% van de omzet opslokte. Dat is het onderzoeken waard op scope creep of te lage pricing.</p>
-<table>
-<thead><tr><th>Metric</th><th>Value</th></tr></thead>
-<tbody><tr><td>Total Projects</td><td>279</td></tr><tr><td>Estimated Hours</td><td>10,066</td></tr><tr><td>Worked Hours</td><td>10,216</td></tr><tr><td>Variance</td><td>-150 hours</td></tr><tr><td>Labour Revenue</td><td>$1,433,579</td></tr><tr><td>Labour Cost</td><td>$724,910</td></tr></tbody>
-</table>
+<div class="doc-section-head">
+<span class="doc-section-num">2.0</span>
+<span class="doc-section-title">Omzet vs Kosten per Projectstatus</span>
+</div>
+<p class="doc-section-sub">Hoe arbeidsomzet en kosten zich verhouden per projectfase</p>
+<div class="narrative"><p>Afgeronde projecten zijn goed voor <strong>78,9%</strong> van de totale arbeidsomzet (&euro;1,13M over 198 projecten). Lopende projecten tonen een beduidend hogere marge (<strong>55,8%</strong>) vergeleken met afgeronde projecten (47,8%), wat suggereert dat recente projecten efficienter bemand zijn of hogere uurtarieven hanteren. On-hold projecten dragen nog &euro;8,2K aan arbeidskosten zonder direct omzetperspectief.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Afgerond</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;1,13M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Lopend</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:23.2%"><span class="hbar-val">&euro;261,8K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">On Hold</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:1.5%"><span class="hbar-val outside">&euro;16,7K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Nieuw</div>
+<div class="hbar-track"><div class="hbar-fill slate" style="width:0.5%"><span class="hbar-val outside">&euro;1,4K</span></div></div>
+</div>
+</div>
 <div class="dax-toggle">
-<button class="dax-toggle-header dax-trigger" onclick="this.classList.toggle('expanded')">
-<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M19 9l-7 7-7-7"></path></svg>
-              DAX bekijken — Top projecten op omzet met marge
-            </button>
-<div class="dax-toggle-body dax-content">
-<pre><code>EVALUATE ROW("TotalProjects", COUNTROWS('BI_Autotask_Projects'), "TotalEstHours", SUM('BI_Autotask_Projects'[estimated_hours]), "TotalWorkedHours", SUM('BI_Autotask_Projects'[worked_hours]), "TotalVariance", SUM('BI_Autotask_Projects'[variance_hours]), "TotalLabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]), "TotalLabourCost", SUM('BI_Autotask_Projects'[Labour Cost]))</code></pre>
-<button class="dax-copy-btn dax-copy" onclick="prxCopyDAX('dax2', this)">Copy</button>
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query &mdash; Uitsplitsing per status</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Projects'[project_status_name],
+  "Count", COUNTROWS('BI_Autotask_Projects'),
+  "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+  "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost])
+)
+ORDER BY [LabourRevenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
-</div>
-<div class="doc-divider"></div>
-<!-- SECTION 2: By type -->
-<div class="doc-section">
-<h2>Omzet per projecttype</h2>
-<p>Klantprojecten genereren vrijwel alle projectomzet. Interne projecten leveren een klein bedrag op (vermoedelijk interne doorberekeningen) en vertegenwoordigen slechts 3% van het totale aantal projecten.</p>
 <table>
-<thead><tr><th>Status</th><th>Count</th><th>Est Hours</th><th>Worked Hours</th></tr></thead>
-<tbody><tr><td>Complete</td><td>198</td><td>8,204</td><td>8,084</td></tr><tr><td>In progress</td><td>43</td><td>1,488</td><td>1,834</td></tr><tr><td>New</td><td>15</td><td>21</td><td>10</td></tr><tr><td>Waiting to start</td><td>12</td><td>90</td><td>2</td></tr><tr><td>On Hold</td><td>7</td><td>146</td><td>124</td></tr></tbody>
+<thead>
+<tr><th>Status</th><th>Projecten</th><th>Arbeidsomzet</th><th>Arbeidskosten</th><th>Marge</th></tr>
+</thead>
+<tbody>
+<tr><td>Afgerond</td><td class="num">198</td><td class="num">&euro;1.130.090</td><td class="num">&euro;589.680</td><td class="num num-warn">47,8%</td></tr>
+<tr><td>Lopend</td><td class="num">43</td><td class="num">&euro;261.787</td><td class="num">&euro;115.629</td><td class="num num-ok">55,8%</td></tr>
+<tr><td>On Hold</td><td class="num">7</td><td class="num">&euro;16.704</td><td class="num">&euro;8.182</td><td class="num num-ok">51,0%</td></tr>
+<tr><td>Nieuw</td><td class="num">15</td><td class="num">&euro;1.430</td><td class="num">&euro;662</td><td class="num num-ok">53,7%</td></tr>
+</tbody>
 </table>
+</div>
+<!-- Sectie 3.0 — Top Klanten op Winstgevendheid -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">3.0</span>
+<span class="doc-section-title">Top Klanten op Winstgevendheid</span>
+</div>
+<p class="doc-section-sub">De 10 klanten met de hoogste omzet en hun arbeidsmarges</p>
+<div class="narrative"><p>De top 10 klanten genereren <strong>&euro;962,6K</strong> aan arbeidsomzet &mdash; 67,1% van het totaal. <strong>Klant A</strong> leidt met &euro;228,9K maar met een ondergemiddelde marge van 44,6%. <strong>Klant B</strong> vraagt aandacht met <strong>34,5% marge</strong> over 10 projecten &mdash; de laagste onder de topklanten. <strong>Klant E</strong> bereikt de beste marge (60,2%) over 10 projecten, wat duidt op efficiente projectuitvoering of gunstige tarieven.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Klant A</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;228,9K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Klant B</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:48.8%"><span class="hbar-val">&euro;111,8K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Klant C</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:43.5%"><span class="hbar-val">&euro;99,5K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Klant D</div>
+<div class="hbar-track"><div class="hbar-fill navy" style="width:39.1%"><span class="hbar-val">&euro;89,6K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Klant E</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:35.7%"><span class="hbar-val">&euro;81,7K</span></div></div>
+</div>
+</div>
 <div class="dax-toggle">
-<button class="dax-toggle-header dax-trigger" onclick="this.classList.toggle('expanded')">
-<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M19 9l-7 7-7-7"></path></svg>
-              DAX bekijken — Omzet per projecttype
-            </button>
-<div class="dax-toggle-body dax-content">
-<pre><code>EVALUATE SUMMARIZECOLUMNS('BI_Autotask_Projects'[project_status_name], "ProjectCount", COUNTROWS('BI_Autotask_Projects'), "TotalEstHours", SUM('BI_Autotask_Projects'[estimated_hours]), "TotalWorkedHours", SUM('BI_Autotask_Projects'[worked_hours]))</code></pre>
-<button class="dax-copy-btn dax-copy" onclick="prxCopyDAX('dax3', this)">Copy</button>
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query &mdash; Top klanten</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+  10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Projects'[company_name],
+    "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+    "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost]),
+    "ProjectCount", COUNTROWS('BI_Autotask_Projects')
+  ),
+  [LabourRevenue], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
+<table>
+<thead>
+<tr><th>Klant</th><th>Projecten</th><th>Arbeidsomzet</th><th>Arbeidskosten</th><th>Winst</th><th>Marge</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Klant A</td><td class="num">4</td><td class="num">&euro;228.933</td><td class="num">&euro;126.812</td><td class="num">&euro;102.121</td><td class="num num-warn">44,6%</td></tr>
+<tr><td class="client-name">Klant B</td><td class="num">10</td><td class="num">&euro;111.811</td><td class="num">&euro;73.207</td><td class="num">&euro;38.604</td><td class="num num-danger">34,5%</td></tr>
+<tr><td class="client-name">Klant C</td><td class="num">29</td><td class="num">&euro;99.535</td><td class="num">&euro;46.640</td><td class="num">&euro;52.895</td><td class="num num-ok">53,1%</td></tr>
+<tr><td class="client-name">Klant D</td><td class="num">3</td><td class="num">&euro;89.641</td><td class="num">&euro;41.346</td><td class="num">&euro;48.295</td><td class="num num-ok">53,9%</td></tr>
+<tr><td class="client-name">Klant E</td><td class="num">10</td><td class="num">&euro;81.714</td><td class="num">&euro;32.485</td><td class="num">&euro;49.229</td><td class="num num-ok">60,2%</td></tr>
+<tr><td class="client-name">Klant F</td><td class="num">2</td><td class="num">&euro;69.025</td><td class="num">&euro;32.011</td><td class="num">&euro;37.014</td><td class="num num-ok">53,6%</td></tr>
+<tr><td class="client-name">Klant G</td><td class="num">3</td><td class="num">&euro;53.226</td><td class="num">&euro;27.706</td><td class="num">&euro;25.520</td><td class="num num-warn">47,9%</td></tr>
+<tr><td class="client-name">Klant H</td><td class="num">5</td><td class="num">&euro;52.652</td><td class="num">&euro;24.467</td><td class="num">&euro;28.185</td><td class="num num-ok">53,5%</td></tr>
+<tr><td class="client-name">Klant I</td><td class="num">4</td><td class="num">&euro;40.194</td><td class="num">&euro;18.134</td><td class="num">&euro;22.060</td><td class="num num-ok">54,9%</td></tr>
+<tr><td class="client-name">Klant J</td><td class="num">3</td><td class="num">&euro;35.828</td><td class="num">&euro;17.200</td><td class="num">&euro;18.628</td><td class="num num-ok">52,0%</td></tr>
+</tbody>
+</table>
 </div>
-<div class="doc-divider"></div>
-<!-- SECTION 3: Insights -->
+<!-- Sectie 4.0 — Contracttype & Projectleider Analyse -->
 <div class="doc-section">
-<h2>Belangrijkste inzichten</h2>
-<div class="insight-cards">
-<div class="insight-card">
-<h4>Sterke totale marge</h4>
-<p>49,7% bruto projectmarge is gezond voor een MSP met een mix van klant- en interne projecten. De mediaan in de sector ligt rond de 35–45% voor projectwerk.</p>
+<div class="doc-section-head">
+<span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Contracttype &amp; Projectleider Analyse</span>
 </div>
-<div class="insight-card warn">
-<h4>Eén uitlopertje met lage marge</h4>
-<p>Project Somebody zit op 29,8% marge, ver onder het portfoliogemiddelde. Controleer of de scope is uitgebreid zonder bijbehorende meerwerk-opdrachten.</p>
+<p class="doc-section-sub">Hoe contractstructuur en projectleiderschap de winstgevendheid beinvloeden</p>
+<div class="narrative"><p>Time &amp; Materials-contracten domineren (239 van 279 projecten) met een <strong>50,1% marge</strong>. Fixed Price-projecten tonen een <strong>negatieve bijdrage</strong> &mdash; &euro;5,8K aan arbeidskosten zonder erkende arbeidsomzet. Onder projectleiders valt <strong>Leider A</strong> op met een marge van 58,7% over 58 projecten, terwijl <strong>Leider C</strong> 55% van alle projecten beheert met een marge van 47,1%.</p></div>
+<div class="chart-row">
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg teal" cx="60" cy="60" r="50" stroke-dasharray="157.39 156.77" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">50,1%</text>
+<text class="donut-sublabel" x="60" y="72">&euro;1,40M</text>
+</svg>
+<div class="donut-label">Time &amp; Materials</div>
 </div>
-<div class="insight-card">
-<h4>Topproject domineert omzet</h4>
-<p>Project Environment vertegenwoordigt 15,8% van de totale portfolioomzet. Concentratie op dit niveau vraagt om monitoring op klantafhankelijkheidsrisico.</p>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg amber" cx="60" cy="60" r="50" stroke-dasharray="132.57 181.59" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">42,2%</text>
+<text class="donut-sublabel" x="60" y="72">&euro;32K</text>
+</svg>
+<div class="donut-label">Geen Contract</div>
 </div>
-<div class="insight-card">
-<h4>Meeste projecten boven 50% marge</h4>
-<p>Zeven van de tien beste projecten halen 50% marge of meer, wat aangeeft dat je pricing en scopebepaling goed zijn afgestemd op typische opdrachten.</p>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg navy" cx="60" cy="60" r="50" stroke-dasharray="155.19 158.97" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">49,4%</text>
+<text class="donut-sublabel" x="60" y="72">&euro;1,44M</text>
+</svg>
+<div class="donut-label">Totaal</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query &mdash; Per contracttype</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Projects'[contract_type_name],
+  "Count", COUNTROWS('BI_Autotask_Projects'),
+  "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+  "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost])
+)
+ORDER BY [LabourRevenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+<div style="margin-top:20px;">
+<p class="doc-section-sub">Prestaties per projectleider (top 3 op omzet)</p>
+</div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Leider C</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;697,4K &middot; 47,1%</span></div></div>
+<div class="hbar-note">154 proj</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Leider B</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:64.1%"><span class="hbar-val">&euro;446,6K &middot; 47,8%</span></div></div>
+<div class="hbar-note">22 proj</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Leider A</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:34.3%"><span class="hbar-val">&euro;239,1K &middot; 58,7%</span></div></div>
+<div class="hbar-note">58 proj</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>Bekijk DAX Query &mdash; Per projectleider</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+  8,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Projects'[project_lead_name],
+    "ProjectCount", COUNTROWS('BI_Autotask_Projects'),
+    "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+    "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost])
+  ),
+  [LabourRevenue], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>
-<div class="doc-divider"></div>
-<!-- FAQ -->
+<!-- Sectie 5.0 — Belangrijkste Bevindingen -->
 <div class="doc-section">
-<h2>Veelgestelde vragen</h2>
-<div class="doc-faq-item">
-<div class="doc-faq-q">Wat valt er onder "arbeidskosten" bij projecten?</div>
-<div class="doc-faq-a">Arbeidskosten zijn de werkelijke kosten van uren die zijn geboekt op een project, berekend op basis van de uurtarieven van technici die zijn opgeslagen in Autotask. Kosten voor materiaal of hardware vallen hier niet onder — die verschijnen in de Charges Cost-measure.</div>
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Belangrijkste Bevindingen</span>
 </div>
-<div class="doc-faq-item">
-<div class="doc-faq-q">Waarom wijkt de "Project Total Revenue" soms af van wat is gefactureerd?</div>
-<div class="doc-faq-a">Project Total Revenue omvat arbeid-, mijlpaal- en kostenomzet zoals vastgelegd in Autotask. Timing tussen omzeterkenning en facturering, of mijlpaalprojecten waarbij betaling is gekoppeld aan voltooiing, kunnen dit bedrag laten afwijken van het geïncasseerde bedrag.</div>
-</div>
-<div class="doc-faq-item">
-<div class="doc-faq-q">Hoe vind ik projecten waarbij arbeidskosten hoger zijn dan de omzet?</div>
-<div class="doc-faq-a">Filter de rapporttabel op rijen waarbij Winst negatief is. In DAX gebruik je een FILTER rondom de SUMMARIZE om alleen projecten te retourneren waarbij [Project Profit] kleiner is dan nul.</div>
-</div>
-<div class="doc-faq-item">
-<div class="doc-faq-q">Kan ik dit per maand bekijken?</div>
-<div class="doc-faq-a">Ja. Voeg een datumdimensie toe aan de SUMMARIZE en koppel deze aan de datum van de tijdsinvoer of de aanmaakdatum van het project. De bestaande measures in het datamodel zijn filterbewust, dus een datumslicer op je rapportpagina beperkt de omzet- en kostencijfers automatisch tot de geselecteerde periode.</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>Klant B marge van 34,5% vraagt aandacht</h4>
+<p>Klant B genereert &euro;111,8K aan arbeidsomzet over 10 projecten, maar met slechts 34,5% marge &mdash; 15 punten onder het portfoliogemiddelde. Bij de streefmarge van 49,4% vertegenwoordigt dit verschil circa &euro;16,7K aan gemiste winst. Evalueer tarieven, scopebeheer en tijdregistratie voor deze klant.</p>
 </div>
 </div>
-<div class="doc-divider"></div>
-<div style="font-size: 11px; color: #94a3b8; text-align: center; padding-top: 8px;">
-          Proxuma.io · Power BI Rapporten · projectomzet-versus-arbeidskosten · Data: Autotask PSA (demodataset)
-        </div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">&#9888;</div>
+<div class="doc-finding-body">
+<h4>Fixed Price-projecten genereren kosten zonder erkende omzet</h4>
+<p>Vijf Fixed Price-projecten hebben &euro;5,8K aan arbeidskosten opgebouwd met &euro;0 aan erkende arbeidsomzet. De omzetberekening voor Fixed Price-projecten gebruikt milestone-gebaseerde erkenning. Als milestones niet zijn geconfigureerd of gekoppeld, verschijnt het werk als pure kosten. Controleer of milestones correct zijn gekoppeld aan deze projecten in Autotask.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&#10003;</div>
+<div class="doc-finding-body">
+<h4>Lopende projecten presteren boven historische marge</h4>
+<p>De 43 lopende projecten tonen een arbeidsmarge van 55,8% &mdash; 8 punten boven de 47,8% van afgeronde projecten. Deze positieve trend suggereert verbeteringen in projectscoping, tarieven of resource-allocatie. Het vasthouden van deze lijn op de &euro;261,8K lopende portfolio zou &euro;145,9K aan arbeidswinst opleveren.</p>
+</div>
+</div>
+</div>
+<!-- Sectie 6.0 — Veelgestelde Vragen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<span class="doc-section-title">Veelgestelde Vragen</span>
+</div>
+<div class="doc-faq">
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Waarom is de mediaan projectomzet zoveel lager dan het gemiddelde?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>De gemiddelde projectomzet is &euro;6.730, maar de mediaan is slechts &euro;1.879 &mdash; wat betekent dat de helft van alle projecten minder dan &euro;1.879 aan arbeidsomzet genereert. Enkele grote projecten (zoals het &euro;228,9K Klant A-traject) trekken het gemiddelde omhoog. Voor capaciteitsplanning en pricing geeft de mediaan een realistischer beeld van een typisch project.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Hoe worden de arbeidskosten in dit rapport berekend?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Arbeidskosten worden berekend op basis van tijdregistraties gekoppeld aan projecttaken. Elke tijdregistratie gebruikt de unit cost van de billing code indien beschikbaar, valt terug op het interne kosttarief van de resource, met een standaard van &euro;50/uur als laatste optie. Dit betekent dat de kostencijfers de werkelijke kosttarieven uit Autotask weerspiegelen, geen vast tarief.</p></div>
+</div>
+<div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-q"><span>Wat verklaart het margeverschil tussen afgeronde en lopende projecten?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Afgeronde projecten tonen 47,8% marge terwijl lopende projecten 55,8% laten zien. Dit kan verbeterde tarieven op nieuwere trajecten weerspiegelen, betere scopebeheersing, of simpelweg dat lopende projecten de uitloopuren nog niet hebben opgebouwd die afgeronde projecten wel hadden. Monitor de marge van lopende projecten bij afronding om te bevestigen dat de trend houdt.</p></div>
 </div>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="doc-footer">
+<span>Proxuma Power BI &middot; AI-Gegenereerd Rapport &middot; proxuma.io/powerbi</span>
+<span>Gegenereerd in &lt; 15 minuten via MCP &middot; Mei 2026</span>
+</div>
+</div>
+</div>
+<script>
+function prxCopyDAX(btn){var code=btn.parentElement.querySelector('code');if(!code)return;var ta=document.createElement('textarea');ta.value=code.textContent;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');btn.textContent='Gekopieerd!';setTimeout(function(){btn.textContent='Kopieer Query'},2000)}catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-trigger').forEach(function(t){t.addEventListener('click',function(){this.parentElement.classList.toggle('expanded')})});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Waarom is de mediaan projectomzet zoveel lager dan het gemiddelde?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De gemiddelde projectomzet is \u20ac6.730, maar de mediaan is slechts \u20ac1.879. Enkele grote projecten trekken het gemiddelde omhoog. Voor capaciteitsplanning en pricing geeft de mediaan een realistischer beeld van een typisch project."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe worden de arbeidskosten in dit rapport berekend?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Arbeidskosten worden berekend op basis van tijdregistraties gekoppeld aan projecttaken. Elke registratie gebruikt de unit cost van de billing code, valt terug op het interne kosttarief, met een standaard van \u20ac50/uur. De cijfers weerspiegelen de werkelijke kosttarieven uit Autotask."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat verklaart het margeverschil tussen afgeronde en lopende projecten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Afgeronde projecten tonen 47,8% marge terwijl lopende projecten 55,8% laten zien. Dit kan verbeterde tarieven op nieuwere trajecten weerspiegelen, betere scopebeheersing, of dat lopende projecten de uitloopuren nog niet hebben opgebouwd. Monitor de marge bij afronding om de trend te bevestigen."
+      }
+    }
+  ]
+}
+</script>
 <!-- RELATED REPORTS -->
 <div class="related-reports">
 <h2>Gerelateerde rapporten</h2>
@@ -915,8 +1155,8 @@ document.querySelector('.prx-morph-input').addEventListener('keydown', function(
   "description": "",
   "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
   "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
-  "datePublished": "2026-04-06",
-  "dateModified": "2026-04-06",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07",
   "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/projectomzet-versus-arbeidskosten/",
   "proficiencyLevel": "Beginner",
   "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",

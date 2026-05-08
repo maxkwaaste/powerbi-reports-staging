@@ -713,85 +713,331 @@ A data-driven analysis of <strong>project revenue vs</strong> labor cost from yo
 <div class="doc-type">AI-Generated Power BI Report</div>
 </div>
 <div class="doc-header-right">
+<div class="doc-meta-row"><strong>Report:</strong> PRX-PROJ-001</div>
+<div class="doc-meta-row"><strong>Source:</strong> Autotask PSA</div>
+<div class="doc-meta-row"><strong>Generated:</strong> May 2026</div>
 </div>
 </div><div class="doc-title-block">
 <div class="doc-title">Project Revenue vs Labor Cost</div>
-<p class="doc-subtitle">A data-driven analysis of <strong>project revenue vs</strong> labor cost from your Power BI environment, with breakdowns and actionable findings.</p>
+<p class="doc-subtitle">A data-driven analysis of <strong>project revenue versus labor cost</strong> across 279 projects in your Autotask PSA environment, with breakdowns by status, client, contract type, and project lead.</p>
 </div>
-<div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
+<div class="doc-demo"><strong>Anonymized Report:</strong> This report uses real operational data from Autotask PSA. Company names and contact details have been anonymized. Project names reflect generic categories.</div>
 <div class="doc-body">
+<!-- Section 1.0 — Summary Metrics -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">1.0</span>
 <span class="doc-section-title">Summary Metrics</span>
 </div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAL LABOUR REVENUE</div>
+<div class="doc-kpi-value">&euro;1.43M</div>
+<div class="doc-kpi-note muted">214 projects with revenue</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAL LABOUR COST</div>
+<div class="doc-kpi-value">&euro;724.9K</div>
+<div class="doc-kpi-note muted">15,616 hours logged</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">LABOUR MARGIN</div>
+<div class="doc-kpi-value">49.4%</div>
+<div class="doc-kpi-note green">Median project: &euro;1,879</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">AVG REVENUE / PROJECT</div>
+<div class="doc-kpi-value">&euro;6,730</div>
+<div class="doc-kpi-note muted">Avg cost: &euro;3,387</div>
+</div>
+</div>
 <div class="dax-toggle">
 <div class="dax-trigger">
 <svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
-<span>View DAX Query — Summary query</span>
+<span>View DAX Query &mdash; Summary query</span>
 </div>
 <div class="dax-content">
 <pre><code>EVALUATE ROW(
   "TotalProjects", COUNTROWS('BI_Autotask_Projects'),
   "TotalLabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
   "TotalLabourCost", SUM('BI_Autotask_Projects'[Labour Cost]),
-  "AvgProjectMargin", DIVIDE(SUM('BI_Autotask_Projects'[Labour Revenue]) - SUM('BI_Autotask_Projects'[Labour Cost]), SUM('BI_Autotask_Projects'[Labour Revenue])),
-  "TotalHoursWorked", SUM('BI_Autotask_Time_Entries'[hours_worked]),
-  "TotalHoursBilled", SUM('BI_Autotask_Time_Entries'[hours_to_bill])
+  "LabourMargin", DIVIDE(
+    SUM('BI_Autotask_Projects'[Labour Revenue]) - SUM('BI_Autotask_Projects'[Labour Cost]),
+    SUM('BI_Autotask_Projects'[Labour Revenue]), 0
+  ),
+  "TotalHoursWorked", SUM('BI_Autotask_Time_Entries'[hours_worked])
 )</code></pre>
 <button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 <div class="doc-dax-box" style="margin-top:12px;">
 <strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran. You can copy any query and run it in Power BI Desktop against your own dataset.
-      </div>
 </div>
+</div>
+<!-- Section 2.0 — Revenue vs Cost by Project Status -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">2.0</span>
-<span class="doc-section-title">Analysis</span>
+<span class="doc-section-title">Revenue vs Cost by Project Status</span>
 </div>
-<p class="doc-section-sub">What the data is telling us</p>
-<div class="narrative"><p>The data above paints a picture of <strong>project revenue vs labor cost</strong> across your MSP operations. Look for patterns, outliers, and trends that warrant attention. Each section includes the DAX query used, so you can drill deeper into any metric that catches your eye.</p></div>
+<p class="doc-section-sub">How labour revenue and cost compare across project lifecycle stages</p>
+<div class="narrative"><p>Completed projects account for <strong>78.9%</strong> of total labour revenue (&euro;1.13M across 198 projects). In-progress projects show a notably higher margin (<strong>55.8%</strong>) compared to completed projects (47.8%), suggesting that recent projects are more efficiently staffed or use higher billing rates. On-hold projects still carry &euro;8.2K in sunk labour cost with limited revenue potential until reactivated.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Complete</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;1.13M</span></div></div>
 </div>
+<div class="hbar-row">
+<div class="hbar-label">In Progress</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:23.2%"><span class="hbar-val">&euro;261.8K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">On Hold</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:1.5%"><span class="hbar-val outside">&euro;16.7K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">New</div>
+<div class="hbar-track"><div class="hbar-fill slate" style="width:0.5%"><span class="hbar-val outside">&euro;1.4K</span></div></div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Status breakdown</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Projects'[project_status_name],
+  "Count", COUNTROWS('BI_Autotask_Projects'),
+  "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+  "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost])
+)
+ORDER BY [LabourRevenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Status</th><th>Projects</th><th>Labour Revenue</th><th>Labour Cost</th><th>Margin</th></tr>
+</thead>
+<tbody>
+<tr><td>Complete</td><td class="num">198</td><td class="num">&euro;1,130,090</td><td class="num">&euro;589,680</td><td class="num num-warn">47.8%</td></tr>
+<tr><td>In Progress</td><td class="num">43</td><td class="num">&euro;261,787</td><td class="num">&euro;115,629</td><td class="num num-ok">55.8%</td></tr>
+<tr><td>On Hold</td><td class="num">7</td><td class="num">&euro;16,704</td><td class="num">&euro;8,182</td><td class="num num-ok">51.0%</td></tr>
+<tr><td>New</td><td class="num">15</td><td class="num">&euro;1,430</td><td class="num">&euro;662</td><td class="num num-ok">53.7%</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Section 3.0 — Top Clients by Profitability -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">3.0</span>
-<span class="doc-section-title">Recommended Actions</span>
+<span class="doc-section-title">Top Clients by Profitability</span>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>1. Schedule Recurring Review</h4>
-<p>Set up a weekly or monthly review of project revenue vs labor cost metrics. Trends matter more than snapshots. Use the DAX queries in this report as your starting point.</p>
+<p class="doc-section-sub">The 10 highest-revenue clients and their labour margins</p>
+<div class="narrative"><p>The top 10 clients generate <strong>&euro;962.6K</strong> in labour revenue &mdash; 67.1% of the total. <strong>Client A</strong> leads with &euro;228.9K but at a below-average margin of 44.6%. <strong>Client B</strong> is a concern at <strong>34.5% margin</strong> across 10 projects &mdash; the lowest among top clients. <strong>Client E</strong> achieves the best margin at 60.2% across 10 projects, suggesting efficient project execution or favorable billing rates.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Client A</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;228.9K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Client B</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:48.8%"><span class="hbar-val">&euro;111.8K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Client C</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:43.5%"><span class="hbar-val">&euro;99.5K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Client D</div>
+<div class="hbar-track"><div class="hbar-fill navy" style="width:39.1%"><span class="hbar-val">&euro;89.6K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Client E</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:35.7%"><span class="hbar-val">&euro;81.7K</span></div></div>
 </div>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>2. Connect Your Own Data</h4>
-<p>This report uses demo data. Connect Proxuma Power BI to your own Autotask PSA to generate this analysis from your real numbers.</p>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Top clients</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+  10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Projects'[company_name],
+    "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+    "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost]),
+    "ProjectCount", COUNTROWS('BI_Autotask_Projects')
+  ),
+  [LabourRevenue], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
+<table>
+<thead>
+<tr><th>Client</th><th>Projects</th><th>Labour Revenue</th><th>Labour Cost</th><th>Profit</th><th>Margin</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Client A</td><td class="num">4</td><td class="num">&euro;228,933</td><td class="num">&euro;126,812</td><td class="num">&euro;102,121</td><td class="num num-warn">44.6%</td></tr>
+<tr><td class="client-name">Client B</td><td class="num">10</td><td class="num">&euro;111,811</td><td class="num">&euro;73,207</td><td class="num">&euro;38,604</td><td class="num num-danger">34.5%</td></tr>
+<tr><td class="client-name">Client C</td><td class="num">29</td><td class="num">&euro;99,535</td><td class="num">&euro;46,640</td><td class="num">&euro;52,895</td><td class="num num-ok">53.1%</td></tr>
+<tr><td class="client-name">Client D</td><td class="num">3</td><td class="num">&euro;89,641</td><td class="num">&euro;41,346</td><td class="num">&euro;48,295</td><td class="num num-ok">53.9%</td></tr>
+<tr><td class="client-name">Client E</td><td class="num">10</td><td class="num">&euro;81,714</td><td class="num">&euro;32,485</td><td class="num">&euro;49,229</td><td class="num num-ok">60.2%</td></tr>
+<tr><td class="client-name">Client F</td><td class="num">2</td><td class="num">&euro;69,025</td><td class="num">&euro;32,011</td><td class="num">&euro;37,014</td><td class="num num-ok">53.6%</td></tr>
+<tr><td class="client-name">Client G</td><td class="num">3</td><td class="num">&euro;53,226</td><td class="num">&euro;27,706</td><td class="num">&euro;25,520</td><td class="num num-warn">47.9%</td></tr>
+<tr><td class="client-name">Client H</td><td class="num">5</td><td class="num">&euro;52,652</td><td class="num">&euro;24,467</td><td class="num">&euro;28,185</td><td class="num num-ok">53.5%</td></tr>
+<tr><td class="client-name">Client I</td><td class="num">4</td><td class="num">&euro;40,194</td><td class="num">&euro;18,134</td><td class="num">&euro;22,060</td><td class="num num-ok">54.9%</td></tr>
+<tr><td class="client-name">Client J</td><td class="num">3</td><td class="num">&euro;35,828</td><td class="num">&euro;17,200</td><td class="num">&euro;18,628</td><td class="num num-ok">52.0%</td></tr>
+</tbody>
+</table>
 </div>
-<!-- FAQ -->
+<!-- Section 4.0 — Contract Type & Project Lead Analysis -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Contract Type &amp; Project Lead Analysis</span>
+</div>
+<p class="doc-section-sub">How contract structure and project leadership affect profitability</p>
+<div class="narrative"><p>Time &amp; Materials contracts dominate (239 of 279 projects) with a <strong>50.1% margin</strong>. Fixed Price projects show a <strong>negative contribution</strong> &mdash; &euro;5.8K in labour cost with zero recognized labour revenue. Among project leads, <strong>Lead A</strong> stands out with a 58.7% margin across 58 projects, while <strong>Lead C</strong> handles 55% of all projects at 47.1% margin.</p></div>
+<div class="chart-row">
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg teal" cx="60" cy="60" r="50" stroke-dasharray="157.39 156.77" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">50.1%</text>
+<text class="donut-sublabel" x="60" y="72">&euro;1.40M</text>
+</svg>
+<div class="donut-label">Time &amp; Materials</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg amber" cx="60" cy="60" r="50" stroke-dasharray="132.57 181.59" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">42.2%</text>
+<text class="donut-sublabel" x="60" y="72">&euro;32K</text>
+</svg>
+<div class="donut-label">No Contract</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg navy" cx="60" cy="60" r="50" stroke-dasharray="155.19 158.97" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">49.4%</text>
+<text class="donut-sublabel" x="60" y="72">&euro;1.44M</text>
+</svg>
+<div class="donut-label">Overall</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; By contract type</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Projects'[contract_type_name],
+  "Count", COUNTROWS('BI_Autotask_Projects'),
+  "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+  "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost])
+)
+ORDER BY [LabourRevenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+<div style="margin-top:20px;">
+<p class="doc-section-sub">Project lead performance (top 3 by revenue)</p>
+</div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Lead C</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;697.4K &middot; 47.1%</span></div></div>
+<div class="hbar-note">154 proj</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Lead B</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:64.1%"><span class="hbar-val">&euro;446.6K &middot; 47.8%</span></div></div>
+<div class="hbar-note">22 proj</div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Lead A</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:34.3%"><span class="hbar-val">&euro;239.1K &middot; 58.7%</span></div></div>
+<div class="hbar-note">58 proj</div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; By project lead</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+  8,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Projects'[project_lead_name],
+    "ProjectCount", COUNTROWS('BI_Autotask_Projects'),
+    "LabourRevenue", SUM('BI_Autotask_Projects'[Labour Revenue]),
+    "LabourCost", SUM('BI_Autotask_Projects'[Labour Cost])
+  ),
+  [LabourRevenue], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Section 5.0 — Key Findings -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Key Findings</span>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>Client B margin at 34.5% needs attention</h4>
+<p>Client B generates &euro;111.8K in labour revenue across 10 projects, but at only 34.5% margin &mdash; 15 points below the portfolio average. At the 49.4% target margin, this gap represents approximately &euro;16.7K in missed profit. Review billing rates, scope management, and time tracking for this client.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">&#9888;</div>
+<div class="doc-finding-body">
+<h4>Fixed Price projects generate cost without recognized revenue</h4>
+<p>Five Fixed Price projects accumulated &euro;5.8K in labour cost with &euro;0 in recognized labour revenue. The revenue calculation for Fixed Price projects uses milestone-based recognition. If milestones are not configured or linked, the work shows as pure cost. Verify that milestones are properly linked to these projects in Autotask.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&#10003;</div>
+<div class="doc-finding-body">
+<h4>In-progress projects outperform historical margin</h4>
+<p>The 43 projects currently in progress show a 55.8% labour margin &mdash; 8 points above the 47.8% on completed projects. This positive trend suggests improvements in project scoping, billing rates, or resource allocation. Maintaining this trajectory on the &euro;261.8K in-progress portfolio would generate &euro;145.9K in labour profit.</p>
+</div>
+</div>
+</div>
+<!-- Section 6.0 — FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
 <span class="doc-section-title">Frequently Asked Questions</span>
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What does the "Schedule Recurring Review" insight mean in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This insight highlights a pattern detected in your data that may require attention. The Project Revenue vs Labor Cost report surfaces this through automated analysis of the underlying dataset.</p></div>
+<div class="faq-q"><span>Why is the median project revenue so much lower than the average?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>The average project revenue is &euro;6,730 but the median is just &euro;1,879 &mdash; meaning half of all projects generate less than &euro;1,879 in labour revenue. A few large projects (such as the &euro;228.9K Client A engagement) pull the average up significantly. For capacity planning and pricing, the median gives a more realistic picture of a typical project.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria.</p></div>
+<div class="faq-q"><span>How is labour cost calculated in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Labour cost is calculated from time entries linked to project tasks. Each time entry uses the billing code unit cost when available, falling back to the resource internal cost rate, with a &euro;50/hour default as a last resort. This means the cost figure reflects actual cost rates configured in Autotask, not a flat rate.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What action should I take based on the "Schedule Recurring Review" recommendation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions.</p></div>
+<div class="faq-q"><span>What explains the margin difference between completed and in-progress projects?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Completed projects show 47.8% margin while in-progress projects show 55.8%. This could reflect improved billing rates on newer engagements, better scope control, or simply that in-progress projects have not yet incurred the overrun hours that completed projects did. Monitor the in-progress margin as these projects complete to confirm the trend holds.</p></div>
 </div>
 </div>
 </div>
@@ -799,16 +1045,14 @@ A data-driven analysis of <strong>project revenue vs</strong> labor cost from yo
 </div>
 </div>
 <div class="doc-footer">
-<span>Proxuma Power BI · AI-Generated Report · proxuma.io/powerbi</span>
-<span>Generated in &lt; 15 minutes via MCP · March 2026</span>
+<span>Proxuma Power BI &middot; AI-Generated Report &middot; proxuma.io/powerbi</span>
+<span>Generated in &lt; 15 minutes via MCP &middot; May 2026</span>
 </div>
 </div>
 </div>
 <script>
-catch(e){}document.body.removeChild(ta)}
-</script>
-<script>
-catch(e){}document.body.removeChild(ta)}
+function prxCopyDAX(btn){var code=btn.parentElement.querySelector('code');if(!code)return;var ta=document.createElement('textarea');ta.value=code.textContent;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},2000)}catch(e){}document.body.removeChild(ta)}
+document.querySelectorAll('.dax-trigger').forEach(function(t){t.addEventListener('click',function(){this.parentElement.classList.toggle('expanded')})});
 </script>
 <script type="application/ld+json">
 {
@@ -817,26 +1061,26 @@ catch(e){}document.body.removeChild(ta)}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does the \"Schedule Recurring Review\" insight mean in this report?",
+      "name": "Why is the median project revenue so much lower than the average?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This insight highlights a pattern detected in your data that may require attention. The Project Revenue vs Labor Cost report surfaces this through automated analysis of the underlying dataset."
+        "text": "The average project revenue is \u20ac6,730 but the median is just \u20ac1,879. A few large projects pull the average up significantly. For capacity planning and pricing, the median gives a more realistic picture of a typical project."
       }
     },
     {
       "@type": "Question",
-      "name": "Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?",
+      "name": "How is labour cost calculated in this report?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria."
+        "text": "Labour cost is calculated from time entries linked to project tasks. Each time entry uses the billing code unit cost when available, falling back to the resource internal cost rate, with a \u20ac50/hour default. The cost figure reflects actual cost rates configured in Autotask."
       }
     },
     {
       "@type": "Question",
-      "name": "What action should I take based on the \"Schedule Recurring Review\" recommendation?",
+      "name": "What explains the margin difference between completed and in-progress projects?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions."
+        "text": "Completed projects show 47.8% margin while in-progress projects show 55.8%. This could reflect improved billing rates on newer engagements, better scope control, or that in-progress projects have not yet incurred overrun hours. Monitor the in-progress margin as these projects complete."
       }
     }
   ]
@@ -905,8 +1149,8 @@ catch(e){}document.body.removeChild(ta)}
   "description": "Project Revenue vs Labor Cost — AI-generated Power BI report analyzing project revenue vs labor cost for managed service providers.",
   "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
   "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
-  "datePublished": "2026-04-06",
-  "dateModified": "2026-04-06",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07",
   "mainEntityOfPage": "https://proxuma.io/powerbi/insights/project-revenue-vs-labor-cost/",
   "proficiencyLevel": "Beginner",
   "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
@@ -928,7 +1172,6 @@ catch(e){}document.body.removeChild(ta)}
 </script>
 <!-- Scroll trigger + DAX copy + CTA hover JS -->
 <script>
-catch(e){}document.body.removeChild(ta)}
 function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
 document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
 

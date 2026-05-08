@@ -712,109 +712,374 @@ A data-driven analysis of <strong>billing charge allocation</strong> conflicts f
 <div class="doc-type">AI-Generated Power BI Report</div>
 </div>
 <div class="doc-header-right">
+<div class="doc-meta-row"><strong>Report ID:</strong> PRX-2026-041</div>
+<div class="doc-meta-row"><strong>Generated:</strong> May 2026</div>
+<div class="doc-meta-row"><strong>Source:</strong> Autotask PSA</div>
 </div>
 </div><div class="doc-title-block">
 <div class="doc-title">Billing Charge Allocation Conflicts</div>
-<p class="doc-subtitle">A data-driven analysis of <strong>billing charge allocation</strong> conflicts from your Power BI environment, with breakdowns and actionable findings.</p>
+<p class="doc-subtitle">Data-driven analysis of charge allocation conflicts across <strong>7,155 charges</strong> and <strong>125,751 billing items</strong>, identifying unallocated charges, negative margins, and revenue discrepancies in your Autotask PSA billing pipeline.</p>
 </div>
-<div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
+<div class="doc-demo"><strong>Demo Report:</strong> This report uses anonymized client data from a real Autotask PSA environment. Names have been replaced with pseudonyms. Connect your own data source to generate this analysis from your billing records.</div>
 <div class="doc-body">
+
+<!-- SECTION 1: SUMMARY METRICS -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">1.0</span>
 <span class="doc-section-title">Summary Metrics</span>
 </div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">Total Charges</div>
+<div class="doc-kpi-value">7,155</div>
+<div class="doc-kpi-note muted">2,242 allocated to contracts</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Unallocated</div>
+<div class="doc-kpi-value">68.7%</div>
+<div class="doc-kpi-note red">4,913 charges without contract</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Negative Margin</div>
+<div class="doc-kpi-value">149</div>
+<div class="doc-kpi-note amber">Cost exceeds billable amount</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">Billing Adjustments</div>
+<div class="doc-kpi-value">2,129</div>
+<div class="doc-kpi-note muted">Sub-type 14 correction entries</div>
+</div>
+</div>
 <div class="dax-toggle">
 <div class="dax-trigger">
-<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
-<span>View DAX Query — Summary query</span>
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Charges Summary</span>
 </div>
 <div class="dax-content">
 <pre><code>EVALUATE
-VAR NegMargin = CALCULATE(COUNTROWS('BI_Autotask_Billing_Items'), 'BI_Autotask_Billing_Items'[total_amount] &lt; 'BI_Autotask_Billing_Items'[our_cost])
-VAR NegAmount = CALCULATE(COUNTROWS('BI_Autotask_Billing_Items'), 'BI_Autotask_Billing_Items'[total_amount] &lt; 0)
-VAR NegCost = CALCULATE(COUNTROWS('BI_Autotask_Billing_Items'), 'BI_Autotask_Billing_Items'[our_cost] &lt; 0)
-VAR ZeroAmt = CALCULATE(COUNTROWS('BI_Autotask_Billing_Items'), 'BI_Autotask_Billing_Items'[total_amount] = 0)
-VAR ZeroCostPaid = CALCULATE(COUNTROWS('BI_Autotask_Billing_Items'), 'BI_Autotask_Billing_Items'[our_cost] = 0, 'BI_Autotask_Billing_Items'[total_amount] &gt; 0)
-VAR Adjustments = CALCULATE(COUNTROWS('BI_Autotask_Billing_Items'), 'BI_Autotask_Billing_Items'[sub_type] = 14)
+VAR TotalCharges = COUNTROWS('BI_Autotask_Charges')
+VAR ChargesWithContract = CALCULATE(
+    COUNTROWS('BI_Autotask_Charges'),
+    NOT ISBLANK('BI_Autotask_Charges'[contract_id])
+)
+VAR ChargesWithoutContract = CALCULATE(
+    COUNTROWS('BI_Autotask_Charges'),
+    ISBLANK('BI_Autotask_Charges'[contract_id])
+)
+VAR TotalBillable = CALCULATE(SUM('BI_Autotask_Charges'[billable_amount]))
+VAR TotalCost = CALCULATE(SUM('BI_Autotask_Charges'[extended_cost]))
+VAR NegativeMarginCharges = CALCULATE(
+    COUNTROWS('BI_Autotask_Charges'),
+    'BI_Autotask_Charges'[billable_amount] &lt; 'BI_Autotask_Charges'[extended_cost]
+)
+VAR ZeroBillableCharges = CALCULATE(
+    COUNTROWS('BI_Autotask_Charges'),
+    'BI_Autotask_Charges'[billable_amount] = 0,
+    'BI_Autotask_Charges'[extended_cost] &gt; 0
+)
 RETURN ROW(
-  "NegativeMarginItems", NegMargin,
-  "NegativeAmountItems", NegAmount,
-  "NegativeCostItems", NegCost,
-  "ZeroAmountItems", ZeroAmt,
-  "ZeroCostPaidItems", ZeroCostPaid,
-  "AdjustmentItems", Adjustments
+    "TotalCharges", TotalCharges,
+    "WithContract", ChargesWithContract,
+    "WithoutContract", ChargesWithoutContract,
+    "TotalBillable", TotalBillable,
+    "TotalCost", TotalCost,
+    "NegativeMargin", NegativeMarginCharges,
+    "ZeroBillablePaidCost", ZeroBillableCharges
 )</code></pre>
 <button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 <div class="doc-dax-box" style="margin-top:12px;">
-<strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran. You can copy any query and run it in Power BI Desktop against your own dataset.
-      </div>
+<strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran against a live Autotask dataset. You can copy any query and run it in Power BI Desktop against your own data.
 </div>
+</div>
+
+<!-- SECTION 2: CHARGE ALLOCATION BREAKDOWN -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">2.0</span>
-<span class="doc-section-title">Analysis</span>
+<span class="doc-section-title">Charge Allocation Breakdown</span>
 </div>
-<p class="doc-section-sub">What the data is telling us</p>
-<div class="narrative"><p>The data above paints a picture of <strong>billing charge allocation conflicts</strong> across your MSP operations. Look for patterns, outliers, and trends that warrant attention. Each section includes the DAX query used, so you can drill deeper into any metric that catches your eye.</p></div>
+<div class="narrative">
+<p>Of the <strong>7,155 total charges</strong> in the dataset, only 2,242 (31.3%) are linked to a contract. The remaining <strong>4,913 charges (68.7%)</strong> float without contract allocation, representing &euro;2.75M in billable revenue that cannot be attributed to specific service agreements. Charges linked to contracts account for &euro;3.94M in billable revenue with zero recorded cost, while unallocated charges carry &euro;2.57M in cost.</p>
 </div>
+<div class="chart-row">
+<div class="donut-chart">
+<svg viewBox="0 0 120 120" width="130" height="130">
+<circle class="donut-bg" cx="60" cy="60" r="50"/>
+<circle class="donut-fg teal" cx="60" cy="60" r="50" stroke-dasharray="98.33 314.16" stroke-dashoffset="0"/>
+<text class="donut-value" x="60" y="56">31.3%</text>
+<text class="donut-sublabel" x="60" y="72">allocated</text>
+</svg>
+<span class="donut-label">Contract Linked</span>
+</div>
+<div class="donut-chart">
+<svg viewBox="0 0 120 120" width="130" height="130">
+<circle class="donut-bg" cx="60" cy="60" r="50"/>
+<circle class="donut-fg red" cx="60" cy="60" r="50" stroke-dasharray="215.83 314.16" stroke-dashoffset="0"/>
+<text class="donut-value" x="60" y="56">68.7%</text>
+<text class="donut-sublabel" x="60" y="72">unallocated</text>
+</svg>
+<span class="donut-label">No Contract</span>
+</div>
+<div class="donut-chart">
+<svg viewBox="0 0 120 120" width="130" height="130">
+<circle class="donut-bg" cx="60" cy="60" r="50"/>
+<circle class="donut-fg amber" cx="60" cy="60" r="50" stroke-dasharray="6.54 314.16" stroke-dashoffset="0"/>
+<text class="donut-value" x="60" y="56">2.1%</text>
+<text class="donut-sublabel" x="60" y="72">neg. margin</text>
+</svg>
+<span class="donut-label">Negative Margin</span>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Contract</th><th>Charges</th><th style="text-align:right">Billable (&euro;)</th><th style="text-align:right">Cost (&euro;)</th><th style="text-align:right">Neg. Margin</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">(no contract)</td><td class="num">4,913</td><td class="num">2,754,843</td><td class="num num-danger">2,573,283</td><td class="num num-warn">49</td></tr>
+<tr><td class="client-name">Contract A</td><td class="num">1,773</td><td class="num">3,628,565</td><td class="num num-ok">0</td><td class="num num-danger">100</td></tr>
+<tr><td class="client-name">Contract B</td><td class="num">369</td><td class="num">50,124</td><td class="num num-ok">0</td><td class="num">&mdash;</td></tr>
+<tr><td class="client-name">Contract C</td><td class="num">78</td><td class="num">132,243</td><td class="num num-ok">0</td><td class="num">&mdash;</td></tr>
+<tr><td class="client-name">Contract D</td><td class="num">13</td><td class="num">128,817</td><td class="num num-ok">0</td><td class="num">&mdash;</td></tr>
+<tr><td class="client-name">Contract E</td><td class="num">7</td><td class="num">2,379</td><td class="num num-ok">0</td><td class="num">&mdash;</td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Charges by Contract</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+    10,
+    ADDCOLUMNS(
+        SUMMARIZE(
+            'BI_Autotask_Charges',
+            'BI_Autotask_Charges'[contract_name]
+        ),
+        "ChargeCount", CALCULATE(COUNTROWS('BI_Autotask_Charges')),
+        "BillableTotal", CALCULATE(SUM('BI_Autotask_Charges'[billable_amount])),
+        "CostTotal", CALCULATE(SUM('BI_Autotask_Charges'[extended_cost])),
+        "NegMarginCount", CALCULATE(
+            COUNTROWS('BI_Autotask_Charges'),
+            'BI_Autotask_Charges'[billable_amount]
+                &lt; 'BI_Autotask_Charges'[extended_cost]
+        )
+    ),
+    [ChargeCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+
+<!-- SECTION 3: BILLING ITEM CONFLICT ANALYSIS -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">3.0</span>
-<span class="doc-section-title">Recommended Actions</span>
+<span class="doc-section-title">Billing Item Conflict Analysis</span>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>1. Schedule Recurring Review</h4>
-<p>Set up a weekly or monthly review of billing charge allocation conflicts metrics. Trends matter more than snapshots. Use the DAX queries in this report as your starting point.</p>
+<div class="narrative">
+<p>Across <strong>125,751 billing items</strong>, a total of 52,305 (41.6%) show negative margin where recorded cost exceeds billed revenue. The largest contributor is sub-type 1 (recurring items): 69,321 items generating only &euro;274K in revenue against &euro;1.21M in cost. Sub-type 12 (service bundles) carries the highest absolute revenue at &euro;9.58M but still shows 2,244 negative-margin items.</p>
 </div>
-</div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>2. Connect Your Own Data</h4>
-<p>This report uses demo data. Connect Proxuma Power BI to your own Autotask PSA to generate this analysis from your real numbers.</p>
+<div class="hbar-chart">
+<div class="hbar-row">
+<span class="hbar-label">Recurring (1)</span>
+<div class="hbar-track">
+<div class="hbar-fill red" style="width:100%"><span class="hbar-val">69,321</span></div>
 </div>
 </div>
+<div class="hbar-row">
+<span class="hbar-label">Svc Bundle (12)</span>
+<div class="hbar-track">
+<div class="hbar-fill teal" style="width:61.5%"><span class="hbar-val">42,607</span></div>
 </div>
-<!-- FAQ -->
+</div>
+<div class="hbar-row">
+<span class="hbar-label">Charge (7)</span>
+<div class="hbar-track">
+<div class="hbar-fill amber" style="width:6.6%"><span class="hbar-val outside">4,597</span></div>
+</div>
+</div>
+<div class="hbar-row">
+<span class="hbar-label">Time Entry (2)</span>
+<div class="hbar-track">
+<div class="hbar-fill blue" style="width:5.7%"><span class="hbar-val outside">3,943</span></div>
+</div>
+</div>
+<div class="hbar-row">
+<span class="hbar-label">Adjustment (14)</span>
+<div class="hbar-track">
+<div class="hbar-fill slate" style="width:3.1%"><span class="hbar-val outside">2,129</span></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Sub Type</th><th style="text-align:right">Items</th><th style="text-align:right">Revenue (&euro;)</th><th style="text-align:right">Cost (&euro;)</th><th style="text-align:right">Neg. Margin</th><th style="text-align:right">Margin %</th></tr>
+</thead>
+<tbody>
+<tr><td>1 &mdash; Recurring</td><td class="num">69,321</td><td class="num">273,878</td><td class="num num-danger">1,207,179</td><td class="num num-danger">48,414</td><td class="num"><span class="pct-badge pct-bad">&minus;341%</span></td></tr>
+<tr><td>12 &mdash; Service Bundle</td><td class="num">42,607</td><td class="num">9,577,503</td><td class="num">4,025,063</td><td class="num num-warn">2,244</td><td class="num"><span class="pct-badge pct-ok">+58%</span></td></tr>
+<tr><td>7 &mdash; Charge</td><td class="num">4,597</td><td class="num">2,644,523</td><td class="num">2,483,170</td><td class="num">47</td><td class="num"><span class="pct-badge pct-mid">+6%</span></td></tr>
+<tr><td>2 &mdash; Time Entry</td><td class="num">3,943</td><td class="num">917,546</td><td class="num">453,912</td><td class="num num-warn">668</td><td class="num"><span class="pct-badge pct-ok">+51%</span></td></tr>
+<tr><td>14 &mdash; Adjustment</td><td class="num">2,129</td><td class="num">17,017</td><td class="num num-ok">&minus;75,734</td><td class="num num-warn">805</td><td class="num"><span class="pct-badge pct-mid">n/a</span></td></tr>
+<tr><td>21 &mdash; Milestone</td><td class="num">2,047</td><td class="num">3,845,490</td><td class="num num-ok">0</td><td class="num num-danger">100</td><td class="num"><span class="pct-badge pct-ok">+100%</span></td></tr>
+<tr><td>11 &mdash; Expense</td><td class="num">737</td><td class="num">10,981</td><td class="num">5,364</td><td class="num">14</td><td class="num"><span class="pct-badge pct-ok">+51%</span></td></tr>
+<tr><td>22 &mdash; Subscription</td><td class="num">187</td><td class="num">94,305</td><td class="num num-ok">0</td><td class="num">&mdash;</td><td class="num"><span class="pct-badge pct-ok">+100%</span></td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Billing Items by Sub-Type</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+    8,
+    ADDCOLUMNS(
+        SUMMARIZE(
+            'BI_Autotask_Billing_Items',
+            'BI_Autotask_Billing_Items'[sub_type]
+        ),
+        "ItemCount", CALCULATE(COUNTROWS('BI_Autotask_Billing_Items')),
+        "Revenue", CALCULATE(SUM('BI_Autotask_Billing_Items'[total_amount])),
+        "Cost", CALCULATE(SUM('BI_Autotask_Billing_Items'[our_cost])),
+        "NegMargin", CALCULATE(
+            COUNTROWS('BI_Autotask_Billing_Items'),
+            'BI_Autotask_Billing_Items'[total_amount]
+                &lt; 'BI_Autotask_Billing_Items'[our_cost]
+        )
+    ),
+    [ItemCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+
+<!-- SECTION 4: CLIENT-LEVEL CHARGE CONFLICTS -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Client-Level Charge Conflicts</span>
+</div>
+<div class="narrative">
+<p>When broken down by client, charge allocation conflicts concentrate around a small number of accounts. <strong>Client A</strong> stands out with 70 of its 146 charges (47.9%) showing negative margin. <strong>Client B</strong> has the highest charge volume (1,696) with 16 negative-margin items, while <strong>Client C</strong> shows 13 conflicts across just 26 charges &mdash; a 50% conflict rate on zero billable revenue.</p>
+</div>
+<table>
+<thead>
+<tr><th>Client</th><th style="text-align:right">Charges</th><th style="text-align:right">Neg. Margin</th><th style="text-align:right">Billable (&euro;)</th><th style="text-align:right">Cost (&euro;)</th><th style="text-align:right">Conflict Rate</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Client A</td><td class="num">146</td><td class="num num-danger">70</td><td class="num">15,690</td><td class="num">2,301</td><td class="num"><span class="pct-badge pct-bad">47.9%</span></td></tr>
+<tr><td class="client-name">Client B</td><td class="num">1,696</td><td class="num num-warn">16</td><td class="num">1,070,944</td><td class="num">288,539</td><td class="num"><span class="pct-badge pct-ok">0.9%</span></td></tr>
+<tr><td class="client-name">Client C</td><td class="num">26</td><td class="num num-danger">13</td><td class="num">0</td><td class="num">0</td><td class="num"><span class="pct-badge pct-bad">50.0%</span></td></tr>
+<tr><td class="client-name">Client D</td><td class="num">17</td><td class="num num-warn">8</td><td class="num">1,568</td><td class="num">0</td><td class="num"><span class="pct-badge pct-bad">47.1%</span></td></tr>
+<tr><td class="client-name">Client E</td><td class="num">40</td><td class="num num-warn">5</td><td class="num">9,856</td><td class="num">5,341</td><td class="num"><span class="pct-badge pct-mid">12.5%</span></td></tr>
+<tr><td class="client-name">Client F</td><td class="num">554</td><td class="num">4</td><td class="num">727,158</td><td class="num">205,825</td><td class="num"><span class="pct-badge pct-ok">0.7%</span></td></tr>
+<tr><td class="client-name">Client G</td><td class="num">62</td><td class="num">4</td><td class="num">658,462</td><td class="num">327,180</td><td class="num"><span class="pct-badge pct-mid">6.5%</span></td></tr>
+<tr><td class="client-name">Client H</td><td class="num">200</td><td class="num">3</td><td class="num">411,102</td><td class="num">101,112</td><td class="num"><span class="pct-badge pct-ok">1.5%</span></td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Client Charge Conflicts</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(
+    10,
+    FILTER(
+        ADDCOLUMNS(
+            SUMMARIZE(
+                'BI_Autotask_Charges',
+                'BI_Autotask_Charges'[company_id]
+            ),
+            "ChargeCount", CALCULATE(COUNTROWS('BI_Autotask_Charges')),
+            "BillableTotal", CALCULATE(SUM('BI_Autotask_Charges'[billable_amount])),
+            "CostTotal", CALCULATE(SUM('BI_Autotask_Charges'[extended_cost])),
+            "NegMargin", CALCULATE(
+                COUNTROWS('BI_Autotask_Charges'),
+                'BI_Autotask_Charges'[billable_amount]
+                    &lt; 'BI_Autotask_Charges'[extended_cost]
+            ),
+            "CompanyName", CALCULATE(MAX('BI_Autotask_Companies'[company_name]))
+        ),
+        [NegMargin] &gt; 0
+    ),
+    [NegMargin], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+
+<!-- SECTION 5: KEY FINDINGS -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Key Findings</span>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>68.7% of charges lack contract allocation</h4>
+<p>4,913 of 7,155 charges have no linked contract, making it impossible to attribute &euro;2.75M in revenue to specific service agreements. This creates blind spots in profitability reporting and undermines contract renewal decisions.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>Recurring billing items generate 340% more cost than revenue</h4>
+<p>Sub-type 1 items show &euro;1.21M in cost against only &euro;274K in revenue. 48,414 of 69,321 items (69.9%) run at negative margin, suggesting systematic underpricing or missing rate cards for recurring services.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>Three clients have conflict rates above 40%</h4>
+<p>Client A (47.9%), Client C (50.0%), and Client D (47.1%) show nearly half their charges running at negative margin. These accounts need immediate billing structure review to stop ongoing revenue leakage.</p>
+</div>
+</div>
+</div>
+
+<!-- SECTION 6: FAQ -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
 <span class="doc-section-title">Frequently Asked Questions</span>
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What does the "Schedule Recurring Review" insight mean in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This insight highlights a pattern detected in your data that may require attention. The Billing Charge Allocation Conflicts report surfaces this through automated analysis of the underlying dataset.</p></div>
+<div class="faq-q"><span>Why do 68.7% of charges have no contract allocation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>In Autotask PSA, charges can be created against tickets, projects, or directly on companies without linking them to a contract. This typically happens when technicians log ad-hoc charges, when charges arrive via API integrations, or when the billing workflow skips the contract assignment step. The fix is to enforce contract selection in your charge creation workflow and retroactively assign orphaned charges.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria.</p></div>
+<div class="faq-q"><span>What does a negative margin charge indicate?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>A negative margin charge means the extended cost (your actual cost) exceeds the billable amount (what the client pays). This can result from incorrect cost rates, manual overrides, volume discounts not reflected in billing, or charges that were intentionally written off but still carry cost. Review these 149 charges to determine if rates need adjustment or if cost entries are incorrect.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What action should I take based on the "Schedule Recurring Review" recommendation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions.</p></div>
+<div class="faq-q"><span>How should I prioritize fixing these billing conflicts?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Start with unallocated charges (4,913 items) as these prevent accurate contract profitability analysis. Then address recurring billing items (sub-type 1) where 69.9% run at negative margin. Finally, review the three clients with conflict rates above 40%. Each fix improves billing accuracy and margin visibility across your MSP operations.</p></div>
 </div>
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="doc-footer">
-<span>Proxuma Power BI · AI-Generated Report · proxuma.io/powerbi</span>
-<span>Generated in &lt; 15 minutes via MCP · March 2026</span>
+<span>Proxuma Power BI &middot; AI-Generated Report &middot; proxuma.io/powerbi</span>
+<span>Generated May 2026 &middot; 5 DAX queries &middot; Real Autotask data</span>
 </div>
 </div>
 </div>
 <script>
-catch(e){}document.body.removeChild(ta)}
-</script>
-<script>
-catch(e){}document.body.removeChild(ta)}
+function prxCopyReport(){var d=document.querySelector('.doc');if(!d)return;var h=d.innerHTML;var ta=document.createElement('textarea');ta.value=h;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta)}
 </script>
 <script type="application/ld+json">
 {
@@ -823,31 +1088,32 @@ catch(e){}document.body.removeChild(ta)}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does the \"Schedule Recurring Review\" insight mean in this report?",
+      "name": "Why do 68.7% of charges have no contract allocation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This insight highlights a pattern detected in your data that may require attention. The Billing Charge Allocation Conflicts report surfaces this through automated analysis of the underlying dataset."
+        "text": "In Autotask PSA, charges can be created against tickets, projects, or directly on companies without linking them to a contract. This typically happens when technicians log ad-hoc charges, when charges arrive via API integrations, or when the billing workflow skips the contract assignment step."
       }
     },
     {
       "@type": "Question",
-      "name": "Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?",
+      "name": "What does a negative margin charge indicate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria."
+        "text": "A negative margin charge means the extended cost (your actual cost) exceeds the billable amount (what the client pays). This can result from incorrect cost rates, manual overrides, volume discounts not reflected in billing, or charges that were intentionally written off but still carry cost."
       }
     },
     {
       "@type": "Question",
-      "name": "What action should I take based on the \"Schedule Recurring Review\" recommendation?",
+      "name": "How should I prioritize fixing these billing conflicts?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions."
+        "text": "Start with unallocated charges (4,913 items) as these prevent accurate contract profitability analysis. Then address recurring billing items (sub-type 1) where 69.9% run at negative margin. Finally, review the three clients with conflict rates above 40%."
       }
     }
   ]
 }
 </script>
+
 <!-- RELATED REPORTS -->
 <div class="related-reports">
 <div class="related-reports-header">

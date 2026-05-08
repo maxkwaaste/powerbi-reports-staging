@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SLA-prestaties per prioriteitsniveau | Proxuma Power BI</title>
-<meta content="" name="description"/>
+<meta content="SLA-prestaties per Prioriteitsniveau — AI-gegenereerd Power BI rapport dat eerste reactie en oplossings-SLA-naleving analyseert over 67.521 Autotask-tickets per prioriteitsniveau voor managed service providers." name="description"/>
 <link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/sla-prestaties-per-prioriteit-2/" rel="canonical"/>
 <link href="https://proxuma.io/powerbi/insights/sla-performance-by-priority-2/" hreflang="en" rel="alternate"/>
 <link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/sla-prestaties-per-prioriteit-2/" hreflang="nl" rel="alternate"/>
@@ -763,268 +763,360 @@ pre{font-family:'JetBrains Mono',monospace;font-size:12px;background:#1e293b;col
 </div>
 </div>
 </div>
-<!-- TEAL FRAME: ORIGINAL REPORT CONTENT (100% intact) -->
+<!-- TEAL FRAME: REPORT CONTENT -->
 <div id="prx-frame-top"></div>
-<style>
-
-/* Report-specific styles */
-@media(max-width:600px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
-.kpi-card{padding:20px 18px;border-right:1px solid #f0f0f0;text-align:center}
-.kpi-card:last-child{border-right:none}
-.kpi-value{font-size:1.85rem;font-weight:700;line-height:1.1;margin-bottom:4px}
-.kpi-label{font-size:11px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.kpi-sub{font-size:11px;color:#9ca3af;margin-top:3px}
-.kv-red{color:#dc2626}.kv-amber{color:#d97706}.kv-teal{color:#0f766e}.kv-green{color:#059669}
-.doc-section{padding:26px 32px;border-bottom:1px solid #f0f0f0}
-.doc-section:last-of-type{border-bottom:none}
-.section-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#0f766e;margin-bottom:6px}
-.section-lead{font-size:13px;color:#4b5563;line-height:1.65;margin-bottom:18px}
-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px}
-th{background:#f0fdfa;color:#115e58;font-weight:700;padding:9px 10px;text-align:left;border-bottom:2px solid #ccfbf1;white-space:nowrap}
-td{padding:8px 10px;border-bottom:1px solid #f3f4f6;color:#374151}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:#f9fffe}
-.num-right{text-align:right}
-.badge{display:inline-block;border-radius:12px;padding:2px 9px;font-size:11px;font-weight:700}
-.badge-red{background:#fee2e2;color:#dc2626}
-.badge-amber{background:#fef3c7;color:#d97706}
-.badge-green{background:#d1fae5;color:#065f46}
-.badge-teal{background:#ccfbf1;color:#0f766e}
-/* SLA dual bars */
-.sla-grid{display:flex;flex-direction:column;gap:14px;margin-bottom:16px}
-.sla-row{background:#f9fafb;border-radius:8px;padding:12px 16px}
-.sla-row-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.sla-row-pri{font-size:13px;font-weight:700;color:#1B365D}
-.sla-row-total{font-size:11px;color:#9ca3af}
-.sla-bars{display:flex;flex-direction:column;gap:5px}
-.sla-bar-item{display:flex;align-items:center;gap:8px}
-.sla-bar-lbl{min-width:110px;font-size:11px;color:#6b7280;font-weight:600}
-.sla-bar-track{flex:1;height:14px;background:#e5e7eb;border-radius:3px;overflow:hidden}
-.sla-bar-fill{height:100%;border-radius:3px}
-.sla-bar-fr{background:#0f766e}
-.sla-bar-res{background:#60a5fa}
-.sla-bar-low{background:#dc2626}
-.sla-bar-pct{min-width:40px;text-align:right;font-size:11px;font-weight:700}
-.insight-grid{display:grid;gap:10px}
-.insight-card{background:#f9fafb;border-left:4px solid #e5e7eb;border-radius:8px;padding:14px 16px}
-.insight-card.positive{border-left-color:#10b981}
-.insight-card.warning{border-left-color:#d97706}
-.insight-card.critical{border-left-color:#dc2626}
-.insight-card.info{border-left-color:#3b82f6}
-.insight-card h4{font-size:14px;font-weight:700;color:#1B365D;margin-bottom:4px}
-.insight-card p{font-size:13px;color:#4b5563;line-height:1.55}
-.dax-toggle{margin-top:16px;border:1px solid #e0f2f1;border-radius:8px;overflow:hidden;font-size:13px;cursor:pointer;user-select:none}
-.dax-trigger{background:#f0fdfa;padding:9px 14px;display:flex;align-items:center;gap:8px;color:#0f766e;font-weight:600}
-.dax-trigger svg{width:16px;height:16px;transition:transform .2s;flex-shrink:0}
-.dax-toggle.expanded .dax-trigger svg{transform:rotate(180deg)}
-.dax-content{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.dax-toggle.expanded .dax-content{max-height:600px}
-.dax-inner{padding:12px 14px;background:#fff}
-pre{font-family:'JetBrains Mono',monospace;font-size:12px;background:#1e293b;color:#e2e8f0;padding:14px;border-radius:6px;overflow-x:auto;line-height:1.55;margin-bottom:8px}
-.copy-btn{background:#0f766e;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer}
-.copy-btn:hover{background:#115e58}
-.doc-faq{padding:26px 32px}
-.doc-faq h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:#0f766e;margin-bottom:18px}
-.faq-item{border-bottom:1px solid #e9ecef;overflow:hidden}
-.faq-item:last-child{border-bottom:none}
-.faq-q{padding:13px 0;font-weight:700;color:#1B365D;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.faq-q-icon{color:#0f766e;font-size:18px;line-height:1;flex-shrink:0;transition:transform .2s}
-.faq-item.open .faq-q-icon{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a-inner{font-size:13px;color:#4b5563;line-height:1.65;padding-bottom:14px}
-.related-section{background:#fff;border-radius:12px;margin-top:16px;padding:24px 28px;border:1px solid #e5e7eb}
-.related-section h3{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;margin-bottom:16px}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-
-</style>
 <div class="report-frame-outer">
-<div class="report-frame">
-<div class="doc-header">
-<div class="doc-header-logo">Proxuma</div>
-<div class="doc-header-sep"></div>
-<div class="doc-header-meta">
-<div class="doc-header-badge">AI-gegenereerd Power BI-rapport</div>
-<div class="doc-header-date">Databron: Autotask PSA · Gegenereerd maart 2026</div>
-</div>
-<div class="doc-header-lang"><a href="/powerbi/insights/sla-performance-by-priority/">EN versie</a></div>
-</div>
 <div class="doc">
-<div class="doc-title-section">
-<div class="doc-title">SLA-prestaties per prioriteitsniveau</div>
-<div class="doc-subtitle">Eerste reactie- en oplossings-SLA per ticketprioriteit — 67.521 tickets geanalyseerd</div>
+<div class="doc-header">
+<div>
+<div class="doc-logo">
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
 </div>
-<div class="kpi-row">
-<div class="kpi-card">
-<div class="kpi-value kv-red">55,2%</div>
-<div class="kpi-label">P3 ER-percentage</div>
-<div class="kpi-sub">Slechtste eerste reactie</div>
+<div class="doc-type">AI-Gegenereerd Power BI Rapport</div>
 </div>
-<div class="kpi-card">
-<div class="kpi-value kv-amber">71,8%</div>
-<div class="kpi-label">P2 Opl-percentage</div>
-<div class="kpi-sub">Zwakste oplossings-SLA</div>
-</div>
-<div class="kpi-card">
-<div class="kpi-value kv-teal">82,4%</div>
-<div class="kpi-label">P1 ER-percentage</div>
-<div class="kpi-sub">Kritisch beter dan Hoog</div>
-</div>
-<div class="kpi-card">
-<div class="kpi-value kv-green">97,3%</div>
-<div class="kpi-label">Service/Wijziging ER</div>
-<div class="kpi-sub">Vrijwel perfecte naleving</div>
+<div class="doc-header-right">
+<div class="doc-meta-row"><strong>Rapport:</strong> PRX-SLA-002</div>
+<div class="doc-meta-row"><strong>Bron:</strong> Autotask PSA</div>
+<div class="doc-meta-row"><strong>Gegenereerd:</strong> Mei 2026</div>
 </div>
 </div>
+<div class="doc-title-block">
+<div class="doc-title">SLA-prestaties per Prioriteitsniveau</div>
+<p class="doc-subtitle">Een datagedreven analyse van <strong>eerste reactie en oplossings-SLA-naleving</strong> over 67.521 Autotask-tickets, uitgesplitst naar 5 prioriteitsniveaus, met prestaties per klant en snelheidsstatistieken.</p>
+</div>
+<div class="doc-demo"><strong>Geanonimiseerd Rapport:</strong> Dit rapport gebruikt echte operationele data uit Autotask PSA. Bedrijfsnamen en contactgegevens zijn geanonimiseerd voor privacy.</div>
+<div class="doc-body">
+<!-- Sectie 1.0 — Samenvattende Statistieken -->
 <div class="doc-section">
-<div class="section-title">SLA-prestaties per prioriteit — Volledig overzicht</div>
-<div class="section-lead">Eerste Reactie SLA (groen) en Oplossings-SLA (blauw) per prioriteitsniveau. Balken geschaald op 100%. Percentages onder 70% zijn rood gemarkeerd.</div>
-<div class="sla-grid">
-<div class="sla-row">
-<div class="sla-row-header"><span class="sla-row-pri">P1 - Kritisch</span><span class="sla-row-total">5.019 tickets · 3.187 met ER SLA · 4.933 met Opl SLA</span></div>
-<div class="sla-bars">
-<div class="sla-bar-item"><span class="sla-bar-lbl">Eerste Reactie</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-fr" style="width:82.4%"></div></div><span class="sla-bar-pct" style="color:#0f766e">82,4%</span></div>
-<div class="sla-bar-item"><span class="sla-bar-lbl">Oplossing</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-res" style="width:94.0%"></div></div><span class="sla-bar-pct" style="color:#60a5fa">94,0%</span></div>
+<div class="doc-section-head">
+<span class="doc-section-num">1.0</span>
+<span class="doc-section-title">Samenvattende Statistieken</span>
+</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">EERSTE REACTIE SLA</div>
+<div class="doc-kpi-value">80,1%</div>
+<div class="doc-kpi-note amber">35.715 van 44.588 tickets</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">OPLOSSINGS-SLA</div>
+<div class="doc-kpi-value">90,2%</div>
+<div class="doc-kpi-note green">42.892 van 47.569 tickets</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAAL TICKETS</div>
+<div class="doc-kpi-value">67.521</div>
+<div class="doc-kpi-note muted">Over 5 prioriteitsniveaus</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">MOMENTEEL ACHTERSTALLIG</div>
+<div class="doc-kpi-value">360</div>
+<div class="doc-kpi-note red">Actieve SLA-schendingen</div>
 </div>
 </div>
-<div class="sla-row">
-<div class="sla-row-header"><span class="sla-row-pri">P2 - Hoog</span><span class="sla-row-total">1.788 tickets · 932 met ER SLA · 1.411 met Opl SLA</span></div>
-<div class="sla-bars">
-<div class="sla-bar-item"><span class="sla-bar-lbl">Eerste Reactie</span><div class="sla-bar-track"><div class="sla-bar-fill" style="width:68.6%;background:#d97706"></div></div><span class="sla-bar-pct" style="color:#d97706">68,6%</span></div>
-<div class="sla-bar-item"><span class="sla-bar-lbl">Oplossing</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-low" style="width:71.8%"></div></div><span class="sla-bar-pct" style="color:#dc2626">71,8%</span></div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>DAX Query bekijken &mdash; Algemene SLA-statistieken</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE ROW(
+    "TotalTickets", COUNTROWS('BI_Autotask_Tickets'),
+    "OverallFirstResponseMet", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[first_response_met] + 0 = 1)),
+    "OverallFirstResponseTotal", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        NOT(ISBLANK('BI_Autotask_Tickets'[first_response_met])))),
+    "OverallResolutionMet", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[resolution_met] + 0 = 1)),
+    "OverallResolutionTotal", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        NOT(ISBLANK('BI_Autotask_Tickets'[resolution_met])))),
+    "OverallSLAOverdue", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[resolved_due_age_days] &gt; 0)),
+    "FirstHourFix", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[first_hour_fix] + 0 = 1)),
+    "FirstDayResolution", COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[first_day_resolution] + 0 = 1))
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
-<div class="sla-row">
-<div class="sla-row-header"><span class="sla-row-pri">P3 - Medium</span><span class="sla-row-total">14.715 tickets · 9.173 met ER SLA · 10.760 met Opl SLA</span></div>
-<div class="sla-bars">
-<div class="sla-bar-item"><span class="sla-bar-lbl">Eerste Reactie</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-low" style="width:55.2%"></div></div><span class="sla-bar-pct" style="color:#dc2626">55,2%</span></div>
-<div class="sla-bar-item"><span class="sla-bar-lbl">Oplossing</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-res" style="width:83.8%"></div></div><span class="sla-bar-pct" style="color:#60a5fa">83,8%</span></div>
+<div class="doc-dax-box" style="margin-top:12px;">
+<strong>Wat zijn deze DAX-queries?</strong> DAX (Data Analysis Expressions) is de formuletaal die Power BI gebruikt om data op te vragen. Elk inklapbaar blok hieronder toont de exacte query die de AI heeft geschreven en uitgevoerd. Je kunt elke query kopieren en uitvoeren in Power BI Desktop op je eigen dataset.
 </div>
 </div>
-<div class="sla-row">
-<div class="sla-row-header"><span class="sla-row-pri">P4 - Laag</span><span class="sla-row-total">30.415 tickets · 22.255 met ER SLA · 21.295 met Opl SLA</span></div>
-<div class="sla-bars">
-<div class="sla-bar-item"><span class="sla-bar-lbl">Eerste Reactie</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-fr" style="width:83.5%"></div></div><span class="sla-bar-pct" style="color:#0f766e">83,5%</span></div>
-<div class="sla-bar-item"><span class="sla-bar-lbl">Oplossing</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-res" style="width:90.6%"></div></div><span class="sla-bar-pct" style="color:#60a5fa">90,6%</span></div>
+<!-- Sectie 2.0 — SLA-naleving per Prioriteit -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">2.0</span>
+<span class="doc-section-title">SLA-naleving per Prioriteit</span>
 </div>
-</div>
-<div class="sla-row">
-<div class="sla-row-header"><span class="sla-row-pri">Service / Wijzigingsverzoek</span><span class="sla-row-total">15.584 tickets · 9.041 met ER SLA · 9.170 met Opl SLA</span></div>
-<div class="sla-bars">
-<div class="sla-bar-item"><span class="sla-bar-lbl">Eerste Reactie</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-fr" style="width:97.3%"></div></div><span class="sla-bar-pct" style="color:#0f766e">97,3%</span></div>
-<div class="sla-bar-item"><span class="sla-bar-lbl">Oplossing</span><div class="sla-bar-track"><div class="sla-bar-fill sla-bar-res" style="width:97.5%"></div></div><span class="sla-bar-pct" style="color:#60a5fa">97,5%</span></div>
-</div>
-</div>
-</div>
+<p class="doc-section-sub">Hoe eerste reactie en oplossings-SLA-percentages verschillen per prioriteitsniveau</p>
+<div class="narrative"><p>P3 Medium is de slechtste performer voor eerste reactie met <strong>55,2%</strong>, ondanks dat het de op een na grootste categorie is met 14.715 tickets. P2 Hoog worstelt met oplossing en haalt slechts <strong>71,8%</strong> met een gemiddelde oplostijd van 32 uur. Service/Change requests leiden beide statistieken met <strong>97,3%</strong> eerste reactie en <strong>97,5%</strong> oplossing. P1 Kritiek tickets presteren ondanks hun urgentie goed: <strong>82,4%</strong> eerste reactie en <strong>94,0%</strong> oplossing met een gemiddelde oplostijd van slechts 2,1 uur.</p></div>
 <table>
-<thead><tr><th>Metric</th><th>Value</th></tr></thead>
-<tbody><tr><td>Resolution Met</td><td>90.2%</td></tr><tr><td>First Hour Fix</td><td>16.1%</td></tr><tr><td>Same-Day</td><td>30.0%</td></tr><tr><td>Closure</td><td>98.8%</td></tr></tbody>
+<thead>
+<tr><th>Prioriteit</th><th>Tickets</th><th>ER Gehaald %</th><th>Opl. Gehaald %</th><th style="text-align:right">Gem. ER (u)</th><th style="text-align:right">Gem. Opl. (u)</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">P1 - Critical</td><td class="num">5.019</td><td><span class="pct-badge pct-mid">82,4%</span></td><td><span class="pct-badge pct-ok">94,0%</span></td><td class="num num-ok">0,83</td><td class="num num-ok">2,09</td></tr>
+<tr><td class="client-name">P2 - High</td><td class="num">1.788</td><td><span class="pct-badge pct-bad">68,6%</span></td><td><span class="pct-badge pct-mid">71,8%</span></td><td class="num num-warn">9,59</td><td class="num num-danger">32,0</td></tr>
+<tr><td class="client-name">P3 - Medium</td><td class="num">14.715</td><td><span class="pct-badge pct-bad">55,2%</span></td><td><span class="pct-badge pct-mid">83,8%</span></td><td class="num num-warn">8,87</td><td class="num num-warn">21,6</td></tr>
+<tr><td class="client-name">P4 - Laag</td><td class="num">30.415</td><td><span class="pct-badge pct-mid">83,5%</span></td><td><span class="pct-badge pct-ok">90,6%</span></td><td class="num">5,33</td><td class="num">16,3</td></tr>
+<tr><td class="client-name">Service/Change req.</td><td class="num">15.584</td><td><span class="pct-badge pct-ok">97,3%</span></td><td><span class="pct-badge pct-ok">97,5%</span></td><td class="num">7,74</td><td class="num">23,8</td></tr>
+</tbody>
 </table>
 <div class="dax-toggle">
 <div class="dax-trigger">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
-<span>DAX-query bekijken — SLA-prestaties per prioriteit</span>
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>DAX Query bekijken &mdash; SLA per prioriteit</span>
 </div>
 <div class="dax-content">
-<div class="dax-inner">
-<pre><code>EVALUATE ROW("ResolutionMet", [Tickets - Resolution Met %], "FirstHourFix", [Tickets - First Hour Fix %], "SameDayRes", [Tickets - Same Day Resolution %], "ClosureRate", [Tickets - Closure Rate %], "TotalTickets", [Tickets - Count - Created])</code></pre>
-<button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Query kopiëren</button>
+<pre><code>EVALUATE
+ADDCOLUMNS(
+    SUMMARIZE('BI_Autotask_Tickets', 'BI_Autotask_Tickets'[priority_name]),
+    "TicketCount", CALCULATE(COUNTROWS('BI_Autotask_Tickets')),
+    "FRMetPct", DIVIDE(
+        CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+            'BI_Autotask_Tickets'[first_response_met] + 0 = 1))),
+        CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+            NOT(ISBLANK('BI_Autotask_Tickets'[first_response_met]))))), 0),
+    "ResMetPct", DIVIDE(
+        CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+            'BI_Autotask_Tickets'[resolution_met] + 0 = 1))),
+        CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+            NOT(ISBLANK('BI_Autotask_Tickets'[resolution_met]))))), 0),
+    "AvgResHrs", CALCULATE(AVERAGE(
+        'BI_Autotask_Tickets'[resolution_duration_hours])),
+    "AvgFRHrs", CALCULATE(AVERAGE(
+        'BI_Autotask_Tickets'[first_response_duration_hours]))
+)
+ORDER BY 'BI_Autotask_Tickets'[priority_name]</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
-<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Kopieer Query</button></div>
 </div>
 </div>
+<!-- Sectie 3.0 — Eerste Reactie Prestaties -->
 <div class="doc-section">
-<div class="section-title">Belangrijkste inzichten</div>
-<div class="section-lead">Wat de prioriteits-SLA-data laat zien — en waarom de patronen anders zijn dan verwacht.</div>
-<div class="insight-grid">
-<div class="insight-card critical">
-<h4>P3 Medium heeft de slechtste eerste reactie-SLA op 55% — lager dan P1 Kritisch</h4>
-<p>Met 14.715 tickets en een eerste reactiepercentage van 55,2% is P3 Medium het grootste SLA-probleem qua volume. Bijna de helft van alle medium-prioriteitstickeets krijgt geen eerste reactie binnen de SLA. Dit gebeurt wanneer technici eerst P1-tickets oppakken, P3-tickets overslaan voor snelle P4-fixes, waarna P3-tickets onerkend opstapelen.</p>
+<div class="doc-section-head">
+<span class="doc-section-num">3.0</span>
+<span class="doc-section-title">Eerste Reactie Prestaties</span>
 </div>
-<div class="insight-card warning">
-<h4>P2 Hoog heeft het zwakste oplossingspercentage op 71,8%</h4>
-<p>Er zijn maar 1.788 P2 Hoog-tickets — een klein volume — maar bijna 1 op de 3 wordt niet binnen de SLA opgelost. P2-tickets vereisen vaak escalatie of een specialist, en zonder duidelijk eigenaarschap lopen ze vast. Het eerste reactiepercentage (68,6%) ligt ook onder P1 Kritisch (82,4%), wat bevestigt dat P2 niet met de juiste urgentie wordt behandeld.</p>
+<p class="doc-section-sub">Eerste reactie SLA-nalevingspercentage per prioriteitsniveau</p>
+<div class="narrative"><p>Eerste reactie is waar de grootste verschillen zichtbaar worden. <strong>P3 Medium tickets missen hun SLA-venster bijna de helft van de tijd</strong> (55,2%), waarschijnlijk omdat ze langer in wachtrijen blijven liggen dan hun SLA toelaat. P2 Hoog zit ook onder de doelstelling met 68,6%. Service/Change requests halen 97,3% dankzij een gestructureerd intake-proces. P4 Laag en P1 Kritiek presteren beide boven 80%, maar om verschillende redenen: P1 krijgt directe aandacht, terwijl P4 ruimere SLA-vensters heeft.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Service/Change</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:97.3%"><span class="hbar-val">97,3%</span></div></div>
 </div>
-<div class="insight-card info">
-<h4>P4 Laag scoort beter dan P2 Hoog en P3 Medium op eerste reactie</h4>
-<p>P4 Laag-tickets hebben een eerste reactiepercentage van 83,5% — beter dan beide hogere prioriteiten. Dit is het "eenvoudig ticket"-effect: P4-tickets zijn snel te erkennen en snel te sluiten, waardoor ze met minder wrijving door het SLA-venster bewegen. Het hoge volume (30.415) zorgt ook voor meer data en consistentere verwerking.</p>
+<div class="hbar-row">
+<div class="hbar-label">P4 - Laag</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:83.5%"><span class="hbar-val">83,5%</span></div></div>
 </div>
-<div class="insight-card positive">
-<h4>Service/Wijzigingsverzoeken halen 97%+ op beide metrics — beste prestatie overall</h4>
-<p>Service- en wijzigingsverzoeken halen 97,3% eerste reactie en 97,5% oplossing. Dit zijn doorgaans geplande of vooraf ingeplande werkzaamheden, met voorspelbare tijdlijnen en duidelijk eigenaarschap. De vrijwel perfecte scores suggereren dat de SLA-doelen voor dit type passend zijn en het proces volwassen is.</p>
+<div class="hbar-row">
+<div class="hbar-label">P1 - Critical</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:82.4%"><span class="hbar-val">82,4%</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">P2 - High</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:68.6%"><span class="hbar-val">68,6%</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">P3 - Medium</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:55.2%"><span class="hbar-val">55,2%</span></div></div>
 </div>
 </div>
+</div>
+<!-- Sectie 4.0 — Oplossnelheid -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Oplossnelheid</span>
+</div>
+<p class="doc-section-sub">Hoe snel tickets worden opgelost, per prioriteit</p>
+<div class="chart-row">
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg teal" cx="60" cy="60" r="50" stroke-dasharray="54.04 260.12" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">17,2%</text>
+<text class="donut-sublabel" x="60" y="72">11.590</text>
+</svg>
+<div class="donut-label">Eerste Uur Fix</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg blue" cx="60" cy="60" r="50" stroke-dasharray="93.00 221.16" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">29,6%</text>
+<text class="donut-sublabel" x="60" y="72">19.988</text>
+</svg>
+<div class="donut-label">Eerste Dag Oplossing</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50"></circle>
+<circle class="donut-fg green" cx="60" cy="60" r="50" stroke-dasharray="283.37 30.79" stroke-dashoffset="78.54"></circle>
+<text class="donut-value" x="60" y="56">90,2%</text>
+<text class="donut-sublabel" x="60" y="72">42.892</text>
+</svg>
+<div class="donut-label">Oplossings-SLA Gehaald</div>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Prioriteit</th><th style="text-align:right">1e Uur Fix</th><th style="text-align:right">1e Dag Opl.</th><th style="text-align:right">SLA Achterstallig</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">P1 - Critical</td><td class="num num-ok">53,5%</td><td class="num num-ok">79,4%</td><td class="num">3</td></tr>
+<tr><td class="client-name">P2 - High</td><td class="num num-danger">12,4%</td><td class="num num-danger">35,3%</td><td class="num">15</td></tr>
+<tr><td class="client-name">P3 - Medium</td><td class="num">22,4%</td><td class="num">34,6%</td><td class="num num-warn">68</td></tr>
+<tr><td class="client-name">P4 - Laag</td><td class="num">14,7%</td><td class="num">25,9%</td><td class="num num-danger">265</td></tr>
+<tr><td class="client-name">Service/Change req.</td><td class="num">5,8%</td><td class="num">15,4%</td><td class="num">9</td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>DAX Query bekijken &mdash; Snelheidsstatistieken per prioriteit</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ADDCOLUMNS(
+    SUMMARIZE('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[priority_name]),
+    "SLAOverdue", CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[resolved_due_age_days] &gt; 0))),
+    "FirstHourFix", CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[first_hour_fix] + 0 = 1))),
+    "FirstDayRes", CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[first_day_resolution] + 0 = 1))),
+    "ClosedByFirstResource", CALCULATE(COUNTROWS(FILTER(
+        'BI_Autotask_Tickets',
+        'BI_Autotask_Tickets'[closed_by_first_resource] + 0 = 1)))
+)
+ORDER BY 'BI_Autotask_Tickets'[priority_name]</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Sectie 5.0 — SLA per Klant -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">SLA per Klant</span>
+</div>
+<p class="doc-section-sub">Top 10 klanten op ticketvolume met SLA-nalevingspercentages</p>
+<div class="narrative"><p>Klantprestaties lopen sterk uiteen. <strong>Klant A</strong> heeft 6.381 tickets maar slechts een <strong>43,2%</strong> eerste reactie-percentage, het laagste in de dataset. <strong>Klant F</strong> zit aan het andere uiterste met <strong>98,0%</strong> eerste reactie en <strong>99,9%</strong> oplossing over 2.364 tickets. Het verschil tussen deze twee accounts suggereert dat SLA-prestaties deels worden bepaald door ticketkenmerken en volumepatronen per klant.</p></div>
+<table>
+<thead>
+<tr><th>Klant</th><th style="text-align:right">Tickets</th><th>ER Gehaald %</th><th>Opl. Gehaald %</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Klant A</td><td class="num">6.381</td><td><span class="pct-badge pct-bad">43,2%</span></td><td><span class="pct-badge pct-mid">79,3%</span></td></tr>
+<tr><td class="client-name">Klant B</td><td class="num">5.458</td><td><span class="pct-badge pct-ok">88,2%</span></td><td><span class="pct-badge pct-ok">91,7%</span></td></tr>
+<tr><td class="client-name">Klant C</td><td class="num">5.290</td><td><span class="pct-badge pct-ok">87,5%</span></td><td><span class="pct-badge pct-ok">93,7%</span></td></tr>
+<tr><td class="client-name">Klant D</td><td class="num">2.775</td><td><span class="pct-badge pct-mid">73,7%</span></td><td><span class="pct-badge pct-ok">88,3%</span></td></tr>
+<tr><td class="client-name">Klant E</td><td class="num">2.376</td><td><span class="pct-badge pct-ok">86,0%</span></td><td><span class="pct-badge pct-ok">92,5%</span></td></tr>
+<tr><td class="client-name">Klant F</td><td class="num">2.364</td><td><span class="pct-badge pct-ok">98,0%</span></td><td><span class="pct-badge pct-ok">99,9%</span></td></tr>
+<tr><td class="client-name">Klant G</td><td class="num">2.180</td><td><span class="pct-badge pct-mid">84,9%</span></td><td><span class="pct-badge pct-ok">90,9%</span></td></tr>
+<tr><td class="client-name">Klant H</td><td class="num">1.803</td><td><span class="pct-badge pct-mid">75,4%</span></td><td><span class="pct-badge pct-ok">87,1%</span></td></tr>
+<tr><td class="client-name">Klant I</td><td class="num">1.758</td><td><span class="pct-badge pct-bad">68,6%</span></td><td><span class="pct-badge pct-ok">86,0%</span></td></tr>
+<tr><td class="client-name">Klant J</td><td class="num">1.728</td><td><span class="pct-badge pct-mid">70,1%</span></td><td><span class="pct-badge pct-ok">93,1%</span></td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>DAX Query bekijken &mdash; Top klanten op volume</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+    ADDCOLUMNS(
+        SUMMARIZE('BI_Autotask_Tickets',
+            'BI_Autotask_Tickets'[company_name]),
+        "TicketCount", CALCULATE(COUNTROWS('BI_Autotask_Tickets')),
+        "FRMetPct", DIVIDE(
+            CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+                'BI_Autotask_Tickets'[first_response_met] + 0 = 1))),
+            CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+                NOT(ISBLANK(
+                    'BI_Autotask_Tickets'[first_response_met]))))), 0),
+        "ResMetPct", DIVIDE(
+            CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+                'BI_Autotask_Tickets'[resolution_met] + 0 = 1))),
+            CALCULATE(COUNTROWS(FILTER('BI_Autotask_Tickets',
+                NOT(ISBLANK(
+                    'BI_Autotask_Tickets'[resolution_met]))))), 0)
+    ), [TicketCount], DESC
+)
+ORDER BY [TicketCount] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Sectie 6.0 — Belangrijkste Bevindingen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
+<span class="doc-section-title">Belangrijkste Bevindingen</span>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>P3 Medium eerste reactie op 55,2%</h4>
+<p>Het slechtste eerste reactie-percentage van alle prioriteiten. Met 14.715 tickets is P3 te groot om te negeren. Deze tickets vallen in een "medium prioriteit-val" waar ze niet urgent genoeg zijn voor directe aandacht, maar SLA-vensters hebben die niet passen bij de werkelijke reactiecapaciteit.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>P2 Hoog oplossing op 71,8% met 32 uur gemiddeld</h4>
+<p>P2-tickets duren gemiddeld 32 uur om op te lossen en bijna 30% mist de oplossings-SLA. Ondanks de hoge prioriteit vereisen deze complexe problemen vaak escalatie of specialistische betrokkenheid die de oplostijd voorbij de SLA-targets brengt.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&check;</div>
+<div class="doc-finding-body">
+<h4>P1 Kritiek haalt 82,4% ER en 94,0% oplossing</h4>
+<p>Kritieke tickets krijgen snelle aandacht: gemiddelde eerste reactie van 0,83 uur en oplossing in 2,1 uur. Het 53,5% eerste-uur-fix-percentage bevestigt dat teams P1 als echte noodgevallen behandelen en meer dan de helft binnen het eerste uur oplossen.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&check;</div>
+<div class="doc-finding-body">
+<h4>Service/Change requests op 97,3% ER</h4>
+<p>Bijna perfecte naleving op serviceverzoeken. Deze volgen een gestructureerd intake-proces met automatische bevestiging, wat de eerste reactie-percentages hoog houdt. Oplossing staat op 97,5%, wat bevestigt dat het proces van begin tot eind werkt.</p>
+</div>
+</div>
+</div>
+<!-- Sectie 7.0 — Veelgestelde Vragen -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">7.0</span>
+<span class="doc-section-title">Veelgestelde Vragen</span>
 </div>
 <div class="doc-faq">
-<h3>Veelgestelde vragen</h3>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-      Waarom heeft P3 een slechtere SLA dan P1?
-      <span class="faq-q-icon">+</span>
-</div>
-<div class="faq-a">
-<div class="faq-a-inner">P1-tickets krijgen onmiddellijk aandacht vanwege hun zichtbare urgentie — technici merken en erkennen ze snel. P3-tickets zijn "medium" genoeg om uit te stellen, maar niet laag genoeg om te batchen. Ze wachten in wachtrijen op een natuurlijk moment om opgepakt te worden. Als SLA-vensters voor P3 kort zijn (bijv. 4 uur), veroorzaken zelfs korte vertragingen al overschrijdingen. Controleer of je P3 SLA-vensters de realistische reactiecapaciteit weerspiegelen.</div>
-</div>
+<div class="faq-q">Waarom heeft P3 Medium het slechtste eerste reactie-percentage?<svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>P3-tickets vallen in een "medium prioriteit-val." Ze zijn niet urgent genoeg voor engineers om direct op te pakken, maar hun SLA-vensters kunnen nog steeds kort zijn (bijv. 4 uur). Met 14.715 tickets in deze categorie veroorzaken zelfs korte vertragingen op schaal doorbraken. P1 krijgt directe aandacht, P4 heeft ruime vensters, maar P3 zit in het gat tussen urgentie en capaciteit. Overweeg of de P3 SLA-vensters overeenkomen met realistische reactietijden voor je team.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-      Wat is het verschil tussen Eerste Reactie SLA en Oplossings-SLA?
-      <span class="faq-q-icon">+</span>
-</div>
-<div class="faq-a">
-<div class="faq-a-inner">Eerste Reactie SLA meet of iemand op het ticket heeft gereageerd (eerste contact, notitie toegevoegd, status gewijzigd) binnen het geconfigureerde SLA-venster. Oplossings-SLA meet of het ticket volledig is opgelost en gesloten binnen een tweede, doorgaans langere, termijn. Een ticket kan de eerste reactie halen maar de oplossing missen als het probleem langer duurt dan verwacht. De twee metrics vertellen vaak een ander verhaal over waar knelpunten optreden.</div>
-</div>
+<div class="faq-q">Wat verklaart het verschil tussen eerste reactie en oplossings-SLA?<svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Eerste reactie meet of iemand het ticket heeft erkend binnen het SLA-venster. Oplossing meet of het probleem volledig is opgelost en afgesloten binnen de tijd. P1 Kritiek excelleert in beide omdat tickets als noodgevallen worden behandeld. P4 Laag haalt beide omdat SLA-vensters ruim zijn. P2 en P3 tonen de grootste verschillen: teams reageren op tijd maar oplossing duurt langer door complexiteit, escalaties of wachten op externe afhankelijkheden.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q">
-      Hoe verbeter ik de P3 Medium SLA-prestaties?
-      <span class="faq-q-icon">+</span>
-</div>
-<div class="faq-a">
-<div class="faq-a-inner">Drie aanpakken werken: (1) Verleng het P3 eerste reactie-SLA-venster zodat het aansluit op de werkelijke capaciteit — als het team de 4 uur niet haalt, zet het dan op 8. (2) Maak een triageregel die P3-tickets bij aanmaak automatisch toewijst aan een specifieke wachtrij of persoon, zodat de "niemand kijkt hiernaar"-gap verdwijnt. (3) Voeg een dagelijkse P3-controle toe: een check van 10 minuten 's ochtends die alle P3-tickets van de afgelopen 24 uur erkent en de SLA-klok reset.</div>
+<div class="faq-q">Hoe verminderen we de 360 momenteel achterstallige tickets?<svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>P4 Laag is verantwoordelijk voor 265 van de 360 achterstallige tickets (73,6%). Dit zijn waarschijnlijk verouderde lage-prioriteit items waar niemand actief aan werkt. Drie aanpakken: (1) voer een wekelijkse P4-opruiming uit om verouderde tickets in bulk af te sluiten, (2) verscherp auto-sluit regels zodat tickets die 30+ dagen inactief zijn automatisch sluiten, (3) pas P4 SLA-vensters aan zodat ze overeenkomen met de werkelijke oplossingscapaciteit in plaats van ambitieuze targets.</p></div>
 </div>
 </div>
 </div>
 </div>
+<div class="doc-footer">
+<span>Proxuma Power BI &middot; AI-Gegenereerd Rapport</span>
+<span>PRX-SLA-002 &middot; Mei 2026</span>
 </div>
 </div>
-<section class="related-section">
-<h3>Gerelateerde rapporten</h3>
-<div class="related-grid">
-<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/sla-prestaties-per-wachtrij/">SLA per wachtrij <span class="rc-arrow">›</span></a>
-<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/sla-trend-over-de-laatste-12-maanden/">SLA-trend (12 maanden) <span class="rc-arrow">›</span></a>
-<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/gemiddelde-eerste-reactietijd/">Gemiddelde eerste reactietijd <span class="rc-arrow">›</span></a>
-<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/welke-sla-overtredingen-hadden-voorkomen-kunnen-worden/">Vermijdbare SLA-overtredingen <span class="rc-arrow">›</span></a>
-<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/hoeveel-tickets-zijn-er-momenteel-open/">Open tickets per status <span class="rc-arrow">›</span></a>
-<a class="related-card" href="/nl-powerbi/ai-gegenereerde-rapporten/csat-versus-sla-prestaties/">CSAT versus SLA-correlatie <span class="rc-arrow">›</span></a>
 </div>
-</section>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Power BI","item":"https://proxuma.io/nl-powerbi/"},
-    {"@type":"ListItem","position":2,"name":"AI-gegenereerde rapporten","item":"https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/"},
-    {"@type":"ListItem","position":3,"name":"SLA-prestaties per prioriteit","item":"https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/sla-prestaties-per-prioriteit/"}
-  ]
-}
-</script>
-<script>
-(function(){
-  var hero=document.getElementById('searchHero');
-  var bar=document.getElementById('morphBar');
-  var txt=document.getElementById('morphText');
-  var words=["SLA","per","Prioriteit","&#x2022;","P3","Medium","55%","&#x2022;","anomalie","gedetecteerd"];
-  var shown=false;
-  var io=new IntersectionObserver(function(e){
-    if(!e[0].isIntersecting&&!shown){shown=true;bar.classList.add('visible');txt.innerHTML='';words.forEach(function(w,i){var s=document.createElement('span');s.className='morph-word';s.style.animationDelay=(i*0.06)+'s';s.innerHTML=w+' ';txt.appendChild(s);});}else if(e[0].isIntersecting){shown=false;bar.classList.remove('visible');}
-  },{threshold:0});
-  io.observe(hero);
-})();
-
-);if(!wasOpen)item.classList.add('open');}
-</script>
 <!-- RELATED REPORTS -->
 <div class="related-reports">
 <div class="related-reports-header">
@@ -1084,12 +1176,12 @@ pre{font-family:'JetBrains Mono',monospace;font-size:12px;background:#1e293b;col
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "SLA-prestaties per prioriteitsniveau",
-  "description": "",
+  "headline": "SLA-prestaties per Prioriteitsniveau",
+  "description": "SLA-prestaties per Prioriteitsniveau — AI-gegenereerd Power BI rapport dat eerste reactie en oplossings-SLA-naleving analyseert over 67.521 Autotask-tickets per prioriteitsniveau voor managed service providers.",
   "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
   "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
   "datePublished": "2026-04-06",
-  "dateModified": "2026-04-06",
+  "dateModified": "2026-05-08",
   "mainEntityOfPage": "https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/sla-prestaties-per-prioriteit-2/",
   "proficiencyLevel": "Beginner",
   "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",

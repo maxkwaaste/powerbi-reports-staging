@@ -693,10 +693,12 @@ A data-driven analysis of <strong>psa vs quickbooks</strong> comparison from you
 <div style="margin-top:28px;padding-top:24px;border-top:1px solid #f1f5f9;">
 <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:12px;">What you can measure in this report</div>
 <div class="metrics-grid">
-<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Summary Metrics</div>
-<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Analysis</div>
-<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Recommended Actions</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Revenue by Billing Category</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Contract Type Distribution</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Per-Client Profitability</div>
+<div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Key Findings</div>
 <div class="metric-item"><span class="metric-check"><svg stroke-linecap="round" stroke-linejoin="round" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Frequently Asked Questions</div>
+</div>
 </div>
 </div>
 </div>
@@ -707,95 +709,292 @@ A data-driven analysis of <strong>psa vs quickbooks</strong> comparison from you
 <div class="doc-header">
 <div>
 <div class="doc-logo">
-<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
+<svg id="Layer_1" style="width:140px;height:auto;" viewbox="0 0 960.97 282.29" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#002c60;}.cls-2{fill:#00b7ff;}</style></defs><path class="cls-2" d="m216.45,16.34l-5.35-16.34-13.49,10.69c-23.28,18.52-40.13,43.4-48.71,72-3.48,11.59-5.48,23.41-6.02,35.26,7.41,1,14.52,2.96,21.2,5.75.76-7.97,2.31-15.93,4.66-23.74,5.27-17.58,14.26-33.48,26.4-46.79,2.78,17.79,1.56,36.02-3.72,53.59-2.73,9.1-6.47,17.76-11.13,25.83,5.82,4.07,11.11,8.84,15.75,14.19,9.46-13.07,16.71-27.72,21.44-43.5,8.58-28.6,8.23-58.66-1.02-86.94Z"></path><path class="cls-2" d="m71.15,106.76c2.74,9.1,6.47,17.76,11.13,25.83-5.82,4.06-11.11,8.83-15.75,14.18-9.46-13.07-16.7-27.72-21.43-43.49-1.54-5.12-2.79-10.27-3.76-15.45,9.78.99,18.48-.04,25.51-1.7.82,6.93,2.26,13.82,4.3,20.62Z"></path><path class="cls-2" d="m113.67,82.71c-5.01-16.71-12.85-32.15-23.12-45.79h0s-90.54,0-90.54,0c0,0,19.8,54.54,85.45,42.19h0c3.4,6.62,6.22,13.58,8.39,20.85,2.35,7.83,3.89,15.77,4.65,23.74,6.68-2.79,13.8-4.75,21.22-5.75-.54-11.84-2.56-23.67-6.03-35.25Z"></path><path class="cls-1" d="m131.27,123.45c-43.78,0-79.4,35.62-79.4,79.4s35.62,79.44,79.4,79.44,79.44-35.64,79.44-79.44-35.64-79.4-79.44-79.4Zm.01,135.52c-30.93,0-56.1-25.17-56.1-56.12s25.17-56.09,56.1-56.09,56.11,25.16,56.11,56.09-25.17,56.12-56.11,56.12Z"></path><circle class="cls-1" cx="131.29" cy="161.36" r="6.19"></circle><circle class="cls-1" cx="131.29" cy="244.38" r="6.19"></circle><path class="cls-1" d="m172.8,209.06c-3.42,0-6.19-2.77-6.19-6.19s2.77-6.19,6.19-6.19c3.42,0,6.19,2.77,6.19,6.19s-2.77,6.19-6.19,6.19Z"></path><path class="cls-1" d="m89.78,209.06c-3.42,0-6.19-2.77-6.19-6.19,0-3.42,2.77-6.19,6.19-6.19s6.19,2.77,6.19,6.19c0,3.42-2.77,6.19-6.19,6.19Z"></path><polygon class="cls-2" points="156.77 169.47 131.29 194.95 118.1 181.76 110.18 189.69 131.29 210.79 164.7 177.39 156.77 169.47"></polygon><path class="cls-1" d="m319.51,165.06c6.21,3.43,11.07,8.28,14.61,14.53,3.53,6.26,5.3,13.47,5.3,21.65s-1.77,15.42-5.3,21.72c-3.53,6.31-8.4,11.18-14.61,14.61-6.21,3.43-13.25,5.15-21.12,5.15-10.9,0-19.53-3.63-25.88-10.9v39.21h-18.92v-110.2h18.01v10.6c3.13-3.83,6.99-6.71,11.58-8.63,4.59-1.92,9.66-2.88,15.21-2.88,7.87,0,14.91,1.72,21.12,5.15Zm-6.05,54.49c4.49-4.64,6.74-10.75,6.74-18.32s-2.25-13.67-6.74-18.32c-4.49-4.64-10.22-6.96-17.18-6.96-4.54,0-8.63,1.04-12.26,3.1-3.63,2.07-6.51,5.02-8.63,8.86-2.12,3.84-3.18,8.28-3.18,13.32s1.06,9.49,3.18,13.32c2.12,3.84,5,6.79,8.63,8.86,3.63,2.07,7.72,3.1,12.26,3.1,6.96,0,12.69-2.32,17.18-6.96Z"></path><path class="cls-1" d="m401.17,159.91v18.01c-1.62-.3-3.08-.45-4.39-.45-7.37,0-13.12,2.15-17.26,6.43-4.14,4.29-6.21,10.47-6.21,18.54v39.21h-18.92v-80.83h18.01v11.81c5.45-8.48,15.04-12.72,28.76-12.72Z"></path><path class="cls-1" d="m427.66,237.41c-6.56-3.53-11.68-8.45-15.36-14.76-3.68-6.31-5.52-13.45-5.52-21.42s1.84-15.09,5.52-21.34c3.68-6.26,8.8-11.15,15.36-14.68,6.56-3.53,13.93-5.3,22.1-5.3s15.69,1.77,22.25,5.3c6.56,3.53,11.68,8.43,15.36,14.68,3.68,6.26,5.52,13.37,5.52,21.34s-1.84,15.11-5.52,21.42c-3.68,6.31-8.81,11.23-15.36,14.76-6.56,3.53-13.98,5.3-22.25,5.3s-15.54-1.76-22.1-5.3Zm39.36-17.86c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.71-2.32,17.26-6.96Z"></path><path class="cls-1" d="m556.78,241.65l-20.74-28-20.89,28h-20.89l31.49-41.02-30.12-39.81h21.04l19.83,26.49,19.83-26.49h20.44l-30.27,39.51,31.64,41.32h-21.34Z"></path><path class="cls-1" d="m665.77,160.82v80.83h-18.01v-10.29c-3.03,3.63-6.81,6.43-11.35,8.4-4.54,1.97-9.44,2.95-14.68,2.95-10.8,0-19.3-3-25.51-9.01-6.21-6-9.31-14.91-9.31-26.72v-46.17h18.92v43.6c0,7.27,1.64,12.69,4.92,16.27,3.28,3.58,7.95,5.37,14,5.37,6.76,0,12.13-2.09,16.12-6.28,3.99-4.19,5.98-10.22,5.98-18.09v-40.87h18.92Z"></path><path class="cls-1" d="m812.9,168.77c5.95,5.9,8.93,14.76,8.93,26.57v46.32h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.36,0-11.45,2.1-15.29,6.28-3.84,4.19-5.75,10.17-5.75,17.94v41.02h-18.92v-43.9c0-7.06-1.57-12.39-4.69-15.97-3.13-3.58-7.62-5.37-13.47-5.37-6.46,0-11.58,2.07-15.36,6.21-3.78,4.14-5.68,10.14-5.68,18.01v41.02h-18.92v-80.83h18.01v10.29c3.03-3.63,6.81-6.41,11.35-8.33,4.54-1.92,9.59-2.88,15.14-2.88,6.05,0,11.43,1.14,16.12,3.41,4.69,2.27,8.4,5.63,11.13,10.07,3.33-4.24,7.62-7.54,12.87-9.92,5.25-2.37,11.05-3.56,17.41-3.56,10.19,0,18.26,2.95,24.22,8.86Z"></path><path class="cls-1" d="m920.98,160.82v80.83h-18.01v-10.44c-3.13,3.84-6.99,6.71-11.58,8.63-4.59,1.92-9.66,2.88-15.21,2.88-7.87,0-14.91-1.71-21.12-5.15-6.21-3.43-11.05-8.27-14.53-14.53-3.48-6.26-5.22-13.52-5.22-21.8s1.74-15.52,5.22-21.72c3.48-6.21,8.33-11.02,14.53-14.46,6.21-3.43,13.25-5.15,21.12-5.15,5.25,0,10.07.91,14.46,2.72,4.39,1.82,8.2,4.49,11.43,8.02v-9.84h18.92Zm-25.43,58.73c4.54-4.64,6.81-10.75,6.81-18.32s-2.27-13.67-6.81-18.32c-4.54-4.64-10.29-6.96-17.26-6.96s-12.69,2.32-17.18,6.96c-4.49,4.64-6.74,10.75-6.74,18.32s2.24,13.68,6.74,18.32c4.49,4.64,10.22,6.96,17.18,6.96s12.72-2.32,17.26-6.96Z"></path><circle class="cls-2" cx="950.84" cy="232.58" r="10.13"></circle></svg>
 </div>
 <div class="doc-type">AI-Generated Power BI Report</div>
 </div>
 <div class="doc-header-right">
+<div class="doc-meta-row"><strong>Report:</strong> PRX-PSA-QB-001</div>
+<div class="doc-meta-row"><strong>Source:</strong> Autotask PSA</div>
+<div class="doc-meta-row"><strong>Generated:</strong> May 2026</div>
 </div>
 </div><div class="doc-title-block">
 <div class="doc-title">PSA vs QuickBooks Comparison</div>
-<p class="doc-subtitle">A data-driven analysis of <strong>psa vs quickbooks</strong> comparison from your Power BI environment, with breakdowns and actionable findings.</p>
+<p class="doc-subtitle">A data-driven analysis of what a PSA-native data model surfaces about revenue quality versus what a general-ledger accounting system can show, across 125,751 billing items, 293 companies, and 1,377 active contracts.</p>
 </div>
-<div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
+<div class="doc-demo"><strong>Anonymized Report:</strong> This report uses real operational data from Autotask PSA. Company names and contact details have been anonymized. All financial figures reflect actual billing data.</div>
 <div class="doc-body">
+<!-- Section 1.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">1.0</span>
 <span class="doc-section-title">Summary Metrics</span>
 </div>
+<div class="doc-kpi-row">
+<div class="doc-kpi">
+<div class="doc-kpi-label">TOTAL BILLED REVENUE</div>
+<div class="doc-kpi-value">&euro;17.61M</div>
+<div class="doc-kpi-note muted">125,751 line items</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">OVERALL MARGIN</div>
+<div class="doc-kpi-value">53.0%</div>
+<div class="doc-kpi-note green">&euro;9.33M profit</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">ACTIVE CONTRACTS</div>
+<div class="doc-kpi-value">1,377</div>
+<div class="doc-kpi-note muted">across 293 companies</div>
+</div>
+<div class="doc-kpi">
+<div class="doc-kpi-label">BILLING CATEGORIES</div>
+<div class="doc-kpi-value">9</div>
+<div class="doc-kpi-note amber">vs 1 in QuickBooks</div>
+</div>
+</div>
 <div class="dax-toggle">
 <div class="dax-trigger">
 <svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
-<span>View DAX Query — Summary query</span>
+<span>View DAX Query &mdash; Summary KPIs</span>
 </div>
 <div class="dax-content">
-<pre><code>EVALUATE
-ADDCOLUMNS(
-  SUMMARIZECOLUMNS(
-    'BI_Common_Dim_Date'[year_quarter],
-    "BilledRevenue", SUM('BI_Autotask_Billing_Items'[total_amount]),
-    "BilledCost", SUM('BI_Autotask_Billing_Items'[our_cost]),
-    "BillingItems", COUNTROWS('BI_Autotask_Billing_Items'),
-    "UniqueCompanies", DISTINCTCOUNT('BI_Autotask_Billing_Items'[company_id])
-  ),
-  "Profit", [BilledRevenue] - [BilledCost],
-  "Margin", DIVIDE([BilledRevenue] - [BilledCost], [BilledRevenue])
-)
-ORDER BY 'BI_Common_Dim_Date'[year_quarter]</code></pre>
+<pre><code>EVALUATE ROW(
+  "TotalRevenue", SUM('BI_Autotask_Billing_Items'[total_amount]),
+  "TotalCost", SUM('BI_Autotask_Billing_Items'[our_cost]),
+  "BillingItemCount", COUNTROWS('BI_Autotask_Billing_Items'),
+  "UniqueCompanies", DISTINCTCOUNT('BI_Autotask_Billing_Items'[company_id]),
+  "ContractCount", COUNTROWS('BI_Autotask_Contracts'),
+  "AvgRevenuePerItem", AVERAGE('BI_Autotask_Billing_Items'[total_amount])
+)</code></pre>
 <button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 <div class="doc-dax-box" style="margin-top:12px;">
 <strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran. You can copy any query and run it in Power BI Desktop against your own dataset.
-      </div>
 </div>
+</div>
+<!-- Section 2.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">2.0</span>
-<span class="doc-section-title">Analysis</span>
+<span class="doc-section-title">Revenue by Billing Category</span>
 </div>
-<p class="doc-section-sub">What the data is telling us</p>
-<div class="narrative"><p>The data above paints a picture of <strong>psa vs quickbooks comparison</strong> across your MSP operations. Look for patterns, outliers, and trends that warrant attention. Each section includes the DAX query used, so you can drill deeper into any metric that catches your eye.</p></div>
+<p class="doc-section-sub">The granularity a PSA provides vs a single revenue line in QuickBooks</p>
+<div class="narrative"><p>A PSA tracks 9 distinct billing item types. Recurring services drive <strong>54.4%</strong> of revenue at <strong>58% margin</strong>. Subscriptions add another <strong>21.8%</strong> at 100% margin (zero tracked cost). But time entries &mdash; 69,321 of them &mdash; generate only <strong>&euro;274K</strong> revenue against <strong>&euro;1.21M</strong> in internal cost. That cost-to-revenue imbalance would be invisible in a general ledger where all labor appears as a single payroll expense.</p></div>
+<div class="hbar-chart">
+<div class="hbar-row">
+<div class="hbar-label">Recurring Service</div>
+<div class="hbar-track"><div class="hbar-fill teal" style="width:100%"><span class="hbar-val">&euro;9.58M</span></div></div>
 </div>
+<div class="hbar-row">
+<div class="hbar-label">Subscription</div>
+<div class="hbar-track"><div class="hbar-fill blue" style="width:40.1%"><span class="hbar-val">&euro;3.85M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Product / Expense</div>
+<div class="hbar-track"><div class="hbar-fill navy" style="width:27.6%"><span class="hbar-val">&euro;2.64M</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Service Adjustment</div>
+<div class="hbar-track"><div class="hbar-fill green" style="width:9.6%"><span class="hbar-val">&euro;918K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Time Entry</div>
+<div class="hbar-track"><div class="hbar-fill red" style="width:2.9%"><span class="hbar-val">&euro;274K</span></div></div>
+</div>
+<div class="hbar-row">
+<div class="hbar-label">Charge</div>
+<div class="hbar-track"><div class="hbar-fill amber" style="width:2.3%"><span class="hbar-val">&euro;225K</span></div></div>
+</div>
+</div>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Revenue by billing item sub_type</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+SUMMARIZECOLUMNS(
+  'BI_Autotask_Billing_Items'[sub_type],
+  "Revenue", SUM('BI_Autotask_Billing_Items'[total_amount]),
+  "Cost", SUM('BI_Autotask_Billing_Items'[our_cost]),
+  "ItemCount", COUNTROWS('BI_Autotask_Billing_Items')
+)
+ORDER BY [Revenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+<table>
+<thead>
+<tr><th>Category</th><th>Revenue</th><th>Cost</th><th>Items</th><th>Margin</th></tr>
+</thead>
+<tbody>
+<tr><td>Recurring Service</td><td class="num">&euro;9,577,503</td><td class="num">&euro;4,025,063</td><td class="num">42,607</td><td class="num"><span class="pct-badge pct-ok">58.0%</span></td></tr>
+<tr><td>Subscription</td><td class="num">&euro;3,845,490</td><td class="num">&euro;0</td><td class="num">2,047</td><td class="num"><span class="pct-badge pct-ok">100.0%</span></td></tr>
+<tr><td>Product / Expense</td><td class="num">&euro;2,644,523</td><td class="num">&euro;2,483,170</td><td class="num">4,597</td><td class="num"><span class="pct-badge pct-bad">6.1%</span></td></tr>
+<tr><td>Service Adjustment</td><td class="num">&euro;917,546</td><td class="num">&euro;453,912</td><td class="num">3,943</td><td class="num"><span class="pct-badge pct-ok">50.6%</span></td></tr>
+<tr><td>Time Entry</td><td class="num">&euro;273,878</td><td class="num">&euro;1,207,179</td><td class="num">69,321</td><td class="num"><span class="pct-badge pct-bad">-340.8%</span></td></tr>
+<tr><td>Charge</td><td class="num">&euro;225,026</td><td class="num">&euro;173,409</td><td class="num">182</td><td class="num"><span class="pct-badge pct-mid">22.9%</span></td></tr>
+<tr><td>Subscription Adj.</td><td class="num">&euro;94,305</td><td class="num">&euro;0</td><td class="num">187</td><td class="num"><span class="pct-badge pct-ok">100.0%</span></td></tr>
+<tr><td>Recurring Svc Adj.</td><td class="num">&euro;17,017</td><td class="num">-&euro;75,734</td><td class="num">2,129</td><td class="num"><span class="pct-badge pct-none">n/a</span></td></tr>
+<tr><td>Milestone</td><td class="num">&euro;10,981</td><td class="num">&euro;5,364</td><td class="num">737</td><td class="num"><span class="pct-badge pct-ok">51.1%</span></td></tr>
+</tbody>
+</table>
+</div>
+<!-- Section 3.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">3.0</span>
-<span class="doc-section-title">Recommended Actions</span>
+<span class="doc-section-title">Contract Type Distribution</span>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>1. Schedule Recurring Review</h4>
-<p>Set up a weekly or monthly review of psa vs quickbooks comparison metrics. Trends matter more than snapshots. Use the DAX queries in this report as your starting point.</p>
+<p class="doc-section-sub">How revenue is structured across contract models</p>
+<div class="narrative"><p>The PSA manages 1,377 active contracts across three active types. Recurring Service contracts dominate (<strong>932</strong>, or 67.7%), typical for mature MSPs. Time &amp; Materials (<strong>287</strong>, 20.8%) and Block Hours (<strong>158</strong>, 11.5%) account for the rest. Fixed Price contracts exist but are all inactive. This contract-level visibility lets you see whether revenue is predictable (recurring) or variable (T&amp;M/block) &mdash; a distinction QuickBooks cannot make without manual tagging.</p></div>
+<div class="chart-row">
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"></circle>
+<circle class="donut-fg teal" cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="212.88 101.28" stroke-dashoffset="78.54" stroke-linecap="round"></circle>
+<text class="donut-value" x="60" y="56" text-anchor="middle" dominant-baseline="middle">67.7%</text>
+<text class="donut-sublabel" x="60" y="72" text-anchor="middle">932</text>
+</svg>
+<div class="donut-label">Recurring Service</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"></circle>
+<circle class="donut-fg blue" cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="65.35 248.81" stroke-dashoffset="78.54" stroke-linecap="round"></circle>
+<text class="donut-value" x="60" y="56" text-anchor="middle" dominant-baseline="middle">20.8%</text>
+<text class="donut-sublabel" x="60" y="72" text-anchor="middle">287</text>
+</svg>
+<div class="donut-label">Time &amp; Materials</div>
+</div>
+<div class="donut-chart">
+<svg width="120" height="120" viewbox="0 0 120 120">
+<circle class="donut-bg" cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"></circle>
+<circle class="donut-fg navy" cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="36.13 278.03" stroke-dashoffset="78.54" stroke-linecap="round"></circle>
+<text class="donut-value" x="60" y="56" text-anchor="middle" dominant-baseline="middle">11.5%</text>
+<text class="donut-sublabel" x="60" y="72" text-anchor="middle">158</text>
+</svg>
+<div class="donut-label">Block Hours</div>
 </div>
 </div>
-<div class="doc-finding">
-<div class="doc-finding-icon ok">✓</div>
-<div class="doc-finding-body">
-<h4>2. Connect Your Own Data</h4>
-<p>This report uses demo data. Connect Proxuma Power BI to your own Autotask PSA to generate this analysis from your real numbers.</p>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Contract type distribution</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ADDCOLUMNS(
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Contracts'[contract_type_name],
+    FILTER('BI_Autotask_Contracts', 'BI_Autotask_Contracts'[contract_status_name] = "Active"),
+    "ContractCount", COUNTROWS('BI_Autotask_Contracts'),
+    "ServiceUnitRevenue", CALCULATE(SUM('BI_Autotask_Contract_Service_Units'[price])),
+    "ServiceUnitCost", CALCULATE(SUM('BI_Autotask_Contract_Service_Units'[cost])),
+    "TotalUnits", CALCULATE(SUM('BI_Autotask_Contract_Service_Units'[units]))
+  ),
+  "Margin", DIVIDE([ServiceUnitRevenue] - [ServiceUnitCost], [ServiceUnitRevenue])
+)
+ORDER BY [ServiceUnitRevenue] DESC</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>
-<!-- FAQ -->
+<!-- Section 4.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
 <span class="doc-section-num">4.0</span>
+<span class="doc-section-title">Per-Client Profitability</span>
+</div>
+<p class="doc-section-sub">Revenue and margin visibility that a flat accounting system cannot provide</p>
+<div class="narrative"><p>The PSA reveals per-client margin at billing-item granularity. Client D leads with <strong>61.0% margin</strong>, while Client E is operating at a <strong>-9.5% loss</strong> &mdash; their costs exceed revenue by &euro;56K. In QuickBooks, you see total revenue and total expenses, but not which clients are profitable and which are draining resources. Seven of the top eight clients maintain healthy margins above 50%, but the single loss-making client would go undetected without PSA-level cost tracking.</p></div>
+<table>
+<thead>
+<tr><th>Client</th><th>Revenue</th><th>Cost</th><th>Margin</th><th>Items</th><th>Avg/Item</th></tr>
+</thead>
+<tbody>
+<tr><td class="client-name">Client A</td><td class="num">&euro;2,324,617</td><td class="num">&euro;1,013,970</td><td class="num"><span class="pct-badge pct-ok">56.4%</span></td><td class="num">9,606</td><td class="num">&euro;242</td></tr>
+<tr><td class="client-name">Client B</td><td class="num">&euro;2,212,915</td><td class="num">&euro;894,222</td><td class="num"><span class="pct-badge pct-ok">59.6%</span></td><td class="num">3,922</td><td class="num">&euro;564</td></tr>
+<tr><td class="client-name">Client C</td><td class="num">&euro;1,431,177</td><td class="num">&euro;603,420</td><td class="num"><span class="pct-badge pct-ok">57.8%</span></td><td class="num">8,017</td><td class="num">&euro;179</td></tr>
+<tr><td class="client-name">Client D</td><td class="num">&euro;637,092</td><td class="num">&euro;248,212</td><td class="num"><span class="pct-badge pct-ok">61.0%</span></td><td class="num">4,183</td><td class="num">&euro;152</td></tr>
+<tr><td class="client-name">Client E</td><td class="num num-danger">&euro;589,694</td><td class="num num-danger">&euro;645,574</td><td class="num"><span class="pct-badge pct-bad">-9.5%</span></td><td class="num">2,013</td><td class="num">&euro;293</td></tr>
+<tr><td class="client-name">Client F</td><td class="num">&euro;476,622</td><td class="num">&euro;214,395</td><td class="num"><span class="pct-badge pct-ok">55.0%</span></td><td class="num">5,495</td><td class="num">&euro;87</td></tr>
+<tr><td class="client-name">Client G</td><td class="num">&euro;469,660</td><td class="num">&euro;224,394</td><td class="num"><span class="pct-badge pct-ok">52.2%</span></td><td class="num">3,322</td><td class="num">&euro;141</td></tr>
+<tr><td class="client-name">Client H</td><td class="num">&euro;416,450</td><td class="num">&euro;206,868</td><td class="num"><span class="pct-badge pct-ok">50.3%</span></td><td class="num">3,073</td><td class="num">&euro;136</td></tr>
+</tbody>
+</table>
+<div class="dax-toggle">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+<span>View DAX Query &mdash; Top 8 clients by revenue</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ADDCOLUMNS(
+  TOPN(
+    8,
+    SUMMARIZECOLUMNS(
+      'BI_Autotask_Billing_Items'[company_id],
+      "Revenue", SUM('BI_Autotask_Billing_Items'[total_amount]),
+      "Cost", SUM('BI_Autotask_Billing_Items'[our_cost]),
+      "ItemCount", COUNTROWS('BI_Autotask_Billing_Items')
+    ),
+    [Revenue], DESC
+  ),
+  "Margin", DIVIDE([Revenue] - [Cost], [Revenue]),
+  "AvgPerItem", DIVIDE([Revenue], [ItemCount])
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+</div>
+<!-- Section 5.0 -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">5.0</span>
+<span class="doc-section-title">Key Findings</span>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon critical">!</div>
+<div class="doc-finding-body">
+<h4>Time entries generate negative margin at -340.8%</h4>
+<p>The 69,321 time entries billed only &euro;274K while costing &euro;1.21M internally. A QuickBooks P&amp;L would show this as "labor cost" without connecting it to specific billing items.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon warning">!</div>
+<div class="doc-finding-body">
+<h4>Client E operates at -9.5% margin</h4>
+<p>This client generated &euro;590K in revenue but incurred &euro;646K in costs. Without PSA-level per-client cost tracking, this loss would be absorbed into aggregate financials.</p>
+</div>
+</div>
+<div class="doc-finding">
+<div class="doc-finding-icon ok">&#10003;</div>
+<div class="doc-finding-body">
+<h4>Recurring + Subscription = 76.2% of revenue at 65%+ margin</h4>
+<p>This revenue predictability and margin health is the kind of structural insight that only emerges when billing data is categorized by contract type and item type.</p>
+</div>
+</div>
+</div>
+<!-- Section 6.0 -->
+<div class="doc-section">
+<div class="doc-section-head">
+<span class="doc-section-num">6.0</span>
 <span class="doc-section-title">Frequently Asked Questions</span>
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What does the "Schedule Recurring Review" insight mean in this report?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This insight highlights a pattern detected in your data that may require attention. The PSA vs QuickBooks Comparison report surfaces this through automated analysis of the underlying dataset.</p></div>
+<div class="faq-q"><span>What specific data dimensions does a PSA expose that QuickBooks does not?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>A PSA like Autotask tracks revenue at nine different billing-item levels (recurring service, subscription, time entry, product, charge, milestone, and adjustments), ties each to a specific contract and client, and records both revenue and internal cost per item. QuickBooks tracks revenue as journal entries with optional categories, but lacks native concepts for contracts, service units, or per-item cost allocation.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria.</p></div>
+<div class="faq-q"><span>How does this report calculate margin per billing category?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Margin is calculated as (Revenue minus Cost) divided by Revenue for each billing item sub_type. Revenue comes from the total_amount field and cost from the our_cost field in the Autotask billing items table. Note that cost here reflects the internal cost recorded in the PSA, not necessarily the full loaded cost including overhead.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What action should I take based on the "Schedule Recurring Review" recommendation?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
-<div class="faq-a"><p>Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions.</p></div>
+<div class="faq-q"><span>Why do time entries show negative margin?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-a"><p>Time entries (sub_type 1) in this dataset generated &euro;274K in billable revenue but carried &euro;1.21M in internal cost. This happens when time is logged against contracts that do not bill hourly (like recurring service or block hours contracts), so the revenue appears under the contract billing type while the cost stays with the time entry.</p></div>
 </div>
 </div>
 </div>
@@ -803,17 +1002,11 @@ ORDER BY 'BI_Common_Dim_Date'[year_quarter]</code></pre>
 </div>
 </div>
 <div class="doc-footer">
-<span>Proxuma Power BI · AI-Generated Report · proxuma.io/powerbi</span>
-<span>Generated in &lt; 15 minutes via MCP · March 2026</span>
+<span>Proxuma Power BI &middot; AI-Generated Report &middot; proxuma.io/powerbi</span>
+<span>Generated in &lt; 15 minutes via MCP &middot; May 2026</span>
 </div>
 </div>
 </div>
-<script>
-catch(e){}document.body.removeChild(ta)}
-</script>
-<script>
-catch(e){}document.body.removeChild(ta)}
-</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -821,26 +1014,26 @@ catch(e){}document.body.removeChild(ta)}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What does the \"Schedule Recurring Review\" insight mean in this report?",
+      "name": "What specific data dimensions does a PSA expose that QuickBooks does not?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This insight highlights a pattern detected in your data that may require attention. The PSA vs QuickBooks Comparison report surfaces this through automated analysis of the underlying dataset."
+        "text": "A PSA like Autotask tracks revenue at nine different billing-item levels (recurring service, subscription, time entry, product, charge, milestone, and adjustments), ties each to a specific contract and client, and records both revenue and internal cost per item. QuickBooks tracks revenue as journal entries with optional categories, but lacks native concepts for contracts, service units, or per-item cost allocation."
       }
     },
     {
       "@type": "Question",
-      "name": "Which data from Autotask PSA, Datto RMM, Datto Backup is included in this analysis?",
+      "name": "How does this report calculate margin per billing category?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This report pulls operational data from Autotask PSA, Datto RMM, Datto Backup through the Proxuma Power BI integration. The analysis covers the standard reporting period and includes all active records matching the report criteria."
+        "text": "Margin is calculated as (Revenue minus Cost) divided by Revenue for each billing item sub_type. Revenue comes from the total_amount field and cost from the our_cost field in the Autotask billing items table. Note that cost here reflects the internal cost recorded in the PSA, not necessarily the full loaded cost including overhead."
       }
     },
     {
       "@type": "Question",
-      "name": "What action should I take based on the \"Schedule Recurring Review\" recommendation?",
+      "name": "Why do time entries show negative margin?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Review the specific data points highlighted in this section and cross-reference them with your operational context. Use the report as a starting point for team discussions and prioritization of follow-up actions."
+        "text": "Time entries (sub_type 1) in this dataset generated €274K in billable revenue but carried €1.21M in internal cost. This happens when time is logged against contracts that do not bill hourly (like recurring service or block hours contracts), so the revenue appears under the contract billing type while the cost stays with the time entry."
       }
     }
   ]
@@ -856,13 +1049,13 @@ catch(e){}document.body.removeChild(ta)}
 <a class="rr-card" href="/powerbi/insights/ci-end-of-warranty/">
 <span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
 <div class="rr-card-title">CI End of Warranty</div>
-<div class="rr-card-desc">CI End of Warranty — AI-generated Power BI analysis for MSPs.</div>
+<div class="rr-card-desc">CI End of Warranty &mdash; AI-generated Power BI analysis for MSPs.</div>
 <span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
 </a>
 <a class="rr-card" href="/powerbi/insights/documentation-roi/">
 <span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
 <div class="rr-card-title">IT Documentation ROI: Resolution Efficiency as a Proxy for Documentation Quality</div>
-<div class="rr-card-desc">Which clients benefit from good documentation and where poor documentation is costing you time, money, and margin. Gener</div>
+<div class="rr-card-desc">Which clients benefit from good documentation and where poor documentation is costing you time, money, and margin.</div>
 <span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
 </a>
 <a class="rr-card" href="/powerbi/insights/how-do-our-reports-compare-to-quickbooks/">
@@ -874,7 +1067,7 @@ catch(e){}document.body.removeChild(ta)}
 <a class="rr-card" href="/powerbi/insights/time-entries-test/">
 <span class="rr-badge" style="background:#f1f5f9;color:#64748b;">Report</span>
 <div class="rr-card-title">Time Entry Completeness Audit: Are All Hours Logged Correctly?</div>
-<div class="rr-card-desc">82,790 time entries checked for zero-hour gaps, billing accuracy, resource anomalies, and ticket type patterns. Generate</div>
+<div class="rr-card-desc">82,790 time entries checked for zero-hour gaps, billing accuracy, resource anomalies, and ticket type patterns.</div>
 <span class="rr-card-link">Read report <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
 </a>
 <a class="rr-card" href="/powerbi/insights/monthly-active-user-trend/">
@@ -909,12 +1102,12 @@ catch(e){}document.body.removeChild(ta)}
   "description": "PSA vs QuickBooks Comparison — AI-generated Power BI report analyzing psa vs quickbooks comparison for managed service providers.",
   "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
   "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
-  "datePublished": "2026-04-06",
-  "dateModified": "2026-04-06",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07",
   "mainEntityOfPage": "https://proxuma.io/powerbi/insights/psa-vs-quickbooks-comparison/",
-  "proficiencyLevel": "Beginner",
-  "dependencies": "Autotask PSA , Datto RMM , Datto Backup , Microsoft 365 , SmileBack , HubSpot , IT Glue",
-  "articleSection": "Other"
+  "proficiencyLevel": "Intermediate",
+  "dependencies": "Autotask PSA",
+  "articleSection": "Financial"
 }
 </script>
 <!-- BreadcrumbList JSON-LD -->
@@ -925,14 +1118,13 @@ catch(e){}document.body.removeChild(ta)}
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Power BI", "item": "https://proxuma.io/powerbi/"},
     {"@type": "ListItem", "position": 2, "name": "AI-Powered Reports", "item": "https://proxuma.io/powerbi/insights/"},
-    {"@type": "ListItem", "position": 3, "name": "Report", "item": "https://proxuma.io/powerbi/insights/?cat=other"},
+    {"@type": "ListItem", "position": 3, "name": "Financial", "item": "https://proxuma.io/powerbi/insights/?cat=financial"},
     {"@type": "ListItem", "position": 4, "name": "PSA vs QuickBooks Comparison"}
   ]
 }
 </script>
 <!-- Scroll trigger + DAX copy + CTA hover JS -->
 <script>
-catch(e){}document.body.removeChild(ta)}
 function prxCopyDAX(btn){var c=btn.parentElement.querySelector('code');if(!c)return;var t=c.textContent;navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)}).catch(function(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy Query'},1500)})}
 document.querySelectorAll('.dax-toggle .dax-trigger').forEach(function(t){t.addEventListener('click',function(){t.closest('.dax-toggle').classList.toggle('expanded')})});
 
