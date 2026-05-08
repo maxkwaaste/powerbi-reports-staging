@@ -750,6 +750,8 @@
 <div class="doc-demo"><strong>Demo mode:</strong> This report uses synthetic sample data. Connect your own data sources to see real results.</div>
 <!-- BODY -->
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- SECTION 1.0 - KPIs -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -1181,6 +1183,25 @@ SUMMARIZE (
 <p><strong>1. Redistribute devices from Infrastructure to Cloud Operations.</strong> Cloud Operations already handles a similar device profile (servers and workstations) but operates at 74.5 devices per tech. Moving 80 - 100 devices from Infrastructure would bring both teams closer to the 100-device target without new hires.</p>
 <p><strong>2. Add one technician to Service Desk L2.</strong> At 128 devices per tech across 4 people, adding a fifth team member would reduce the ratio to 102.4 - just above threshold. Combined with better device routing, this could bring L2 into the healthy range within one quarter.</p>
 <p><strong>3. Implement automated device assignment reviews.</strong> Build a monthly Power BI alert that flags any team exceeding 110 devices per technician. This early warning allows the Service Manager to rebalance before teams reach critical load. The DAX measures in sections 1.0 and 2.0 of this report provide the foundation for that alert.</p>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Ticket SLA compliance by priority</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Tickets'[priority_name],
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]),
+    "AvgHours", DIVIDE(SUM('BI_Autotask_Time_Entries'[hours_worked]), DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]))
+  ),
+  [TicketCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
 </div>
 </div>
 <!-- SECTION 9.0 - FAQ -->

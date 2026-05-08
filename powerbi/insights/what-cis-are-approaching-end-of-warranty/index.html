@@ -741,6 +741,8 @@
 <div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic demo data. Warranty expiration dates are estimated from standard 3-year hardware lifecycles — in your Autotask environment, actual <code>warranty_expiration_date</code> field values drive these figures in real time.</div>
 </div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- Section 1: KPIs -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -798,7 +800,16 @@
 <div class="table-scroll">
 <table>
 <thead><tr><th>Type</th><th>Count</th></tr></thead>
-<tbody><tr><td>Laptop - Windows</td><td>6,933</td></tr><tr><td>Desktop - Windows</td><td>2,734</td></tr><tr><td>Server</td><td>1,461</td></tr><tr><td>Domain Registration</td><td>954</td></tr><tr><td>Mobile Device</td><td>478</td></tr><tr><td>Access Point</td><td>364</td></tr></tbody>
+<tbody>
+<tr><td>Backup Success Rate</td><td class="num">92.9%</td><td class="num">Healthy</td><td class="num">N-able</td></tr>
+<tr><td>Active Devices</td><td class="num">169</td><td class="num">Monitored</td><td class="num">All endpoints</td></tr>
+<tr><td>Storage Protected</td><td class="num">175 TB</td><td class="num">Stable</td><td class="num">Total backup</td></tr>
+<tr><td>Devices w/ Issues</td><td class="num">19</td><td class="num">Attention</td><td class="num">Backup failures</td></tr>
+<tr><td>Backup Coverage</td><td class="num">89.4%</td><td class="num">Good</td><td class="num">Of fleet</td></tr>
+<tr><td>Avg Storage/Device</td><td class="num">1.04 TB</td><td class="num">—</td><td class="num">Mean per endpoint</td></tr>
+<tr><td>Critical Failures</td><td class="num">3</td><td class="num">Urgent</td><td class="num">Last 7 days</td></tr>
+<tr><td>Last Sync Issues</td><td class="num">7</td><td class="num">Investigate</td><td class="num">Stale agents</td></tr>
+<tr><td>Laptop - Windows</td><td>6,933</td></tr><tr><td>Desktop - Windows</td><td>2,734</td></tr><tr><td>Server</td><td>1,461</td></tr><tr><td>Domain Registration</td><td>954</td></tr><tr><td>Mobile Device</td><td>478</td></tr><tr><td>Access Point</td><td>364</td></tr></tbody>
 </table>
 </div>
 <div class="narrative" style="margin-top:16px;">

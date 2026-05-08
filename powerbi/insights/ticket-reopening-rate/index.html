@@ -731,6 +731,8 @@
 </div>
 <div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- 1.0 Summary Metrics -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -843,7 +845,16 @@
 <div style="overflow-x:auto;margin-top:20px;">
 <table>
 <thead><tr><th>Metric</th><th>Count</th><th>Rate</th><th>Assessment</th></tr></thead>
-<tbody><tr><td>Closed by first resource (clean closure)</td><td>7,547</td><td>11.3%</td><td>Low FCR</td></tr><tr><td>Reassigned / escalated before closure</td><td>59,130</td><td>88.7%</td><td>High churn</td></tr><tr><td>Open beyond 90 days (reopening-risk proxy)</td><td>489</td><td>57.9% of open</td><td>Stale backlog</td></tr></tbody>
+<tbody>
+<tr><td>Recurring Service</td><td class="num">1,207</td><td class="num">63.9%</td><td class="num">Primary</td></tr>
+<tr><td>Time &amp; Materials</td><td class="num">504</td><td class="num">26.7%</td><td class="num">Secondary</td></tr>
+<tr><td>Block Hours</td><td class="num">173</td><td class="num">9.2%</td><td class="num">Supplementary</td></tr>
+<tr><td>Fixed Price</td><td class="num">5</td><td class="num">0.3%</td><td class="num">Minimal</td></tr>
+<tr><td>Total Revenue</td><td class="num">$17.6M</td><td class="num">100%</td><td class="num">All contracts</td></tr>
+<tr><td>Project Margin</td><td class="num">49.7%</td><td class="num">—</td><td class="num">Above target</td></tr>
+<tr><td>Pipeline Value</td><td class="num">$3.9M</td><td class="num">—</td><td class="num">124 deals</td></tr>
+<tr><td>Charges Revenue</td><td class="num">$7,583</td><td class="num">—</td><td class="num">Billed charges</td></tr>
+<tr><td>Closed by first resource (clean closure)</td><td>7,547</td><td>11.3%</td><td>Low FCR</td></tr><tr><td>Reassigned / escalated before closure</td><td>59,130</td><td>88.7%</td><td>High churn</td></tr><tr><td>Open beyond 90 days (reopening-risk proxy)</td><td>489</td><td>57.9% of open</td><td>Stale backlog</td></tr></tbody>
 </table>
 </div>
 <div class="dax-toggle">

@@ -729,6 +729,8 @@
 </div>
 <div class="doc-demo"><strong>Demo Report:</strong> This report uses synthetic data to demonstrate AI-generated insights from Proxuma Power BI. The structure, DAX queries, and analysis reflect real MSP data patterns.</div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- 1.0 Revenue Summary KPIs -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -758,6 +760,20 @@
 <div class="doc-kpi-note red">Declining since Q2</div>
 </div>
 </div>
+<table>
+<thead><tr><th>Contract Type</th><th>Count</th><th>Share %</th><th>Revenue Contribution</th></tr></thead>
+<tbody>
+<tr><td>Recurring Service</td><td class="num">1,207</td><td class="num">63.9%</td><td class="num">Primary</td></tr>
+<tr><td>Time &amp; Materials</td><td class="num">504</td><td class="num">26.7%</td><td class="num">Secondary</td></tr>
+<tr><td>Block Hours</td><td class="num">173</td><td class="num">9.2%</td><td class="num">Supplementary</td></tr>
+<tr><td>Fixed Price</td><td class="num">5</td><td class="num">0.3%</td><td class="num">Minimal</td></tr>
+<tr><td>Total Revenue</td><td class="num">$17.6M</td><td class="num">100%</td><td class="num">All contracts</td></tr>
+<tr><td>Project Margin</td><td class="num">49.7%</td><td class="num">—</td><td class="num">Above target</td></tr>
+<tr><td>Pipeline Value</td><td class="num">$3.9M</td><td class="num">—</td><td class="num">124 deals</td></tr>
+<tr><td>Charges Revenue</td><td class="num">$7,583</td><td class="num">—</td><td class="num">Billed charges</td></tr>
+</tbody>
+</table>
+
 <div class="doc-dax-box" style="margin-top:12px;">
 <strong>What are these DAX queries?</strong> DAX (Data Analysis Expressions) is the formula language Power BI uses to query data. Each collapsible section below shows the exact query the AI wrote and ran. You can copy any query and run it in Power BI Desktop against your own dataset.
       </div>

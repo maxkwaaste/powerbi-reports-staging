@@ -738,6 +738,9 @@
 <div class="doc-demo"><strong>Demo mode:</strong> Dit rapport gebruikt synthetische voorbeelddata. Verbind je eigen databronnen om echte resultaten te zien.</div>
 <!-- BODY -->
 <div class="doc-body">
+<!-- stage5-enriched -->
+
+
 <!-- SECTION 1: Werklast KPIs -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -1210,11 +1213,48 @@ RETURN
 <div class="doc-section-head">
 <span class="doc-section-num">8.0</span>
 <span class="doc-section-title">Strategische Aanbevelingen</span>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Backup health overview</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ROW(
+  "BackupSuccessRate", [NAble - Backup Success Rate %],
+  "ActiveDevices", [NAble - Total Active Devices],
+  "StorageGB", [NAble - Total Protected Storage GB],
+  "DevicesWithIssues", [NAble - Devices with Backup Issues]
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
 </div>
 <div class="narrative">
 <p><strong>1. Herverdeel klanten van Technicus A en B.</strong> Verplaats minimaal 6 klanten van Technicus A en 4 van Technicus B naar engineers met lagere belasting (G en H). Richt op een maximum van 10 klanten per engineer. Dit verlaagt het faalpercentage van de overbelaste engineers en vermindert het concentratierisico direct.</p>
 <p><strong>2. Voer een automatische toewijzingsregel in.</strong> Stel in Autotask of je RMM-platform een round-robin toewijzing in voor nieuwe klant-backups. Elke nieuwe klant gaat naar de engineer met de laagste huidige belasting. Hiermee voorkom je dat de scheefgroei opnieuw ontstaat.</p>
 <p><strong>3. Stel een maandelijks werklastplafond in.</strong> Definieer een harde grens van 400 backup-jobs per engineer per maand. Wanneer iemand deze grens nadert, trigger dan een automatisch alert naar de teamleider. Gebruik dit Power BI-rapport als maandelijkse controle om afwijkingen vroeg te signaleren.</p>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Resource utilization summary</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Time_Entries'[resource_name],
+    "TotalHours", SUM('BI_Autotask_Time_Entries'[hours_worked]),
+    "BillableHours", SUM('BI_Autotask_Time_Entries'[Billable Hours]),
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Time_Entries'[ticket_id])
+  ),
+  [TotalHours], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
 </div>
 </div>
 <!-- SECTION 9: FAQ -->

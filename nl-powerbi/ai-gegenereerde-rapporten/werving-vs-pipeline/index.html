@@ -733,6 +733,8 @@
 <p class="doc-subtitle">Dit rapport kruist <strong>HiBob personeelsdata</strong> (75 medewerkers over 10+ afdelingen) met de <strong>HubSpot deal pipeline</strong> (115 deals, 1.465 openstaande kansen ter waarde van $14,97M) om te toetsen of de personeelsgroei gelijke tred houdt met de groei van de sales pipeline. Twee databronnen, een vraag: is je team groot genoeg om te leveren wat sales verkoopt?</p>
 </div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- SECTION 1.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -931,7 +933,16 @@ SUMMARIZECOLUMNS(
 </div>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-<tbody><tr><td>Employees</td><td>75</td></tr><tr><td>New Hires</td><td>18</td></tr><tr><td>Active Contracts</td><td>1,377</td></tr><tr><td>Tickets</td><td>67,521</td></tr><tr><td>Tickets/Employee</td><td>900</td></tr></tbody>
+<tbody>
+<tr><td>Pipeline Value</td><td class="num">$3.9M</td><td class="num">—</td><td class="num">Total open</td></tr>
+<tr><td>Open Deals</td><td class="num">124</td><td class="num">—</td><td class="num">Active opps</td></tr>
+<tr><td>Win Rate</td><td class="num">62.0%</td><td class="num">50%</td><td class="num">Above</td></tr>
+<tr><td>Avg Deal Size</td><td class="num">$31.8K</td><td class="num">—</td><td class="num">Per opportunity</td></tr>
+<tr><td>Conversion Rate</td><td class="num">62.0%</td><td class="num">45%</td><td class="num">Above</td></tr>
+<tr><td>Total Revenue</td><td class="num">$17.6M</td><td class="num">—</td><td class="num">All contracts</td></tr>
+<tr><td>Recurring Contracts</td><td class="num">1,207</td><td class="num">—</td><td class="num">Primary</td></tr>
+<tr><td>T&amp;M Contracts</td><td class="num">504</td><td class="num">—</td><td class="num">Secondary</td></tr>
+<tr><td>Employees</td><td>75</td></tr><tr><td>New Hires</td><td>18</td></tr><tr><td>Active Contracts</td><td>1,377</td></tr><tr><td>Tickets</td><td>67,521</td></tr><tr><td>Tickets/Employee</td><td>900</td></tr></tbody>
 </table>
 <div class="narrative">
 <p><strong>96 van de 115 deals (83,5%) hebben geen bedrijfskoppeling in HubSpot.</strong> Dat is het grootste datakwaliteitsprobleem in deze pipeline. Zonder bedrijfskoppelingen kun je geen engagement op accountniveau volgen, geen multi-deal accounts identificeren en geen goede account-based strategie opbouwen. De 19 deals die wel een bedrijfskoppeling hebben laten een verspreid patroon zien van enkelvoudige deals per bedrijf.</p>

@@ -730,6 +730,9 @@
 </div>
 <div class="doc-demo"><strong>Demo mode:</strong> This report uses synthetic sample data. Connect your own data sources to see real results.</div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
+
 <!-- SECTION 1.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -1124,11 +1127,48 @@ DIVIDE(
 <div class="doc-section-head">
 <span class="doc-section-num">8.0</span>
 <span class="doc-section-title">Strategic Recommendations</span>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Backup health overview</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+ROW(
+  "BackupSuccessRate", [NAble - Backup Success Rate %],
+  "ActiveDevices", [NAble - Total Active Devices],
+  "StorageGB", [NAble - Total Protected Storage GB],
+  "DevicesWithIssues", [NAble - Devices with Backup Issues]
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
 </div>
 <div class="narrative">
 <p><strong>1. Cap backup client assignments at 7 per engineer.</strong> Redistribute clients from Lars and Sophie to underutilized engineers on the Infrastructure team. Six Infrastructure engineers currently own 2 or fewer clients each - there is room to absorb the overflow without hiring.</p>
 <p><strong>2. Assign owners to all 7 unassigned clients within 5 business days.</strong> Start with Brouwer &amp; Zonen BV given its low success rate. Update HiBob records so the assignment is visible in both HR and operational dashboards. Make unassigned-client count a standing metric in your weekly service review.</p>
 <p><strong>3. Build a rotation schedule for backup oversight.</strong> Single-owner assignments create holiday and sick-day blind spots. Pair each primary engineer with a secondary backup contact. This does not double the workload - it adds a safety net that catches failures when the primary is unavailable.</p>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Resource utilization summary</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Time_Entries'[resource_name],
+    "TotalHours", SUM('BI_Autotask_Time_Entries'[hours_worked]),
+    "BillableHours", SUM('BI_Autotask_Time_Entries'[Billable Hours]),
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Time_Entries'[ticket_id])
+  ),
+  [TotalHours], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
 </div>
 </div>
 <!-- SECTION 9.0 -->

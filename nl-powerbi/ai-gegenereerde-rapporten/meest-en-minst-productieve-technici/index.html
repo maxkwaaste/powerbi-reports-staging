@@ -732,6 +732,8 @@
 <strong>Demorapport:</strong> Dit rapport gebruikt synthetische Autotask-data die echte MSP-patronen weerspiegelt. Measurenamen, DAX-query's en rapportstructuur zijn identiek aan wat je ziet met jouw eigen gekoppelde data.
 </div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- SECTION 1: Team KPIs -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -979,6 +981,26 @@ ORDER BY [Afgesloten tickets] DESC</code></pre>
 <div class="doc-finding-body">
 <h4>Maxwell Reed genereert de meeste declarabele omzet van het team</h4>
 <p>Ondanks een zesde plek op ticketaantal genereert Maxwell Reed 1.838 declarabele uren op 89,6%. Dat zijn de hoogste declarabele uren van de gehele groep en het resultaat van een combinatie van hoog volume en sterke conversie. Hij is de grootste enkelvoudige omzetbijdrager van het team. Dat maakt hem het beschermen waard tegen overbelasting, te veel niet-declarabel werk of het risico op uitputting door constante overbelasting van zijn planning.</p>
+</div>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Resource utilization summary</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Time_Entries'[resource_name],
+    "TotalHours", SUM('BI_Autotask_Time_Entries'[hours_worked]),
+    "BillableHours", SUM('BI_Autotask_Time_Entries'[Billable Hours]),
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Time_Entries'[ticket_id])
+  ),
+  [TotalHours], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>

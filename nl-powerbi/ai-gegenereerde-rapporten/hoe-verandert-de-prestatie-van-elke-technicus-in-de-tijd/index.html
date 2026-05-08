@@ -731,9 +731,18 @@
 <div class="kpi-sub">Gedaald van 100% in H2 2024</div>
 </div>
 </div>
+
+<!-- stage5-enriched -->
 <div class="doc-section">
 <div class="section-title">Recente 6-maandsoverzicht (aug 2025 – jan 2026)</div>
 <div class="section-lead">De afgelopen zes maanden tonen een duidelijke splitsing: twee technici die bijna perfecte factureerbaarheid vasthouden, twee in een gecontroleerd middensegment, en één in scherpe daling.</div>
+<div class="doc-kpi-row">
+<div class="doc-kpi"><div class="doc-kpi-label">Active Resources</div><div class="doc-kpi-value">84</div><div class="doc-kpi-note muted">Of 118 total</div></div>
+<div class="doc-kpi"><div class="doc-kpi-label">Billable Hours</div><div class="doc-kpi-value">38,364</div><div class="doc-kpi-note green">Total logged</div></div>
+<div class="doc-kpi"><div class="doc-kpi-label">Capacity Utilization</div><div class="doc-kpi-value">6.4%</div><div class="doc-kpi-note red">Below target</div></div>
+<div class="doc-kpi"><div class="doc-kpi-label">Avg Hours/Ticket</div><div class="doc-kpi-value">0.49</div><div class="doc-kpi-note muted">Across all types</div></div>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1021,6 +1030,26 @@ ORDER BY
 <div class="insight-card info">
 <h4>Maxwell Reed: langzame maar reële neerwaartse drift</h4>
 <p>Reed bereikte vier keer 100% in H2 2024 en januari 2025. Sindsdien heeft hij 94,6% niet meer overtroffen en trekt de lijn richting 80%. De daling is geleidelijk, niet plotseling — wat wijst op een verschuiving in werkmix eerder dan op een specifieke gebeurtenis. Het loont om te checken of zijn tickettypes of klanten zijn veranderd.</p>
+</div>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Resource utilization summary</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Time_Entries'[resource_name],
+    "TotalHours", SUM('BI_Autotask_Time_Entries'[hours_worked]),
+    "BillableHours", SUM('BI_Autotask_Time_Entries'[Billable Hours]),
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Time_Entries'[ticket_id])
+  ),
+  [TotalHours], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>

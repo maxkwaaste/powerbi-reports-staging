@@ -708,7 +708,15 @@
           Vergelijking: jan 2026
         </div>
 </div>
+
 <div class="doc-section">
+<div class="doc-kpi-row">
+<div class="doc-kpi"><div class="doc-kpi-label">Total Tickets</div><div class="doc-kpi-value">67,521</div><div class="doc-kpi-note green">All time</div></div>
+<div class="doc-kpi"><div class="doc-kpi-label">First Response Met</div><div class="doc-kpi-value">80.1%</div><div class="doc-kpi-note amber">SLA target: 90%</div></div>
+<div class="doc-kpi"><div class="doc-kpi-label">Resolution Met</div><div class="doc-kpi-value">90.2%</div><div class="doc-kpi-note green">Above benchmark</div></div>
+<div class="doc-kpi"><div class="doc-kpi-label">Open Tickets</div><div class="doc-kpi-value">844</div><div class="doc-kpi-note muted">Current backlog</div></div>
+</div>
+
 <h3>Verloop-omzetoverzicht</h3>
 <p class="section-desc">Totale omzetimpact van klanten die feitelijk zijn vertrokken of een significant verlooprisico vormen.</p>
 <div class="doc-kpi-row">
@@ -903,6 +911,44 @@
 <pre><code>-- Dataset niet beschikbaar voor deze rapportage.
 -- DAX wordt in een toekomstige Phase 3 run toegevoegd.</code></pre>
 <button class="copy-btn" onclick="event.stopPropagation();prxCopyDAX(this)">Query kopiëren</button>
+</div>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Ticket SLA compliance by priority</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Tickets'[priority_name],
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]),
+    "AvgHours", DIVIDE(SUM('BI_Autotask_Time_Entries'[hours_worked]), DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]))
+  ),
+  [TicketCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Client ticket distribution</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Companies'[company_name],
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]),
+    "AvgHoursPerTicket", DIVIDE(SUM('BI_Autotask_Time_Entries'[hours_worked]), DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]))
+  ),
+  [TicketCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>

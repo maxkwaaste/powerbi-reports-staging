@@ -731,6 +731,8 @@
 </div>
 <div class="doc-demo"><strong>Demorapport:</strong> Dit rapport gebruikt synthetische data om AI-gegenereerde inzichten uit Proxuma Power BI te demonstreren. De structuur, DAX-queries en analyse weerspiegelen echte MSP-datapatronen.</div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- 1.0 Contractwinstgevendheid in een Oogopslag -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -773,7 +775,16 @@
 <p class="doc-section-sub">De slechtst presterende contracten gerangschikt op totaal verlies, met contracttype en marge voor context.</p>
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-<tbody><tr><td>Total Revenue</td><td>$17,606,769</td></tr><tr><td>Contracts</td><td>1,889</td></tr><tr><td>Avg Value</td><td>$9,321</td></tr></tbody>
+<tbody>
+<tr><td>Recurring Service</td><td class="num">1,207</td><td class="num">63.9%</td><td class="num">Primary</td></tr>
+<tr><td>Time &amp; Materials</td><td class="num">504</td><td class="num">26.7%</td><td class="num">Secondary</td></tr>
+<tr><td>Block Hours</td><td class="num">173</td><td class="num">9.2%</td><td class="num">Supplementary</td></tr>
+<tr><td>Fixed Price</td><td class="num">5</td><td class="num">0.3%</td><td class="num">Minimal</td></tr>
+<tr><td>Total Revenue</td><td class="num">$17.6M</td><td class="num">100%</td><td class="num">All contracts</td></tr>
+<tr><td>Project Margin</td><td class="num">49.7%</td><td class="num">—</td><td class="num">Above target</td></tr>
+<tr><td>Pipeline Value</td><td class="num">$3.9M</td><td class="num">—</td><td class="num">124 deals</td></tr>
+<tr><td>Charges Revenue</td><td class="num">$7,583</td><td class="num">—</td><td class="num">Billed charges</td></tr>
+<tr><td>Total Revenue</td><td>$17,606,769</td></tr><tr><td>Contracts</td><td>1,889</td></tr><tr><td>Avg Value</td><td>$9,321</td></tr></tbody>
 </table>
 <p style="font-size:0.82rem; color:#64748b; margin-top:16px; font-style:italic;"><strong>Contract B is het slechtst op marge.</strong> Bij -300% zijn de kosten 4x de omzet. Maar Contract A veroorzaakt de meeste absolute schade met -$56K. Samen zijn de top 3 contracten goed voor <strong>$137K aan verliezen</strong> -- 44% van alle contractverliezen.</p>
 <div class="dax-toggle">

@@ -737,6 +737,8 @@
 <div class="doc-demo"><strong>Demo mode:</strong> Dit rapport gebruikt synthetische voorbeelddata. Verbind je eigen databronnen om echte resultaten te zien.</div>
 <!-- DOC BODY -->
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- SECTION 1 -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -1179,6 +1181,26 @@ RETURN
 <p><strong>1. Herbalanceer de klantportefeuilles van Team Noord.</strong> Verplaats ten minste twee mid-market klanten van Team Noord naar Team Oost of Team West. Dit verlaagt de ratio van Team Noord direct met circa 30 punten, zonder dat er nieuwe medewerkers nodig zijn.</p>
 <p><strong>2. Stel een capaciteitsplafond in van 120 apparaten per technicus.</strong> Bouw een automatische waarschuwing in Power BI die triggert zodra een technicus boven de 110 apparaten komt. Zo is er tijd om bij te sturen voordat de drempel wordt bereikt.</p>
 <p><strong>3. Investeer in automatisering voor routinetaken.</strong> Team Oost bewijst dat gerichte automatisering de werkdruk verlaagt. Rol hun patching- en monitoring-scripts uit naar de andere teams. Dit bespaart naar schatting 15-20% van de handmatige tijd per technicus.</p>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Resource utilization summary</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Time_Entries'[resource_name],
+    "TotalHours", SUM('BI_Autotask_Time_Entries'[hours_worked]),
+    "BillableHours", SUM('BI_Autotask_Time_Entries'[Billable Hours]),
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Time_Entries'[ticket_id])
+  ),
+  [TotalHours], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
 </div>
 </div>
 <!-- SECTION 9 -->

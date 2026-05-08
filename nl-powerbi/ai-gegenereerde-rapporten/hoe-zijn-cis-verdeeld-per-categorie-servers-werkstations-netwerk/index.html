@@ -726,6 +726,8 @@
 <div class="doc-subtitle">Volledig overzicht van 13.769 configuratie-items gegroepeerd op apparaattype, met actief/inactief status en verdeling per klant over 293 beheerde bedrijven.</div>
 </div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- Sectie 01 -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -923,6 +925,25 @@ TOPN(
 <div class="doc-finding-body">
 <h4>Netwerkapparatuur is goed gedocumenteerd</h4>
 <p>Access points, switches en firewalls scoren alle 89–99% actief. Dat betekent dat de documentatiegewoonte voor netwerk solide is: apparatuur wordt correct toegevoegd, bijgewerkt en afgevoerd. Die nauwkeurigheid is waardevol bij wijzigingsbeheer en security-audits.</p>
+</div>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Ticket SLA compliance by priority</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Tickets'[priority_name],
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]),
+    "AvgHours", DIVIDE(SUM('BI_Autotask_Time_Entries'[hours_worked]), DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]))
+  ),
+  [TicketCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
 </div>
 </div>
 </div>

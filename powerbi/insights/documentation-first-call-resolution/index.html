@@ -733,6 +733,8 @@
 <p class="doc-subtitle">This report connects <strong>Autotask PSA ticket data</strong> (42,817 tickets across 90+ companies) with <strong>IT Glue documentation metrics</strong> (12,439 active documents, 8,214 configurations) to measure whether clients with better documentation coverage see higher first call resolution rates. Two data sources, one hypothesis: technicians resolve tickets faster when the answers are already written down.</p>
 </div>
 <div class="doc-body">
+<!-- stage5-enriched -->
+
 <!-- SECTION 1.0 -->
 <div class="doc-section">
 <div class="doc-section-head">
@@ -1180,6 +1182,25 @@ ADDCOLUMNS(
 <p><strong>1. Launch a documentation sprint for Client F, G, and H.</strong> These three clients have a combined 632 configurations and fewer than 213 documents between them. Their FCR rates are all below 53%. Start with the most common ticket categories for each client - password management SOPs, VPN setup guides, and printer configuration docs. Target 1.0 docs-per-config within 60 days. Even partial coverage will move the FCR needle.</p>
 <p><strong>2. Implement a 90-day documentation review cycle.</strong> Set a recurring task in Autotask for each client's primary tech to review and update IT Glue documents quarterly. Flag any document older than 90 days as "needs review" using IT Glue's built-in workflow. The 58.4% stale rate should drop below 30% within two quarters if this becomes a standing process.</p>
 <p><strong>3. Connect IT Glue articles to Autotask ticket categories.</strong> When a tech resolves a ticket on first call, capture which IT Glue document helped. This creates a feedback loop: popular articles get updated first, gaps in documentation become visible through unresolved ticket patterns, and management can see the ROI of documentation work in hard FCR numbers.</p>
+</div>
+
+<div class="dax-toggle" onclick="this.classList.toggle('expanded')">
+<div class="dax-trigger">
+<svg class="dax-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+<span>View DAX Query — Ticket SLA compliance by priority</span>
+</div>
+<div class="dax-content">
+<pre><code>EVALUATE
+TOPN(10,
+  SUMMARIZECOLUMNS(
+    'BI_Autotask_Tickets'[priority_name],
+    "TicketCount", DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]),
+    "AvgHours", DIVIDE(SUM('BI_Autotask_Time_Entries'[hours_worked]), DISTINCTCOUNT('BI_Autotask_Tickets'[ticket_id]))
+  ),
+  [TicketCount], DESC
+)</code></pre>
+<button class="dax-copy" onclick="event.stopPropagation();prxCopyDAX(this)">Copy Query</button>
+</div>
 </div>
 </div>
 <!-- SECTION 9.0 -->
