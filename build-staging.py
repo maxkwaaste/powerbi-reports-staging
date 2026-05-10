@@ -218,7 +218,8 @@ q.addEventListener('input',()=>{{const v=q.value.toLowerCase();let n=0;rows.forE
 </script>
 </body>
 </html>"""
-    (DST / "index.html").write_text(html, encoding="utf-8")
+    # Write to staging-table.html instead of index.html (gallery is the index now)
+    (DST / "staging-table.html").write_text(html, encoding="utf-8")
 
 
 def main():
@@ -226,9 +227,8 @@ def main():
         if d.exists():
             shutil.rmtree(d)
 
-    root_index = DST / "index.html"
-    if root_index.exists():
-        root_index.unlink()
+    # Don't delete root index.html -- it's the gallery page (gallery-en.html), managed separately
+    # root_index = DST / "index.html"
 
     print(f"Source EN: {EN_SRC} ({len(list(EN_SRC.glob('*-post.html')))} files)")
     print(f"Source NL: {NL_SRC} ({len(list(NL_SRC.glob('*-post.html')))} files)")
