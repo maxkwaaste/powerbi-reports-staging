@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>MSP Operations Intelligence: Cross-Source Performance Analysis | Proxuma Power BI</title>
-<meta content="" name="description"/>
+<meta content="MSP Operations Intelligence: Cross-Source Performance Analysis — AI-generated Power BI report by Proxuma for managed service providers." name="description"/>
 <link href="https://proxuma.io/powerbi/insights/msp-operations-intelligence/" rel="canonical"/>
 <link href="https://proxuma.io/powerbi/insights/msp-operations-intelligence/" hreflang="en" rel="alternate"/>
 <link href="https://proxuma.io/nl-powerbi/ai-gegenereerde-rapporten/msp-operations-intelligence-nl/" hreflang="nl" rel="alternate"/>
@@ -1371,7 +1371,7 @@ TOPN(
 </div>
 <div class="doc-faq">
 <div class="faq-item" onclick="this.classList.toggle('open')">
-<div class="faq-q"><span>What data sources does this report use?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+<div class="faq-q"><span>Which PSA, RMM, and cloud integrations feed this report use?</span><svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
 <div class="faq-a"><p>Three systems: Autotask PSA (tickets, time entries, SLA data), Datto RMM (device alerts and resolution status), and SmileBack (customer satisfaction surveys). All data flows through Proxuma's Power BI semantic model, which links the sources via shared keys like ticket numbers and resource IDs.</p></div>
 </div>
 <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -1408,7 +1408,7 @@ TOPN(
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"What data sources does this cross-source MSP operations report use?","acceptedAnswer":{"@type":"Answer","text":"Three systems: Autotask PSA (tickets, time entries, SLA data), Datto RMM (device alerts and resolution status), and SmileBack (customer satisfaction surveys). All data flows through Proxuma's Power BI semantic model."}},
+    {"@type":"Question","name":"Which PSA, RMM, and cloud integrations feed this cross-source MSP operations report use?","acceptedAnswer":{"@type":"Answer","text":"Three systems: Autotask PSA (tickets, time entries, SLA data), Datto RMM (device alerts and resolution status), and SmileBack (customer satisfaction surveys). All data flows through Proxuma's Power BI semantic model."}},
     {"@type":"Question","name":"How are Datto RMM alerts linked to Autotask PSA tickets?","acceptedAnswer":{"@type":"Answer","text":"Datto RMM can auto-create Autotask tickets for certain alert priorities. The link is the ticket_number field on the BI_Datto_Rmm_Alerts table. When an alert has a non-blank ticket number, a PSA ticket was created for that alert."}},
     {"@type":"Question","name":"What does billable percentage mean for MSP engineers?","acceptedAnswer":{"@type":"Answer","text":"Billable % is the ratio of billable hours to total logged hours. A 75% rate means three-quarters of logged time can be charged to clients. Different roles have different expected ranges."}},
     {"@type":"Question","name":"Can I generate this MSP operations intelligence report from my own data?","acceptedAnswer":{"@type":"Answer","text":"Yes. Connect your Autotask PSA, Datto RMM, and SmileBack to Proxuma's Power BI integration. Once set up, any MCP-compatible AI can query your dataset and produce custom reports."}}
@@ -1481,7 +1481,7 @@ catch(e){}document.body.removeChild(ta)}
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "MSP Operations Intelligence: Cross-Source Performance Analysis",
-  "description": "",
+  "description": "MSP Operations Intelligence: Cross-Source Performance Analysis — AI-generated Power BI report by Proxuma for managed service providers.",
   "author": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io"},
   "publisher": {"@type": "Organization", "name": "Proxuma", "url": "https://proxuma.io", "logo": {"@type": "ImageObject", "url": "https://proxuma.io/wp-content/uploads/2024/01/proxuma-logo.png"}},
   "datePublished": "2026-04-06",
@@ -1510,7 +1510,7 @@ catch(e){}document.body.removeChild(ta)}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"What data sources does this cross-source MSP operations report use?","acceptedAnswer":{"@type":"Answer","text":"Three systems: Autotask PSA (tickets, time entries, SLA data), Datto RMM (device alerts and resolution status), and SmileBack (customer satisfaction surveys). All data flows through Proxuma's Power BI semantic model."}},
+    {"@type":"Question","name":"Which PSA, RMM, and cloud integrations feed this cross-source MSP operations report use?","acceptedAnswer":{"@type":"Answer","text":"Three systems: Autotask PSA (tickets, time entries, SLA data), Datto RMM (device alerts and resolution status), and SmileBack (customer satisfaction surveys). All data flows through Proxuma's Power BI semantic model."}},
     {"@type":"Question","name":"How are Datto RMM alerts linked to Autotask PSA tickets?","acceptedAnswer":{"@type":"Answer","text":"Datto RMM can auto-create Autotask tickets for certain alert priorities. The link is the ticket_number field on the BI_Datto_Rmm_Alerts table. When an alert has a non-blank ticket number, a PSA ticket was created for that alert."}},
     {"@type":"Question","name":"What does billable percentage mean for MSP engineers?","acceptedAnswer":{"@type":"Answer","text":"Billable % is the ratio of billable hours to total logged hours. A 75% rate means three-quarters of logged time can be charged to clients. Different roles have different expected ranges."}},
     {"@type":"Question","name":"Can I generate this MSP operations intelligence report from my own data?","acceptedAnswer":{"@type":"Answer","text":"Yes. Connect your Autotask PSA, Datto RMM, and SmileBack to Proxuma's Power BI integration. Once set up, any MCP-compatible AI can query your dataset and produce custom reports."}}
